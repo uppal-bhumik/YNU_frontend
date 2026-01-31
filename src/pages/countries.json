@@ -1,0 +1,10 @@
+{
+  "countries": {
+    "Australia": "AU",
+    "Canada": "CA",
+    "Germany": "DE",
+    "United Kingdom": "GB",
+    "Ireland": "IE",
+    "United States": "US"
+  }
+}
