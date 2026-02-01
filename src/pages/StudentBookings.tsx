@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 const API_BASE =
   (import.meta as any)?.env?.VITE_API_BASE_URL ||
   (window as any).__API_BASE__ ||
-  'https://studconnect-backend.onrender.com';
+  'https://ynu-backend.onrender.com';
 
 interface Booking {
   booking_id: string | number;

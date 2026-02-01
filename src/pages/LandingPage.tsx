@@ -165,7 +165,7 @@ export const LandingPage: React.FC = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	useEffect(() => {
-		fetch('https://studconnect-backend.onrender.com/peer-counsellors')
+		fetch('https://ynu-backend.onrender.com/peer-counsellors')
 			.then(res => res.json())
 			.then(data => {
 				// Only pick required fields for display

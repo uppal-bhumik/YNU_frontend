@@ -39,7 +39,7 @@ const PeerCounsellingBillingPage = () => {
   // Use counsellor’s charge if provided, else the page price (699)
   const counsellorCharges = Number(passedAmount) || priceINR;
 
-  const API_BASE_FALLBACK = 'https://studconnect-backend.onrender.com';
+  const API_BASE_FALLBACK = 'https://ynu-backend.onrender.com';
   const apiBase =
     (import.meta as any)?.env?.VITE_API_BASE_URL ||
     (window as any).__API_BASE__ ||

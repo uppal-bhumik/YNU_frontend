@@ -10,7 +10,7 @@ const TEXT = "#0F2A36";
 const SUBTEXT = "#4A8A9A";
 const BORDER = "#D0E8EC";
 
-const BASE_URL = "https://studconnect-backend.onrender.com";
+const BASE_URL = "https://ynu-backend.onrender.com";
 
 // Add keyframes and global styles for 3D, glass, and animation effects
 const globalStyles = `

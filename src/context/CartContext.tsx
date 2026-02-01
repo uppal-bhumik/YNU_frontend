@@ -33,7 +33,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 const API_BASE = (import.meta as any)?.env?.VITE_API_BASE_URL ||
     (window as any).__API_BASE__ ||
-    'https://studconnect-backend.onrender.com';
+    'https://ynu-backend.onrender.com';
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [cartItems, setCartItems] = useState<CartItem[]>([]);

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const BASE_URL = "https://studconnect-backend.onrender.com";
+const BASE_URL = "https://ynu-backend.onrender.com";
 
 
 // Country options (reusing existing data)

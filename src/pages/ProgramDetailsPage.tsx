@@ -46,7 +46,7 @@ export const ProgramDetailsPage: React.FC = () => {
     if (!programState && id) {
       setLoading(true);
       setError(null);
-      fetch(`https://studconnect-backend.onrender.com/api/programs/${id}`)
+      fetch(`https://ynu-backend.onrender.com/api/programs/${id}`)
         .then(res => {
           if (!res.ok) throw new Error('Failed to fetch program details');
           return res.json();
@@ -73,7 +73,7 @@ export const ProgramDetailsPage: React.FC = () => {
     ) {
       setScholarshipLoading(true);
       setScholarshipError(null);
-      fetch(`https://studconnect-backend.onrender.com/scholarships/${schoolId}`)
+      fetch(`https://ynu-backend.onrender.com/scholarships/${schoolId}`)
         .then(res => {
           if (!res.ok) throw new Error('Failed to fetch scholarships');
           return res.json();

@@ -10,7 +10,7 @@ import { OrbitControls } from '@react-three/drei';
 // import Slider from 'rc-slider';
 // import 'rc-slider/assets/index.css';
 
-const BASE_URL = "https://studconnect-backend.onrender.com";
+const BASE_URL = "https://ynu-backend.onrender.com";
 // const BASE_URL = "http://127.0.0.1:8000";
 
 interface ProgramItem {

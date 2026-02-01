@@ -49,7 +49,7 @@ const testimonials = [
   { name: 'Fatima • UK Health', text: 'Left with a concrete 6‑week prep checklist. Removed uncertainty.' }
 ];
 
-const API_BASE = 'https://studconnect-backend.onrender.com';
+const API_BASE = 'https://ynu-backend.onrender.com';
 
 
 const PeerCounsellingPage: React.FC = () => {

@@ -17,7 +17,7 @@ export const AccommodationPage: React.FC = () => {
   const [error, setError] = useState('');
 
   // Add BASE_URL for API calls
-  const BASE_URL = "https://studconnect-backend.onrender.com";
+  const BASE_URL = "https://ynu-backend.onrender.com";
   // const BASE_URL = "http://127.0.0.1:8000";
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // const BASE_URL = 'http://127.0.0.1:8000';
-const BASE_URL = 'https://studconnect-backend.onrender.com';
+const BASE_URL = 'https://ynu-backend.onrender.com';
 
 const AuthForgotPasswordPage: React.FC = () => {
   const [step, setStep] = useState<'request' | 'reset'>('request');

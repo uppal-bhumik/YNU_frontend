@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 const API_BASE =
   (import.meta as any)?.env?.VITE_API_BASE_URL ||
   (window as any).__API_BASE__ ||
-  'https://studconnect-backend.onrender.com';
+  'https://ynu-backend.onrender.com';
 
 interface BookingData {
   id?: number | string;

@@ -24,7 +24,7 @@ const PeerProfilePage: React.FC = () => {
     // Fetch peer counsellor data based on ID
     const fetchPeerCounsellor = async () => {
       try {
-        const response = await fetch(`https://studconnect-backend.onrender.com/peer-counsellors/${id}`);
+        const response = await fetch(`https://ynu-backend.onrender.com/peer-counsellors/${id}`);
         if (response.ok) {
           const data = await response.json();
           setCounsellor(data);

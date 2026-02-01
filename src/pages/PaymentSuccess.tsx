@@ -7,7 +7,7 @@ type PaymentState = 'success' | 'failed' | 'cancelled' | 'processing' | 'unknown
 const BACKEND_BASE =
   (import.meta as any)?.env?.VITE_API_BASE_URL ||
   (window as any).__API_BASE__ ||
-  'https://studconnect-backend.onrender.com';
+  'https://ynu-backend.onrender.com';
 
 const statusColor: Record<PaymentState, { bg: string; border: string; text: string }> = {
   success: { bg: '#ecfdf5', border: '#10b981', text: '#065f46' },
