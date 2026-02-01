@@ -88,7 +88,7 @@ export const ProgramDetailsPage: React.FC = () => {
   if (loading) {
     return (
       <main style={{ padding: '2rem', maxWidth: 700, margin: '0 auto', color: '#334155' }}>
-        <h1 style={{ color: '#2563eb', fontWeight: 800, fontSize: '2rem' }}>Program Details</h1>
+        <h1 style={{ color: '#2D6A7A', fontWeight: 800, fontSize: '2rem' }}>Program Details</h1>
         <p>Loading program details...</p>
       </main>
     );
@@ -97,19 +97,19 @@ export const ProgramDetailsPage: React.FC = () => {
   if (error) {
     return (
       <main style={{ padding: '2rem', maxWidth: 700, margin: '0 auto', color: '#334155' }}>
-        <h1 style={{ color: '#2563eb', fontWeight: 800, fontSize: '2rem' }}>Program Details</h1>
+        <h1 style={{ color: '#2D6A7A', fontWeight: 800, fontSize: '2rem' }}>Program Details</h1>
         <p>Error: {error}</p>
         <button
           style={{
             marginTop: '1.5rem',
-            background: 'linear-gradient(90deg,#2563eb 0%,#60a5fa 100%)',
+            background: 'linear-gradient(90deg,#2D6A7A 0%,#5A9AAA 100%)',
             color: '#fff',
             borderRadius: 10,
             padding: '.7rem 1.5rem',
             fontWeight: 700,
             fontSize: '1.08rem',
             border: 'none',
-            boxShadow: '0 2px 8px #2563eb22',
+            boxShadow: '0 2px 8px #2D6A7A22',
             cursor: 'pointer'
           }}
           onClick={() => navigate(-1)}
@@ -123,19 +123,19 @@ export const ProgramDetailsPage: React.FC = () => {
   if (!programId) {
     return (
       <main style={{ padding: '2rem', maxWidth: 700, margin: '0 auto', color: '#334155' }}>
-        <h1 style={{ color: '#2563eb', fontWeight: 800, fontSize: '2rem' }}>Program Details</h1>
+        <h1 style={{ color: '#2D6A7A', fontWeight: 800, fontSize: '2rem' }}>Program Details</h1>
         <p>Sorry, program details are not available. Please go back and select a program.</p>
         <button
           style={{
             marginTop: '1.5rem',
-            background: 'linear-gradient(90deg,#2563eb 0%,#60a5fa 100%)',
+            background: 'linear-gradient(90deg,#2D6A7A 0%,#5A9AAA 100%)',
             color: '#fff',
             borderRadius: 10,
             padding: '.7rem 1.5rem',
             fontWeight: 700,
             fontSize: '1.08rem',
             border: 'none',
-            boxShadow: '0 2px 8px #2563eb22',
+            boxShadow: '0 2px 8px #2D6A7A22',
             cursor: 'pointer'
           }}
           onClick={() => navigate(-1)}
@@ -263,15 +263,15 @@ export const ProgramDetailsPage: React.FC = () => {
     switch (type) {
       case 'facebook':
         return (
-          <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#2563eb"/><path d="M18.5 17.5H21L21.5 14.5H18.5V13C18.5 12.17 18.5 11.5 19.5 11.5H21.5V9.02C21.338 8.993 20.675 8.93 19.964 8.93C17.928 8.93 16.5 10.09 16.5 12.36V14.5H14V17.5H16.5V24.5H18.5V17.5Z" fill="#fff"/></svg>
+          <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#2D6A7A" /><path d="M18.5 17.5H21L21.5 14.5H18.5V13C18.5 12.17 18.5 11.5 19.5 11.5H21.5V9.02C21.338 8.993 20.675 8.93 19.964 8.93C17.928 8.93 16.5 10.09 16.5 12.36V14.5H14V17.5H16.5V24.5H18.5V17.5Z" fill="#fff" /></svg>
         );
       case 'linkedin':
         return (
-          <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#2563eb"/><path d="M12.5 13.5H10V22H12.5V13.5ZM11.25 12.5C12.05 12.5 12.5 11.95 12.5 11.25C12.5 10.55 12.05 10 11.25 10C10.45 10 10 10.55 10 11.25C10 11.95 10.45 12.5 11.25 12.5ZM22 17.5C22 15.5 21.5 13.5 18.5 13.5C17.25 13.5 16.5 14.25 16.25 14.75V13.5H13.75V22H16.25V17.75C16.25 16.75 16.5 15.75 17.75 15.75C19 15.75 19 16.75 19 17.75V22H21.5V17.5H22Z" fill="#fff"/></svg>
+          <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#2D6A7A" /><path d="M12.5 13.5H10V22H12.5V13.5ZM11.25 12.5C12.05 12.5 12.5 11.95 12.5 11.25C12.5 10.55 12.05 10 11.25 10C10.45 10 10 10.55 10 11.25C10 11.95 10.45 12.5 11.25 12.5ZM22 17.5C22 15.5 21.5 13.5 18.5 13.5C17.25 13.5 16.5 14.25 16.25 14.75V13.5H13.75V22H16.25V17.75C16.25 16.75 16.5 15.75 17.75 15.75C19 15.75 19 16.75 19 17.75V22H21.5V17.5H22Z" fill="#fff" /></svg>
         );
       case 'twitter':
         return (
-          <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#2563eb"/><path d="M24 12.1C23.4 12.4 22.8 12.6 22.1 12.7C22.8 12.3 23.3 11.7 23.5 10.9C22.9 11.3 22.2 11.5 21.5 11.7C20.9 11.1 20 10.7 19.1 10.7C17.3 10.7 15.9 12.1 15.9 13.9C15.9 14.2 15.9 14.5 16 14.7C13.5 14.6 11.3 13.4 9.8 11.6C9.5 12.1 9.4 12.7 9.4 13.3C9.4 14.3 9.9 15.2 10.7 15.7C10.2 15.7 9.7 15.6 9.3 15.4C9.3 16.9 10.4 18.1 11.9 18.3C11.6 18.4 11.3 18.4 11 18.4C10.8 18.4 10.6 18.4 10.4 18.3C10.8 19.5 12 20.3 13.4 20.3C12.3 21.1 10.9 21.6 9.4 21.6C9.1 21.6 8.7 21.6 8.4 21.5C9.8 22.3 11.4 22.8 13.1 22.8C19.1 22.8 22.2 18.5 22.2 14.2C22.2 14.1 22.2 14 22.2 13.9C22.8 13.5 23.4 12.9 24 12.1Z" fill="#fff"/></svg>
+          <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#2D6A7A" /><path d="M24 12.1C23.4 12.4 22.8 12.6 22.1 12.7C22.8 12.3 23.3 11.7 23.5 10.9C22.9 11.3 22.2 11.5 21.5 11.7C20.9 11.1 20 10.7 19.1 10.7C17.3 10.7 15.9 12.1 15.9 13.9C15.9 14.2 15.9 14.5 16 14.7C13.5 14.6 11.3 13.4 9.8 11.6C9.5 12.1 9.4 12.7 9.4 13.3C9.4 14.3 9.9 15.2 10.7 15.7C10.2 15.7 9.7 15.6 9.3 15.4C9.3 16.9 10.4 18.1 11.9 18.3C11.6 18.4 11.3 18.4 11 18.4C10.8 18.4 10.6 18.4 10.4 18.3C10.8 19.5 12 20.3 13.4 20.3C12.3 21.1 10.9 21.6 9.4 21.6C9.1 21.6 8.7 21.6 8.4 21.5C9.8 22.3 11.4 22.8 13.1 22.8C19.1 22.8 22.2 18.5 22.2 14.2C22.2 14.1 22.2 14 22.2 13.9C22.8 13.5 23.4 12.9 24 12.1Z" fill="#fff" /></svg>
         );
       default:
         return null;
@@ -283,20 +283,20 @@ export const ProgramDetailsPage: React.FC = () => {
     <section
       style={{
         marginBottom: '2.2rem',
-        background: 'linear-gradient(90deg,#D6C5F0 0%,#fff 100%)',
+        background: '#fff',
         borderRadius: 18,
-        boxShadow: '0 2px 12px #9F7AEA11',
+        boxShadow: '0 4px 24px rgba(15, 23, 42, 0.08)',
         padding: '1.5rem 2rem',
-        border: '1.5px solid #D6C5F0'
+        border: '1px solid var(--border)'
       }}
     >
       <h2 style={{
-        color: '#5727A3',
+        color: '#1A3A4A',
         fontWeight: 900,
         fontSize: '1.18rem',
         marginBottom: '1.1rem',
         letterSpacing: '.01em',
-        background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+        background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent',
         lineHeight: '1.3'
@@ -311,10 +311,10 @@ export const ProgramDetailsPage: React.FC = () => {
   const IntakeCard = ({ intake }: { intake: any }) => (
     <div
       style={{
-        background: 'linear-gradient(90deg,#D6C5F0 0%,#fff 100%)',
+        background: '#fff',
         borderRadius: 12,
-        border: '1.5px solid #D6C5F0',
-        boxShadow: '0 2px 8px #9F7AEA11',
+        border: '1px solid var(--border)',
+        boxShadow: '0 2px 8px rgba(15, 23, 42, 0.06)',
         padding: '1rem 1.2rem',
         marginBottom: 14,
         minWidth: 0,
@@ -322,7 +322,7 @@ export const ProgramDetailsPage: React.FC = () => {
         lineHeight: '1.7'
       }}
     >
-      <div style={{ fontWeight: 700, color: '#5727A3', fontSize: '1.08rem', marginBottom: 6 }}>
+      <div style={{ fontWeight: 700, color: '#1A3A4A', fontSize: '1.08rem', marginBottom: 6 }}>
         {intake.startDate ? new Date(intake.startDate).toLocaleString('default', { month: 'short', year: 'numeric' }) : 'Intake'}
       </div>
       <PrettyField label="Open Date" value={intake.openDate ? new Date(intake.openDate).toLocaleDateString() : 'N/A'} />
@@ -341,14 +341,14 @@ export const ProgramDetailsPage: React.FC = () => {
                       score.intent === 'positive'
                         ? '#16a34a'
                         : score.intent === 'warning'
-                        ? '#eab308'
-                        : score.intent === 'negative'
-                        ? '#dc2626'
-                        : score.intent === 'primary'
-                        ? '#2563eb'
-                        : score.intent === 'secondary'
-                        ? '#64748b'
-                        : '#334155',
+                          ? '#eab308'
+                          : score.intent === 'negative'
+                            ? '#dc2626'
+                            : score.intent === 'primary'
+                              ? '#2D6A7A'
+                              : score.intent === 'secondary'
+                                ? '#64748b'
+                                : '#334155',
                     fontWeight: 700,
                   }}
                 >
@@ -366,188 +366,56 @@ export const ProgramDetailsPage: React.FC = () => {
   return (
     <main
       style={{
-        background: 'linear-gradient(90deg,#D6C5F0 0%,#fff 100%)',
+        background: '#fff',
         minHeight: '100vh',
         paddingBottom: '2rem',
         position: 'relative',
         zIndex: 1,
         overflow: 'hidden',
         fontFamily: 'Inter, Segoe UI, Arial, sans-serif',
-        paddingTop: '90px', // Add space for fixed header
+        paddingTop: '0',
       }}
     >
-      {/* --- 3D/Glassmorphism/Animated Background Elements --- */}
-      <div
-        aria-hidden
-        style={{
-          position: 'fixed',
-          zIndex: 0,
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          pointerEvents: 'none',
-          overflow: 'hidden'
-        }}
-      >
-        {/* Blurred glassy blobs */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '-120px',
-            left: '-120px',
-            width: 400,
-            height: 400,
-            background: 'radial-gradient(circle at 30% 30%, #D6C5F088 0%, #9F7AEA33 100%)',
-            filter: 'blur(60px)',
-            borderRadius: '50%',
-            opacity: 0.7,
-            animation: 'float1 12s ease-in-out infinite alternate'
-          }}
-        />
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '-100px',
-            right: '-100px',
-            width: 320,
-            height: 320,
-            background: 'radial-gradient(circle at 70% 70%, #9F7AEA99 0%, #D6C5F033 100%)',
-            filter: 'blur(60px)',
-            borderRadius: '50%',
-            opacity: 0.6,
-            animation: 'float2 14s ease-in-out infinite alternate'
-          }}
-        />
-        {/* 3D gradient ring */}
-        <svg
-          width="320"
-          height="320"
-          viewBox="0 0 320 320"
-          style={{
-            position: 'absolute',
-            top: '60%',
-            left: '-120px',
-            opacity: 0.18,
-            filter: 'blur(1.5px)',
-            transform: 'rotate(-18deg)',
-            animation: 'spin 24s linear infinite'
-          }}
-        >
-          <defs>
-            <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#5727A3" />
-              <stop offset="100%" stopColor="#9F7AEA" />
-            </linearGradient>
-          </defs>
-          <ellipse
-            cx="160"
-            cy="160"
-            rx="120"
-            ry="48"
-            fill="none"
-            stroke="url(#ring)"
-            strokeWidth="18"
-          />
-        </svg>
-        {/* Floating cubes */}
-        <div
-          style={{
-            position: 'absolute',
-            left: '60vw',
-            top: '10vh',
-            width: 60,
-            height: 60,
-            perspective: 200,
-            opacity: 0.25,
-            animation: 'cubeFloat 10s ease-in-out infinite alternate'
-          }}
-        >
-          <div
+      {/* Dark Hero */}
+      <section style={{
+        background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)',
+        padding: '120px 1.5rem 100px 1.5rem',
+        marginBottom: '-60px'
+      }}>
+        {/* Button Back */}
+        <div style={{ maxWidth: 1200, margin: '0 auto 1.5rem auto' }}>
+          <button
             style={{
-              width: '100%',
-              height: '100%',
-              background: 'linear-gradient(135deg,#5727A3 60%,#9F7AEA 100%)',
-              borderRadius: 12,
-              boxShadow: '0 8px 32px #9F7AEA33',
-              transform: 'rotateY(30deg) rotateX(20deg)'
+              background: 'rgba(255,255,255,0.1)',
+              color: '#fff',
+              borderRadius: 8,
+              padding: '.5rem 1rem',
+              fontWeight: 600,
+              fontSize: '0.9rem',
+              border: '1px solid rgba(255,255,255,0.2)',
+              cursor: 'pointer',
+              backdropFilter: 'blur(4px)'
             }}
-          />
+            onClick={() => navigate(-1)}
+          >
+            ← Back
+          </button>
         </div>
-        {/* CSS Animations */}
-        <style>
-          {`
-            @keyframes float1 {
-              0% { transform: translateY(0) scale(1);}
-              100% { transform: translateY(60px) scale(1.08);}
-            }
-            @keyframes float2 {
-              0% { transform: translateY(0) scale(1);}
-              100% { transform: translateY(-40px) scale(1.12);}
-            }
-            @keyframes spin {
-              100% { transform: rotate(342deg);}
-            }
-            @keyframes cubeFloat {
-              0% { transform: translateY(0) rotateY(30deg) rotateX(20deg);}
-              100% { transform: translateY(-40px) rotateY(60deg) rotateX(40deg);}
-            }
-            .program-section-title {
-              font-size: 1.5rem;
-              font-weight: 900;
-              color: #5727A3;
-              margin-bottom: 1.2rem;
-              letter-spacing: 0.01em;
-              text-shadow: 0 2px 8px #9F7AEA11;
-            }
-            .program-card-glass {
-              background: linear-gradient(90deg,#D6C5F0 0%,#fff 100%);
-              box-shadow: 0 8px 32px 0 #9F7AEA22, 0 1.5px 8px 0 #D6C5F022;
-              border-radius: 2.2rem;
-              border: 1.5px solid #D6C5F0;
-            }
-            .program-highlight {
-              background: linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%);
-              color: #fff;
-              border-radius: 8px;
-              padding: .3rem 1rem;
-              font-weight: 700;
-              font-size: 1.05rem;
-              margin-right: .5rem;
-              box-shadow: 0 2px 8px #9F7AEA22;
-              display: inline-block;
-            }
-            .program-cta-btn {
-              background: linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%);
-              color: #fff;
-              border-radius: 10px;
-              padding: .7rem 2rem;
-              font-weight: 700;
-              fontSize: 1.13rem;
-              border: none;
-              box-shadow: 0 2px 8px #9F7AEA22;
-              cursor: pointer;
-              margin-top: 1.5rem;
-              transition: background 0.2s, transform 0.2s;
-            }
-            .program-cta-btn:hover {
-              background: linear-gradient(90deg,#9F7AEA 0%,#5727A3 100%);
-              transform: scale(1.04);
-            }
-          `}
-        </style>
-      </div>
-      {/* --- End 3D/Glassmorphism/Animated Background Elements --- */}
+      </section>
 
+      {/* Main Content Wrapper */}
       <div
         className="program-card-glass"
         style={{
-          margin: '2.5rem auto',
-          borderRadius: '2.2rem',
+          margin: '0 auto 2.5rem auto',
+          borderRadius: '24px',
           padding: 0,
           position: 'relative',
           zIndex: 2,
           maxWidth: 1200,
+          background: '#fff',
+          boxShadow: '0 20px 60px -10px rgba(15, 23, 42, 0.15)',
+          border: '1px solid var(--border)'
         }}
       >
         {/* Banner and Logo */}
@@ -586,7 +454,7 @@ export const ProgramDetailsPage: React.FC = () => {
               bottom: -36,
               background: '#fff',
               borderRadius: '50%',
-              boxShadow: '0 2px 12px #2563eb22',
+              boxShadow: '0 2px 12px #2D6A7A22',
               width: 80,
               height: 80,
               display: 'flex',
@@ -641,15 +509,16 @@ export const ProgramDetailsPage: React.FC = () => {
                 <h1 style={{
                   fontSize: '2.2rem',
                   fontWeight: 900,
-                  color: '#5727A3',
+                  color: '#1A3A4A',
                   marginBottom: '.5rem',
                   letterSpacing: '.01em',
-                  background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+                  background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent'
                 }}>{programName}</h1>
-                <div style={{ fontSize: '1.13rem', color: '#5727A3', fontWeight: 700, marginBottom: '1.1rem',
-                  background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+                <div style={{
+                  fontSize: '1.13rem', color: '#1A3A4A', fontWeight: 700, marginBottom: '1.1rem',
+                  background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent'
                 }}>
@@ -691,7 +560,7 @@ export const ProgramDetailsPage: React.FC = () => {
                 )}
                 <PrettyField label="Email" value={schoolObj.email} />
                 <PrettyField label="Phone" value={schoolObj.phone} />
-                <PrettyField label="Website" value={schoolObj.website ? <a href={schoolObj.website} target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'underline' }}>{schoolObj.website}</a> : undefined} />
+                <PrettyField label="Website" value={schoolObj.website ? <a href={schoolObj.website} target="_blank" rel="noopener noreferrer" style={{ color: '#2D6A7A', textDecoration: 'underline' }}>{schoolObj.website}</a> : undefined} />
                 <div style={{ marginTop: 8, display: 'flex', gap: 16 }}>
                   {schoolObj.facebook && (
                     <a href={schoolObj.facebook} target="_blank" rel="noopener noreferrer" title="Facebook" style={{ display: 'inline-flex', alignItems: 'center' }}>
@@ -729,10 +598,10 @@ export const ProgramDetailsPage: React.FC = () => {
               <div
                 className="MuiPaper-root MuiCard-root sc-cOFTSb cggQXi MuiPaper-outlined MuiPaper-rounded"
                 style={{
-                  border: '1px solid #e0e7ef',
+                  border: '1px solid var(--border)',
                   borderRadius: 16,
-                  boxShadow: '0 2px 8px #2563eb11',
-                  background: '#f8fafc',
+                  boxShadow: '0 4px 24px rgba(15, 23, 42, 0.08)',
+                  background: '#fff',
                   padding: '1.2rem 1.2rem 1.5rem 1.2rem',
                   width: '100%',
                   marginBottom: 0,
@@ -741,10 +610,10 @@ export const ProgramDetailsPage: React.FC = () => {
                 <div style={{
                   fontWeight: 700,
                   fontSize: '1.15rem',
-                  color: '#5727A3',
+                  color: '#1A3A4A',
                   marginBottom: 18,
                   textAlign: 'center',
-                  background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+                  background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent'
                 }}>
@@ -766,7 +635,7 @@ export const ProgramDetailsPage: React.FC = () => {
                 {/* Show intake cards with scores */}
                 {intakes && intakes.length > 0 && (
                   <div style={{ marginTop: 14 }}>
-                    <div style={{ color: '#5727A3', fontWeight: 700, marginBottom: 6 }}>Upcoming Intakes</div>
+                    <div style={{ color: '#1A3A4A', fontWeight: 700, marginBottom: 6 }}>Upcoming Intakes</div>
                     {intakes.map((intake: any) => (
                       <IntakeCard key={intake.id} intake={intake} />
                     ))}
@@ -788,7 +657,7 @@ export const ProgramDetailsPage: React.FC = () => {
                       style={{
                         background: '#f8fafc',
                         borderRadius: 12,
-                        boxShadow: '0 2px 8px #2563eb11',
+                        boxShadow: '0 2px 8px #2D6A7A11',
                         border: '1px solid #e0e7ef',
                         padding: '1.1rem 1.3rem',
                         minWidth: 260,
@@ -797,13 +666,13 @@ export const ProgramDetailsPage: React.FC = () => {
                         marginBottom: 12
                       }}
                     >
-                      <div style={{ fontWeight: 700, fontSize: '1.08rem', color: '#2563eb', marginBottom: 4 }}>{sch.title}</div>
+                      <div style={{ fontWeight: 700, fontSize: '1.08rem', color: '#2D6A7A', marginBottom: 4 }}>{sch.title}</div>
                       <PrettyField label="Amount" value={`${sch.awardAmountCurrencySymbol || ''}${sch.awardAmountFrom}${sch.awardAmountTo ? ` - ${sch.awardAmountTo}` : ''} ${sch.awardAmountType ? sch.awardAmountType.replace('_', ' ') : ''}`} />
                       <PrettyField label="Eligible Levels" value={sch.eligibleLevels?.join(', ')} />
                       <PrettyField label="Eligible Nationalities" value={sch.eligibleNationalities?.join(', ')} />
                       {sch.sourceUrl && (
                         <div style={{ marginTop: 8 }}>
-                          <a href={sch.sourceUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', fontWeight: 600, textDecoration: 'underline' }}>
+                          <a href={sch.sourceUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#2D6A7A', fontWeight: 600, textDecoration: 'underline' }}>
                             Learn more
                           </a>
                         </div>
@@ -822,13 +691,13 @@ export const ProgramDetailsPage: React.FC = () => {
           bottom: 32,
           right: 32,
           zIndex: 50,
-          background: 'linear-gradient(90deg,#2563eb 0%,#60a5fa 100%)',
+          background: 'linear-gradient(90deg,#2D6A7A 0%,#5A9AAA 100%)',
           color: '#fff',
           border: 'none',
           borderRadius: '50%',
           width: 64,
           height: 64,
-          boxShadow: '0 4px 24px #2563eb55',
+          boxShadow: '0 4px 24px #2D6A7A55',
           fontSize: '2rem',
           fontWeight: 900,
           cursor: 'pointer',
@@ -848,11 +717,11 @@ export const ProgramDetailsPage: React.FC = () => {
         margin: '2.5rem auto 1.5rem auto',
         maxWidth: 700,
         background: '#f8fafc',
-        borderLeft: '4px solid #9F7AEA',
+        borderLeft: '4px solid #4A8A9A',
         borderRadius: 10,
         padding: '1rem 1.3rem',
         fontStyle: 'italic',
-        color: '#5727A3',
+        color: '#1A3A4A',
         fontSize: '1.05rem',
         textAlign: 'center'
       }}>
@@ -917,3 +786,5 @@ export const ProgramDetailsPage: React.FC = () => {
 };
 
 export default ProgramDetailsPage;
+
+

@@ -10,7 +10,7 @@ import { OrbitControls } from '@react-three/drei';
 // import Slider from 'rc-slider';
 // import 'rc-slider/assets/index.css';
 
-const BASE_URL = "https://studconnect-backend.onrender.com"; 
+const BASE_URL = "https://studconnect-backend.onrender.com";
 // const BASE_URL = "http://127.0.0.1:8000";
 
 interface ProgramItem {
@@ -22,6 +22,135 @@ interface ProgramItem {
   program: any;
   program_requirements: any;
 }
+
+// Skeleton Card Component for Loading State
+const SkeletonCard: React.FC = () => {
+  return (
+    <article
+      style={{
+        background: 'linear-gradient(145deg, #1A3A4A 0%, #2D6A7A 100%)',
+        borderRadius: '2rem',
+        boxShadow: '0 8px 32px 0 rgba(15, 23, 42, 0.25)',
+        border: '1px solid rgba(208, 232, 236, 0.2)',
+        padding: '3.5rem 1.7rem 1.7rem 1.7rem',
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: 440,
+        height: '100%',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Pulsing overlay animation */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)',
+          animation: 'shimmer 2s infinite',
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Floating logo skeleton */}
+      <div style={{
+        position: 'absolute',
+        top: -32,
+        right: 24,
+        zIndex: 3,
+        background: '#fff',
+        borderRadius: '50%',
+        boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2)',
+        width: 64,
+        height: 64,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        border: '3px solid #7dd3e8'
+      }}>
+        <div style={{
+          width: 48,
+          height: 48,
+          borderRadius: '50%',
+          background: '#e0e0e0',
+        }} />
+      </div>
+
+      {/* University Name skeleton */}
+      <div style={{ marginBottom: '.7rem', marginTop: '1.5rem' }}>
+        <div style={{
+          height: 24,
+          background: 'rgba(255,255,255,0.15)',
+          borderRadius: 8,
+          width: '75%',
+          marginBottom: 8
+        }} />
+        <div style={{
+          height: 16,
+          background: 'rgba(255,255,255,0.1)',
+          borderRadius: 6,
+          width: '50%'
+        }} />
+      </div>
+
+      {/* Program title skeleton */}
+      <div style={{ marginBottom: '.7rem' }}>
+        <div style={{
+          height: 20,
+          background: 'rgba(255,255,255,0.15)',
+          borderRadius: 8,
+          width: '90%',
+          marginBottom: 8
+        }} />
+        <div style={{
+          height: 16,
+          background: 'rgba(125,211,232,0.2)',
+          borderRadius: 6,
+          width: '40%'
+        }} />
+      </div>
+
+      {/* Details skeleton */}
+      <div style={{ marginBottom: '.7rem', display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {[1, 2, 3, 4, 5].map(i => (
+          <div key={i} style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{
+              height: 14,
+              background: 'rgba(255,255,255,0.1)',
+              borderRadius: 6,
+              width: '35%'
+            }} />
+            <div style={{
+              height: 14,
+              background: 'rgba(255,255,255,0.12)',
+              borderRadius: 6,
+              width: '40%'
+            }} />
+          </div>
+        ))}
+      </div>
+
+      {/* Button skeleton */}
+      <div style={{
+        marginTop: 'auto',
+        height: 44,
+        background: 'rgba(255,255,255,0.2)',
+        borderRadius: 14,
+      }} />
+
+      {/* Shimmer animation */}
+      <style>{`
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+      `}</style>
+    </article>
+  );
+};
 
 export const UniversitiesPage: React.FC = () => {
   const api = useApi();
@@ -49,11 +178,11 @@ export const UniversitiesPage: React.FC = () => {
 
   const [tuitionRange, setTuitionRange] = useState<[number, number]>([0, 100000]);
 
-  const tuitionRangeTimeout = useRef<NodeJS.Timeout | null>(null);
+  const tuitionRangeTimeout = useRef<any | null>(null);
 
   useEffect(() => {
     const countryArr = Object.entries((countriesData as any).countries || {}).map(
-      ([label, value]) => ({ label, value })
+      ([label, value]) => ({ label, value: value as string })
     );
     setAllCountries(countryArr);
 
@@ -115,7 +244,7 @@ export const UniversitiesPage: React.FC = () => {
     return () => {
       if (tuitionRangeTimeout.current) clearTimeout(tuitionRangeTimeout.current);
     };
-  // Only debounce on tuitionRange change, others can be instant
+    // Only debounce on tuitionRange change, others can be instant
   }, [tuitionRange, programName, universityName, country, page, rowsPerPage, allCountries]);
 
   const totalPages = Math.ceil(total / rowsPerPage);
@@ -144,24 +273,118 @@ export const UniversitiesPage: React.FC = () => {
   return (
     <main
       style={{
-        background: 'linear-gradient(90deg,#D6C5F0 0%,#fff 100%)',
+        background: '#fff',
         minHeight: '100vh',
         paddingBottom: '2rem',
         position: 'relative',
         zIndex: 1,
-        paddingTop: '90px', // Add space for fixed header
+        paddingTop: '0', // Full bleed
       }}
     >
+      {/* Dark Hero for Universities */}
+      <section style={{
+        background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)', // Dark Graphite
+        padding: '120px 1.5rem 80px 1.5rem',
+        textAlign: 'center',
+        position: 'relative',
+        marginBottom: '0'
+      }}>
+        {/* Decor */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: 'radial-gradient(circle at 50% 100%, rgba(45, 106, 122, 0.2), transparent 50%)',
+          pointerEvents: 'none'
+        }} />
+
+        <h1 style={{
+          fontSize: '3.5rem',
+          fontWeight: 900,
+          color: '#fff',
+          marginBottom: '1rem',
+          letterSpacing: '-2px',
+          lineHeight: 1.1,
+          position: 'relative',
+          zIndex: 1
+        }}>Explore Universities</h1>
+        <p style={{
+          fontSize: '1.25rem',
+          color: '#CBD5E1',
+          fontWeight: 500,
+          maxWidth: 600,
+          margin: '0 auto',
+          position: 'relative',
+          zIndex: 1
+        }}>
+          Find your dream program from our curated list of top institutions.
+        </p>
+        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '1.5rem', position: 'relative', zIndex: 1 }}>
+          <button
+            onClick={() => navigate('/universities/recommendations')}
+            style={{
+              background: 'linear-gradient(90deg, #fff 0%, #D0E8EC 100%)',
+              color: '#1A3A4A',
+              fontWeight: 700,
+              fontSize: '1.1rem',
+              border: 'none',
+              borderRadius: 12,
+              padding: '0.9rem 2rem',
+              cursor: 'pointer',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
+              transition: 'transform 0.18s, box-shadow 0.18s',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'scale(1.04)';
+              e.currentTarget.style.boxShadow = '0 6px 24px rgba(0,0,0,0.3)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = '';
+              e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.2)';
+            }}
+          >
+            Get Recommendations
+          </button>
+          <button
+            onClick={() => navigate('/compare-universities')}
+            style={{
+              background: 'transparent',
+              color: '#fff',
+              fontWeight: 700,
+              fontSize: '1.1rem',
+              border: '2px solid rgba(255,255,255,0.5)',
+              borderRadius: 12,
+              padding: '0.9rem 2rem',
+              cursor: 'pointer',
+              transition: 'all 0.18s',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(255,255,255,0.1)';
+              e.currentTarget.style.borderColor = '#fff';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent';
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)';
+            }}
+          >
+            Compare Universities
+          </button>
+        </div>
+      </section>
+
       <div style={{
         maxWidth: 1280,
         margin: '0 auto',
-        marginTop: '2.5rem',
+        marginTop: '-3rem', // Overlap effect
         borderRadius: '2.2rem',
-        boxShadow: '0 8px 32px 0 #9F7AEA22, 0 1.5px 8px 0 #D6C5F022',
+        boxShadow: '0 20px 60px -10px rgba(15, 23, 42, 0.15)',
         position: 'relative',
-        padding: '10px',
+        padding: '2rem',
         zIndex: 2,
-        background: 'linear-gradient(120deg, #fff 60%, #D6C5F0 100%)'
+        background: '#fff',
+        border: '1px solid var(--border)'
       }}>
         {/* Filters */}
         <div
@@ -192,16 +415,17 @@ export const UniversitiesPage: React.FC = () => {
               style={{
                 padding: '.55rem 1.1rem',
                 borderRadius: '10px',
-                border: '1px solid #e5e7eb',
+                border: '1px solid rgba(208, 232, 236, 0.3)',
                 fontWeight: 500,
                 minWidth: 140,
-                background: '#f8fafc',
+                background: 'linear-gradient(135deg, #1A3A4A 0%, #2D6A7A 100%)',
+                color: '#fff',
                 flex: '1 1 180px',
                 maxWidth: 260
               }}>
-              <option value="">All Countries</option>
+              <option value="" style={{ background: '#1A3A4A', color: '#fff' }}>All Countries</option>
               {allCountries.map(c => (
-                <option key={c.value} value={c.value}>{c.label}</option>
+                <option key={c.value} value={c.value} style={{ background: '#1A3A4A', color: '#fff' }}>{c.label}</option>
               ))}
             </select>
             <select
@@ -210,16 +434,17 @@ export const UniversitiesPage: React.FC = () => {
               style={{
                 padding: '.55rem 1.1rem',
                 borderRadius: '10px',
-                border: '1px solid #e5e7eb',
+                border: '1px solid rgba(208, 232, 236, 0.3)',
                 fontWeight: 500,
                 minWidth: 180,
-                background: '#f8fafc',
+                background: 'linear-gradient(135deg, #1A3A4A 0%, #2D6A7A 100%)',
+                color: '#fff',
                 flex: '1 1 220px',
                 maxWidth: 320
               }}>
-              <option value="">All Universities</option>
+              <option value="" style={{ background: '#1A3A4A', color: '#fff' }}>All Universities</option>
               {allUniversities.map(u => (
-                <option key={u} value={u}>{u}</option>
+                <option key={u} value={u} style={{ background: '#1A3A4A', color: '#fff' }}>{u}</option>
               ))}
             </select>
             <input
@@ -227,13 +452,15 @@ export const UniversitiesPage: React.FC = () => {
               placeholder="Search Program"
               value={programName}
               onChange={e => setProgramName(e.target.value)}
+              className="uni-search-input"
               style={{
                 padding: '.55rem 1.1rem',
                 borderRadius: '10px',
-                border: '1px solid #e5e7eb',
+                border: '1px solid rgba(208, 232, 236, 0.3)',
                 fontWeight: 500,
                 minWidth: 180,
-                background: '#f8fafc',
+                background: 'linear-gradient(135deg, #1A3A4A 0%, #2D6A7A 100%)',
+                color: '#fff',
                 flex: '1 1 220px',
                 maxWidth: 320
               }}
@@ -247,37 +474,119 @@ export const UniversitiesPage: React.FC = () => {
             </datalist>
             {/* Tuition Range Slider */}
             <div style={{ minWidth: 220, maxWidth: 320, flex: '1 1 220px', marginTop: '1.2rem' }}>
-              <label style={{ fontWeight: 600, color: '#5727A3', marginBottom: '.5rem', display: 'block' }}>
-                Tuition Range (₹)
+              <label style={{ fontWeight: 600, color: '#1A3A4A', marginBottom: '.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span>Budget</span>
+                <span style={{ color: '#4A8A9A' }}>Max: ₹{tuitionRange[1].toLocaleString()}</span>
               </label>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+
+              <div style={{ position: 'relative', height: '30px', display: 'flex', alignItems: 'center', marginTop: '0.2rem' }}>
+                {/* Background Track */}
+                <div style={{
+                  position: 'absolute',
+                  width: '100%',
+                  height: '6px',
+                  background: '#e5e7eb',
+                  borderRadius: '3px',
+                  zIndex: 0
+                }} />
+                {/* Active Range Track */}
+                <div style={{
+                  position: 'absolute',
+                  height: '6px',
+                  background: '#1A3A4A',
+                  borderRadius: '3px',
+                  zIndex: 0,
+                  left: 0,
+                  width: `${(tuitionRange[1] / 100000) * 100}%`,
+                }} />
+
+                {/* Single Max Slider Input */}
                 <input
                   type="range"
-                  min={0}
-                  max={100000}
-                  step={1000}
-                  value={tuitionRange[0]}
-                  onChange={e => setTuitionRange([Number(e.target.value), tuitionRange[1]])}
-                  style={{ flex: 1 }}
-                />
-                <span>Min: {tuitionRange[0]}</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '.5rem' }}>
-                <input
-                  type="range"
-                  min={0}
-                  max={100000}
-                  step={1000}
+                  min="0"
+                  max="100000"
+                  step="1000"
                   value={tuitionRange[1]}
-                  onChange={e => setTuitionRange([tuitionRange[0], Number(e.target.value)])}
-                  style={{ flex: 1 }}
+                  onChange={(e) => {
+                    setTuitionRange([0, Number(e.target.value)]);
+                  }}
+                  className="thumb"
+                  style={{ zIndex: 4 }}
                 />
-                <span>Max: {tuitionRange[1]}</span>
               </div>
+
+              <style>{`
+                .thumb {
+                  -webkit-appearance: none;
+                  -moz-appearance: none;
+                  appearance: none; 
+                  position: absolute;
+                  height: 0;
+                  width: 100%;
+                  outline: none;
+                  background: transparent;
+                }
+                .thumb::-webkit-slider-thumb {
+                  -webkit-appearance: none;
+                  pointer-events: all;
+                  width: 22px;
+                  height: 22px;
+                  border-radius: 50%;
+                  background-color: #1A3A4A;
+                  cursor: grab;
+                  margin-top: -8px; /* Offset to center on track */
+                  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+                  border: 2px solid #fff;
+                  transition: transform 0.1s;
+                }
+                .thumb::-moz-range-thumb {
+                  pointer-events: all;
+                  width: 22px;
+                  height: 22px;
+                  border-radius: 50%;
+                  background-color: #1A3A4A;
+                  cursor: grab;
+                  border: none;
+                  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+                  border: 2px solid #fff;
+                }
+                .thumb::-webkit-slider-thumb:active {
+                  cursor: grabbing;
+                  transform: scale(1.15);
+                }
+              `}</style>
             </div>
           </div>
           <style>
             {`
+              .uni-search-input::placeholder {
+                color: rgba(255, 255, 255, 0.7);
+              }
+              .dark-range-slider {
+                -webkit-appearance: none;
+                height: 6px;
+                border-radius: 5px;
+                background: linear-gradient(90deg, #1A3A4A 0%, #4A8A9A 100%);
+              }
+              .dark-range-slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                background: #1A3A4A;
+                cursor: pointer;
+                border: 2px solid #fff;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+              }
+              .dark-range-slider::-moz-range-thumb {
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                background: #1A3A4A;
+                cursor: pointer;
+                border: 2px solid #fff;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+              }
               @media (max-width: 900px) {
                 .uni-filters-row {
                   flex-direction: column !important;
@@ -346,10 +655,10 @@ export const UniversitiesPage: React.FC = () => {
                 key={p.id}
                 className="program-card"
                 style={{
-                  background: 'linear-gradient(120deg, #fff 60%, #D6C5F0 100%)',
+                  background: 'linear-gradient(145deg, #1A3A4A 0%, #2D6A7A 100%)',
                   borderRadius: '2rem',
-                  boxShadow: '0 4px 24px 0 #9F7AEA22, 0 2px 8px 0 #D6C5F022',
-                  border: '1.5px solid #D6C5F0',
+                  boxShadow: '0 8px 32px 0 rgba(15, 23, 42, 0.25)',
+                  border: '1px solid rgba(208, 232, 236, 0.2)',
                   padding: '3.5rem 1.7rem 1.7rem 1.7rem',
                   display: 'flex',
                   flexDirection: 'column',
@@ -363,25 +672,13 @@ export const UniversitiesPage: React.FC = () => {
                 }}
                 onMouseEnter={e => {
                   (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.025)';
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = '0 12px 40px 0 #9F7AEA33, 0 2px 12px 0 #D6C5F044';
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = '0 16px 48px 0 rgba(26, 58, 74, 0.4), 0 0 30px rgba(125, 211, 232, 0.1)';
                 }}
                 onMouseLeave={e => {
                   (e.currentTarget as HTMLDivElement).style.transform = '';
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = '0 4px 24px 0 #9F7AEA22, 0 2px 8px 0 #D6C5F022';
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 32px 0 rgba(15, 23, 42, 0.25)';
                 }}
               >
-                {/* Accent bar */}
-                <div style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: 7,
-                  borderTopLeftRadius: '2rem',
-                  borderTopRightRadius: '2rem',
-                  opacity: 0.18,
-                  zIndex: 1
-                }} />
                 {/* Floating logo */}
                 <div style={{
                   position: 'absolute',
@@ -390,13 +687,13 @@ export const UniversitiesPage: React.FC = () => {
                   zIndex: 3,
                   background: '#fff',
                   borderRadius: '50%',
-                  boxShadow: '0 2px 12px #9F7AEA22',
+                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2)',
                   width: 64,
                   height: 64,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  border: '2.5px solid #D6C5F0'
+                  border: '3px solid #7dd3e8'
                 }}>
                   <img
                     src={logoUrl}
@@ -411,13 +708,10 @@ export const UniversitiesPage: React.FC = () => {
                       margin: 0,
                       fontSize: '1.18rem',
                       fontWeight: 800,
-                      color: '#5727A3',
+                      color: '#fff',
                       lineHeight: 1.2,
                       cursor: 'pointer',
                       textUnderlineOffset: '2px',
-                      background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent'
                     }}
                     onClick={e => {
                       e.stopPropagation();
@@ -429,7 +723,7 @@ export const UniversitiesPage: React.FC = () => {
                   >
                     {universityName}
                   </h3>
-                  <div style={{ fontSize: '.97rem', color: '#1B0044', fontWeight: 600, marginTop: '.2rem' }}>
+                  <div style={{ fontSize: '.97rem', color: 'rgba(255, 255, 255, 0.8)', fontWeight: 600, marginTop: '.2rem' }}>
                     {location}
                   </div>
                 </div>
@@ -438,18 +732,18 @@ export const UniversitiesPage: React.FC = () => {
                   <h2 style={{
                     fontSize: '1.13rem',
                     fontWeight: 700,
-                    color: '#1B0044',
+                    color: '#fff',
                     margin: 0,
                     lineHeight: 1.25,
                     wordBreak: 'break-word'
                   }}>
                     {programName}
                   </h2>
-                  <div style={{ fontSize: '.98rem', color: '#9F7AEA', marginTop: '.2rem', fontWeight: 600 }}>
+                  <div style={{ fontSize: '.98rem', color: '#7dd3e8', marginTop: '.2rem', fontWeight: 600 }}>
                     {programLevel
                       ? programLevel
-                          .replace(/_/g, ' ')
-                          .replace(/\b\w/g, c => c.toUpperCase())
+                        .replace(/_/g, ' ')
+                        .replace(/\b\w/g, (c: string) => c.toUpperCase())
                       : ''}
                   </div>
                 </div>
@@ -459,46 +753,46 @@ export const UniversitiesPage: React.FC = () => {
                   lineHeight: '1.7',
                   margin: 0,
                   marginBottom: '.7rem',
-                  color: '#1B0044',
+                  color: 'rgba(255, 255, 255, 0.9)',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '.2rem'
                 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <dt style={{ fontWeight: 600, color: '#5727A3', flex: 1, textAlign: 'left' }}>Location:</dt>
-                    <dd style={{ margin: 0, flex: 1, textAlign: 'right', color: '#1B0044', fontWeight: 500 }}>{location}</dd>
+                    <dt style={{ fontWeight: 600, color: 'rgba(255, 255, 255, 0.7)', flex: 1, textAlign: 'left' }}>Location:</dt>
+                    <dd style={{ margin: 0, flex: 1, textAlign: 'right', color: '#fff', fontWeight: 500 }}>{location}</dd>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <dt style={{ fontWeight: 600, color: '#5727A3', flex: 1, textAlign: 'left' }}>Campus city:</dt>
-                    <dd style={{ margin: 0, flex: 1, textAlign: 'right', color: '#1B0044', fontWeight: 500 }}>{campusCity}</dd>
+                    <dt style={{ fontWeight: 600, color: 'rgba(255, 255, 255, 0.7)', flex: 1, textAlign: 'left' }}>Campus city:</dt>
+                    <dd style={{ margin: 0, flex: 1, textAlign: 'right', color: '#fff', fontWeight: 500 }}>{campusCity}</dd>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <dt style={{ fontWeight: 600, color: '#5727A3', flex: 1, textAlign: 'left' }}>Tuition (1st year):</dt>
-                    <dd style={{ margin: 0, flex: 1, textAlign: 'right', color: '#5727A3', fontWeight: 700 }}>{tuitionFee}</dd>
+                    <dt style={{ fontWeight: 600, color: 'rgba(255, 255, 255, 0.7)', flex: 1, textAlign: 'left' }}>Tuition (1st year):</dt>
+                    <dd style={{ margin: 0, flex: 1, textAlign: 'right', color: '#fff', fontWeight: 700 }}>{tuitionFee}</dd>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <dt style={{ fontWeight: 600, color: '#5727A3', flex: 1, textAlign: 'left' }}>Application fee:</dt>
-                    <dd style={{ margin: 0, flex: 1, textAlign: 'right', color: '#22c55e', fontWeight: 700 }}>{applicationFee}</dd>
+                    <dt style={{ fontWeight: 600, color: 'rgba(255, 255, 255, 0.7)', flex: 1, textAlign: 'left' }}>Application fee:</dt>
+                    <dd style={{ margin: 0, flex: 1, textAlign: 'right', color: '#4ade80', fontWeight: 700 }}>{applicationFee}</dd>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <dt style={{ fontWeight: 600, color: '#5727A3', flex: 1, textAlign: 'left' }}>Duration:</dt>
-                    <dd style={{ margin: 0, flex: 1, textAlign: 'right', color: '#1B0044', fontWeight: 500 }}>{duration}</dd>
+                    <dt style={{ fontWeight: 600, color: 'rgba(255, 255, 255, 0.7)', flex: 1, textAlign: 'left' }}>Duration:</dt>
+                    <dd style={{ margin: 0, flex: 1, textAlign: 'right', color: '#fff', fontWeight: 500 }}>{duration}</dd>
                   </div>
                 </dl>
                 {/* View Details Button */}
                 <button
                   style={{
                     marginTop: 'auto',
-                    background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
-                    color: '#fff',
+                    background: 'linear-gradient(90deg, #fff 0%, #D0E8EC 100%)',
+                    color: '#1A3A4A',
                     borderRadius: 14,
                     padding: '.7rem 1.5rem',
                     fontWeight: 700,
                     fontSize: '1.08rem',
                     border: 'none',
-                    boxShadow: '0 2px 8px #9F7AEA22',
+                    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.15)',
                     cursor: 'pointer',
-                    transition: 'background 0.18s, box-shadow 0.18s'
+                    transition: 'background 0.18s, box-shadow 0.18s, transform 0.18s'
                   }}
                   onClick={e => {
                     e.stopPropagation();
@@ -516,6 +810,12 @@ export const UniversitiesPage: React.FC = () => {
                     const stateKey = `program-details-state-${p.id}`;
                     sessionStorage.setItem(stateKey, JSON.stringify(state));
                     window.open(`${url}?stateKey=${stateKey}`, '_blank', 'noopener,noreferrer');
+                  }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1.02)';
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLButtonElement).style.transform = '';
                   }}
                 >
                   View Details
@@ -544,12 +844,12 @@ export const UniversitiesPage: React.FC = () => {
             display: 'flex',
             alignItems: 'center',
             gap: '1.2rem',
-            background: 'rgba(214,197,240,0.13)',
+            background: 'rgba(208,232,236,0.13)',
             borderRadius: '1.2rem',
             padding: '0.6rem 1.2rem',
-            boxShadow: '0 2px 8px #9F7AEA11'
+            boxShadow: '0 2px 8px #4A8A9A11'
           }}>
-            <label htmlFor="items-per-page" style={{ fontSize: '.98rem', color: '#5727A3', fontWeight: 600 }}>
+            <label htmlFor="items-per-page" style={{ fontSize: '.98rem', color: '#1A3A4A', fontWeight: 600 }}>
               Items per page:
             </label>
             <select
@@ -559,12 +859,12 @@ export const UniversitiesPage: React.FC = () => {
               style={{
                 padding: '.4rem .9rem',
                 borderRadius: '8px',
-                border: '1.5px solid #9F7AEA',
+                border: '1.5px solid #4A8A9A',
                 fontWeight: 600,
                 minWidth: 70,
-                background: 'linear-gradient(90deg,#fff 60%,#D6C5F0 100%)',
-                color: '#5727A3',
-                boxShadow: '0 1px 4px #9F7AEA11'
+                background: '#fff',
+                color: '#1A3A4A',
+                boxShadow: '0 2px 8px rgba(15,23,42,0.06)'
               }}
             >
               <option value={12}>12</option>
@@ -577,7 +877,7 @@ export const UniversitiesPage: React.FC = () => {
               disabled={page <= 1}
               onClick={() => setPage(page - 1)}
               style={{
-                background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+                background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
                 color: '#fff',
                 border: 'none',
                 borderRadius: 8,
@@ -585,18 +885,18 @@ export const UniversitiesPage: React.FC = () => {
                 padding: '0 .9rem',
                 fontWeight: 700,
                 cursor: page > 1 ? 'pointer' : 'not-allowed',
-                boxShadow: '0 2px 8px #9F7AEA22',
+                boxShadow: '0 2px 8px #4A8A9A22',
                 transition: 'background 0.18s',
                 opacity: page > 1 ? 1 : 0.6
               }}
             >‹</button>
-            <span style={{ fontSize: '.98rem', color: '#5727A3', fontWeight: 700 }}>{page} / {totalPages || 1}</span>
+            <span style={{ fontSize: '.98rem', color: '#1A3A4A', fontWeight: 700 }}>{page} / {totalPages || 1}</span>
             <button
               aria-label="Next page"
               disabled={page >= totalPages}
               onClick={() => setPage(page + 1)}
               style={{
-                background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+                background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
                 color: '#fff',
                 border: 'none',
                 borderRadius: 8,
@@ -604,7 +904,7 @@ export const UniversitiesPage: React.FC = () => {
                 padding: '0 .9rem',
                 fontWeight: 700,
                 cursor: page < totalPages ? 'pointer' : 'not-allowed',
-                boxShadow: '0 2px 8px #9F7AEA22',
+                boxShadow: '0 2px 8px #4A8A9A22',
                 transition: 'background 0.18s',
                 opacity: page < totalPages ? 1 : 0.6
               }}
@@ -667,14 +967,14 @@ export const UniversitiesPage: React.FC = () => {
                   type="button"
                   className="css-22x0p3"
                   style={{
-                    background: 'linear-gradient(90deg, rgb(55, 81, 138) 0%, rgb(96, 165, 250) 100%)',
+                    background: 'linear-gradient(90deg, #1A3A4A 0%, #4A8A9A 100%)',
                     color: '#fff',
                     borderRadius: '8px',
                     padding: '.7rem 1.5rem',
                     fontWeight: 600,
                     border: 'none',
                     cursor: 'pointer',
-                    boxShadow: '0 4px 16px 0 rgba(37,99,235,0.18), 0 1.5px 8px 0 #93c5fd'
+                    boxShadow: '0 4px 16px 0 #1A3A4A22, 0 1.5px 8px 0 #4A8A9A44'
                   }}
                   onClick={() => setOpenIntakes(null)}
                 >
@@ -696,10 +996,97 @@ export const UniversitiesPage: React.FC = () => {
                     max-height: calc(-48px + 100vh);
                   }
                 }
-              `}
-            </style>
+              `}</style>
           </div>
         )}
+
+        {/* Dark Stats Section - Visual Rhythm Break */}
+        <section
+          style={{
+            background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)',
+            padding: '3rem 1.5rem',
+            marginTop: '2.5rem',
+            borderRadius: 24,
+            textAlign: 'center',
+            position: 'relative',
+            overflow: 'hidden'
+          }}
+        >
+          {/* Decorative glow */}
+          <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 400,
+            height: 400,
+            background: 'radial-gradient(circle, rgba(45, 106, 122, 0.25) 0%, transparent 70%)',
+            pointerEvents: 'none'
+          }} />
+
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <h2 style={{
+              fontSize: '1.8rem',
+              fontWeight: 900,
+              color: '#fff',
+              marginBottom: '2rem',
+              letterSpacing: '-1px'
+            }}>
+              Why Choose Your Next University?
+            </h2>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '3rem',
+              flexWrap: 'wrap'
+            }}>
+              <div style={{ textAlign: 'center' }}>
+                <strong style={{
+                  fontSize: '2rem',
+                  fontWeight: 900,
+                  background: 'linear-gradient(90deg, #4A8A9A 0%, #5A9AAA 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  display: 'block'
+                }}>800+</strong>
+                <span style={{ color: '#CBD5E1', fontWeight: 500, fontSize: '0.9rem' }}>Universities</span>
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <strong style={{
+                  fontSize: '2rem',
+                  fontWeight: 900,
+                  background: 'linear-gradient(90deg, #4A8A9A 0%, #5A9AAA 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  display: 'block'
+                }}>50k+</strong>
+                <span style={{ color: '#CBD5E1', fontWeight: 500, fontSize: '0.9rem' }}>Programs</span>
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <strong style={{
+                  fontSize: '2rem',
+                  fontWeight: 900,
+                  background: 'linear-gradient(90deg, #4A8A9A 0%, #5A9AAA 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  display: 'block'
+                }}>8+</strong>
+                <span style={{ color: '#CBD5E1', fontWeight: 500, fontSize: '0.9rem' }}>Countries</span>
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <strong style={{
+                  fontSize: '2rem',
+                  fontWeight: 900,
+                  background: 'linear-gradient(90deg, #4A8A9A 0%, #5A9AAA 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  display: 'block'
+                }}>₹0</strong>
+                <span style={{ color: '#CBD5E1', fontWeight: 500, fontSize: '0.9rem' }}>Application Help</span>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
   );
@@ -735,7 +1122,7 @@ const IntakeAccordion: React.FC<{ intakes: any[] }> = ({ intakes }) => {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '.8rem' }}>
                 {/* Intake start date */}
-                <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#2563eb' }}>
+                <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#2D6A7A' }}>
                   {intake.startDate ? new Date(intake.startDate).toLocaleString('default', { month: 'short', year: 'numeric' }) : ''}
                 </div>
                 {/* Arrow icon */}
@@ -769,11 +1156,11 @@ const IntakeAccordion: React.FC<{ intakes: any[] }> = ({ intakes }) => {
                       }}>
                         <div style={{
                           width: '70%', height: '70%', borderRadius: '50%',
-                          background: key === 'overall' ? '#2563eb' : key === 'high' ? 'green' : key === 'average' ? 'orange' : 'red',
+                          background: key === 'overall' ? '#2D6A7A' : key === 'high' ? 'green' : key === 'average' ? 'orange' : 'red',
                           position: 'absolute', top: 0, left: 0
                         }} />
                         <span style={{ fontSize: '.8rem', fontWeight: 600, color: '#fff', position: 'relative', zIndex: 1 }}>
-                          {value}
+                          {value as any}
                         </span>
                       </div>
                       <div style={{ fontSize: '.9rem', color: '#334155', fontWeight: 500 }}>
@@ -784,7 +1171,7 @@ const IntakeAccordion: React.FC<{ intakes: any[] }> = ({ intakes }) => {
                 </div>
                 {/* Details list */}
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: '#334155', fontWeight: 500, lineHeight: 1.7 }}>
-                  {intake.details && intake.details.map((detail, idx) => (
+                  {intake.details && intake.details.map((detail: any, idx: number) => (
                     <li key={idx} style={{ paddingLeft: '1.2rem', position: 'relative', marginBottom: '.4rem' }}>
                       <div style={{
                         position: 'absolute',
@@ -794,7 +1181,7 @@ const IntakeAccordion: React.FC<{ intakes: any[] }> = ({ intakes }) => {
                         width: 8,
                         height: 8,
                         borderRadius: '50%',
-                        background: '#2563eb',
+                        background: '#2D6A7A',
                         border: '2px solid #fff'
                       }} />
                       {detail}
@@ -809,3 +1196,4 @@ const IntakeAccordion: React.FC<{ intakes: any[] }> = ({ intakes }) => {
     </div>
   );
 };
+

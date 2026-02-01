@@ -10,10 +10,10 @@ const Globe: React.FC = () => (
     <mesh>
       <sphereGeometry args={[1.6, 64, 64]} />
       <meshStandardMaterial
-        color="#2D4EF5"
+        color="#2D6A7A"
         roughness={0.5}
         metalness={0.2}
-        // Optionally, add a world map texture here for more realism
+      // Optionally, add a world map texture here for more realism
       />
     </mesh>
     <ambientLight intensity={0.7} />
@@ -27,16 +27,16 @@ const CountUp: React.FC<{ value: number; duration?: number; suffix?: string; lab
   const started = useRef(false);
   useEffect(() => {
     const el = ref.current;
-    if(!el) return;
+    if (!el) return;
     const obs = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if(entry.isIntersecting && !started.current){
+        if (entry.isIntersecting && !started.current) {
           started.current = true;
           const start = performance.now();
           const animate = (t: number) => {
             const prog = Math.min(1, (t - start) / duration);
             setDisplay(Math.round(value * prog));
-            if(prog < 1) requestAnimationFrame(animate); else setDisplay(value);
+            if (prog < 1) requestAnimationFrame(animate); else setDisplay(value);
           };
           requestAnimationFrame(animate);
           obs.disconnect();
@@ -73,11 +73,11 @@ const Feature3DCard: React.FC<{
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
       card.style.transform = `rotateY(${x / 18}deg) rotateX(${-y / 18}deg) scale(1.045)`;
-      card.style.boxShadow = '0 16px 48px 0 #2563eb33, 0 2px 8px 0 #60a5fa22';
+      card.style.boxShadow = '0 16px 48px 0 #2D6A7A33, 0 2px 8px 0 #5A9AAA22';
     };
     const handleMouseLeave = () => {
       card.style.transform = '';
-      card.style.boxShadow = '0 4px 24px 0 #2563eb22';
+      card.style.boxShadow = '0 4px 24px 0 #2D6A7A22';
     };
     card.addEventListener('mousemove', handleMouseMove);
     card.addEventListener('mouseleave', handleMouseLeave);
@@ -96,7 +96,7 @@ const Feature3DCard: React.FC<{
       style={{
         background: 'rgba(255,255,255,0.92)',
         borderRadius: '1.7rem',
-        boxShadow: '0 4px 24px 0 #2563eb22',
+        boxShadow: '0 4px 24px 0 #2D6A7A22',
         padding: 0,
         textAlign: 'center',
         cursor: 'pointer',
@@ -110,19 +110,19 @@ const Feature3DCard: React.FC<{
         flexDirection: 'column',
         justifyContent: 'flex-start',
         position: 'relative',
-        border: '2.5px solid rgba(96,165,250,0.13)',
+        border: '2.5px solid rgba(74, 138, 154, 0.13)',
         backdropFilter: 'blur(7px) saturate(1.2)',
         WebkitBackdropFilter: 'blur(7px) saturate(1.2)',
       }}
       onFocus={e => {
-        (e.currentTarget as HTMLElement).style.boxShadow = '0 16px 48px 0 #2563eb33, 0 2px 8px 0 #60a5fa22';
+        (e.currentTarget as HTMLElement).style.boxShadow = '0 16px 48px 0 #2D6A7A33, 0 2px 8px 0 #5A9AAA22';
         (e.currentTarget as HTMLElement).style.transform = 'scale(1.045)';
-        (e.currentTarget as HTMLElement).style.border = '2.5px solid #2563eb55';
+        (e.currentTarget as HTMLElement).style.border = '2.5px solid #2D6A7A55';
       }}
       onBlur={e => {
-        (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 24px 0 #2563eb22';
+        (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 24px 0 #2D6A7A22';
         (e.currentTarget as HTMLElement).style.transform = '';
-        (e.currentTarget as HTMLElement).style.border = '2.5px solid rgba(96,165,250,0.13)';
+        (e.currentTarget as HTMLElement).style.border = '2.5px solid rgba(74, 138, 154, 0.13)';
       }}
       aria-label={title}
     >
@@ -130,7 +130,7 @@ const Feature3DCard: React.FC<{
       <div
         style={{
           width: '100%',
-          height:250,
+          height: 250,
           background: '#e0e7ff',
           display: 'flex',
           alignItems: 'center',
@@ -144,20 +144,20 @@ const Feature3DCard: React.FC<{
         {/* Ensure icon is always an image that fills the area */}
         {React.isValidElement(icon) && icon.type === 'img'
           ? React.cloneElement(icon, {
-              style: {
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                borderRadius: 0,
-                display: 'block'
-              }
-            })
+            style: {
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              borderRadius: 0,
+              display: 'block'
+            }
+          })
           : icon}
         {/* Subtle overlay for 3D effect */}
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(180deg,rgba(96,165,250,0.07) 0%,rgba(37,99,235,0.04) 100%)',
+          background: 'linear-gradient(180deg,rgba(90, 154, 170, 0.07) 0%,rgba(45, 106, 122, 0.04) 100%)',
           pointerEvents: 'none'
         }} />
       </div>
@@ -173,7 +173,7 @@ const Feature3DCard: React.FC<{
         <h3 style={{
           fontSize: '1.18rem',
           fontWeight: 700,
-          color: '#5727A3',
+          color: '#1A3A4A',
           marginBottom: '.6rem',
           overflow: 'hidden',
           textOverflow: 'ellipsis',
@@ -201,7 +201,7 @@ const Feature3DCard: React.FC<{
           opacity: 0,
           transition: 'opacity 0.18s cubic-bezier(.4,2,.6,1), transform 0.18s cubic-bezier(.4,2,.6,1)',
           fontSize: 22,
-          color: '#2563eb',
+          color: '#2D6A7A',
           zIndex: 3,
           pointerEvents: 'none'
         }}
@@ -325,7 +325,7 @@ const AnimatedGlobeImage: React.FC = () => {
         left: 380,
         top: 0,
         zIndex: 3,
-        filter: 'drop-shadow(0 4px 16px #2563eb22)',
+        filter: 'drop-shadow(0 4px 16px #2D6A7A22)',
         willChange: 'transform',
         pointerEvents: 'none'
       }}
@@ -355,7 +355,7 @@ const DottedLine: React.FC = () => {
     >
       <path
         d={`M0,${startY - endY + 20} Q${(endX - startX) / 2 + 5},${cpy - endY + 20} ${endX - startX},10`}
-        stroke="#2563eb"
+        stroke="#2D6A7A"
         strokeWidth={3}
         fill="none"
         strokeDasharray="8,10"
@@ -374,8 +374,8 @@ export const AboutPage: React.FC = () => {
       ref={aboutRef as any}
       style={{
         fontFamily: 'Inter, Roboto, Arial, sans-serif',
-        background: 'linear-gradient(135deg, rgb(242 234 255) 0%, rgb(248, 250, 252) 100%)',
-        color: '#1B0044',
+        background: '#F8FAFC',
+        color: '#0F2A36',
         minHeight: '100vh',
         padding: 0,
         margin: 0,
@@ -383,121 +383,145 @@ export const AboutPage: React.FC = () => {
         maxWidth: '100vw',
         boxSizing: 'border-box',
         overflowX: 'hidden',
-        paddingTop: '90px',
+        paddingTop: '0', // Full bleed
       }}
     >
-      {/* Hero Section */}
+      {/* Dark Hero Section */}
       <section style={{
-        maxWidth: 1200,
-        margin: '0 auto',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '2.5rem',
-        flexWrap: 'wrap',
-        padding: '3rem 1.5rem 2rem 1.5rem',
-        boxSizing: 'border-box',
         width: '100%',
+        background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)', // Dark Graphite
+        padding: '140px 1.5rem 80px 1.5rem',
+        boxSizing: 'border-box',
+        display: 'flex',
+        justifyContent: 'center',
+        position: 'relative',
         overflow: 'hidden'
       }}>
-       <div style={{ flex: 1, minWidth: 320 }}>
-  <h1
-    style={{
-      fontSize: '2.8rem',
-      fontWeight: 900,
-      color: '#5727A3',
-      marginBottom: '1.2rem',
-      letterSpacing: '-2px',
-      lineHeight: 1.1,
-    }}
-  >
-    Our Story:{' '}
-    <span
-      style={{
-        background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-      }}
-    >
-      The Amazon for Studying Abroad
-    </span>
-  </h1>
+        {/* Background Decor */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          width: '60%',
+          height: '100%',
+          background: 'radial-gradient(circle at 70% 30%, rgba(45, 106, 122, 0.15), transparent 60%)',
+          pointerEvents: 'none'
+        }} />
 
-  <p
-    style={{
-      fontSize: '1.13rem',
-      color: '#1B0044',
-      fontWeight: 500,
-      marginBottom: '1.2rem',
-    }}
-  >
-    We didn’t build <b>Your Next University</b> because we wanted to be another consultancy.
-    We built it because we got tired of watching students get lost in a system full of
-    half-truths, hidden costs, and overhyped promises.
-  </p>
+        <div style={{
+          maxWidth: 1200,
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '4rem',
+          flexWrap: 'wrap',
+          position: 'relative',
+          zIndex: 1
+        }}>
+          <div style={{ flex: 1, minWidth: 320 }}>
+            <h1
+              style={{
+                fontSize: '3.5rem',
+                fontWeight: 900,
+                color: '#fff',
+                marginBottom: '1.5rem',
+                letterSpacing: '-2px',
+                lineHeight: 1.1,
+              }}
+            >
+              Our Story:{' '}
+              <span
+                style={{
+                  background: 'linear-gradient(90deg, #4A8A9A 0%, #D0E8EC 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
+                The Amazon for Studying Abroad
+              </span>
+            </h1>
 
-  <p
-    style={{
-      fontSize: '1.13rem',
-      color: '#1B0044',
-      fontWeight: 500,
-      marginBottom: '1.2rem',
-    }}
-  >
-    We’ve sat in the university offices. We’ve worked as official representatives for many
-    international universities. We’ve seen firsthand how students are pushed into courses they
-    don’t need, charged for services they never asked for, and left clueless once they land
-    abroad.
-  </p>
+            <p
+              style={{
+                fontSize: '1.2rem',
+                color: '#CBD5E1', // Light slate
+                fontWeight: 500,
+                marginBottom: '1.5rem',
+                lineHeight: 1.6
+              }}
+            >
+              We didn’t build <b style={{ color: '#fff' }}>Your Next University</b> because we wanted to be another consultancy.
+              We built it because we got tired of watching students get lost in a system full of
+              half-truths, hidden costs, and overhyped promises.
+            </p>
 
-  <p
-    style={{
-      fontSize: '1.13rem',
-      color: '#1B0044',
-      fontWeight: 500,
-      marginBottom: '1.2rem',
-    }}
-  >
-    <b>Your Next University</b> was founded by{' '}
-    <b style={{ color: '#5727A3' }}>Rohan Thakur</b> – International Admissions, Australia
-    (worked with multiple <b>QS Top 100</b> universities), and{' '}
-    <b style={{ color: '#5727A3' }}>Nirmal Gautam</b> – Admissions, University of Wollongong,
-    Ex–Central Queensland University. Together, they’ve helped hundreds of students build
-    transparent, affordable, and successful global education journeys.
-  </p>
-</div>
+            <p
+              style={{
+                fontSize: '1.2rem',
+                color: '#CBD5E1',
+                fontWeight: 500,
+                marginBottom: '1.5rem',
+                lineHeight: 1.6
+              }}
+            >
+              We’ve sat in the university offices. We’ve worked as official representatives for many
+              international universities. We’ve seen firsthand how students are pushed into courses they
+              don’t need, charged for services they never asked for, and left clueless once they land
+              abroad.
+            </p>
 
-        <div style={{ flex: 1, minWidth: 320, textAlign: 'center', position: 'relative', minHeight: 420 }}>
-          {/* Radiant effect behind the girl */}
-          <div
-            style={{
-              position: 'absolute',
-              left: '50%',
-              top: 170,
-              transform: 'translateX(-50%)',
-              width: 340,
-              height: 340,
-              borderRadius: '50%',
-              background: 'radial-gradient(circle at 50% 50%, #93c5fd 0%, #60a5fa88 40%, #2563eb33 70%, transparent 100%)',
-              filter: 'blur(18px) brightness(1.15)',
-              zIndex: 1,
-              pointerEvents: 'none'
-            }}
-          />
-          {/* Girl image */}
-          <img
-            src="https://pub-e63ee2f49d7e4f94b98011a5350eea0f.r2.dev/image-from-rawpixel-id-15542441-png.png"
-            alt="Thinking Girl"
-            style={{
-              width: 300,
-              height: 420,
-              objectFit: 'contain',
-              borderRadius: 32,
-              margin: '0 auto',
-              display: 'block',
-              position: 'relative',
-              zIndex: 2
-            }}
-          />
+            <p
+              style={{
+                fontSize: '1.2rem',
+                color: '#CBD5E1',
+                fontWeight: 500,
+                marginBottom: '1.2rem',
+                lineHeight: 1.6
+              }}
+            >
+              <b>Your Next University</b> was founded by{' '}
+              <b style={{ color: '#4A8A9A' }}>Rohan Thakur</b> – International Admissions, Australia
+              (worked with multiple <b>QS Top 100</b> universities), and{' '}
+              <b style={{ color: '#4A8A9A' }}>Nirmal Gautam</b> – Admissions, University of Wollongong,
+              Ex–Central Queensland University. Together, they’ve helped hundreds of students build
+              transparent, affordable, and successful global education journeys.
+            </p>
+          </div>
+
+          <div style={{ flex: 1, minWidth: 320, textAlign: 'center', position: 'relative', minHeight: 420 }}>
+            {/* Radiant effect behind the girl */}
+            <div
+              style={{
+                position: 'absolute',
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: 380,
+                height: 380,
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(74, 138, 154, 0.2) 0%, transparent 70%)',
+                filter: 'blur(30px)',
+                zIndex: 0,
+                pointerEvents: 'none'
+              }}
+            />
+            {/* Girl image */}
+            <img
+              src="https://pub-e63ee2f49d7e4f94b98011a5350eea0f.r2.dev/image-from-rawpixel-id-15542441-png.png"
+              alt="Thinking Girl"
+              style={{
+                width: 340,
+                height: 'auto',
+                objectFit: 'contain',
+                borderRadius: 32,
+                margin: '0 auto',
+                display: 'block',
+                position: 'relative',
+                zIndex: 2,
+                filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.3))'
+              }}
+            />
+          </div>
         </div>
       </section>
 
@@ -506,9 +530,9 @@ export const AboutPage: React.FC = () => {
         maxWidth: 1200,
         margin: '2.5rem auto 0 auto',
         padding: '2.5rem 1.5rem',
-        background: 'linear-gradient(90deg,#D6C5F0 0%,#9F7AEA11 100%)',
+        background: 'linear-gradient(90deg,#D0E8EC 0%,#4A8A9A11 100%)',
         borderRadius: '2.2rem',
-        boxShadow: '0 4px 24px 0 #5727A322',
+        boxShadow: '0 4px 24px 0 #1A3A4A22',
         position: 'relative',
         overflow: 'visible'
       }}>
@@ -516,19 +540,19 @@ export const AboutPage: React.FC = () => {
           textAlign: 'center',
           fontSize: '2.1rem',
           fontWeight: 800,
-          color: '#5727A3',
+          color: '#1A3A4A',
           marginBottom: '2.2rem'
         }}>
           Not a Consultancy—A Marketplace
         </h2>
         <p style={{
           fontSize: '1.13rem',
-          color: '#1B0044',
+          color: '#1A3A4A',
           fontWeight: 500,
           marginBottom: '1.2rem',
           textAlign: 'center'
         }}>
-          <b style={{ color: '#5727A3' }}>Your Next University</b> is not a consultancy—it’s a <span style={{ color: '#5727A3', fontWeight: 700 }}>marketplace</span>. Think of us as the <b style={{ color: '#5727A3' }}>Amazon for studying abroad</b>.
+          <b style={{ color: '#1A3A4A' }}>Your Next University</b> is not a consultancy—it’s a <span style={{ color: '#1A3A4A', fontWeight: 700 }}>marketplace</span>. Think of us as the <b style={{ color: '#1A3A4A' }}>Amazon for studying abroad</b>.
         </p>
         <div
           className="about-features-grid"
@@ -539,7 +563,7 @@ export const AboutPage: React.FC = () => {
             alignItems: 'stretch',
             width: '100%',
             position: 'relative',
-            color: '#1B0044'
+            color: '#1A3A4A'
           }}
         >
           {features.map((f, i) => (
@@ -555,7 +579,7 @@ export const AboutPage: React.FC = () => {
             bottom: 18,
             height: 6,
             borderRadius: 4,
-            background: 'linear-gradient(90deg,#60a5fa 0%,#2563eb 100%)',
+            background: 'linear-gradient(90deg,#5A9AAA 0%,#2D6A7A 100%)',
             opacity: 0.13,
             filter: 'blur(2px)'
           }}
@@ -569,14 +593,117 @@ export const AboutPage: React.FC = () => {
           }
         `}</style>
       </section>
-      
+
+      {/* Dark Stats Section - Visual Rhythm Break */}
+      <section
+        style={{
+          width: '100vw',
+          background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)',
+          padding: '4rem 1.5rem',
+          margin: '2.5rem 0 0 0',
+          position: 'relative',
+          overflow: 'hidden'
+        }}
+      >
+        {/* Decorative glow */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '30%',
+          transform: 'translate(-50%, -50%)',
+          width: 300,
+          height: 300,
+          background: 'radial-gradient(circle, rgba(45, 106, 122, 0.25) 0%, transparent 70%)',
+          pointerEvents: 'none'
+        }} />
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          right: '10%',
+          transform: 'translateY(-50%)',
+          width: 200,
+          height: 200,
+          background: 'radial-gradient(circle, rgba(74, 138, 154, 0.2) 0%, transparent 70%)',
+          pointerEvents: 'none'
+        }} />
+
+        <div style={{
+          maxWidth: 1100,
+          margin: '0 auto',
+          position: 'relative',
+          zIndex: 1,
+          textAlign: 'center'
+        }}>
+          <h2 style={{
+            fontSize: '2rem',
+            fontWeight: 900,
+            color: '#fff',
+            marginBottom: '2.5rem',
+            letterSpacing: '-1px'
+          }}>
+            Trusted By Students Worldwide
+          </h2>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '4rem',
+            flexWrap: 'wrap'
+          }}>
+            <div style={{ textAlign: 'center' }}>
+              <strong style={{
+                fontSize: '2.5rem',
+                fontWeight: 900,
+                background: 'linear-gradient(90deg, #4A8A9A 0%, #5A9AAA 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                display: 'block'
+              }}>800+</strong>
+              <span style={{ color: '#CBD5E1', fontWeight: 500, fontSize: '0.95rem' }}>Partner Universities</span>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <strong style={{
+                fontSize: '2.5rem',
+                fontWeight: 900,
+                background: 'linear-gradient(90deg, #4A8A9A 0%, #5A9AAA 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                display: 'block'
+              }}>8+</strong>
+              <span style={{ color: '#CBD5E1', fontWeight: 500, fontSize: '0.95rem' }}>Countries Covered</span>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <strong style={{
+                fontSize: '2.5rem',
+                fontWeight: 900,
+                background: 'linear-gradient(90deg, #4A8A9A 0%, #5A9AAA 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                display: 'block'
+              }}>3000+</strong>
+              <span style={{ color: '#CBD5E1', fontWeight: 500, fontSize: '0.95rem' }}>Students Helped</span>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <strong style={{
+                fontSize: '2.5rem',
+                fontWeight: 900,
+                background: 'linear-gradient(90deg, #4A8A9A 0%, #5A9AAA 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                display: 'block'
+              }}>₹0</strong>
+              <span style={{ color: '#CBD5E1', fontWeight: 500, fontSize: '0.95rem' }}>Hidden Fees</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Promise Section */}
       <section
         style={{
           width: '100vw',
           margin: '2.5rem 0 0 0',
           padding: '0',
-          color: '#1B0044',
+          color: '#1A3A4A',
           textAlign: 'center',
           borderRadius: 0,
           fontWeight: 600,
@@ -602,17 +729,17 @@ export const AboutPage: React.FC = () => {
             fontWeight: 900,
             marginBottom: '1.1rem',
             letterSpacing: '-1px',
-            color: '#5727A3',
-            background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+            color: '#1A3A4A',
+            background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
-            textShadow: '0 2px 16px #9F7AEA22',
+            textShadow: '0 2px 16px #4A8A9A22',
             lineHeight: 1.13,
             display: 'inline-block',
             padding: '0.2em 0.7em',
             borderRadius: 18,
-            boxShadow: '0 2px 12px #9F7AEA22'
+            boxShadow: '0 2px 12px #4A8A9A22'
           }}>
             No Packages. No Pressure. No Sales Pitch.
           </h2>
@@ -620,21 +747,21 @@ export const AboutPage: React.FC = () => {
             fontSize: '1.18rem',
             fontWeight: 500,
             marginBottom: '1.2rem',
-            color: '#1B0044',
+            color: '#1A3A4A',
             lineHeight: 1.7,
             textShadow: '0 1px 2px #fff8'
           }}>
-            Just <span style={{ color: '#5727A3', fontWeight: 700 }}>choice</span>, <span style={{ color: '#5727A3', fontWeight: 700 }}>clarity</span>, and <span style={{ color: '#5727A3', fontWeight: 700 }}>control</span>.<br />
+            Just <span style={{ color: '#1A3A4A', fontWeight: 700 }}>choice</span>, <span style={{ color: '#1A3A4A', fontWeight: 700 }}>clarity</span>, and <span style={{ color: '#1A3A4A', fontWeight: 700 }}>control</span>.<br />
             We built this for the students who value honesty over hype, who want to learn from people who’ve actually been there, done that, and who want studying abroad to feel as easy as adding items to a cart.
           </p>
           <p style={{
             fontSize: '1.18rem',
-            color: '#9F7AEA',
+            color: '#4A8A9A',
             fontWeight: 700,
             margin: '1.2rem 0 0 0',
             textShadow: '0 1px 2px #fff8'
           }}>
-            We’re not here to “sell” you a dream. We’re here to help you <span style={{ textDecoration: 'underline', color: '#1B0044' }}>live it</span>.
+            We’re not here to “sell” you a dream. We’re here to help you <span style={{ textDecoration: 'underline', color: '#1A3A4A' }}>live it</span>.
           </p>
         </div>
       </section>
@@ -645,143 +772,117 @@ export const AboutPage: React.FC = () => {
           maxWidth: 700,
           margin: '2.5rem auto 10px auto',
           padding: '2.8rem 2rem 2.8rem 2rem',
-          background: 'linear-gradient(135deg, #ffffff 0%, #F3E8FF 100%)',
+          background: '#fff',
           borderRadius: '2rem',
-          boxShadow: '0 12px 48px 0 #5727A333, 0 4px 16px 0 #9F7AEA44',
-          color: '#1B0044',
+          boxShadow: '0 12px 48px 0 #1A3A4A22, 0 4px 16px 0 #4A8A9A22',
+          color: '#1A3A4A',
           textAlign: 'center',
           fontWeight: 600,
           fontSize: '1.13rem',
           letterSpacing: '-0.5px',
           position: 'relative',
-          overflow: 'hidden',
-          border: '2px solid #D6C5F0',
-          backdropFilter: 'blur(10px)',
-          WebkitBackdropFilter: 'blur(10px)'
+          overflow: 'visible',
+          border: '2px solid #D0E8EC',
         }}
       >
-        {/* Animated gradient border */}
+        {/* 3D Pushpin SVG at top-left corner - tilted for realism */}
         <div
           style={{
             position: 'absolute',
-            inset: -2,
-            borderRadius: '2rem',
-            background: 'linear-gradient(45deg, #5727A3, #9F7AEA, #D6C5F0, #5727A3, #9F7AEA)',
-            backgroundSize: '300% 300%',
-            animation: 'gradientShift 4s ease infinite',
-            zIndex: 0,
-            pointerEvents: 'none'
+            top: -18,
+            left: 24,
+            zIndex: 10,
+            transform: 'rotate(-15deg)',
+            transformOrigin: 'center bottom',
+            filter: 'drop-shadow(3px 5px 8px rgba(0,0,0,0.35))',
           }}
-        />
-        {/* Inner glow effect */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 2,
-            borderRadius: '1.9rem',
-            background: 'linear-gradient(135deg, #ffffff 0%, #F8F4FF 100%)',
-            zIndex: 1,
-            pointerEvents: 'none'
-          }}
-        />
-              
+        >
+          <svg width="36" height="52" viewBox="0 0 36 52" fill="none">
+            {/* Pin head - 3D sphere effect */}
+            <defs>
+              <radialGradient id="pinHead" cx="30%" cy="30%" r="65%">
+                <stop offset="0%" stopColor="#ff6b6b" />
+                <stop offset="40%" stopColor="#ef4444" />
+                <stop offset="70%" stopColor="#dc2626" />
+                <stop offset="100%" stopColor="#7f1d1d" />
+              </radialGradient>
+              <linearGradient id="pinNeedle" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#e5e7eb" />
+                <stop offset="30%" stopColor="#d1d5db" />
+                <stop offset="70%" stopColor="#9ca3af" />
+                <stop offset="100%" stopColor="#4b5563" />
+              </linearGradient>
+            </defs>
+            {/* Pin needle - pointed */}
+            <path d="M18 24L16 50L18 52L20 50L18 24Z" fill="url(#pinNeedle)" />
+            {/* Pin head sphere */}
+            <circle cx="18" cy="14" r="13" fill="url(#pinHead)" />
+            {/* Main highlight on sphere */}
+            <ellipse cx="13" cy="9" rx="5" ry="4" fill="rgba(255,255,255,0.5)" />
+            {/* Secondary small highlight */}
+            <circle cx="10" cy="7" r="2" fill="rgba(255,255,255,0.7)" />
+          </svg>
+        </div>
+
         {/* Animated title with glow */}
         <div style={{
           zIndex: 2,
           position: 'relative',
           marginBottom: '1.2rem',
-          animation: 'bio-bounce 3s ease-in-out infinite'
         }}>
           <span style={{
             display: 'inline-block',
             fontSize: '1.4rem',
             fontWeight: 800,
             letterSpacing: '-1px',
-            background: 'linear-gradient(90deg, #5727A3 0%, #9F7AEA 100%)',
+            background: 'linear-gradient(90deg, #1A3A4A 0%, #4A8A9A 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            textShadow: '0 2px 10px #9F7AEA33',
             position: 'relative',
             padding: '0.3rem 0.8rem',
             borderRadius: '12px',
-            backdropFilter: 'blur(5px)',
-            WebkitBackdropFilter: 'blur(5px)'
           }}>
             We're <b>Your Next University</b> — the Amazon for Studying Abroad.
           </span>
         </div>
-              
-        {/* Enhanced content box */}
+
+        {/* Dark content box */}
         <div style={{
           zIndex: 2,
           position: 'relative',
-          background: 'rgba(255,255,255,0.85)',
+          background: 'linear-gradient(135deg, #1A3A4A 0%, #2D6A7A 100%)',
           borderRadius: '16px',
           padding: '1.4rem 1.5rem',
-          boxShadow: '0 4px 16px 0 #5727A315, inset 0 2px 8px 0 #ffffff44',
-          border: '1px solid #E9D8FD',
-          backdropFilter: 'blur(8px)',
-          WebkitBackdropFilter: 'blur(8px)',
+          boxShadow: '0 8px 32px 0 rgba(26, 58, 74, 0.3)',
+          border: '1px solid rgba(208, 232, 236, 0.2)',
           margin: '0 0.5rem'
         }}>
           <p style={{
             margin: 0,
-            color: '#1B0044',
-            fontWeight: 600,
+            color: '#fff',
+            fontWeight: 500,
             fontSize: '1.13rem',
-            lineHeight: 1.6,
-            textShadow: '0 1px 2px #ffffff80'
+            lineHeight: 1.7,
           }}>
-            Tired of overpriced packages, fake promises, and confusing agents? We give you <b style={{ color: '#5727A3', fontWeight: 700 }}>real students</b>, <b style={{ color: '#5727A3', fontWeight: 700 }}>verified housing</b>, <b style={{ color: '#5727A3', fontWeight: 700 }}>scholarships</b>, and guidance that actually works. Pick what you need. Skip the hype. Own your journey.
+            Tired of overpriced packages, fake promises, and confusing agents? We give you <b style={{ color: '#7dd3e8', fontWeight: 700 }}>real students</b>, <b style={{ color: '#7dd3e8', fontWeight: 700 }}>verified housing</b>, <b style={{ color: '#7dd3e8', fontWeight: 700 }}>scholarships</b>, and guidance that actually works. Pick what you need. Skip the hype. Own your journey.
           </p>
         </div>
-              
+
         {/* Decorative elements */}
         <div style={{
           position: 'absolute',
-          top: 20,
-          right: 20,
-          width: 40,
-          height: 40,
-          background: 'radial-gradient(circle, #9F7AEA33 0%, transparent 70%)',
-          borderRadius: '50%',
-          zIndex: 1,
-          pointerEvents: 'none'
-        }} />
-        <div style={{
-          position: 'absolute',
           bottom: 20,
-          left: 20,
+          right: 20,
           width: 30,
           height: 30,
-          background: 'radial-gradient(circle, #5727A333 0%, transparent 70%)',
+          background: 'radial-gradient(circle, #4A8A9A22 0%, transparent 70%)',
           borderRadius: '50%',
           zIndex: 1,
           pointerEvents: 'none'
         }} />
-              
-        <style>{`
-          @keyframes bio-bounce {
-            0%, 100% { transform: translateY(0);}
-            50% { transform: translateY(-5px);}
-          }
-                
-          @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-          }
-                
-          section[style*="700px"] {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-          }
-                
-          section[style*="700px"]:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 16px 64px 0 #5727A344, 0 6px 24px 0 #9F7AEA55;
-          }
-        `}</style>
       </section>
     </main>
   );
 };
+
+

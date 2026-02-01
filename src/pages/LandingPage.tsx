@@ -6,6 +6,8 @@ import { Testimonials } from '../sections/Testimonials';
 import PeerCounsellorModal from '../components/PeerCounsellorModal';
 
 import { useNavigate } from 'react-router-dom';
+import ourStoryBg from '../assets/our-story-bg.jpg';
+import globeStudents from '../assets/globe-students.jpg';
 
 const allServices = [
 	{
@@ -258,8 +260,8 @@ export const LandingPage: React.FC = () => {
 				maxWidth: 1300,
 				padding: '2.5rem 1.5rem 2.5rem 1.5rem',
 				borderRadius: 36,
-				background: 'linear-gradient(100deg, #F0E6FF 0%, #D6C5F0 60%, #fff 100%)',
-				boxShadow: '0 8px 32px 0 #9F7AEA22',
+				background: 'linear-gradient(100deg, #E8F4F6 0%, #D0E8EC 60%, #fff 100%)',
+				boxShadow: '0 8px 32px 0 #4A8A9A22',
 				display: 'flex',
 				flexWrap: 'wrap',
 				alignItems: 'center',
@@ -277,7 +279,7 @@ export const LandingPage: React.FC = () => {
 				left: -120,
 				width: 320,
 				height: 320,
-				background: 'radial-gradient(circle at 60% 40%, #9F7AEA33 0%, #fff0 100%)',
+				background: 'radial-gradient(circle at 60% 40%, #4A8A9A33 0%, #fff0 100%)',
 				borderRadius: '50%',
 				filter: 'blur(40px)',
 				zIndex: 0,
@@ -290,7 +292,7 @@ export const LandingPage: React.FC = () => {
 				right: -120,
 				width: 320,
 				height: 320,
-				background: 'radial-gradient(circle at 40% 60%, #5727A322 0%, #fff0 100%)',
+				background: 'radial-gradient(circle at 40% 60%, #1A3A4A22 0%, #fff0 100%)',
 				borderRadius: '50%',
 				filter: 'blur(40px)',
 				zIndex: 0,
@@ -313,18 +315,18 @@ export const LandingPage: React.FC = () => {
 					letterSpacing: '-2px',
 					lineHeight: 1.08,
 					marginBottom: '1.1rem',
-					// background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+					// background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
 					// WebkitBackgroundClip: 'text',
 					// WebkitTextFillColor: 'transparent',
-					color: '#1B0044', // <-- dark color
-					textShadow: '0 4px 24px #9F7AEA22, 0 1px 2px #fff8',
+					color: '#1A3A4A', // <-- dark color
+					textShadow: '0 4px 24px #4A8A9A22, 0 1px 2px #fff8',
 				}}>
-					India’s 1st <span style={{ color: '#7e22c5ff' }}>Peer Counselling</span> Platform for Study Abroad
+					India’s 1st <span style={{ color: '#1A3A4A' }}>Peer Counselling</span> Platform for Study Abroad
 				</h1>
 				<h2 style={{
 					fontSize: '1.45rem',
 					fontWeight: 700,
-					color: '#1e3a8a',
+					color: '#1A3A4A',
 					marginBottom: '1.1rem',
 					lineHeight: 1.3,
 					textShadow: '0 2px 8px #fff8, 0 1px 2px #0002',
@@ -345,8 +347,8 @@ export const LandingPage: React.FC = () => {
 				<button
 					onClick={() => navigate('/services/peer-counselling')}
 					style={{
-						background: 'linear-gradient(90deg, #5727A3 0%, #9F7AEA 100%)',
-						boxShadow: '0 2px 8px #9F7AEA22',
+						background: 'linear-gradient(90deg, #1A3A4A 0%, #4A8A9A 100%)',
+						boxShadow: '0 2px 8px #4A8A9A22',
 						color: '#fff',
 						border: 'none',
 						borderRadius: 14,
@@ -376,7 +378,7 @@ export const LandingPage: React.FC = () => {
 				<div style={{
 					background: 'rgba(255,255,255,0.85)',
 					borderRadius: 32,
-					boxShadow: '0 8px 32px #9F7AEA22',
+					boxShadow: '0 8px 32px #4A8A9A22',
 					display: 'flex',
 					alignItems: 'center',
 					justifyContent: 'center',
@@ -393,7 +395,7 @@ export const LandingPage: React.FC = () => {
 							width: '100%',
 							display: 'block',
 							borderRadius: 24,
-							boxShadow: '0 4px 24px #9F7AEA22'
+							boxShadow: '0 4px 24px #4A8A9A22'
 						}}
 					/>
 				</div>
@@ -428,8 +430,8 @@ export const LandingPage: React.FC = () => {
 								setIsModalOpen(true);
 							}}
 							style={{
-								background: 'rgba(255,255,255,0.98)',
-								boxShadow: '0 4px 18px #9F7AEA22',
+								background: 'linear-gradient(135deg, #1A3A4A 0%, #2D6A7A 100%)',
+								boxShadow: '0 4px 18px rgba(26, 58, 74, 0.4)',
 								borderRadius: 18,
 								minWidth: 180,
 								width: 180,
@@ -442,7 +444,7 @@ export const LandingPage: React.FC = () => {
 								textAlign: 'center',
 								transition: 'box-shadow .18s, transform .18s',
 								cursor: 'pointer',
-								border: '1.5px solid #e0c3fc',
+								border: '1.5px solid rgba(208, 232, 236, 0.3)',
 								position: 'relative',
 								flexShrink: 0,
 							}}
@@ -459,28 +461,28 @@ export const LandingPage: React.FC = () => {
 								marginBottom: '0.7rem',
 							}}>
 								<img
-									src={counsellor.profile_image_url && (counsellor.profile_image_url.startsWith('http://') || counsellor.profile_image_url.startsWith('https://')) ? counsellor.profile_image_url : `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(counsellor.name)}&backgroundColor=9f7aea,e0c3fc&radius=50`}
+									src={counsellor.profile_image_url && (counsellor.profile_image_url.startsWith('/') || counsellor.profile_image_url.startsWith('http://') || counsellor.profile_image_url.startsWith('https://')) ? counsellor.profile_image_url : `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(counsellor.name)}&backgroundColor=2D6A7A,D0E8EC&radius=50`}
 									alt={counsellor.name}
 									referrerPolicy="no-referrer"
 									onError={(e) => {
 										const target = e.target as HTMLImageElement;
-										target.src = `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(counsellor.name)}&backgroundColor=9f7aea,e0c3fc&radius=50`;
+										target.src = `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(counsellor.name)}&backgroundColor=2D6A7A,D0E8EC&radius=50`;
 									}}
 									style={{
 										width: '100%',
 										height: '100%',
 										objectFit: 'cover',
 										borderRadius: '16px',
-										boxShadow: '0 2px 12px #9F7AEA22',
-										border: '2px solid #fff',
-										background: '#f0e6ff',
+										boxShadow: '0 2px 12px rgba(0,0,0,0.3)',
+										border: '2px solid rgba(255,255,255,0.3)',
+										background: '#2D6A7A',
 									}}
 								/>
 							</div>
 							<div style={{
 								fontWeight: 700,
 								fontSize: '1.08rem',
-								color: '#5727A3',
+								color: '#fff',
 								marginBottom: '0.2rem',
 								overflow: 'hidden',
 								textOverflow: 'ellipsis',
@@ -491,7 +493,7 @@ export const LandingPage: React.FC = () => {
 							</div>
 							<div style={{
 								fontSize: '.97rem',
-								color: '#1B0044',
+								color: 'rgba(255, 255, 255, 0.9)',
 								fontWeight: 500,
 								marginBottom: '0.2rem',
 								overflow: 'hidden',
@@ -503,7 +505,7 @@ export const LandingPage: React.FC = () => {
 							</div>
 							<div style={{
 								fontSize: '.93rem',
-								color: '#9F7AEA',
+								color: '#D0E8EC',
 								fontWeight: 500,
 								marginBottom: '0.2rem',
 								overflow: 'hidden',
@@ -515,7 +517,7 @@ export const LandingPage: React.FC = () => {
 							</div>
 							<div style={{
 								fontSize: '.93rem',
-								color: '#5727A3',
+								color: 'rgba(255, 255, 255, 0.8)',
 								fontWeight: 500,
 								marginBottom: '0.2rem',
 								overflow: 'hidden',
@@ -538,9 +540,9 @@ export const LandingPage: React.FC = () => {
 							100% { transform: translateX(-50%); }
 						}
 						.peer-counsellor-card:hover {
-							box-shadow: 0 12px 32px #9F7AEA44;
+							box-shadow: 0 12px 32px rgba(26, 58, 74, 0.6);
 							transform: scale(1.07) translateY(-4px);
-							border-color: #9F7AEA;
+							border-color: #D0E8EC;
 						}
 					`}</style>
 			</div>
@@ -577,7 +579,7 @@ export const LandingPage: React.FC = () => {
 					style={{
 						fontSize: '2.2rem',
 						fontWeight: 900,
-						color: '#5727A3',
+						color: '#1A3A4A',
 						marginBottom: '1.2rem',
 						letterSpacing: '-2px',
 						lineHeight: 1.1,
@@ -586,7 +588,7 @@ export const LandingPage: React.FC = () => {
 					Our Story:{' '}
 					<span
 						style={{
-							background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+							background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
 							WebkitBackgroundClip: 'text',
 							WebkitTextFillColor: 'transparent',
 						}}
@@ -597,7 +599,7 @@ export const LandingPage: React.FC = () => {
 				<p
 					style={{
 						fontSize: '1.13rem',
-						color: '#1B0044',
+						color: '#1A3A4A',
 						fontWeight: 500,
 						marginBottom: '1.2rem',
 					}}
@@ -610,7 +612,7 @@ export const LandingPage: React.FC = () => {
 				<p
 					style={{
 						fontSize: '1.13rem',
-						color: '#1B0044',
+						color: '#1A3A4A',
 						fontWeight: 500,
 						marginBottom: '1.2rem',
 					}}
@@ -625,7 +627,7 @@ export const LandingPage: React.FC = () => {
 					onClick={() => navigate('/about')}
 					style={{
 						marginTop: '1.2rem',
-						background: 'linear-gradient(90deg, #5727A3 0%, #9F7AEA 100%)',
+						background: 'linear-gradient(90deg, #1A3A4A 0%, #4A8A9A 100%)',
 						color: '#fff',
 						border: 'none',
 						borderRadius: 8,
@@ -633,7 +635,7 @@ export const LandingPage: React.FC = () => {
 						fontWeight: 700,
 						fontSize: '1.07rem',
 						cursor: 'pointer',
-						boxShadow: '0 2px 8px #9F7AEA22',
+						boxShadow: '0 2px 8px #4A8A9A22',
 						transition: 'background 0.18s',
 					}}
 				>
@@ -650,36 +652,20 @@ export const LandingPage: React.FC = () => {
 				}}
 				className={`about-3d-img${aboutInView ? ' about-3d-animate' : ''}`}
 			>
-				{/* Radiant effect behind the girl */}
-				<div
-					style={{
-						position: 'absolute',
-						left: '50%',
-						top: 170,
-						transform: 'translateX(-50%)',
-						width: 340,
-						height: 340,
-						borderRadius: '50%',
-						background:
-							'radial-gradient(circle at 50% 50%, #D6C5F0 0%, #9F7AEA88 40%, #5727A333 70%, transparent 100%)',
-						filter: 'blur(18px) brightness(1.15)',
-						zIndex: 1,
-						pointerEvents: 'none',
-					}}
-				/>
-				{/* Girl image */}
+				{/* Combined globe and students image */}
 				<img
-					src="https://pub-e63ee2f49d7e4f94b98011a5350eea0f.r2.dev/image-from-rawpixel-id-15542441-png.png"
-					alt="Thinking Girl"
+					src={ourStoryBg}
+					alt="Global Students at University"
 					style={{
-						width: 300,
-						height: 420,
-						objectFit: 'contain',
-						borderRadius: 32,
-						margin: '0 auto',
+						width: '100%',
+						maxWidth: 600,
+						height: 450,
+						objectFit: 'cover',
+						borderRadius: 24,
+						margin: '22px auto 0 auto',
 						display: 'block',
-						position: 'relative',
-						zIndex: 2,
+						boxShadow: '0 10px 30px -10px rgba(0,0,0,0.2)',
+						objectPosition: '60% center',
 					}}
 					className={`about-3d-girl${aboutInView ? ' about-3d-animate' : ''}`}
 				/>
@@ -697,7 +683,7 @@ export const LandingPage: React.FC = () => {
 				>
 					<path
 						d="M0,60 Q30,-30 80,10"
-						stroke="#5727A3"
+						stroke="#1A3A4A"
 						strokeWidth={3}
 						fill="none"
 						strokeDasharray="8,10"
@@ -716,7 +702,7 @@ export const LandingPage: React.FC = () => {
 						left: 380,
 						top: 0,
 						zIndex: 3,
-						filter: 'drop-shadow(0 4px 16px #9F7AEA22)',
+						filter: 'drop-shadow(0 4px 16px #4A8A9A22)',
 						willChange: 'transform',
 						pointerEvents: 'none',
 						animation: 'aboutGlobeFloat 2.2s infinite cubic-bezier(.4,2,.6,1)',
@@ -751,7 +737,7 @@ export const LandingPage: React.FC = () => {
           transition: transform 0.7s cubic-bezier(.4,2,.6,1), opacity 0.7s cubic-bezier(.4,2,.6,1);
         }
         .about-3d-globe {
-          filter: drop-shadow(0 4px 16px #9F7AEA22);
+          filter: drop-shadow(0 4px 16px #4A8A9A22);
           transform: perspective(900px) rotateY(-30deg) rotateZ(-10deg) scale3d(0.9,0.9,1);
           opacity: 0.7;
           transition: transform 0.8s cubic-bezier(.4,2,.6,1), opacity 0.8s cubic-bezier(.4,2,.6,1);
@@ -775,7 +761,7 @@ export const LandingPage: React.FC = () => {
           100% { transform: none;}
         }
       `}</style>
-		</section>
+		</section >
 	);
 
 
@@ -811,59 +797,66 @@ export const LandingPage: React.FC = () => {
 			};
 		}, []);
 
-		// Use the same icons as before
+		// Use the same icons as before - now with light colors
 		const icons = [
 			// Peer Counselling: chat bubbles
-			<svg width="54" height="54" viewBox="0 0 54 54" fill="none" key="chat" style={{ filter: 'drop-shadow(0 2px 12px #9F7AEA33)' }}>
-				<ellipse cx="27" cy="27" rx="22" ry="18" fill="#F0E6FF" />
-				<ellipse cx="27" cy="27" rx="18" ry="14" fill="#D6C5F0" />
-				<ellipse cx="27" cy="27" rx="12" ry="9" fill="#9F7AEA" opacity="0.7">
+			<svg width="54" height="54" viewBox="0 0 54 54" fill="none" key="chat" style={{ filter: 'drop-shadow(0 2px 12px rgba(0, 0, 0, 0.3))' }}>
+				<ellipse cx="27" cy="27" rx="22" ry="18" fill="#4A8A9A" />
+				<ellipse cx="27" cy="27" rx="18" ry="14" fill="#D0E8EC" />
+				<ellipse cx="27" cy="27" rx="12" ry="9" fill="#fff" opacity="0.9">
 					<animate attributeName="rx" values="12;14;12" dur="2.5s" repeatCount="indefinite" />
 					<animate attributeName="ry" values="9;11;9" dur="2.5s" repeatCount="indefinite" />
 				</ellipse>
-				<circle cx="22" cy="27" r="1.7" fill="#fff" />
-				<circle cx="27" cy="27" r="1.7" fill="#fff" />
-				<circle cx="32" cy="27" r="1.7" fill="#fff" />
+				<circle cx="22" cy="27" r="1.7" fill="#1A3A4A" />
+				<circle cx="27" cy="27" r="1.7" fill="#1A3A4A" />
+				<circle cx="32" cy="27" r="1.7" fill="#1A3A4A" />
 			</svg>,
 			// Accommodation: 3D house
-			<svg width="54" height="54" viewBox="0 0 54 54" fill="none" key="house" style={{ filter: 'drop-shadow(0 2px 12px #9F7AEA33)' }}>
-				<rect x="13" y="26" width="28" height="15" rx="4" fill="#F0E6FF" />
-				<rect x="17" y="30" width="20" height="11" rx="3" fill="#D6C5F0" />
-				<rect x="23" y="34" width="8" height="7" rx="2" fill="#9F7AEA" opacity="0.7">
+			<svg width="54" height="54" viewBox="0 0 54 54" fill="none" key="house" style={{ filter: 'drop-shadow(0 2px 12px rgba(0, 0, 0, 0.3))' }}>
+				<rect x="13" y="26" width="28" height="15" rx="4" fill="#4A8A9A" />
+				<rect x="17" y="30" width="20" height="11" rx="3" fill="#D0E8EC" />
+				<rect x="23" y="34" width="8" height="7" rx="2" fill="#fff" opacity="0.9">
 					<animate attributeName="y" values="34;32;34" dur="2.2s" repeatCount="indefinite" />
 				</rect>
-				<polygon points="27,16 12,28 42,28" fill="#9F7AEA" opacity="0.8">
+				<polygon points="27,16 12,28 42,28" fill="#fff" opacity="0.95">
 					<animate attributeName="points" values="27,16 12,28 42,28;27,14 12,28 42,28;27,16 12,28 42,28" dur="2.2s" repeatCount="indefinite" />
 				</polygon>
 			</svg>,
 			// Airport Pickup: 3D car
-			<svg width="54" height="54" viewBox="0 0 54 54" fill="none" key="car" style={{ filter: 'drop-shadow(0 2px 12px #9F7AEA33)' }}>
-				<rect x="14" y="32" width="26" height="7" rx="3.5" fill="#D6C5F0" />
-				<rect x="17" y="28" width="20" height="8" rx="3" fill="#9F7AEA" opacity="0.7">
+			<svg width="54" height="54" viewBox="0 0 54 54" fill="none" key="car" style={{ filter: 'drop-shadow(0 2px 12px rgba(0, 0, 0, 0.3))' }}>
+				<rect x="14" y="32" width="26" height="7" rx="3.5" fill="#D0E8EC" />
+				<rect x="17" y="28" width="20" height="8" rx="3" fill="#fff" opacity="0.95">
 					<animate attributeName="y" values="28;26;28" dur="2.2s" repeatCount="indefinite" />
 				</rect>
-				<circle cx="19" cy="40" r="3" fill="#5727A3" />
-				<circle cx="35" cy="40" r="3" fill="#5727A3" />
-				<rect x="22" y="30" width="10" height="4" rx="2" fill="#fff" opacity="0.7" />
+				<circle cx="19" cy="40" r="3" fill="#4A8A9A" />
+				<circle cx="35" cy="40" r="3" fill="#4A8A9A" />
+				<rect x="22" y="30" width="10" height="4" rx="2" fill="#7dd3e8" opacity="0.9" />
 			</svg>,
 			// Financial: 3D coin stack
-			<svg width="54" height="54" viewBox="0 0 54 54" fill="none" key="coins" style={{ filter: 'drop-shadow(0 2px 12px #9F7AEA33)' }}>
-				<ellipse cx="27" cy="38" rx="10" ry="4" fill="#D6C5F0" />
-				<ellipse cx="27" cy="34" rx="10" ry="4" fill="#F0E6FF" />
-				<ellipse cx="27" cy="30" rx="10" ry="4" fill="#9F7AEA" opacity="0.7">
+			<svg width="54" height="54" viewBox="0 0 54 54" fill="none" key="coins" style={{ filter: 'drop-shadow(0 2px 12px rgba(0, 0, 0, 0.3))' }}>
+				<ellipse cx="27" cy="38" rx="10" ry="4" fill="#D0E8EC" />
+				<ellipse cx="27" cy="34" rx="10" ry="4" fill="#4A8A9A" />
+				<ellipse cx="27" cy="30" rx="10" ry="4" fill="#fff" opacity="0.9">
 					<animate attributeName="cy" values="30;28;30" dur="2.2s" repeatCount="indefinite" />
 				</ellipse>
-				<ellipse cx="27" cy="26" rx="10" ry="4" fill="#D6C5F0" />
-				<ellipse cx="27" cy="22" rx="10" ry="4" fill="#F0E6FF" />
+				<ellipse cx="27" cy="26" rx="10" ry="4" fill="#D0E8EC" />
+				<ellipse cx="27" cy="22" rx="10" ry="4" fill="#fff" />
 			</svg>,
 			// Application Process: 3D document
-			<svg width="54" height="54" viewBox="0 0 54 54" fill="none" key="doc" style={{ filter: 'drop-shadow(0 2px 12px #9F7AEA33)' }}>
-				<rect x="16" y="16" width="22" height="28" rx="5" fill="#F0E6FF" />
-				<rect x="19" y="20" width="16" height="4" rx="2" fill="#9F7AEA" opacity="0.7">
+			<svg width="54" height="54" viewBox="0 0 54 54" fill="none" key="doc" style={{ filter: 'drop-shadow(0 2px 12px rgba(0, 0, 0, 0.3))' }}>
+				<rect x="16" y="16" width="22" height="28" rx="5" fill="#D0E8EC" />
+				<rect x="19" y="20" width="16" height="4" rx="2" fill="#fff" opacity="0.9">
 					<animate attributeName="width" values="16;20;16" dur="2.2s" repeatCount="indefinite" />
 				</rect>
-				<rect x="19" y="27" width="12" height="3" rx="1.5" fill="#D6C5F0" />
-				<rect x="19" y="33" width="10" height="3" rx="1.5" fill="#D6C5F0" />
+				<rect x="19" y="27" width="12" height="3" rx="1.5" fill="#4A8A9A" />
+				<rect x="19" y="33" width="10" height="3" rx="1.5" fill="#4A8A9A" />
+			</svg>,
+			// University Counsellors: person with badge
+			<svg width="54" height="54" viewBox="0 0 54 54" fill="none" key="counsellor" style={{ filter: 'drop-shadow(0 2px 12px rgba(0, 0, 0, 0.3))' }}>
+				<circle cx="27" cy="20" r="8" fill="#D0E8EC" />
+				<ellipse cx="27" cy="38" rx="14" ry="10" fill="#fff" opacity="0.9" />
+				<circle cx="35" cy="26" r="5" fill="#7dd3e8" />
+				<path d="M33 26l2 2 3-3" stroke="#1A3A4A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
 			</svg>
 		];
 		const icon = icons[index % icons.length];
@@ -877,8 +870,8 @@ export const LandingPage: React.FC = () => {
 				style={{
 					background: 'rgba(255,255,255,0.82)',
 					borderRadius: 22,
-					boxShadow: '0 8px 32px 0 #9F7AEA11, 0 2px 8px 0 #D6C5F011',
-					border: '1.5px solid #D6C5F0',
+					boxShadow: '0 8px 32px 0 #4A8A9A11, 0 2px 8px 0 #D0E8EC11',
+					border: '1.5px solid #D0E8EC',
 					cursor: 'pointer',
 					transition: 'box-shadow 0.18s, transform 0.28s cubic-bezier(.4,2,.6,1), background 0.18s',
 					display: 'flex',
@@ -904,8 +897,8 @@ export const LandingPage: React.FC = () => {
 					alignItems: 'center',
 					justifyContent: 'center',
 					borderRadius: '50%',
-					background: 'linear-gradient(120deg,#F0E6FF 60%,#D6C5F0 100%)',
-					boxShadow: '0 2px 12px #9F7AEA11',
+					background: 'linear-gradient(135deg, #1A3A4A 0%, #2D6A7A 100%)',
+					boxShadow: '0 4px 16px rgba(26, 58, 74, 0.4)',
 					position: 'relative',
 					animation: `serviceIconFloat${index} 2.8s ease-in-out infinite alternate`
 				}}>
@@ -914,7 +907,7 @@ export const LandingPage: React.FC = () => {
 				<h3 style={{
 					fontSize: '1.13rem',
 					fontWeight: 800,
-					color: '#5727A3',
+					color: '#1A3A4A',
 					margin: '1.1rem 0 .5rem 0',
 					textAlign: 'center',
 					width: '100%',
@@ -940,8 +933,8 @@ export const LandingPage: React.FC = () => {
 					}
 					.simple-service-card:focus,
 					.simple-service-card:hover {
-						box-shadow: 0 24px 64px 0 #9F7AEA33, 0 4px 16px 0 #D6C5F033 !important;
-						border-color: #9F7AEA !important;
+						box-shadow: 0 24px 64px 0 #4A8A9A33, 0 4px 16px 0 #D0E8EC33 !important;
+						border-color: #4A8A9A !important;
 					}
 					.simple-service-card:focus {
 						transform: perspective(600px) rotateX(0deg) rotateY(0deg) scale(1.04) !important;
@@ -956,14 +949,15 @@ export const LandingPage: React.FC = () => {
 			className="services-section"
 			style={{
 				maxWidth: 1400,
-				background: 'linear-gradient(90deg,#D6C5F0 0%,#fff 100%)',
-				boxShadow: '0 4px 24px #9F7AEA22',
-				border: '2px solid #D6C5F0',
+				background: 'linear-gradient(135deg, #1A3A4A 0%, #2D6A7A 100%)',
+				boxShadow: '0 8px 32px rgba(26, 58, 74, 0.4)',
+				border: 'none',
 				textAlign: 'center',
 				position: 'relative',
 				margin: '2.5rem auto 0 auto',
 				overflow: 'visible',
-				padding: '2.5rem 1.5rem',
+				padding: '3rem 1.5rem',
+				borderRadius: 32,
 			}}
 		>
 			<div style={{ marginBottom: '2.2rem' }}>
@@ -972,7 +966,7 @@ export const LandingPage: React.FC = () => {
 					style={{
 						fontSize: '2.1rem',
 						fontWeight: 800,
-						color: '#5727A3',
+						color: '#fff',
 						marginBottom: '.7rem',
 						letterSpacing: '-1px',
 					}}
@@ -981,7 +975,7 @@ export const LandingPage: React.FC = () => {
 						style={{
 							display: 'inline-block',
 							perspective: 400,
-							textShadow: '0 2px 12px #9F7AEA11',
+							textShadow: '0 2px 12px rgba(0,0,0,0.3)',
 						}}
 					>
 						<span style={{ display: 'inline-block' }}>Our</span>{' '}
@@ -1018,38 +1012,22 @@ export const LandingPage: React.FC = () => {
 			<style>{responsiveStyle}</style>
 			<section className="accom-hero-section" style={{
 				...heroSectionStyle,
-				background: 'linear-gradient(90deg,#D6C5F0 0%,#fff 100%)',
-				boxShadow: '0 8px 32px 0 #9F7AEA22',
+				background: 'linear-gradient(135deg, #1A3A4A 0%, #2D6A7A 100%)',
+				boxShadow: '0 8px 32px rgba(26, 58, 74, 0.4)',
 				margin: '2.5rem auto 0 auto',
+				borderRadius: 32,
 			}}>
-				{/* Decorative Globe/Blob */}
-				<div
-					style={{
-						position: 'absolute',
-						left: -120,
-						top: -80,
-						width: 320,
-						height: 320,
-						background:
-							'radial-gradient(circle at 60% 40%, #D6C5F0 0%, #9F7AEA22 100%)',
-						borderRadius: '50%',
-						filter: 'blur(40px)',
-						zIndex: 0,
-						opacity: 0.7,
-						pointerEvents: 'none',
-					}}
-				/>
 				<div className="accom-hero-text" style={heroTextStyle}>
 					<h1
 						style={{
 							fontSize: '2.6rem',
 							fontWeight: 900,
-							color: '#1e3a8a',
+							color: '#fff',
 							marginBottom: '1.2rem',
 							letterSpacing: '-2px',
 							lineHeight: 1.1,
 							textShadow:
-								'0 4px 24px #2563eb22, 0 1px 2px #fff8',
+								'0 4px 24px rgba(0,0,0,0.3)',
 						}}
 					>
 						Find Your Home Abroad
@@ -1057,7 +1035,7 @@ export const LandingPage: React.FC = () => {
 					<p
 						style={{
 							fontSize: '1.18rem',
-							color: '#334155',
+							color: 'rgba(255, 255, 255, 0.9)',
 							fontWeight: 500,
 							marginBottom: '1.2rem',
 							lineHeight: 1.6,
@@ -1077,16 +1055,16 @@ export const LandingPage: React.FC = () => {
 						}
 						style={{
 							marginTop: '1.2rem',
-							background: 'linear-gradient(90deg, #5727A3 0%, #9F7AEA 100%)',
-							color: '#fff',
+							background: 'linear-gradient(90deg, #E8F4F6 0%, #fff 100%)',
+							color: '#1A3A4A',
 							border: 'none',
 							borderRadius: 14,
 							padding: '1rem 2.3rem',
 							fontWeight: 700,
 							fontSize: '1.13rem',
 							cursor: 'pointer',
-							boxShadow: '0 2px 8px #9F7AEA22',
-							transition: 'background 0.18s',
+							boxShadow: '0 4px 20px rgba(255,255,255,0.2)',
+							transition: 'all 0.18s',
 							letterSpacing: '.5px',
 						}}
 					>
@@ -1107,7 +1085,7 @@ export const LandingPage: React.FC = () => {
 								height: 240,
 								objectFit: 'cover',
 								borderRadius: 28,
-								boxShadow: '0 8px 32px #2563eb22',
+								boxShadow: '0 8px 32px #2D6A7A22',
 								border: '4px solid #fff',
 								transform: 'rotate(-18deg) scale(1.06)',
 								zIndex: 1,
@@ -1126,7 +1104,7 @@ export const LandingPage: React.FC = () => {
 								height: 300,
 								objectFit: 'cover',
 								borderRadius: 36,
-								boxShadow: '0 8px 32px #2563eb33',
+								boxShadow: '0 8px 32px #2D6A7A33',
 								border: '5px solid #fff',
 								transform: 'translateX(-50%) scale(1.18)',
 								zIndex: 3,
@@ -1145,7 +1123,7 @@ export const LandingPage: React.FC = () => {
 								height: 240,
 								objectFit: 'cover',
 								borderRadius: 28,
-								boxShadow: '0 12px 48px #2563eb22',
+								boxShadow: '0 12px 48px #2D6A7A22',
 								border: '4px solid #fff',
 								transform: 'rotate(18deg) scale(1.06)',
 								zIndex: 2,
@@ -1167,7 +1145,7 @@ export const LandingPage: React.FC = () => {
 				borderRadius: 32,
 				padding: '2.2rem 1.5rem 1.5rem 1.5rem',
 				marginTop: '2.5rem',
-				color: '#1B0044',
+				color: '#1A3A4A',
 				marginLeft: 'auto',
 				marginRight: 'auto',
 				display: 'flex',
@@ -1192,7 +1170,7 @@ export const LandingPage: React.FC = () => {
 						width: '100%',
 						maxWidth: 320,
 						borderRadius: 18,
-						boxShadow: '0 2px 12px #9F7AEA22',
+						boxShadow: '0 2px 12px #4A8A9A22',
 						objectFit: 'cover'
 					}}
 				/>
@@ -1202,7 +1180,7 @@ export const LandingPage: React.FC = () => {
 					fontSize: '2.3rem',
 					fontWeight: 800,
 					marginBottom: '0.5rem',
-					background: 'linear-gradient(90deg, #5727A3 0%, #9F7AEA 100%)',
+					background: 'linear-gradient(90deg, #1A3A4A 0%, #4A8A9A 100%)',
 					WebkitBackgroundClip: 'text',
 					WebkitTextFillColor: 'transparent'
 				}}>
@@ -1210,7 +1188,7 @@ export const LandingPage: React.FC = () => {
 				</h1>
 				<p style={{
 					fontSize: '1.15rem',
-					color: '#1B0044',
+					color: '#1A3A4A',
 					marginBottom: '1.2rem',
 					fontWeight: 500
 				}}>
@@ -1224,7 +1202,7 @@ export const LandingPage: React.FC = () => {
 					}}
 					style={{
 						display: 'inline-block',
-						background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+						background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
 						color: '#fff',
 						fontWeight: 700,
 						fontSize: '1.13rem',
@@ -1232,7 +1210,7 @@ export const LandingPage: React.FC = () => {
 						padding: '1rem 2.5rem',
 						textDecoration: 'none',
 						margin: '0.5rem 0 0 0',
-						boxShadow: '0 2px 8px #9F7AEA22',
+						boxShadow: '0 2px 8px #4A8A9A22',
 						transition: 'background 0.18s',
 						cursor: 'pointer'
 					}}
@@ -1251,9 +1229,9 @@ export const LandingPage: React.FC = () => {
 			{servicesSection}
 			<FeaturedUniversities
 				style={{
-					background: 'linear-gradient(90deg,#D6C5F0 0%,#fff 100%)',
+					background: 'linear-gradient(90deg,#D0E8EC 0%,#fff 100%)',
 					borderRadius: 32,
-					boxShadow: '0 8px 32px 0 #9F7AEA22',
+					boxShadow: '0 8px 32px 0 #4A8A9A22',
 					margin: '2.5rem auto 0 auto',
 					padding: '2.5rem 1.5rem',
 					maxWidth: 1400,
@@ -1263,9 +1241,9 @@ export const LandingPage: React.FC = () => {
 			{financialServicesSection}
 			<HowItWorks
 				style={{
-					background: 'linear-gradient(90deg,#D6C5F0 0%,#fff 100%)',
+					background: 'linear-gradient(90deg,#D0E8EC 0%,#fff 100%)',
 					borderRadius: 32,
-					boxShadow: '0 8px 32px 0 #9F7AEA22',
+					boxShadow: '0 8px 32px 0 #4A8A9A22',
 					margin: '2.5rem auto 0 auto',
 					padding: '2.5rem 1.5rem',
 					maxWidth: 1400,
@@ -1273,9 +1251,9 @@ export const LandingPage: React.FC = () => {
 			/>
 			<Testimonials
 				style={{
-					background: 'linear-gradient(90deg,#D6C5F0 0%,#fff 100%)',
+					background: 'linear-gradient(90deg,#D0E8EC 0%,#fff 100%)',
 					borderRadius: 32,
-					boxShadow: '0 8px 32px 0 #9F7AEA22',
+					boxShadow: '0 8px 32px 0 #4A8A9A22',
 					margin: '2.5rem auto 0 auto',
 					padding: '2.5rem 1.5rem',
 					maxWidth: 1400,
@@ -1316,3 +1294,5 @@ export const LandingPage: React.FC = () => {
 		</>
 	);
 };
+
+

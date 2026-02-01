@@ -93,7 +93,7 @@ const PeerCounsellorModal: React.FC<PeerCounsellorModalProps> = ({
             borderRadius: '20px',
             overflow: 'hidden',
             margin: '0 auto 1rem',
-            border: '3px solid #e0c3fc',
+            border: '3px solid #B8D8DE',
           }}>
             <img
               src={counsellor.profile_image_url}
@@ -111,7 +111,7 @@ const PeerCounsellorModal: React.FC<PeerCounsellorModalProps> = ({
           <h3 style={{
             fontSize: '1.4rem',
             fontWeight: 700,
-            color: '#5727A3',
+            color: '#1A3A4A',
             margin: '0.5rem 0',
           }}>
             {counsellor.name}
@@ -119,7 +119,7 @@ const PeerCounsellorModal: React.FC<PeerCounsellorModalProps> = ({
 
           <p style={{
             fontSize: '1rem',
-            color: '#1B0044',
+            color: '#0F2A36',
             fontWeight: 500,
             margin: '0.2rem 0',
           }}>
@@ -128,7 +128,7 @@ const PeerCounsellorModal: React.FC<PeerCounsellorModalProps> = ({
 
           <p style={{
             fontSize: '0.9rem',
-            color: '#9F7AEA',
+            color: '#4A8A9A',
             fontWeight: 500,
             margin: '0.2rem 0',
           }}>
@@ -147,8 +147,8 @@ const PeerCounsellorModal: React.FC<PeerCounsellorModalProps> = ({
                 <span
                   key={index}
                   style={{
-                    backgroundColor: '#F0E6FF',
-                    color: '#5727A3',
+                    backgroundColor: '#E8F4F6',
+                    color: '#1A3A4A',
                     padding: '0.3rem 0.8rem',
                     borderRadius: '20px',
                     fontSize: '0.85rem',
@@ -175,7 +175,7 @@ const PeerCounsellorModal: React.FC<PeerCounsellorModalProps> = ({
           <button
             onClick={onConnect}
             style={{
-              background: 'linear-gradient(90deg, #5727A3 0%, #9F7AEA 100%)',
+              background: 'linear-gradient(90deg, #1A3A4A 0%, #4A8A9A 100%)',
               color: 'white',
               border: 'none',
               borderRadius: '12px',
@@ -185,16 +185,16 @@ const PeerCounsellorModal: React.FC<PeerCounsellorModalProps> = ({
               cursor: 'pointer',
               width: '100%',
               marginTop: '1rem',
-              boxShadow: '0 4px 12px #9F7AEA33',
+              boxShadow: '0 4px 12px #2D6A7A33',
               transition: 'transform 0.2s, box-shadow 0.2s',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 6px 16px #9F7AEA44';
+              e.currentTarget.style.boxShadow = '0 6px 16px #2D6A7A44';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 12px #9F7AEA33';
+              e.currentTarget.style.boxShadow = '0 4px 12px #2D6A7A33';
             }}
           >
             Connect with {counsellor.name.split(' ')[0]}
@@ -219,3 +219,4 @@ const PeerCounsellorModal: React.FC<PeerCounsellorModalProps> = ({
 };
 
 export default PeerCounsellorModal;
+

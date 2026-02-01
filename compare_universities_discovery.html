@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Universities - Backend Discovery</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f8f9fa;
+            color: #1a1a1a;
+        }
+
+        h1 {
+            color: #0d6efd;
+            border-bottom: 3px solid #0d6efd;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #198754;
+            margin-top: 40px;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            color: #495057;
+            margin-top: 25px;
+        }
+
+        h4 {
+            color: #6c757d;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            border: 1px solid #dee2e6;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background: #0d6efd;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tr:hover {
+            background: #e9ecef;
+        }
+
+        code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            color: #d63384;
+        }
+
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        blockquote {
+            border-left: 4px solid #0d6efd;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background: #e7f1ff;
+            border-radius: 0 8px 8px 0;
+        }
+
+        blockquote.warning {
+            border-left-color: #fd7e14;
+            background: #fff3cd;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #dee2e6;
+            margin: 30px 0;
+        }
+
+        ul,
+        ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .meta {
+            color: #6c757d;
+            font-size: 0.95em;
+            margin-bottom: 30px;
+        }
+
+        .yes {
+            color: #198754;
+            font-weight: bold;
+        }
+
+        .no {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .partial {
+            color: #fd7e14;
+            font-weight: bold;
+        }
+
+        .needs-work {
+            color: #6c757d;
+            font-weight: bold;
+        }
+
+        .status-box {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .status-ready {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-missing {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-needs {
+            background: #fff3cd;
+            color: #856404;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Compare Universities - Backend Discovery</h1>
+    <p class="meta"><strong>Date:</strong> January 19, 2026<br><strong>Purpose:</strong> Pre-implementation analysis for
+        Compare Universities feature</p>
+
+    <hr>
+
+    <h2>1. Database Tables Related to Universities, Programs, Countries, and Fees</h2>
+
+    <table>
+        <tr>
+            <th>Table</th>
+            <th>Purpose</th>
+            <th>Key Fields</th>
+        </tr>
+        <tr>
+            <td><code>universities</code></td>
+            <td>University master data</td>
+            <td><code>id</code>, <code>type</code>, <code>attributes</code> (JSONB with name, country, state,
+                description)</td>
+        </tr>
+        <tr>
+            <td><code>program_details</code></td>
+            <td><strong>Primary program table</strong> with full details</td>
+            <td><code>id</code>, <code>attributes</code> (tuition, duration, level), <code>school</code> (university
+                info), <code>program_requirements</code>, <code>school_id</code></td>
+        </tr>
+        <tr>
+            <td><code>programs</code></td>
+            <td>Secondary program catalog</td>
+            <td><code>id</code>, <code>type</code>, <code>attributes</code></td>
+        </tr>
+        <tr>
+            <td><code>scholarships</code></td>
+            <td>Scholarship listings</td>
+            <td><code>id</code>, <code>title</code>, <code>awardAmountFrom</code>, <code>awardAmountTo</code>,
+                <code>schoolGroupId</code>, <code>eligibleLevels</code></td>
+        </tr>
+        <tr>
+            <td><code>australia_scholarships</code></td>
+            <td>Australia-specific scholarships</td>
+            <td><code>university</code>, <code>state</code>, <code>scholarships</code> (JSONB)</td>
+        </tr>
+    </table>
+
+    <blockquote>
+        <strong>📝 Note:</strong> Countries are NOT in a separate table — they're embedded in
+        <code>program_details.school["country"]</code> and <code>universities.attributes["country"]</code>
+    </blockquote>
+
+    <hr>
+
+    <h2>2. Fields Available for Comparison</h2>
+
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Available?</th>
+            <th>Location</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td><strong>Tuition</strong></td>
+            <td><span class="yes">✅ Yes</span></td>
+            <td><code>program_details.attributes["tuition"]</code></td>
+            <td>Per program, not per university</td>
+        </tr>
+        <tr>
+            <td><strong>Duration</strong></td>
+            <td><span class="yes">✅ Yes</span></td>
+            <td><code>program_details.attributes["duration"]</code></td>
+            <td>Program duration</td>
+        </tr>
+        <tr>
+            <td><strong>Country</strong></td>
+            <td><span class="yes">✅ Yes</span></td>
+            <td><code>program_details.school["country"]</code></td>
+            <td>Country code</td>
+        </tr>
+        <tr>
+            <td><strong>Intake</strong></td>
+            <td><span class="partial">⚠️ Partial</span></td>
+            <td><code>program_details.attributes</code> (nested)</td>
+            <td>May require parsing</td>
+        </tr>
+        <tr>
+            <td><strong>Level</strong></td>
+            <td><span class="yes">✅ Yes</span></td>
+            <td><code>program_details.attributes["level"]</code></td>
+            <td>Bachelor's, Master's, etc.</td>
+        </tr>
+        <tr>
+            <td><strong>University Name</strong></td>
+            <td><span class="yes">✅ Yes</span></td>
+            <td><code>program_details.school["name"]</code></td>
+            <td>—</td>
+        </tr>
+        <tr>
+            <td><strong>Ranking</strong></td>
+            <td><span class="no">❌ No</span></td>
+            <td>Not stored</td>
+            <td>Would need external API or new data</td>
+        </tr>
+        <tr>
+            <td><strong>Acceptance Rate</strong></td>
+            <td><span class="no">❌ No</span></td>
+            <td>Not stored</td>
+            <td>Would need new data</td>
+        </tr>
+        <tr>
+            <td><strong>Scholarships</strong></td>
+            <td><span class="yes">✅ Yes</span></td>
+            <td><code>scholarships</code> table</td>
+            <td>Linked via <code>schoolGroupId</code></td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2>3. Existing APIs for University & Program Data</h2>
+
+    <table>
+        <tr>
+            <th>Endpoint</th>
+            <th>Method</th>
+            <th>What it Returns</th>
+        </tr>
+        <tr>
+            <td><code>GET /universities/{school_id}</code></td>
+            <td>GET</td>
+            <td>Single university with attributes, relationships</td>
+        </tr>
+        <tr>
+            <td><code>GET /api/programs/{program_id}</code></td>
+            <td>GET</td>
+            <td>Single program full details</td>
+        </tr>
+        <tr>
+            <td><code>GET /api/program-details</code></td>
+            <td>GET</td>
+            <td><strong>Paginated list with filters</strong> — supports <code>university_name</code>,
+                <code>program_name</code>, <code>country</code>, <code>min_fees</code>, <code>max_fees</code></td>
+        </tr>
+        <tr>
+            <td><code>GET /scholarships/{school_id}</code></td>
+            <td>GET</td>
+            <td>Scholarships for a specific university</td>
+        </tr>
+    </table>
+
+    <blockquote>
+        <strong>💡 Best API for comparison:</strong> <code>/api/program-details</code> — already supports filtering and
+        returns university info embedded in each program.
+    </blockquote>
+
+    <hr>
+
+    <h2>4. Tuition Storage: Per University or Per Program?</h2>
+
+    <h3>Answer: Tuition is stored PER PROGRAM, not per university.</h3>
+
+    <ul>
+        <li><strong>Location:</strong> <code>program_details.attributes["tuition"]</code></li>
+        <li>This means the same university may have different tuition for different programs</li>
+        <li>For comparison, you'd need to either:
+            <ol>
+                <li>Compare specific programs (e.g., "MBA at University A vs MBA at University B")</li>
+                <li>Calculate an average/range per university by aggregating programs</li>
+            </ol>
+        </li>
+    </ul>
+
+    <hr>
+
+    <h2>5. Performance Concerns for Fetching Multiple Universities</h2>
+
+    <table>
+        <tr>
+            <th>Concern</th>
+            <th>Current State</th>
+            <th>Recommendation</th>
+        </tr>
+        <tr>
+            <td><strong>Query Size</strong></td>
+            <td><code>/api/program-details</code> already supports pagination (default 50, max 200 per page)</td>
+            <td><span class="status-ready">✅ Safe</span></td>
+        </tr>
+        <tr>
+            <td><strong>JSONB Filtering</strong></td>
+            <td>Uses PostgreSQL JSONB operators which are indexed</td>
+            <td><span class="status-ready">✅ Optimized</span></td>
+        </tr>
+        <tr>
+            <td><strong>Multiple Universities</strong></td>
+            <td>Current API filters by <code>university_name</code> (one at a time)</td>
+            <td><span class="status-needs">⚠️ Need new endpoint for multi-university compare</span></td>
+        </tr>
+        <tr>
+            <td><strong>No Batch University Fetch</strong></td>
+            <td>No API to fetch 2-4 universities simultaneously</td>
+            <td><span class="status-needs">🔧 Would benefit from new compare endpoint</span></td>
+        </tr>
+    </table>
+
+    <h3>Recommendation for Compare Feature</h3>
+
+    <p>Create a new endpoint like:</p>
+    <pre>GET /api/compare-universities?ids=123,456,789</pre>
+
+    <p>This would:</p>
+    <ol>
+        <li>Accept multiple <code>school_id</code> values</li>
+        <li>Fetch programs for each in a single query</li>
+        <li>Aggregate tuition ranges, program counts, etc.</li>
+        <li>Return comparison-ready data</li>
+    </ol>
+
+    <hr>
+
+    <h2>Summary for Compare Universities Design</h2>
+
+    <table>
+        <tr>
+            <th>Aspect</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>Data exists for tuition, duration, country, level</td>
+            <td><span class="status-ready">✅ Ready</span></td>
+        </tr>
+        <tr>
+            <td>Data exists for ranking, acceptance rate</td>
+            <td><span class="status-missing">❌ Missing</span></td>
+        </tr>
+        <tr>
+            <td>Scholarships linkable via <code>schoolGroupId</code></td>
+            <td><span class="status-ready">✅ Ready</span></td>
+        </tr>
+        <tr>
+            <td>Single-university APIs exist</td>
+            <td><span class="status-ready">✅ Ready</span></td>
+        </tr>
+        <tr>
+            <td>Multi-university compare API</td>
+            <td><span class="status-needs">🔧 Needs creation</span></td>
+        </tr>
+        <tr>
+            <td>Frontend UI</td>
+            <td><span class="status-needs">🔧 Needs creation</span></td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2>Next Steps</h2>
+
+    <ol>
+        <li><strong>Design compare API specification</strong> — Define request/response format</li>
+        <li><strong>Implement backend endpoint</strong> — <code>/api/compare-universities</code></li>
+        <li><strong>Build frontend UI</strong> — Side-by-side comparison component</li>
+        <li><strong>Optional:</strong> Add ranking data from external source (QS, Times Higher Education, etc.)</li>
+    </ol>
+
+</body>
+
+</html>

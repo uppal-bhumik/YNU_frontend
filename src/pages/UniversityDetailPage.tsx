@@ -2,13 +2,13 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 
 // Color palette
-const PRIMARY = "#5727A3";
-const SECONDARY = "#9F7AEA";
-const BG = "linear-gradient(90deg,#D6C5F0 0%,#fff 100%)";
+const PRIMARY = "#1A3A4A";
+const SECONDARY = "#4A8A9A";
+const BG = "linear-gradient(90deg,#D0E8EC 0%,#fff 100%)";
 const CARD_BG = "#fff";
-const TEXT = "#1B0044";
-const SUBTEXT = "#9F7AEA";
-const BORDER = "#D6C5F0";
+const TEXT = "#0F2A36";
+const SUBTEXT = "#4A8A9A";
+const BORDER = "#D0E8EC";
 
 const BASE_URL = "https://studconnect-backend.onrender.com";
 
@@ -39,25 +39,25 @@ const globalStyles = `
 }
 .card-3d {
   transition: transform 0.3s cubic-bezier(.23,1.02,.43,1.01), box-shadow 0.3s;
-  box-shadow: 0 8px 32px 0 #2563eb22, 0 1.5px 8px 0 #2563eb22;
+  box-shadow: 0 8px 32px 0 #2D6A7A22, 0 1.5px 8px 0 #2D6A7A22;
   will-change: transform;
 }
 .card-3d:hover {
   transform: translateY(-8px) scale(1.03) rotateX(3deg) rotateY(-2deg);
-  box-shadow: 0 16px 48px 0 #2563eb33, 0 3px 16px 0 #2563eb33;
+  box-shadow: 0 16px 48px 0 #2D6A7A33, 0 3px 16px 0 #2D6A7A33;
 }
 .badge-3d {
   position: absolute;
   top: -38px;
   right: 32px;
   z-index: 10;
-  background: linear-gradient(120deg, #2563eb 60%, #a5b4fc 100%);
+  background: linear-gradient(120deg, #2D6A7A 60%, #D0E8EC 100%);
   color: #fff;
   font-weight: 900;
   font-size: 1.15rem;
   padding: 1rem 2.2rem;
   border-radius: 2rem 2rem 2rem 0.5rem;
-  box-shadow: 0 8px 32px 0 #2563eb44, 0 1.5px 8px 0 #a5b4fc55;
+  box-shadow: 0 8px 32px 0 #2D6A7A44, 0 1.5px 8px 0 #D0E8EC55;
   letter-spacing: 1.5px;
   transform: rotate(-6deg) scale(1.05);
   text-shadow: 0 2px 8px #1b2e4b44;
@@ -81,7 +81,7 @@ const FactCard: React.FC<{ label: string; value: React.ReactNode }> = ({ label, 
     style={{
       background: '#f8fafc',
       borderRadius: 14,
-      boxShadow: '0 2px 8px #2563eb11',
+      boxShadow: '0 2px 8px #2D6A7A11',
       border: '1.5px solid #e0e7ff',
       padding: '1.1rem 1.2rem',
       minHeight: 70,
@@ -115,7 +115,7 @@ const FactCard: React.FC<{ label: string; value: React.ReactNode }> = ({ label, 
 
 const ProgramLevelBarChart3D: React.FC<{ data: Record<string, number> }> = ({ data }) => {
   const max = Math.max(...Object.values(data));
-  const colors = ['#2563eb', '#60a5fa', '#a5b4fc', '#1e293b', '#fbbf24', '#10b981'];
+  const colors = ['#2D6A7A', '#5A9AAA', '#D0E8EC', '#1e293b', '#fbbf24', '#10b981'];
   // Set a max bar height and calculate available height for bars
   const maxBarHeight = 120; // px
   const minBarHeight = 24; // px
@@ -145,7 +145,7 @@ const ProgramLevelBarChart3D: React.FC<{ data: Record<string, number> }> = ({ da
           }} />
           <span style={{
             fontSize: '.93rem',
-            color: '#2563eb',
+            color: '#2D6A7A',
             fontWeight: 700,
             marginBottom: '.2rem'
           }}>{count}</span>
@@ -169,12 +169,9 @@ const LogoDisplay: React.FC<{ logoUrl?: string }> = ({ logoUrl }) => (
       src={logoUrl}
       alt="Logo"
       style={{
-        width: 80,
-        height: 80,
+        width: '100%',
+        height: '100%',
         borderRadius: '50%',
-        boxShadow: '0 2px 12px #2563eb33',
-        border: '2.5px solid #e0e7ff',
-        background: '#fff',
         objectFit: 'contain',
         margin: 0,
         display: 'block'
@@ -192,10 +189,10 @@ function isLongValue(value: React.ReactNode): boolean {
     // Try to extract text from element
     const text = (value.props && value.props.children)
       ? (typeof value.props.children === "string"
-          ? value.props.children
-          : Array.isArray(value.props.children)
-            ? value.props.children.join(" ")
-            : "")
+        ? value.props.children
+        : Array.isArray(value.props.children)
+          ? value.props.children.join(" ")
+          : "")
       : "";
     return text.length > 60 || text.split(/\s+/).length > 8;
   }
@@ -384,12 +381,14 @@ export const UniversityDetailPage: React.FC = () => {
     attrs.meta_description && { label: "Description", value: attrs.meta_description },
     attrs.edit_path && { label: "Edit Path", value: attrs.edit_path },
     attrs.published !== undefined && { label: "Published", value: attrs.published ? "Yes" : "No" },
-    attrs.avg_program_length && { label: "Average Program Length", value: (
-      <>
-        {attrs.avg_program_length.undergraduate && <span>Undergraduate: {attrs.avg_program_length.undergraduate} months<br/></span>}
-        {attrs.avg_program_length.graduate && <span>Graduate: {attrs.avg_program_length.graduate} months</span>}
-      </>
-    )},
+    attrs.avg_program_length && {
+      label: "Average Program Length", value: (
+        <>
+          {attrs.avg_program_length.undergraduate && <span>Undergraduate: {attrs.avg_program_length.undergraduate} months<br /></span>}
+          {attrs.avg_program_length.graduate && <span>Graduate: {attrs.avg_program_length.graduate} months</span>}
+        </>
+      )
+    },
     applicationFeeRange.minimum && { label: "Application Fee Min", value: applicationFeeRange.minimum },
     applicationFeeRange.maximum && { label: "Application Fee Max", value: applicationFeeRange.maximum },
     attrs.submission_path_note && { label: "Submission Note", value: attrs.submission_path_note },
@@ -398,8 +397,8 @@ export const UniversityDetailPage: React.FC = () => {
   ].filter(Boolean) as { label: string, value: React.ReactNode }[];
 
   // Helper: Section wrapper with animation and glass effect
-  const Section: React.FC<{ children: React.ReactNode; style?: React.CSSProperties }> = ({ children, style }) => (
-    <section className="section-animate glass card-3d"
+  const Section: React.FC<{ children: React.ReactNode; style?: React.CSSProperties; className?: string }> = ({ children, style, className }) => (
+    <section className={`section-animate glass card-3d ${className || ''}`}
       style={{
         padding: '2.2rem 2rem 2.2rem 2rem',
         marginBottom: '2.5rem',
@@ -443,532 +442,512 @@ export const UniversityDetailPage: React.FC = () => {
 
   return (
     <main
-      className="gradient-animated univ-main"
+      className="univ-main"
       style={{
-        maxWidth: 1200,
-        margin: "2.5rem auto",
-        borderRadius: 32,
-        boxShadow: "0 16px 64px 0 #9F7AEA22, 0 3px 16px 0 #9F7AEA33",
-        padding: "2.5rem 2.5rem 2rem 2.5rem",
+        width: '100%',
+        maxWidth: '100vw',
+        margin: 0,
+        padding: 0,
         fontFamily: "'Poppins', 'Segoe UI', Arial, sans-serif",
         color: TEXT,
         position: 'relative',
-        overflow: 'hidden',
-        border: `2.5px solid ${BORDER}`,
-        minHeight: 800,
-        background: BG,
-        paddingTop: '90px', // Add space for fixed header
+        overflowX: 'hidden',
+        minHeight: '100vh',
+        background: '#fff',
       }}
     >
+      {/* Dark Hero Section */}
+      <section style={{
+        background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)',
+        padding: '140px 1.5rem 100px 1.5rem',
+        textAlign: 'center',
+        position: 'relative',
+        marginBottom: '0'
+      }}>
+        <div style={{
+          position: 'absolute',
+          top: 0, left: 0, width: '100%', height: '100%',
+          background: 'radial-gradient(circle at 50% 100%, rgba(45, 106, 122, 0.2), transparent 50%)',
+          pointerEvents: 'none'
+        }} />
 
-      {/* Header Section with logo only */}
-      <Section
-        style={{
-          alignItems: 'center',
-          gap: '1.2rem',
-          marginBottom: '2.5rem',
-          background: 'linear-gradient(90deg,#D6C5F0 0%,#fff 100%)',
-          boxShadow: '0 8px 32px 0 #9F7AEA22, 0 1.5px 8px 0 #9F7AEA33',
-          border: `2px solid ${BORDER}`,
-          position: 'relative',
-          zIndex: 1,
-        }}
-        className="univ-section univ-header-flex"
-      >
-        <div
-          style={{
-            flex: '0 0 auto',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            filter: 'drop-shadow(0 4px 24px #9F7AEA33)',
-            width: 90,
-            minWidth: 70,
-            margin: '0 auto'
-          }}
-          className="univ-logo"
-        >
-          <LogoDisplay logoUrl={attrs.logo?.url_thumbnail || attrs.logoThumbnailUrl} />
-        </div>
-        <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <h1
-            className="univ-title"
-            style={{
-              fontSize: "2rem",
-              fontWeight: 900,
-              margin: 0,
-              color: PRIMARY,
-              letterSpacing: '-1.5px',
-              lineHeight: 1.1,
-              textShadow: '0 2px 12px #9F7AEA33',
-              wordBreak: 'break-word',
-              marginTop: '.2rem',
-              marginBottom: '.2rem',
-              textAlign: 'center',
-              background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
-            }}
-          >
+        <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
+          <div style={{
+            width: 110, height: 110,
+            background: '#fff', borderRadius: '50%',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+            border: '4px solid #1A3A4A',
+            marginBottom: '0.5rem'
+          }}>
+            <LogoDisplay logoUrl={attrs.logo?.url_thumbnail || attrs.logoThumbnailUrl} />
+          </div>
+
+          <h1 style={{
+            fontSize: '3rem', fontWeight: 900, color: '#fff', margin: 0,
+            letterSpacing: '-1.5px', lineHeight: 1.1, maxWidth: 900
+          }}>
             {attrs.name || "University Details"}
           </h1>
-          <div style={{
-            fontSize: "1.1rem",
-            color: SECONDARY,
-            fontWeight: 700,
-            marginTop: ".1rem",
-            letterSpacing: '.5px',
-            textShadow: '0 1px 4px #9F7AEA55',
-            wordBreak: 'break-word',
-            textAlign: 'center',
-            background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
-          }}>
-            {[attrs.city, attrs.state, attrs.country].filter(Boolean).join(', ')}
-          </div>
-          <div style={{ marginTop: '.5rem', color: SECONDARY, fontWeight: 400, wordBreak: 'break-word', textAlign: 'left' }}>
+
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+            <div style={{ color: '#CBD5E1', fontSize: '1.3rem', fontWeight: 600 }}>
+              {[attrs.city, attrs.state, attrs.country].filter(Boolean).join(', ')}
+            </div>
             {attrs.website && (
               <a href={attrs.website} target="_blank" rel="noopener noreferrer" style={{
-                color: SECONDARY,
-                fontWeight: 700,
-                textDecoration: "underline",
-                textUnderlineOffset: "2px",
-                transition: 'color 0.2s',
-                filter: 'drop-shadow(0 1px 4px #9F7AEA55)',
-                wordBreak: 'break-all'
+                color: '#4A8A9A', fontWeight: 600, textDecoration: "none", fontSize: '1.1rem'
               }}>{attrs.website}</a>
             )}
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* Gallery Section */}
-      {photos.length > 0 && (
-        <Section
-          style={{
-            background: 'linear-gradient(90deg,#fff 0%,#D6C5F0 100%)',
-            marginBottom: '2.5rem',
-            border: `2px solid ${BORDER}`,
-          }}
-          className="univ-section"
-        >
+      {/* Content Container */}
+      <div style={{
+        maxWidth: 1100,
+        margin: '0 auto',
+        marginTop: '-3rem',
+        borderRadius: '2rem',
+        boxShadow: '0 20px 60px -10px rgba(15, 23, 42, 0.15)',
+        position: 'relative',
+        padding: '3rem',
+        zIndex: 2,
+        background: '#fff',
+        border: '1px solid var(--border)',
+        marginBottom: '3rem'
+      }}>
+
+        {/* Gallery Section */}
+        {photos.length > 0 && (
+          <Section
+            style={{
+              background: 'linear-gradient(90deg,#fff 0%,#D0E8EC 100%)',
+              marginBottom: '2.5rem',
+              border: `2px solid ${BORDER}`,
+            }}
+            className="univ-section"
+          >
+            <div style={{
+              fontWeight: 700,
+              color: PRIMARY,
+              marginBottom: ".7rem",
+              fontSize: '1.18rem',
+              letterSpacing: '.5px',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}>Campus Gallery</div>
+            <div
+              className="univ-gallery-flex"
+              style={{
+                display: "flex",
+                gap: "1.5rem",
+                flexWrap: "wrap",
+                alignItems: "center",
+                justifyContent: "flex-start"
+              }}
+            >
+              {photos.map((photo: any) => (
+                <div
+                  key={photo.id}
+                  className="card-3d univ-gallery-img"
+                  style={{
+                    width: 180,
+                    minWidth: 120,
+                    maxWidth: 260,
+                    height: 120,
+                    borderRadius: 16,
+                    overflow: 'hidden',
+                    border: `2px solid ${BORDER}`,
+                    background: BG,
+                    boxShadow: '0 2px 16px #2D6A7A22',
+                    transition: 'transform 0.3s, box-shadow 0.3s',
+                    willChange: 'transform',
+                    cursor: 'pointer',
+                    position: 'relative',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <img
+                    src={photo.attributes.url}
+                    alt="School"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: "cover",
+                      borderRadius: 16,
+                      transition: 'transform 0.3s',
+                    }}
+                  />
+                  <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: '30%',
+                    background: 'linear-gradient(0deg, #2D6A7A33 80%, transparent 100%)',
+                    borderRadius: '0 0 16px 16px',
+                  }} />
+                </div>
+              ))}
+            </div>
+          </Section>
+        )}
+
+        {/* About Section */}
+        {aboutHtml && (
+          <Section>
+            <div style={{
+              fontWeight: 700,
+              color: PRIMARY,
+              marginBottom: ".7rem",
+              fontSize: '1.13rem', // consistent heading size
+              letterSpacing: '.5px',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}>About</div>
+            <div
+              style={{
+                color: TEXT,
+                fontSize: "1.05rem", // consistent body text size
+                lineHeight: 1.7,
+                textShadow: '0 1px 4px #4A8A9A22'
+              }}
+              dangerouslySetInnerHTML={{ __html: aboutHtml }}
+            />
+          </Section>
+        )}
+
+        {/* Key Facts Section with dynamic row layout */}
+        <Section className="univ-section">
           <div style={{
             fontWeight: 700,
-            color: PRIMARY,
+            color: 'PRIMARY',
             marginBottom: ".7rem",
             fontSize: '1.18rem',
             letterSpacing: '.5px',
-            background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+            background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent'
-          }}>Campus Gallery</div>
-          <div
-            className="univ-gallery-flex"
-            style={{
-              display: "flex",
-              gap: "1.5rem",
-              flexWrap: "wrap",
-              alignItems: "center",
-              justifyContent: "flex-start"
-            }}
-          >
-            {photos.map((photo: any) => (
+          }}>Key Facts</div>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.1rem'
+          }}>
+            {keyFactRows.map((row, idx) => (
               <div
-                key={photo.id}
-                className="card-3d univ-gallery-img"
+                key={idx}
+                className="univ-keyfacts-row"
                 style={{
-                  width: 180,
-                  minWidth: 120,
-                  maxWidth: 260,
-                  height: 120,
-                  borderRadius: 16,
-                  overflow: 'hidden',
-                  border: `2px solid ${BORDER}`,
-                  background: BG,
-                  boxShadow: '0 2px 16px #2563eb22',
-                  transition: 'transform 0.3s, box-shadow 0.3s',
-                  willChange: 'transform',
-                  cursor: 'pointer',
-                  position: 'relative',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
+                  display: 'grid',
+                  gridTemplateColumns: row.items.length === 2 ? '1fr 1fr' : '1fr',
+                  gap: '1.1rem 1.5rem',
+                  alignItems: 'stretch',
                 }}
               >
-                <img
-                  src={photo.attributes.url}
-                  alt="School"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: "cover",
-                    borderRadius: 16,
-                    transition: 'transform 0.3s',
-                  }}
-                />
-                <div style={{
-                  position: 'absolute',
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  height: '30%',
-                  background: 'linear-gradient(0deg, #2563eb33 80%, transparent 100%)',
-                  borderRadius: '0 0 16px 16px',
-                }} />
+                {row.items.map(fact => (
+                  <FactCard key={fact.label} label={fact.label} value={fact.value} />
+                ))}
               </div>
             ))}
           </div>
         </Section>
-      )}
 
-      {/* About Section */}
-      {aboutHtml && (
-        <Section>
-          <div style={{
-            fontWeight: 700,
-            color: PRIMARY,
-            marginBottom: ".7rem",
-            fontSize: '1.13rem', // consistent heading size
-            letterSpacing: '.5px',
-            background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
-          }}>About</div>
-          <div
-            style={{
-              color: TEXT,
-              fontSize: "1.05rem", // consistent body text size
-              lineHeight: 1.7,
-              textShadow: '0 1px 4px #9F7AEA22'
-            }}
-            dangerouslySetInnerHTML={{ __html: aboutHtml }}
-          />
-        </Section>
-      )}
 
-      {/* Key Facts Section with dynamic row layout */}
-      <Section className="univ-section">
-        <div style={{
-          fontWeight: 700,
-          color: 'PRIMARY',
-          marginBottom: ".7rem",
-          fontSize: '1.18rem',
-          letterSpacing: '.5px',
-          background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent'
-        }}>Key Facts</div>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1.1rem'
-        }}>
-          {keyFactRows.map((row, idx) => (
-            <div
-              key={idx}
-              className="univ-keyfacts-row"
-              style={{
-                display: 'grid',
-                gridTemplateColumns: row.items.length === 2 ? '1fr 1fr' : '1fr',
-                gap: '1.1rem 1.5rem',
-                alignItems: 'stretch',
-              }}
-            >
-              {row.items.map(fact => (
-                <FactCard key={fact.label} label={fact.label} value={fact.value} />
+        {/* Program Categories Section */}
+        {programCategories.length > 0 && (
+          <Section>
+            <div style={{
+              fontWeight: 700,
+              color: PRIMARY,
+              marginBottom: ".7rem",
+              fontSize: '1.18rem',
+              letterSpacing: '.5px',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}>Program Categories</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: ".7rem" }}>
+              {programCategories.map((cat: any) => (
+                <span key={cat.name} className="card-3d" style={{
+                  background: 'linear-gradient(90deg, #E8F4F6 0%, #FFFFFF 100%)',
+                  color: SECONDARY,
+                  border: `1.5px solid ${BORDER}`,
+                  borderRadius: 12,
+                  padding: ".5rem 1.2rem",
+                  fontSize: "1.01rem",
+                  fontWeight: 700,
+                  boxShadow: '0 2px 8px #2D6A7A11',
+                  transition: 'transform 0.3s, box-shadow 0.3s',
+                  willChange: 'transform',
+                  cursor: 'pointer'
+                }}>
+                  {cat.name} {cat.count ? `(${cat.count})` : ""}
+                </span>
               ))}
             </div>
-          ))}
+          </Section>
+        )}
+
+
+        {/* Program Level Counts */}
+        {programLevelCounts && Object.keys(programLevelCounts).length > 0 && (
+          <Section>
+            <div style={{
+              fontWeight: 700,
+              color: PRIMARY,
+              marginBottom: ".7rem",
+              fontSize: '1.18rem',
+              letterSpacing: '.5px',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}>Program Level Counts</div>
+            <ProgramLevelBarChart3D data={programLevelCounts} />
+          </Section>
+        )}
+
+        {/* Categories of All Programs */}
+        {categoriesOfAllPrograms && categoriesOfAllPrograms.length > 0 && (
+          <Section>
+            <div style={{
+              fontWeight: 700,
+              color: PRIMARY,
+              marginBottom: ".7rem",
+              fontSize: '1.18rem',
+              letterSpacing: '.5px',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}>All Program Categories</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: ".7rem" }}>
+              {categoriesOfAllPrograms.map((cat: any) => (
+                <span key={cat[0] + cat[1]} className="card-3d" style={{
+                  background: 'linear-gradient(90deg, #E8F4F6 0%, #FFFFFF 100%)',
+                  color: SECONDARY,
+                  border: `1.5px solid ${BORDER}`,
+                  borderRadius: 12,
+                  padding: ".5rem 1.2rem",
+                  fontSize: "1.01rem",
+                  fontWeight: 700,
+                  boxShadow: '0 2px 8px #2D6A7A11',
+                  transition: 'transform 0.3s, box-shadow 0.3s',
+                  willChange: 'transform',
+                  cursor: 'pointer'
+                }}>
+                  {cat[1]}
+                </span>
+              ))}
+            </div>
+          </Section>
+        )}
+
+        {/* Intakes of All Programs */}
+        {intakesOfAllPrograms && intakesOfAllPrograms.length > 0 && (
+          <Section>
+            <div style={{
+              fontWeight: 700,
+              color: PRIMARY,
+              marginBottom: ".7rem",
+              fontSize: '1.18rem',
+              letterSpacing: '.5px',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}>Upcoming Intakes</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: ".7rem" }}>
+              {intakesOfAllPrograms.map((date: string) => (
+                <span key={date} className="card-3d" style={{
+                  background: 'linear-gradient(90deg, #E8F4F6 0%, #FFFFFF 100%)',
+                  color: SECONDARY,
+                  border: `1.5px solid ${BORDER}`,
+                  borderRadius: 12,
+                  padding: ".5rem 1.2rem",
+                  fontSize: "1.01rem",
+                  fontWeight: 700,
+                  boxShadow: '0 2px 8px #2D6A7A11',
+                  transition: 'transform 0.3s, box-shadow 0.3s',
+                  willChange: 'transform',
+                  cursor: 'pointer'
+                }}>
+                  {new Date(date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}
+                </span>
+              ))}
+            </div>
+          </Section>
+        )}
+
+        {/* Accommodation Section */}
+        {accommodation && (
+          <Section>
+            <div style={{
+              fontWeight: 700,
+              color: PRIMARY,
+              marginBottom: ".7rem",
+              fontSize: '1.18rem',
+              letterSpacing: '.5px',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}>Accommodation</div>
+            <div
+              style={{
+                color: TEXT,
+                fontSize: "1.13rem",
+                lineHeight: 1.7,
+                textShadow: '0 1px 4px #4A8A9A22'
+              }}
+              dangerouslySetInnerHTML={{ __html: accommodation.attributes.description }}
+            />
+            <div style={{ marginTop: '1.2rem', display: 'flex', gap: '1.2rem', flexWrap: 'wrap' }}>
+              {accommodation.attributes.homestay_url && (
+                <a href={accommodation.attributes.homestay_url} target="_blank" rel="noopener noreferrer"
+                  className="card-3d"
+                  style={{
+                    background: 'linear-gradient(90deg,#2D6A7A 60%,#D0E8EC 100%)',
+                    color: '#fff',
+                    borderRadius: 12,
+                    padding: '.7rem 1.5rem',
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                    boxShadow: '0 2px 8px #2D6A7A22',
+                    border: 'none',
+                    fontSize: '1.05rem',
+                    letterSpacing: '.5px',
+                    transition: 'transform 0.3s, box-shadow 0.3s',
+                    willChange: 'transform',
+                    cursor: 'pointer'
+                  }}>Homestay Info</a>
+              )}
+              {accommodation.attributes.off_campus_url && (
+                <a href={accommodation.attributes.off_campus_url} target="_blank" rel="noopener noreferrer"
+                  className="card-3d"
+                  style={{
+                    background: 'linear-gradient(90deg,#5A9AAA 60%,#D0E8EC 100%)',
+                    color: '#fff',
+                    borderRadius: 12,
+                    padding: '.7rem 1.5rem',
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                    boxShadow: '0 2px 8px #2D6A7A22',
+                    border: 'none',
+                    fontSize: '1.05rem',
+                    letterSpacing: '.5px',
+                    transition: 'transform 0.3s, box-shadow 0.3s',
+                    willChange: 'transform',
+                    cursor: 'pointer'
+                  }}>Off-Campus Housing</a>
+              )}
+            </div>
+          </Section>
+        )}
+        {/* Google Map Section */}
+        {attrs.latitude && attrs.longitude && (
+          <Section>
+            <div style={{
+              fontWeight: 700,
+              color: PRIMARY,
+              marginBottom: ".7rem",
+              fontSize: '1.18rem',
+              letterSpacing: '.5px',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}>Location</div>
+            <div style={{
+              width: '100%',
+              height: 0,
+              paddingBottom: '40%',
+              position: 'relative',
+              borderRadius: 18,
+              overflow: 'hidden',
+              boxShadow: '0 4px 24px #2D6A7A33',
+              border: '2px solid #e0e7ff',
+              marginBottom: '1.2rem'
+            }}>
+              <iframe
+                title="Google Map"
+                src={`https://www.google.com/maps?q=${attrs.latitude},${attrs.longitude}&z=15&output=embed`}
+                style={{
+                  position: 'absolute',
+                  top: 0, left: 0, width: '100%', height: '100%',
+                  border: 0, borderRadius: 18
+                }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+            <div style={{ color: SUBTEXT, fontSize: ".98rem" }}>
+              {attrs.address && <div>{attrs.address}</div>}
+              <div>Latitude: {attrs.latitude}, Longitude: {attrs.longitude}</div>
+            </div>
+          </Section>
+        )}
+
+        {/* Video Section */}
+        {attrs.video_link && getYouTubeEmbedUrl(attrs.video_link) && (
+          <Section>
+            <div style={{
+              fontWeight: 700,
+              color: PRIMARY,
+              marginBottom: ".7rem",
+              fontSize: '1.18rem',
+              letterSpacing: '.5px',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}>Campus Video</div>
+            <div style={{
+              position: 'relative',
+              paddingBottom: '56.25%',
+              height: 0,
+              marginBottom: '1.2rem',
+              borderRadius: 18,
+              overflow: 'hidden',
+              boxShadow: '0 4px 24px #2D6A7A33',
+              border: '2px solid #e0e7ff'
+            }}>
+              <iframe
+                src={getYouTubeEmbedUrl(attrs.video_link) as string}
+                title="Campus Video"
+                style={{
+                  position: 'absolute',
+                  top: 0, left: 0, width: '100%', height: '100%',
+                  border: 0, borderRadius: 18
+                }}
+                allowFullScreen
+              />
+            </div>
+          </Section>
+        )}
+
+        {/* Disclaimer */}
+        <div style={{
+          margin: '2.5rem auto 1.5rem auto',
+          maxWidth: 700,
+          background: '#f8fafc',
+          borderLeft: '4px solid #4A8A9A',
+          borderRadius: 10,
+          padding: '1rem 1.3rem',
+          fontStyle: 'italic',
+          color: '#1A3A4A',
+          fontSize: '1.05rem',
+          textAlign: 'center'
+        }}>
+          <b>Disclaimer:</b> These details might not be 100% correct as per current analytics. Please verify from the university's official website for the most updated and accurate information.
         </div>
-      </Section>
-
-      
-      {/* Program Categories Section */}
-      {programCategories.length > 0 && (
-        <Section>
-          <div style={{
-            fontWeight: 700,
-            color: PRIMARY,
-            marginBottom: ".7rem",
-            fontSize: '1.18rem',
-            letterSpacing: '.5px',
-            background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
-          }}>Program Categories</div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: ".7rem" }}>
-            {programCategories.map((cat: any) => (
-              <span key={cat.name} className="card-3d" style={{
-                background: 'linear-gradient(90deg, rgb(236 224 255) 0%, rgb(248, 250, 252) 100%)',
-                color: SECONDARY,
-                border: `1.5px solid ${BORDER}`,
-                borderRadius: 12,
-                padding: ".5rem 1.2rem",
-                fontSize: "1.01rem",
-                fontWeight: 700,
-                boxShadow: '0 2px 8px #2563eb11',
-                transition: 'transform 0.3s, box-shadow 0.3s',
-                willChange: 'transform',
-                cursor: 'pointer'
-              }}>
-                {cat.name} {cat.count ? `(${cat.count})` : ""}
-              </span>
-            ))}
-          </div>
-        </Section>
-      )}
-
-
-      {/* Program Level Counts */}
-      {programLevelCounts && Object.keys(programLevelCounts).length > 0 && (
-        <Section>
-          <div style={{
-            fontWeight: 700,
-            color: PRIMARY,
-            marginBottom: ".7rem",
-            fontSize: '1.18rem',
-            letterSpacing: '.5px',
-            background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
-          }}>Program Level Counts</div>
-          <ProgramLevelBarChart3D data={programLevelCounts} />
-        </Section>
-      )}
-
-      {/* Categories of All Programs */}
-      {categoriesOfAllPrograms && categoriesOfAllPrograms.length > 0 && (
-        <Section>
-          <div style={{
-            fontWeight: 700,
-            color: PRIMARY,
-            marginBottom: ".7rem",
-            fontSize: '1.18rem',
-            letterSpacing: '.5px',
-            background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
-          }}>All Program Categories</div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: ".7rem" }}>
-            {categoriesOfAllPrograms.map((cat: any) => (
-              <span key={cat[0] + cat[1]} className="card-3d" style={{
-                background: 'linear-gradient(90deg, rgb(236 224 255) 0%, rgb(248, 250, 252) 100%)',
-                color: SECONDARY,
-                border: `1.5px solid ${BORDER}`,
-                borderRadius: 12,
-                padding: ".5rem 1.2rem",
-                fontSize: "1.01rem",
-                fontWeight: 700,
-                boxShadow: '0 2px 8px #2563eb11',
-                transition: 'transform 0.3s, box-shadow 0.3s',
-                willChange: 'transform',
-                cursor: 'pointer'
-              }}>
-                {cat[1]}
-              </span>
-            ))}
-          </div>
-        </Section>
-      )}
-
-      {/* Intakes of All Programs */}
-      {intakesOfAllPrograms && intakesOfAllPrograms.length > 0 && (
-        <Section>
-          <div style={{
-            fontWeight: 700,
-            color: PRIMARY,
-            marginBottom: ".7rem",
-            fontSize: '1.18rem',
-            letterSpacing: '.5px',
-            background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
-          }}>Upcoming Intakes</div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: ".7rem" }}>
-            {intakesOfAllPrograms.map((date: string) => (
-              <span key={date} className="card-3d" style={{
-                background: 'linear-gradient(90deg, rgb(236 224 255) 0%, rgb(248, 250, 252) 100%)',
-                color: SECONDARY,
-                border: `1.5px solid ${BORDER}`,
-                borderRadius: 12,
-                padding: ".5rem 1.2rem",
-                fontSize: "1.01rem",
-                fontWeight: 700,
-                boxShadow: '0 2px 8px #2563eb11',
-                transition: 'transform 0.3s, box-shadow 0.3s',
-                willChange: 'transform',
-                cursor: 'pointer'
-              }}>
-                {new Date(date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}
-              </span>
-            ))}
-          </div>
-        </Section>
-      )}
-
-      {/* Accommodation Section */}
-      {accommodation && (
-        <Section>
-          <div style={{
-            fontWeight: 700,
-            color: PRIMARY,
-            marginBottom: ".7rem",
-            fontSize: '1.18rem',
-            letterSpacing: '.5px',
-            background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
-          }}>Accommodation</div>
-          <div
-            style={{
-              color: TEXT,
-              fontSize: "1.13rem",
-              lineHeight: 1.7,
-              textShadow: '0 1px 4px #9F7AEA22'
-            }}
-            dangerouslySetInnerHTML={{ __html: accommodation.attributes.description }}
-          />
-          <div style={{ marginTop: '1.2rem', display: 'flex', gap: '1.2rem', flexWrap: 'wrap' }}>
-            {accommodation.attributes.homestay_url && (
-              <a href={accommodation.attributes.homestay_url} target="_blank" rel="noopener noreferrer"
-                className="card-3d"
-                style={{
-                  background: 'linear-gradient(90deg,#2563eb 60%,#a5b4fc 100%)',
-                  color: '#fff',
-                  borderRadius: 12,
-                  padding: '.7rem 1.5rem',
-                  fontWeight: 700,
-                  textDecoration: 'none',
-                  boxShadow: '0 2px 8px #2563eb22',
-                  border: 'none',
-                  fontSize: '1.05rem',
-                  letterSpacing: '.5px',
-                  transition: 'transform 0.3s, box-shadow 0.3s',
-                  willChange: 'transform',
-                  cursor: 'pointer'
-                }}>Homestay Info</a>
-            )}
-            {accommodation.attributes.off_campus_url && (
-              <a href={accommodation.attributes.off_campus_url} target="_blank" rel="noopener noreferrer"
-                className="card-3d"
-                style={{
-                  background: 'linear-gradient(90deg,#60a5fa 60%,#a5b4fc 100%)',
-                  color: '#fff',
-                  borderRadius: 12,
-                  padding: '.7rem 1.5rem',
-                  fontWeight: 700,
-                  textDecoration: 'none',
-                  boxShadow: '0 2px 8px #2563eb22',
-                  border: 'none',
-                  fontSize: '1.05rem',
-                  letterSpacing: '.5px',
-                  transition: 'transform 0.3s, box-shadow 0.3s',
-                  willChange: 'transform',
-                  cursor: 'pointer'
-                }}>Off-Campus Housing</a>
-            )}
-          </div>
-        </Section>
-      )}
-      {/* Google Map Section */}
-      {attrs.latitude && attrs.longitude && (
-        <Section>
-          <div style={{
-            fontWeight: 700,
-            color: PRIMARY,
-            marginBottom: ".7rem",
-            fontSize: '1.18rem',
-            letterSpacing: '.5px',
-            background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
-          }}>Location</div>
-          <div style={{
-            width: '100%',
-            height: 0,
-            paddingBottom: '40%',
-            position: 'relative',
-            borderRadius: 18,
-            overflow: 'hidden',
-            boxShadow: '0 4px 24px #2563eb33',
-            border: '2px solid #e0e7ff',
-            marginBottom: '1.2rem'
-          }}>
-            <iframe
-              title="Google Map"
-              src={`https://www.google.com/maps?q=${attrs.latitude},${attrs.longitude}&z=15&output=embed`}
-              style={{
-                position: 'absolute',
-                top: 0, left: 0, width: '100%', height: '100%',
-                border: 0, borderRadius: 18
-              }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
-          <div style={{ color: SUBTEXT, fontSize: ".98rem" }}>
-            {attrs.address && <div>{attrs.address}</div>}
-            <div>Latitude: {attrs.latitude}, Longitude: {attrs.longitude}</div>
-          </div>
-        </Section>
-      )}
-
-      {/* Video Section */}
-      {attrs.video_link && getYouTubeEmbedUrl(attrs.video_link) && (
-        <Section>
-          <div style={{
-            fontWeight: 700,
-            color: PRIMARY,
-            marginBottom: ".7rem",
-            fontSize: '1.18rem',
-            letterSpacing: '.5px',
-            background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
-          }}>Campus Video</div>
-          <div style={{
-            position: 'relative',
-            paddingBottom: '56.25%',
-            height: 0,
-            marginBottom: '1.2rem',
-            borderRadius: 18,
-            overflow: 'hidden',
-            boxShadow: '0 4px 24px #2563eb33',
-            border: '2px solid #e0e7ff'
-          }}>
-            <iframe
-              src={getYouTubeEmbedUrl(attrs.video_link) as string}
-              title="Campus Video"
-              style={{
-                position: 'absolute',
-                top: 0, left: 0, width: '100%', height: '100%',
-                border: 0, borderRadius: 18
-              }}
-              allowFullScreen
-            />
-          </div>
-        </Section>
-      )}
-
-      {/* Disclaimer */}
-      <div style={{
-        margin: '2.5rem auto 1.5rem auto',
-        maxWidth: 700,
-        background: '#f8fafc',
-        borderLeft: '4px solid #9F7AEA',
-        borderRadius: 10,
-        padding: '1rem 1.3rem',
-        fontStyle: 'italic',
-        color: '#5727A3',
-        fontSize: '1.05rem',
-        textAlign: 'center'
-      }}>
-        <b>Disclaimer:</b> These details might not be 100% correct as per current analytics. Please verify from the university's official website for the most updated and accurate information.
       </div>
     </main>
   );
 };
 
 export default UniversityDetailPage;
+
+
+

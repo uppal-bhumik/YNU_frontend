@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 type PaymentState = 'success' | 'failed' | 'cancelled' | 'processing' | 'unknown';
 
@@ -29,9 +30,12 @@ const normalize = (raw?: string | null): PaymentState => {
 const PaymentSuccess: React.FC = () => {
   const navigate = useNavigate();
   const [sp] = useSearchParams();
+  const { removeFromCart } = useCart();
 
   const bookingId = sp.get('bookingId') || '';
   const paymentId = sp.get('payment_id') || sp.get('paymentId') || '';
+  const cartItemId = sp.get('cartItemId');
+
   const rawStatus = sp.get('status');
   const [status, setStatus] = useState<PaymentState>(normalize(rawStatus));
   const [polling, setPolling] = useState(false);
@@ -39,9 +43,20 @@ const PaymentSuccess: React.FC = () => {
   const [meetingLink, setMeetingLink] = useState<string | null>(null);
   const [pollError, setPollError] = useState<string | null>(null);
   const [timedOut, setTimedOut] = useState(false);
+  const [cleanupDone, setCleanupDone] = useState(false);
 
   const MAX_ATTEMPTS = 30; // ~2 minutes (30 * 4s)
   const POLL_INTERVAL_MS = 4000;
+
+  // Cleanup cart item on success
+  useEffect(() => {
+    if (status === 'success' && cartItemId && !cleanupDone) {
+      removeFromCart(Number(cartItemId))
+        .then(() => console.log('Removed purchased item from cart'))
+        .catch(err => console.error('Failed to remove from cart', err))
+        .finally(() => setCleanupDone(true));
+    }
+  }, [status, cartItemId, cleanupDone]);
 
   useEffect(() => {
     if (!bookingId) return;
@@ -58,7 +73,7 @@ const PaymentSuccess: React.FC = () => {
         const resp = await fetch(url, { method: 'GET' });
         const txt = await resp.text();
         let data: any = {};
-        try { data = txt ? JSON.parse(txt) : {}; } catch {}
+        try { data = txt ? JSON.parse(txt) : {}; } catch { }
         if (!resp.ok) {
           throw new Error(data?.detail || txt || `Status check failed (${resp.status})`);
         }
@@ -94,7 +109,7 @@ const PaymentSuccess: React.FC = () => {
         setPolling(false);
         setAttempts(a => {
           const next = a + 1;
-            if (next >= MAX_ATTEMPTS && !meetingLink && status !== 'failed') {
+          if (next >= MAX_ATTEMPTS && !meetingLink) {
             setTimedOut(true);
           }
           return next;
@@ -156,8 +171,8 @@ const PaymentSuccess: React.FC = () => {
   };
 
   const handleSupport = () => {
-  window.location.href = "mailto:hello@yournextuniversity.com";
-};
+    window.location.href = "mailto:hello@yournextuniversity.com";
+  };
 
   const handleBookAnother = () => navigate('/services/peer-counselling');
   const manualRefresh = () => {
@@ -167,55 +182,55 @@ const PaymentSuccess: React.FC = () => {
   };
 
   return (
-    <main style={{ minHeight:'100vh',background:'#f9fafb',fontFamily:'Inter,system-ui,sans-serif',display:'flex',alignItems:'center',justifyContent:'center',padding:'2.5rem 1rem' }}>
-      <div style={{ width:'100%',maxWidth:640,background:'#ffffff',border:'1px solid #e5e7eb',borderRadius:16,padding:'2.2rem 2.2rem 2.6rem',boxShadow:'0 4px 32px rgba(0,0,0,0.06)',position:'relative' }}>
-        <div style={{ position:'absolute',top:-28,left:24,background:meta.bg,border:`2px solid ${meta.border}`,color:meta.text,fontSize:'1.9rem',width:64,height:64,borderRadius:16,display:'flex',alignItems:'center',justifyContent:'center',boxShadow:'0 4px 20px rgba(0,0,0,0.08)',fontWeight:700 }}>
+    <main style={{ minHeight: '100vh', background: '#f9fafb', fontFamily: 'Inter,system-ui,sans-serif', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2.5rem 1rem', paddingTop: '140px' }}>
+      <div style={{ width: '100%', maxWidth: 640, background: '#ffffff', border: '1px solid #e5e7eb', borderRadius: 16, padding: '2.2rem 2.2rem 2.6rem', boxShadow: '0 4px 32px rgba(0,0,0,0.06)', position: 'relative' }}>
+        <div style={{ position: 'absolute', top: -28, left: 24, background: meta.bg, border: `2px solid ${meta.border}`, color: meta.text, fontSize: '1.9rem', width: 64, height: 64, borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 20px rgba(0,0,0,0.08)', fontWeight: 700 }}>
           {icon}
         </div>
 
-        <h1 style={{ margin:'1.2rem 0 0.75rem',fontSize:'1.75rem',fontWeight:800,letterSpacing:'-0.5px',color:'#111827' }}>
+        <h1 style={{ margin: '1.2rem 0 0.75rem', fontSize: '1.75rem', fontWeight: 800, letterSpacing: '-0.5px', color: '#111827' }}>
           {titleMap[status]}
         </h1>
 
-        <p style={{ margin:'0 0 1.4rem',fontSize:'.95rem',lineHeight:1.6,color:'#374151',fontWeight:500 }}>
+        <p style={{ margin: '0 0 1.4rem', fontSize: '.95rem', lineHeight: 1.6, color: '#374151', fontWeight: 500 }}>
           {descMap[status]}
         </p>
 
-        <div style={{ background:meta.bg,border:`1px solid ${meta.border}`,color:meta.text,padding:'0.9rem 1rem',borderRadius:12,fontSize:'.75rem',fontWeight:600,lineHeight:1.5,marginBottom:'1.2rem',display:'grid',rowGap:'.4rem' }}>
+        <div style={{ background: meta.bg, border: `1px solid ${meta.border}`, color: meta.text, padding: '0.9rem 1rem', borderRadius: 12, fontSize: '.75rem', fontWeight: 600, lineHeight: 1.5, marginBottom: '1.2rem', display: 'grid', rowGap: '.4rem' }}>
           <div>Booking ID: {bookingId || 'N/A'}</div>
           <div>Payment ID: {paymentId || 'N/A'}</div>
-          <div>Status: {status}{status==='success' && !meetingLink ? ' (awaiting link)' : ''}</div>
+          <div>Status: {status}{status === 'success' && !meetingLink ? ' (awaiting link)' : ''}</div>
           <div>Attempts: {attempts}/{MAX_ATTEMPTS}</div>
           {polling && <div>Polling...</div>}
-          {pollError && <div style={{ color:'#dc2626' }}>Poll error: {pollError}</div>}
-          {timedOut && <div style={{ color:'#b45309' }}>Timed out waiting for confirmation.</div>}
+          {pollError && <div style={{ color: '#dc2626' }}>Poll error: {pollError}</div>}
+          {timedOut && <div style={{ color: '#b45309' }}>Timed out waiting for confirmation.</div>}
           {meetingLink && (
-            <div style={{ marginTop:'.4rem' }}>
-              Meeting Link: <a href={meetingLink} target="_blank" rel="noopener noreferrer" style={{ color:'#2563eb',textDecoration:'underline' }}>Join Session</a>
+            <div style={{ marginTop: '.4rem' }}>
+              Meeting Link: <a href={meetingLink} target="_blank" rel="noopener noreferrer" style={{ color: '#2D6A7A', textDecoration: 'underline' }}>Join Session</a>
             </div>
           )}
         </div>
 
-        <div style={{ display:'flex',gap:'.75rem',flexWrap:'wrap',marginBottom:'1.5rem' }}>
+        <div style={{ display: 'flex', gap: '.75rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
           {(status === 'failed' || timedOut) && bookingId && (
-            <button onClick={handleRetry} style={btn('#111827','#fff')}>Retry Payment</button>
+            <button onClick={handleRetry} style={btn('#111827', '#fff')}>Retry Payment</button>
           )}
           {status === 'success' && meetingLink && (
-            <button onClick={handleViewBooking} style={btn('#10b981','#fff')}>View Booking</button>
+            <button onClick={handleViewBooking} style={btn('#10b981', '#fff')}>View Booking</button>
           )}
-          <button onClick={handleSupport} style={btn('#ffffff','#374151',true)}>Contact Support</button>
-          <button onClick={handleBookAnother} style={btn('#f3f4f6','#111827',true)}>Book Another</button>
-          {(status === 'processing' || (status==='success' && !meetingLink) || status==='unknown') && !timedOut && (
-            <button onClick={manualRefresh} style={btn('#2563eb','#fff')}>Refresh</button>
+          <button onClick={handleSupport} style={btn('#ffffff', '#374151', true)}>Contact Support</button>
+          <button onClick={handleBookAnother} style={btn('#f3f4f6', '#111827', true)}>Book Another</button>
+          {(status === 'processing' || (status === 'success' && !meetingLink) || status === 'unknown') && !timedOut && (
+            <button onClick={manualRefresh} style={btn('#2D6A7A', '#fff')}>Refresh</button>
           )}
         </div>
 
         {status === 'processing' && !timedOut && (
-          <div style={{ fontSize:'.65rem',color:'#0c4a6e',background:'#f0f9ff',border:'1px dashed #38bdf8',padding:'.6rem .75rem',borderRadius:8,fontWeight:600 }}>
-            Waiting for final confirmation. This page is auto-updating every {POLL_INTERVAL_MS/1000}s.
+          <div style={{ fontSize: '.65rem', color: '#0c4a6e', background: '#f0f9ff', border: '1px dashed #38bdf8', padding: '.6rem .75rem', borderRadius: 8, fontWeight: 600 }}>
+            Waiting for final confirmation. This page is auto-updating every {POLL_INTERVAL_MS / 1000}s.
           </div>
         )}
-        <div style={{ marginTop:'2rem',fontSize:'.6rem',lineHeight:1.4,color:'#6b7280',fontWeight:500 }}>
+        <div style={{ marginTop: '2rem', fontSize: '.6rem', lineHeight: 1.4, color: '#6b7280', fontWeight: 500 }}>
           If the status does not update after a few minutes, retry payment or contact support with Booking & Payment IDs.
         </div>
       </div>
@@ -223,17 +238,19 @@ const PaymentSuccess: React.FC = () => {
   );
 };
 
-function btn(bg:string, fg:string, outline?:boolean): React.CSSProperties {
+function btn(bg: string, fg: string, outline?: boolean): React.CSSProperties {
   return {
-    background:bg,
-    color:fg,
-    padding:'.7rem 1.2rem',
-    borderRadius:8,
-    border:outline?'1px solid #d1d5db':'none',
-    fontSize:'.8rem',
-    fontWeight:600,
-    cursor:'pointer'
+    background: bg,
+    color: fg,
+    padding: '.7rem 1.2rem',
+    borderRadius: 8,
+    border: outline ? '1px solid #d1d5db' : 'none',
+    fontSize: '.8rem',
+    fontWeight: 600,
+    cursor: 'pointer'
   };
 }
 
 export default PaymentSuccess;
+
+

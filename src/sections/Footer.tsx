@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
     <footer
       style={{
         position: 'relative',
-        background: '#842DD8',
+        background: '#0F172A',
         width: '100%',
         minHeight: '400px',
         overflow: 'hidden',
@@ -54,7 +54,7 @@ export const Footer: React.FC = () => {
             top: '60%',
             width: 340,
             height: 340,
-            background: 'radial-gradient(circle at 60% 40%, #fff 0%, #9F7AEA 60%, #842DD8 100%)',
+            background: 'radial-gradient(circle at 60% 40%, #fff 0%, #4A8A9A 60%, #0F2A36 100%)',
             opacity: 0.18,
             borderRadius: '50%',
             filter: 'blur(60px)',
@@ -134,34 +134,34 @@ export const Footer: React.FC = () => {
           minWidth: 100,
           padding: '0.4rem 0',
         }}>
-          <a href="https://www.instagram.com/yournextuniversity/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ opacity: 0.9, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: '7px', background: '#fff', boxShadow: '0 2px 8px #9F7AEA22' }}>
-            <Instagram size={20} color="#842DD8" />
+          <a href="https://www.instagram.com/yournextuniversity/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ opacity: 0.9, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: '7px', background: '#fff', boxShadow: '0 2px 8px #2D6A7A22' }}>
+            <Instagram size={20} color="#0F2A36" />
           </a>
           {/* LinkedIn */}
-          <a href="https://www.linkedin.com/company/your-next-university" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style={{ opacity: 0.9, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: '7px', background: '#fff', boxShadow: '0 2px 8px #9F7AEA22' }}>
-            <Linkedin size={20} color="#842DD8" />
+          <a href="https://www.linkedin.com/company/your-next-university" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style={{ opacity: 0.9, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: '7px', background: '#fff', boxShadow: '0 2px 8px #2D6A7A22' }}>
+            <Linkedin size={20} color="#0F2A36" />
           </a>
           {/* Reddit */}
           <a href="https://www.reddit.com/user/YourNextUniversity/" target="_blank" rel="noopener noreferrer" aria-label="Reddit" style={{ opacity: 0.7, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: '50%', background: '#fff' }}>
-            <Globe size={20} color="#842DD8" />
+            <Globe size={20} color="#0F2A36" />
           </a>
           {/* Quora */}
           <a href="https://www.quora.com/profile/Your-Next-University" target="_blank" rel="noopener noreferrer" aria-label="Quora" style={{ opacity: 0.7, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: '50%', background: '#fff' }}>
-            <MessageCircle size={20} color="#842DD8" />
+            <MessageCircle size={20} color="#0F2A36" />
           </a>
           {/* Telegram */}
           <a href="https://t.me/YourNextUniversity" target="_blank" rel="noopener noreferrer" aria-label="Telegram" style={{ opacity: 0.7, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: '50%', background: '#fff' }}>
-            <Send size={20} color="#842DD8" />
+            <Send size={20} color="#0F2A36" />
           </a>
-          <a href="https://x.com/YourNextUni" target="_blank" rel="noopener noreferrer" aria-label="X" style={{ opacity: 0.9, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: '7px', background: '#fff', boxShadow: '0 2px 8px #9F7AEA22' }}>
-            <Twitter size={20} color="#842DD8" />
+          <a href="https://x.com/YourNextUni" target="_blank" rel="noopener noreferrer" aria-label="X" style={{ opacity: 0.9, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: '7px', background: '#fff', boxShadow: '0 2px 8px #2D6A7A22' }}>
+            <Twitter size={20} color="#0F2A36" />
           </a>
           <a
             href="tel:+917985162538"
             aria-label="Phone"
-            style={{ opacity: 0.9, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: '7px', background: '#fff', boxShadow: '0 2px 8px #9F7AEA22' }}
+            style={{ opacity: 0.9, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: '7px', background: '#fff', boxShadow: '0 2px 8px #2D6A7A22' }}
           >
-            <Phone size={20} color="#842DD8" />
+            <Phone size={20} color="#0F2A36" />
           </a>
         </div>
         {/* Center: Legal Links */}
@@ -321,3 +321,5 @@ export const Footer: React.FC = () => {
   );
 };
 export default Footer;
+
+

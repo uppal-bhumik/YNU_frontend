@@ -2,21 +2,21 @@ import React from 'react';
 
 const sectionTitleStyle = {
   fontSize: '1.35rem',
-  color: '#5727A3',
+  color: '#1A3A4A',
   fontWeight: 800,
   margin: '2.2rem 0 1.2rem 0',
   letterSpacing: '-1px',
   padding: '0.5rem 0',
-  borderBottom: '2px solid #e0c3fc',
-  background: 'linear-gradient(90deg,#fff 80%,#e0c3fc 100%)',
+  borderBottom: '2px solid #D0E8EC',
+  background: 'linear-gradient(90deg,#fff 80%,#D0E8EC 100%)',
   borderRadius: '8px',
-  boxShadow: '0 1px 6px #e0c3fc22',
+  boxShadow: '0 1px 6px #D0E8EC22',
 };
 
 const sectionListStyle = {
   fontSize: '1.13rem',
   fontWeight: 500,
-  color: '#1B0044',
+  color: '#0F2A36',
   paddingLeft: '0',
   margin: '0 0 1.5rem 0',
   lineHeight: 1.8,
@@ -27,16 +27,16 @@ const sectionListStyle = {
 };
 
 const pointStyle = {
-  background: 'linear-gradient(90deg,#f0e6ff 0%,#e0c3fc 100%)',
+  background: 'linear-gradient(90deg,#E8F4F6 0%,#D0E8EC 100%)',
   borderRadius: 14,
   padding: '1.1rem 1.4rem',
-  boxShadow: '0 2px 12px #9F7AEA11',
+  boxShadow: '0 2px 12px #4A8A9A11',
   fontWeight: 600,
-  color: '#5727A3',
+  color: '#1A3A4A',
   display: 'flex',
   alignItems: 'center',
   gap: '0.9rem',
-  borderLeft: '5px solid #9F7AEA',
+  borderLeft: '5px solid #4A8A9A',
   minHeight: 44,
 };
 
@@ -46,24 +46,24 @@ const iconStyle = {
   justifyContent: 'center',
   width: 28,
   height: 28,
-  background: 'linear-gradient(135deg,#9F7AEA 60%,#D6C5F0 100%)',
+  background: 'linear-gradient(135deg,#4A8A9A 60%,#D0E8EC 100%)',
   borderRadius: '50%',
   marginRight: '0.7rem',
   color: '#fff',
   fontWeight: 700,
   fontSize: '1.2rem',
-  boxShadow: '0 1px 6px #9F7AEA22',
+  boxShadow: '0 1px 6px #4A8A9A22',
 };
 
 const sectionStyle = {
   borderRadius: 40,
-  boxShadow: '0 16px 48px #9F7AEA33, 0 2px 8px #D6C5F033',
+  boxShadow: '0 16px 48px #4A8A9A33, 0 2px 8px #D0E8EC33',
   padding: '3.5rem 2vw 3.5rem 2vw',
-  color: '#1B0044',
+  color: '#0F2A36',
   textAlign: 'left',
   position: 'relative',
   overflow: 'hidden',
-  background: 'linear-gradient(120deg,#fff 60%,#e0c3fc 100%)',
+  background: 'linear-gradient(120deg,#fff 60%,#D0E8EC 100%)',
   margin: '3rem auto 0 auto',
 };
 
@@ -71,35 +71,35 @@ const paragraphStyle = {
   fontSize: '1.13rem',
   marginBottom: '1.5rem',
   lineHeight: 1.7,
-  color: '#1B0044',
-  background: 'linear-gradient(90deg,#fff 80%,#f0e6ff 100%)',
+  color: '#0F2A36',
+  background: 'linear-gradient(90deg,#fff 80%,#E8F4F6 100%)',
   borderRadius: '12px',
-  boxShadow: '0 2px 12px #9F7AEA11',
+  boxShadow: '0 2px 12px #4A8A9A11',
   padding: '1rem 1.3rem',
 };
 
 const headerStyle = {
   fontSize: '2.7rem',
   fontWeight: 900,
-  color: '#5727A3',
+  color: '#1A3A4A',
   marginBottom: '1.2rem',
   letterSpacing: '-2px',
-  background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+  background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
-  filter: 'drop-shadow(0 2px 18px #9F7AEA33)',
+  filter: 'drop-shadow(0 2px 18px #4A8A9A33)',
   textAlign: 'center',
 };
 
 const lastUpdatedStyle = {
   fontSize: '1.13rem',
   marginBottom: '2.2rem',
-  color: '#5727A3',
+  color: '#1A3A4A',
   fontWeight: 700,
   textAlign: 'center',
-  background: 'linear-gradient(90deg,#fff 80%,#e0c3fc 100%)',
+  background: 'linear-gradient(90deg,#fff 80%,#D0E8EC 100%)',
   borderRadius: '12px',
-  boxShadow: '0 2px 12px #9F7AEA11',
+  boxShadow: '0 2px 12px #4A8A9A11',
   padding: '0.7rem 1.3rem',
 };
 
@@ -107,7 +107,7 @@ const TermsOfServicePage: React.FC = () => (
   <main
     style={{
       minHeight: '100vh',
-      background: 'radial-gradient(ellipse at 70% 0%, #e0c3fc 0%, #b790f3 35%, #f0e6ff 70%, #fff 100%)',
+      background: 'radial-gradient(ellipse at 70% 0%, #D0E8EC 0%, #4A8A9A 35%, #E8F4F6 70%, #fff 100%)',
       paddingTop: '90px',
       paddingBottom: '2rem',
       fontFamily: 'Inter, Arial, sans-serif',
@@ -185,7 +185,7 @@ const TermsOfServicePage: React.FC = () => (
       <ul style={sectionListStyle}>
         <li style={pointStyle}>
           <span style={iconStyle}>✓</span>
-          For questions about these Terms, contact us at <a href="mailto:Hello@yournextuniversity.com" style={{ color: '#5727A3', textDecoration: 'underline' }}>Hello@yournextuniversity.com</a>.
+          For questions about these Terms, contact us at <a href="mailto:Hello@yournextuniversity.com" style={{ color: '#1A3A4A', textDecoration: 'underline' }}>Hello@yournextuniversity.com</a>.
         </li>
       </ul>
     </section>
@@ -194,8 +194,8 @@ const TermsOfServicePage: React.FC = () => (
         transition: box-shadow 0.2s, background 0.2s;
       }
       section:hover {
-        box-shadow: 0 24px 64px #9F7AEA44, 0 4px 16px #D6C5F044;
-        background: linear-gradient(120deg,#fff 70%,#e0c3fc 100%);
+        box-shadow: 0 24px 64px #4A8A9A44, 0 4px 16px #D0E8EC44;
+        background: linear-gradient(120deg,#fff 70%,#D0E8EC 100%);
       }
       @media (max-width: 900px) {
         section {
@@ -225,3 +225,6 @@ const TermsOfServicePage: React.FC = () => (
 );
 
 export default TermsOfServicePage;
+
+
+

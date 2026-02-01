@@ -50,7 +50,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 			ref={ref as any}
 			style={{
 				padding: '5rem 0 6rem 0',
-				background: 'linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%)',
+				background: 'var(--bg-alt)',
 				...style,
 			}}
 		>
@@ -62,7 +62,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 				<div style={{
 					display: 'inline-block',
 					padding: '0.5rem 1.5rem',
-					background: 'linear-gradient(90deg, #5727A3 0%, #9F7AEA 100%)',
+					background: 'linear-gradient(90deg, #1A3A4A 0%, #2D6A7A 100%)',
 					borderRadius: '50px',
 					marginBottom: '1.5rem',
 				}}>
@@ -81,7 +81,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 					color: '#1E293B',
 					letterSpacing: '-1px',
 				}}>
-					Success Stories That <span style={{ background: 'linear-gradient(90deg, #5727A3 0%, #9F7AEA 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Inspire</span>
+					Success Stories That <span style={{ background: 'linear-gradient(90deg, #1A3A4A 0%, #2D6A7A 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Inspire</span>
 				</h2>
 				<p style={{
 					margin: '0 auto',
@@ -119,11 +119,11 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 								style={{
 									flexShrink: 0,
 									width: '420px',
-									background: 'white',
+									background: 'linear-gradient(135deg, #1A3A4A 0%, #2D6A7A 100%)',
 									borderRadius: '24px',
 									padding: '2.5rem',
-									boxShadow: '0 20px 50px rgba(87, 39, 163, 0.12)',
-									border: '2px solid #E0E7FF',
+									boxShadow: '0 10px 30px -10px rgba(0, 0, 0, 0.3)',
+									border: 'none',
 									position: 'relative',
 									overflow: 'hidden',
 									transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
@@ -134,7 +134,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 									left: '-50px',
 									width: '150px',
 									height: '150px',
-									background: 'linear-gradient(135deg, #C7D2FE 0%, #DDD6FE 100%)',
+									background: 'linear-gradient(135deg, rgba(74,138,154,0.3) 0%, rgba(45,106,122,0.2) 100%)',
 									borderRadius: '50%',
 									zIndex: 0,
 								}} />
@@ -144,7 +144,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 									right: '-40px',
 									width: '120px',
 									height: '120px',
-									background: 'linear-gradient(135deg, #818CF8 0%, #A78BFA 100%)',
+									background: 'linear-gradient(135deg, rgba(208,232,236,0.2) 0%, rgba(74,138,154,0.15) 100%)',
 									borderRadius: '50%',
 									zIndex: 0,
 								}} />
@@ -167,7 +167,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 												borderRadius: '50%',
 												objectFit: 'cover',
 												flexShrink: 0,
-												boxShadow: '0 4px 12px rgba(87, 39, 163, 0.1)',
+												boxShadow: '0 4px 12px rgba(45, 106, 122, 0.1)',
 											}}
 										/>
 										<div>
@@ -175,11 +175,11 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 												margin: '0 0 0.3rem 0',
 												fontWeight: 800,
 												fontSize: '1.4rem',
-												color: '#1E293B',
+												color: '#fff',
 											}}>{t.name}</h4>
 											<p style={{
 												margin: '0',
-												color: '#7C3AED',
+												color: '#D0E8EC',
 												fontWeight: 600,
 												fontSize: '1rem',
 											}}>{t.result}</p>
@@ -192,7 +192,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 										marginBottom: '1.8rem',
 									}}>
 										<div style={{
-											color: '#7C3AED',
+											color: '#D0E8EC',
 											fontWeight: 800,
 											fontSize: '1.2rem',
 										}}>
@@ -200,14 +200,14 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 										</div>
 										<p style={{
 											margin: '0',
-											color: '#334155',
+											color: '#E8F4F6',
 											fontWeight: 400,
 											fontSize: '1.1rem',
 											lineHeight: 1.6,
 											flex: 1,
 										}}>
 											{t.text}<span style={{
-												color: '#7C3AED',
+												color: '#D0E8EC',
 												fontWeight: 800,
 												fontSize: '1.2rem',
 												marginLeft: '0.3rem',
@@ -233,7 +233,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 											))}
 										</div>
 										<div style={{
-											color: '#94A3B8',
+											color: '#D0E8EC',
 											fontWeight: 600,
 											fontSize: '0.9rem',
 										}}>
@@ -257,11 +257,11 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 								style={{
 									flexShrink: 0,
 									width: '420px',
-									background: 'white',
+									background: 'linear-gradient(135deg, #1A3A4A 0%, #2D6A7A 100%)',
 									borderRadius: '24px',
 									padding: '2.5rem',
-									boxShadow: '0 20px 50px rgba(87, 39, 163, 0.12)',
-									border: '2px solid #E0E7FF',
+									boxShadow: '0 10px 30px -10px rgba(0, 0, 0, 0.3)',
+									border: 'none',
 									position: 'relative',
 									overflow: 'hidden',
 									transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
@@ -272,7 +272,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 									left: '-50px',
 									width: '150px',
 									height: '150px',
-									background: 'linear-gradient(135deg, #C7D2FE 0%, #DDD6FE 100%)',
+									background: 'linear-gradient(135deg, rgba(74,138,154,0.3) 0%, rgba(45,106,122,0.2) 100%)',
 									borderRadius: '50%',
 									zIndex: 0,
 								}} />
@@ -282,7 +282,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 									right: '-40px',
 									width: '120px',
 									height: '120px',
-									background: 'linear-gradient(135deg, #818CF8 0%, #A78BFA 100%)',
+									background: 'linear-gradient(135deg, rgba(208,232,236,0.2) 0%, rgba(74,138,154,0.15) 100%)',
 									borderRadius: '50%',
 									zIndex: 0,
 								}} />
@@ -305,7 +305,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 												borderRadius: '50%',
 												objectFit: 'cover',
 												flexShrink: 0,
-												boxShadow: '0 4px 12px rgba(87, 39, 163, 0.1)',
+												boxShadow: '0 4px 12px rgba(45, 106, 122, 0.1)',
 											}}
 										/>
 										<div>
@@ -313,11 +313,11 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 												margin: '0 0 0.3rem 0',
 												fontWeight: 800,
 												fontSize: '1.4rem',
-												color: '#1E293B',
+												color: '#fff',
 											}}>{t.name}</h4>
 											<p style={{
 												margin: '0',
-												color: '#7C3AED',
+												color: '#D0E8EC',
 												fontWeight: 600,
 												fontSize: '1rem',
 											}}>{t.result}</p>
@@ -330,7 +330,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 										marginBottom: '1.8rem',
 									}}>
 										<div style={{
-											color: '#7C3AED',
+											color: '#D0E8EC',
 											fontWeight: 800,
 											fontSize: '1.2rem',
 										}}>
@@ -338,14 +338,14 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 										</div>
 										<p style={{
 											margin: '0',
-											color: '#334155',
+											color: '#E8F4F6',
 											fontWeight: 400,
 											fontSize: '1.1rem',
 											lineHeight: 1.6,
 											flex: 1,
 										}}>
 											{t.text}<span style={{
-												color: '#7C3AED',
+												color: '#D0E8EC',
 												fontWeight: 800,
 												fontSize: '1.2rem',
 												marginLeft: '0.3rem',
@@ -371,7 +371,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 											))}
 										</div>
 										<div style={{
-											color: '#94A3B8',
+											color: '#D0E8EC',
 											fontWeight: 600,
 											fontSize: '0.9rem',
 										}}>
@@ -397,8 +397,8 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 
 				.success-story-card:hover {
 					transform: translateY(-12px) scale(1.02);
-					box-shadow: 0 30px 60px rgba(87, 39, 163, 0.2);
-					border-color: #C7D2FE;
+					box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+					border-color: #D0E8EC;
 				}
 
 				.success-stories-container:hover .success-stories-track {
@@ -410,3 +410,4 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ style }) => {
 };
 
 export default Testimonials;
+

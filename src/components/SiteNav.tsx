@@ -90,8 +90,8 @@ export const SiteNav: React.FC = () => {
       role="navigation"
       aria-label="Main Navigation"
       style={{
-        background: 'linear-gradient(90deg, #D6C5F0 0%, #9F7AEA 100%)',
-        color: '#1B0044',
+        background: 'linear-gradient(90deg, #D0E8EC 0%, #4A8A9A 100%)',
+        color: '#0F2A36',
         borderRadius: '22px',
         margin: '1.2rem auto 1.5rem auto',
         maxWidth: '1200px',
@@ -100,22 +100,22 @@ export const SiteNav: React.FC = () => {
         left: 0,
         right: 0,
         width: '100%',
-        boxShadow: '0 8px 32px 0 #5727A355, 0 1.5px 8px 0 #9F7AEA33',
+        boxShadow: '0 8px 32px 0 #1A3A4A55, 0 1.5px 8px 0 #4A8A9A33',
         zIndex: 100,
         transition: 'box-shadow 0.3s, transform 0.7s cubic-bezier(.33,1,.68,1)',
         transform: `translateY(-${navOffset}px)`,
       }}
       onMouseEnter={e => {
         (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px) scale(1.01)';
-        (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 36px 0 #5727A388, 0 2px 12px 0 #9F7AEA44';
+        (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 36px 0 #1A3A4A88, 0 2px 12px 0 #4A8A9A44';
       }}
       onMouseLeave={e => {
         (e.currentTarget as HTMLElement).style.transform = '';
-        (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 24px 0 #5727A355, 0 1.5px 8px 0 #9F7AEA33';
+        (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 24px 0 #1A3A4A55, 0 1.5px 8px 0 #4A8A9A33';
       }}
     >
       <div className="container site-nav__inner" style={{
-        WebkitBackdropFilter:'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between'
@@ -134,12 +134,12 @@ export const SiteNav: React.FC = () => {
               fontWeight: 800,
               fontSize: '1.7rem',
               letterSpacing: '-1px',
-              color: '#5727A3',
+              color: '#1A3A4A',
               background: 'none',
               WebkitBackgroundClip: 'initial',
               WebkitTextFillColor: 'initial',
               backgroundClip: 'initial',
-              textShadow: '0 2px 12px #fff3, 0 1px 2px #5727A311'
+              textShadow: '0 2px 12px #fff3, 0 1px 2px #1A3A4A11'
             }}
           >
             Your Next University
@@ -153,11 +153,11 @@ export const SiteNav: React.FC = () => {
           onClick={() => setOpen(o => !o)}
           style={{
             background: '#fff',
-            boxShadow: open ? '0 2px 12px 0 #9F7AEA44' : '0 1px 4px 0 #5727A322',
+            boxShadow: open ? '0 2px 12px 0 #4A8A9A44' : '0 1px 4px 0 #1A3A4A22',
             borderRadius: '50%',
             border: 'none',
             transition: 'box-shadow 0.3s, background 0.3s',
-            outline: open ? '2px solid #9F7AEA' : 'none',
+            outline: open ? '2px solid #4A8A9A' : 'none',
             marginLeft: 'auto',
             display: 'none' // default hidden, shown in mobile via CSS
           }}
@@ -177,10 +177,10 @@ export const SiteNav: React.FC = () => {
         >
           <NavLink
             to="/about"
-            onClick={()=>setOpen(false)}
+            onClick={() => setOpen(false)}
             style={{
               background: 'none',
-              color: '#5727A3',
+              color: '#1A3A4A',
               borderRadius: '18px',
               fontWeight: 700,
               fontSize: '1.05rem',
@@ -198,10 +198,10 @@ export const SiteNav: React.FC = () => {
           >
             <NavLink
               to="/services"
-              onClick={()=>setOpen(false)}
+              onClick={() => setOpen(false)}
               style={{
                 background: 'none',
-                color: '#5727A3',
+                color: '#1A3A4A',
                 borderRadius: '18px',
                 fontWeight: 700,
                 fontSize: '1.05rem',
@@ -215,7 +215,7 @@ export const SiteNav: React.FC = () => {
             >
               Services
               <svg style={{ marginLeft: 6, verticalAlign: 'middle' }} width="16" height="16" viewBox="0 0 20 20" fill="none">
-                <path d="M6 8l4 4 4-4" stroke="#5727A3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M6 8l4 4 4-4" stroke="#1A3A4A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </NavLink>
             {servicesOpen && (
@@ -228,7 +228,7 @@ export const SiteNav: React.FC = () => {
                   minWidth: 240,
                   background: '#fff',
                   borderRadius: 16,
-                  boxShadow: '0 8px 32px #9F7AEA22, 0 2px 8px #D6C5F022',
+                  boxShadow: '0 8px 32px #4A8A9A22, 0 2px 8px #D0E8EC22',
                   padding: '0.5rem 0',
                   zIndex: 100,
                   marginTop: 8,
@@ -244,7 +244,7 @@ export const SiteNav: React.FC = () => {
                     key={item.path}
                     style={{
                       padding: '0.85rem 1.3rem',
-                      color: '#5727A3',
+                      color: '#1A3A4A',
                       fontWeight: 600,
                       fontSize: '1.03rem',
                       textDecoration: 'none',
@@ -271,12 +271,12 @@ export const SiteNav: React.FC = () => {
                       }
                     }}
                     onMouseOver={e => {
-                      (e.currentTarget as HTMLDivElement).style.background = 'linear-gradient(90deg,#D6C5F0 0%,#9F7AEA22 100%)';
-                      (e.currentTarget as HTMLDivElement).style.color = '#9F7AEA';
+                      (e.currentTarget as HTMLDivElement).style.background = 'linear-gradient(90deg,#D0E8EC 0%,#4A8A9A22 100%)';
+                      (e.currentTarget as HTMLDivElement).style.color = '#4A8A9A';
                     }}
                     onMouseOut={e => {
                       (e.currentTarget as HTMLDivElement).style.background = 'none';
-                      (e.currentTarget as HTMLDivElement).style.color = '#5727A3';
+                      (e.currentTarget as HTMLDivElement).style.color = '#1A3A4A';
                     }}
                   >
                     {item.name}
@@ -287,10 +287,10 @@ export const SiteNav: React.FC = () => {
           </div>
           <NavLink
             to="/universities"
-            onClick={()=>setOpen(false)}
+            onClick={() => setOpen(false)}
             style={{
               background: 'none',
-              color: '#5727A3',
+              color: '#1A3A4A',
               borderRadius: '18px',
               fontWeight: 700,
               fontSize: '1.05rem',
@@ -302,10 +302,10 @@ export const SiteNav: React.FC = () => {
           >Universities</NavLink>
           <NavLink
             to="/contact"
-            onClick={()=>setOpen(false)}
+            onClick={() => setOpen(false)}
             style={{
               background: 'none',
-              color: '#5727A3',
+              color: '#1A3A4A',
               borderRadius: '18px',
               fontWeight: 700,
               fontSize: '1.05rem',
@@ -317,7 +317,7 @@ export const SiteNav: React.FC = () => {
           >Contact</NavLink>
           {/* <ThemeToggle /> */}
           {user ? (
-            <div style={{display:'flex',alignItems:'center',gap:'.5rem', flexWrap: 'nowrap', position: 'relative'}}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '.5rem', flexWrap: 'nowrap', position: 'relative' }}>
               {/* Profile Icon */}
               <div
                 className="site-nav-profile-icon"
@@ -326,18 +326,18 @@ export const SiteNav: React.FC = () => {
                   width: 38,
                   height: 38,
                   borderRadius: '50%',
-                  background: '#E9D8FD',
+                  background: '#D0E8EC',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   cursor: 'pointer',
-                  boxShadow: '0 1px 6px #9F7AEA22',
-                  color: '#5727A3',
+                  boxShadow: '0 1px 6px #4A8A9A22',
+                  color: '#1A3A4A',
                   fontWeight: 900,
                   fontSize: '1.15rem',
                   position: 'relative',
                   outline: 'none',
-                  border: '2px solid #D6C5F0'
+                  border: '2px solid #D0E8EC'
                 }}
                 onClick={e => {
                   setShowProfileMenu(v => !v);
@@ -363,7 +363,7 @@ export const SiteNav: React.FC = () => {
                 aria-label="Profile"
               >
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                  <circle cx="11" cy="11" r="11" fill="#9F7AEA" />
+                  <circle cx="11" cy="11" r="11" fill="#4A8A9A" />
                   <ellipse cx="11" cy="8.2" rx="3.2" ry="3.2" fill="#fff" />
                   <ellipse cx="11" cy="15.2" rx="5.2" ry="2.2" fill="#fff" />
                 </svg>
@@ -379,7 +379,7 @@ export const SiteNav: React.FC = () => {
                       minWidth: 210,
                       background: '#fff',
                       borderRadius: 14,
-                      boxShadow: '0 8px 32px #9F7AEA22, 0 2px 8px #D6C5F022',
+                      boxShadow: '0 8px 32px #4A8A9A22, 0 2px 8px #D0E8EC22',
                       padding: '1rem 1.2rem',
                       zIndex: 200,
                       display: 'flex',
@@ -411,7 +411,7 @@ export const SiteNav: React.FC = () => {
                       }, 120);
                     }}
                   >
-                    <div style={{ fontWeight: 800, color: '#5727A3', fontSize: '1.08rem', marginBottom: 2 }}>
+                    <div style={{ fontWeight: 800, color: '#1A3A4A', fontSize: '1.08rem', marginBottom: 2 }}>
                       {user.full_name || 'User'}
                     </div>
                     <div style={{ color: '#64748b', fontSize: '.97rem', marginBottom: 6 }}>
@@ -421,14 +421,14 @@ export const SiteNav: React.FC = () => {
                       className="btn btn-small"
                       type="button"
                       style={{
-                        background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+                        background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
                         color: '#fff',
                         border: 'none',
                         borderRadius: '10px',
                         fontWeight: 700,
                         fontSize: '1.01rem',
                         padding: '.55rem 1.1rem',
-                        boxShadow: '0 6px 18px -4px #5727A355, 0 2px 8px 0 #9F7AEA33',
+                        boxShadow: '0 6px 18px -4px #1A3A4A55, 0 2px 8px 0 #4A8A9A33',
                         transition: 'all 0.25s',
                         marginTop: 4,
                         width: '100%',
@@ -443,14 +443,14 @@ export const SiteNav: React.FC = () => {
                       className="btn btn-small"
                       type="button"
                       style={{
-                        background: 'linear-gradient(90deg,#9F7AEA 0%,#5727A3 100%)',
+                        background: 'linear-gradient(90deg,#4A8A9A 0%,#1A3A4A 100%)',
                         color: '#fff',
                         border: 'none',
                         borderRadius: '10px',
                         fontWeight: 700,
                         fontSize: '1.01rem',
                         padding: '.55rem 1.1rem',
-                        boxShadow: '0 6px 18px -4px #5727A355, 0 2px 8px 0 #9F7AEA33',
+                        boxShadow: '0 6px 18px -4px #1A3A4A55, 0 2px 8px 0 #4A8A9A33',
                         transition: 'all 0.25s',
                         marginTop: 4,
                         width: '100%',
@@ -463,20 +463,20 @@ export const SiteNav: React.FC = () => {
               </div>
             </div>
           ) : (
-            <div style={{display:'flex', gap:'.5rem', flexWrap: 'nowrap'}}>
+            <div style={{ display: 'flex', gap: '.5rem', flexWrap: 'nowrap' }}>
               <NavLink
                 to="/auth/login"
-                onClick={()=>setOpen(false)}
-                className={({isActive}) => 'btn btn-small' + (isActive ? ' btn-primary' : '')}
-                style={({isActive}) => ({
-                  background: isActive ? 'linear-gradient(90deg,#9F7AEA 0%,#5727A3 100%)' : '#fff',
-                  color: isActive ? '#fff' : '#5727A3',
+                onClick={() => setOpen(false)}
+                className={({ isActive }) => 'btn btn-small' + (isActive ? ' btn-primary' : '')}
+                style={({ isActive }) => ({
+                  background: isActive ? 'linear-gradient(90deg,#4A8A9A 0%,#1A3A4A 100%)' : '#fff',
+                  color: isActive ? '#fff' : '#1A3A4A',
                   borderRadius: '18px',
                   fontWeight: 700,
                   fontSize: '1.05rem',
                   padding: '.55rem 1.1rem',
                   boxShadow: isActive
-                    ? '0 6px 18px -4px #5727A355, 0 2px 8px 0 #9F7AEA33'
+                    ? '0 6px 18px -4px #1A3A4A55, 0 2px 8px 0 #4A8A9A33'
                     : '0 2px 8px 0 #e0e7ef',
                   border: isActive ? 'none' : '1px solid #e0e7ef',
                   transition: 'all 0.25s',
@@ -485,17 +485,17 @@ export const SiteNav: React.FC = () => {
               >Login</NavLink>
               <NavLink
                 to="/auth/register"
-                onClick={()=>setOpen(false)}
-                className={({isActive}) => 'btn btn-small' + (isActive ? ' btn-primary' : '')}
-                style={({isActive}) => ({
-                  background: isActive ? 'linear-gradient(90deg,#9F7AEA 0%,#5727A3 100%)' : '#fff',
-                  color: isActive ? '#fff' : '#5727A3',
+                onClick={() => setOpen(false)}
+                className={({ isActive }) => 'btn btn-small' + (isActive ? ' btn-primary' : '')}
+                style={({ isActive }) => ({
+                  background: isActive ? 'linear-gradient(90deg,#4A8A9A 0%,#1A3A4A 100%)' : '#fff',
+                  color: isActive ? '#fff' : '#1A3A4A',
                   borderRadius: '18px',
                   fontWeight: 700,
                   fontSize: '1.05rem',
                   padding: '.55rem 1.1rem',
                   boxShadow: isActive
-                    ? '0 6px 18px -4px #5727A355, 0 2px 8px 0 #9F7AEA33'
+                    ? '0 6px 18px -4px #1A3A4A55, 0 2px 8px 0 #4A8A9A33'
                     : '0 2px 8px 0 #e0e7ef',
                   border: isActive ? 'none' : '1px solid #e0e7ef',
                   transition: 'all 0.25s',
@@ -512,8 +512,8 @@ export const SiteNav: React.FC = () => {
           100% { opacity: 1; transform: none;}
         }
         .services-dropdown-menu a:active {
-          background: linear-gradient(90deg,#D6C5F0 0%,#9F7AEA22 100%) !important;
-          color: #9F7AEA !important;
+          background: linear-gradient(90deg,#D0E8EC 0%,#4A8A9A22 100%) !important;
+          color: #4A8A9A !important;
         }
         @media (max-width: 900px) {
           .nav-services-dropdown .services-dropdown-menu {
@@ -570,13 +570,13 @@ export const SiteNav: React.FC = () => {
             top: 100%;
             left: 0;
             right: 0;
-            background: #ceacf5ff;
+            background: #D0E8EC;
             flex-direction: column;
             align-items: flex-start;
             gap: 0;
             padding: 1rem 1.5rem;
             border-radius: 0 0 18px 18px;
-            box-shadow: 0 8px 32px #9F7AEA22, 0 2px 8px #D6C5F022;
+            box-shadow: 0 8px 32px #4A8A9A22, 0 2px 8px #D0E8EC22;
             z-index: 99;
             display: none !important;
           }

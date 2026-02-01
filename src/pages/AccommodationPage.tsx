@@ -18,7 +18,7 @@ export const AccommodationPage: React.FC = () => {
 
   // Add BASE_URL for API calls
   const BASE_URL = "https://studconnect-backend.onrender.com";
-    // const BASE_URL = "http://127.0.0.1:8000";
+  // const BASE_URL = "http://127.0.0.1:8000";
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -130,9 +130,9 @@ export const AccommodationPage: React.FC = () => {
   return (
     <main
       style={{
-        background: 'radial-gradient(ellipse at 70% 0%, #e0c3fc 0%, #b790f3 35%, #f0e6ff 70%, #fff 100%)',
+        background: '#fff',
         minHeight: '100vh',
-        paddingTop: '90px', // Add space for fixed header
+        paddingTop: '0',
       }}
     >
       <style>{responsiveStyle}</style>
@@ -141,27 +141,12 @@ export const AccommodationPage: React.FC = () => {
         className="accom-hero-section"
         style={{
           ...heroSectionStyle,
-          background: 'linear-gradient(90deg, #b790f3 0%, #FFF 100%)',
+          background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)',
           borderRadius: '0 0 36px 36px',
-          boxShadow: '0 8px 48px #ffffff',
+          boxShadow: '0 20px 60px -10px rgba(15, 23, 42, 0.15)',
+          paddingTop: '120px'
         }}
       >
-        {/* Decorative Globe/Blob */}
-        <div
-          style={{
-            position: 'absolute',
-            left: -120,
-            top: -80,
-            width: 320,
-            height: 320,
-            background: 'radial-gradient(circle at 60% 40%, #D6C5F0 0%, #9F7AEA22 100%)',
-            borderRadius: '50%',
-            filter: 'blur(40px)',
-            zIndex: 0,
-            opacity: 0.7,
-            pointerEvents: 'none'
-          }}
-        />
         <div className="accom-hero-text" style={{
           ...heroTextStyle,
           color: '#fff'
@@ -173,13 +158,13 @@ export const AccommodationPage: React.FC = () => {
             marginBottom: '1.2rem',
             letterSpacing: '-2px',
             lineHeight: 1.1,
-            textShadow: '0 4px 24px #5727A344, 0 1px 2px #fff8'
+            textShadow: '0 4px 24px #1A3A4A44, 0 1px 2px #fff8'
           }}>
             Find Your Home Abroad
           </h1>
           <p style={{
             fontSize: '1.18rem',
-            color: '#e0e7ff',
+            color: '#CBD5E1',
             fontWeight: 500,
             marginBottom: '1.2rem',
             lineHeight: 1.6
@@ -196,7 +181,7 @@ export const AccommodationPage: React.FC = () => {
             }}
             style={{
               marginTop: '1.2rem',
-              background: 'linear-gradient(90deg, #5727A3 0%, #9F7AEA 100%)',
+              background: 'linear-gradient(90deg, #1A3A4A 0%, #4A8A9A 100%)',
               color: '#fff',
               border: 'none',
               borderRadius: 14,
@@ -204,7 +189,7 @@ export const AccommodationPage: React.FC = () => {
               fontWeight: 700,
               fontSize: '1.13rem',
               cursor: 'pointer',
-              boxShadow: '0 4px 18px #9F7AEA33',
+              boxShadow: '0 4px 18px #4A8A9A33',
               transition: 'background 0.18s',
               letterSpacing: '.5px'
             }}
@@ -227,7 +212,7 @@ export const AccommodationPage: React.FC = () => {
                 height: 240,
                 objectFit: 'cover',
                 borderRadius: 28,
-                boxShadow: '0 8px 32px #2563eb22',
+                boxShadow: '0 8px 32px #4A8A9A22',
                 border: '4px solid #fff',
                 transform: 'rotate(-18deg) scale(1.06)',
                 zIndex: 1,
@@ -246,7 +231,7 @@ export const AccommodationPage: React.FC = () => {
                 height: 300,
                 objectFit: 'cover',
                 borderRadius: 36,
-                boxShadow: '0 8px 32px #2563eb33',
+                boxShadow: '0 8px 32px #4A8A9A33',
                 border: '5px solid #fff',
                 transform: 'translateX(-50%) scale(1.18)',
                 zIndex: 3,
@@ -265,7 +250,7 @@ export const AccommodationPage: React.FC = () => {
                 height: 240,
                 objectFit: 'cover',
                 borderRadius: 28,
-                boxShadow: '0 12px 48px #2563eb22',
+                boxShadow: '0 12px 48px #4A8A9A22',
                 border: '4px solid #fff',
                 transform: 'rotate(18deg) scale(1.06)',
                 zIndex: 2,
@@ -285,7 +270,7 @@ export const AccommodationPage: React.FC = () => {
         <h2 style={{
           fontSize: '1.7rem',
           fontWeight: 900,
-          color: '#5727A3',
+          color: '#1A3A4A',
           marginBottom: '2.5rem',
           textAlign: 'center',
           letterSpacing: '-1px'
@@ -318,9 +303,9 @@ export const AccommodationPage: React.FC = () => {
           />
           {/* Card 1 */}
           <div style={{
-            background: 'linear-gradient(120deg,#fff 60%,#e0c3fc 100%)',
+            background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)',
             borderRadius: 18,
-            boxShadow: '0 4px 24px #9F7AEA11',
+            boxShadow: '0 4px 24px rgba(15, 23, 42, 0.2)',
             padding: '2.2rem 1.5rem 1.5rem 1.5rem',
             minWidth: 220,
             maxWidth: 260,
@@ -334,24 +319,24 @@ export const AccommodationPage: React.FC = () => {
               height: 54,
               margin: '0 auto 1.1rem auto',
               borderRadius: '50%',
-              background: 'linear-gradient(135deg,#9F7AEA 60%,#5727A3 100%)',
+              background: 'linear-gradient(135deg,#4A8A9A 60%,#1A3A4A 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#fff',
               fontSize: '2rem',
-              boxShadow: '0 2px 12px #9F7AEA22'
+              boxShadow: '0 2px 12px #4A8A9A44'
             }}>
-              ✔️
+              ✓
             </div>
-            <b style={{ fontSize: '1.13rem', color: '#5727A3' }}>Verified Listings</b>
-            <div style={{fontSize: '1.07rem', color: '#1B0044', marginTop: 8}}>Every property is checked by students who’ve actually lived there.</div>
+            <b style={{ fontSize: '1.13rem', color: '#fff' }}>Verified Listings</b>
+            <div style={{ fontSize: '1.07rem', color: '#CBD5E1', marginTop: 8 }}>Every property is checked by students who've actually lived there.</div>
           </div>
           {/* Card 2 */}
           <div style={{
-            background: 'linear-gradient(120deg,#fff 60%,#e0c3fc 100%)',
+            background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)',
             borderRadius: 18,
-            boxShadow: '0 4px 24px #9F7AEA11',
+            boxShadow: '0 4px 24px rgba(15, 23, 42, 0.2)',
             padding: '2.2rem 1.5rem 1.5rem 1.5rem',
             minWidth: 220,
             maxWidth: 260,
@@ -365,24 +350,24 @@ export const AccommodationPage: React.FC = () => {
               height: 54,
               margin: '0 auto 1.1rem auto',
               borderRadius: '50%',
-              background: 'linear-gradient(135deg,#9F7AEA 60%,#5727A3 100%)',
+              background: 'linear-gradient(135deg,#4A8A9A 60%,#1A3A4A 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#fff',
               fontSize: '2rem',
-              boxShadow: '0 2px 12px #9F7AEA22'
+              boxShadow: '0 2px 12px #4A8A9A44'
             }}>
               ★
             </div>
-            <b style={{ fontSize: '1.13rem', color: '#5727A3' }}>Real Reviews</b>
-            <div style={{fontSize: '1.07rem', color: '#1B0044', marginTop: 8}}>Honest feedback from peers, not fancy brochures.</div>
+            <b style={{ fontSize: '1.13rem', color: '#fff' }}>Real Reviews</b>
+            <div style={{ fontSize: '1.07rem', color: '#CBD5E1', marginTop: 8 }}>Honest feedback from peers, not fancy brochures.</div>
           </div>
           {/* Card 3 */}
           <div style={{
-            background: 'linear-gradient(120deg,#fff 60%,#e0c3fc 100%)',
+            background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)',
             borderRadius: 18,
-            boxShadow: '0 4px 24px #9F7AEA11',
+            boxShadow: '0 4px 24px rgba(15, 23, 42, 0.2)',
             padding: '2.2rem 1.5rem 1.5rem 1.5rem',
             minWidth: 220,
             maxWidth: 260,
@@ -396,24 +381,24 @@ export const AccommodationPage: React.FC = () => {
               height: 54,
               margin: '0 auto 1.1rem auto',
               borderRadius: '50%',
-              background: 'linear-gradient(135deg,#9F7AEA 60%,#5727A3 100%)',
+              background: 'linear-gradient(135deg,#4A8A9A 60%,#1A3A4A 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#fff',
               fontSize: '2rem',
-              boxShadow: '0 2px 12px #9F7AEA22'
+              boxShadow: '0 2px 12px #4A8A9A44'
             }}>
               ⇄
             </div>
-            <b style={{ fontSize: '1.13rem', color: '#5727A3' }}>Flexible Options</b>
-            <div style={{fontSize: '1.07rem', color: '#1B0044', marginTop: 8}}>Shared flats, private rooms, or everything in between.</div>
+            <b style={{ fontSize: '1.13rem', color: '#fff' }}>Flexible Options</b>
+            <div style={{ fontSize: '1.07rem', color: '#CBD5E1', marginTop: 8 }}>Shared flats, private rooms, or everything in between.</div>
           </div>
           {/* Card 4 */}
           <div style={{
-            background: 'linear-gradient(120deg,#fff 60%,#e0c3fc 100%)',
+            background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)',
             borderRadius: 18,
-            boxShadow: '0 4px 24px #9F7AEA11',
+            boxShadow: '0 4px 24px rgba(15, 23, 42, 0.2)',
             padding: '2.2rem 1.5rem 1.5rem 1.5rem',
             minWidth: 220,
             maxWidth: 260,
@@ -427,24 +412,24 @@ export const AccommodationPage: React.FC = () => {
               height: 54,
               margin: '0 auto 1.1rem auto',
               borderRadius: '50%',
-              background: 'linear-gradient(135deg,#9F7AEA 60%,#5727A3 100%)',
+              background: 'linear-gradient(135deg,#4A8A9A 60%,#1A3A4A 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#fff',
               fontSize: '2rem',
-              boxShadow: '0 2px 12px #9F7AEA22'
+              boxShadow: '0 2px 12px #4A8A9A44'
             }}>
               🖱
             </div>
-            <b style={{ fontSize: '1.13rem', color: '#5727A3' }}>Easy Booking</b>
-            <div style={{fontSize: '1.07rem', color: '#1B0044', marginTop: 8}}>Reserve online without hidden fees.</div>
+            <b style={{ fontSize: '1.13rem', color: '#fff' }}>Easy Booking</b>
+            <div style={{ fontSize: '1.07rem', color: '#CBD5E1', marginTop: 8 }}>Reserve online without hidden fees.</div>
           </div>
           {/* Card 5 */}
           <div style={{
-            background: 'linear-gradient(120deg,#fff 60%,#e0c3fc 100%)',
+            background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)',
             borderRadius: 18,
-            boxShadow: '0 4px 24px #9F7AEA11',
+            boxShadow: '0 4px 24px rgba(15, 23, 42, 0.2)',
             padding: '2.2rem 1.5rem 1.5rem 1.5rem',
             minWidth: 220,
             maxWidth: 260,
@@ -458,163 +443,166 @@ export const AccommodationPage: React.FC = () => {
               height: 54,
               margin: '0 auto 1.1rem auto',
               borderRadius: '50%',
-              background: 'linear-gradient(135deg,#9F7AEA 60%,#5727A3 100%)',
+              background: 'linear-gradient(135deg,#4A8A9A 60%,#1A3A4A 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#fff',
               fontSize: '2rem',
-              boxShadow: '0 2px 12px #9F7AEA22'
+              boxShadow: '0 2px 12px #4A8A9A44'
             }}>
               🛡
             </div>
-            <b style={{ fontSize: '1.13rem', color: '#5727A3' }}>Safe & Supportive</b>
-            <div style={{fontSize: '1.07rem', color: '#1B0044', marginTop: 8}}>Because “home” should feel like home.</div>
+            <b style={{ fontSize: '1.13rem', color: '#fff' }}>Safe & Supportive</b>
+            <div style={{ fontSize: '1.07rem', color: '#CBD5E1', marginTop: 8 }}>Because “home” should feel like home.</div>
           </div>
         </div>
       </section>
 
       {/* How It Works */}
       <section style={{
-        maxWidth: 900,
-        margin: '0 auto',
-        padding: '2.5rem 1.5rem 0 1.5rem'
+        width: '100%',
+        margin: '2rem 0 0 0',
+        padding: '2.5rem 1.5rem 2.5rem 1.5rem',
+        background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)'
       }}>
-        <h2 style={{
-          fontSize: '1.35rem',
-          fontWeight: 900,
-          color: '#5727A3',
-          marginBottom: '2.2rem',
-          textAlign: 'center',
-          letterSpacing: '-1px'
-        }}>
-          How It Works
-        </h2>
-        <ol style={{
-          listStyle: 'none',
-          padding: 0,
-          margin: 0,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1.2rem'
-        }}>
-          {/* Step 1 */}
-          <li style={{
-            background: 'linear-gradient(90deg,#fff 0%,#e0c3fc 100%)',
-            borderRadius: 16,
-            boxShadow: '0 2px 12px #9F7AEA22',
-            padding: '1.2rem 1.7rem',
-            fontSize: '1.07rem',
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '1rem',
-            borderLeft: '6px solid #9F7AEA'
+        <div style={{ maxWidth: 900, margin: '0 auto' }}>
+          <h2 style={{
+            fontSize: '1.35rem',
+            fontWeight: 900,
+            color: '#fff',
+            marginBottom: '2.2rem',
+            textAlign: 'center',
+            letterSpacing: '-1px'
           }}>
-            <span style={{
-              display: 'inline-block',
-              minWidth: 38,
-              height: 38,
-              background: 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)',
-              color: '#fff',
-              borderRadius: '50%',
-              fontWeight: 800,
-              fontSize: '1.18rem',
-              textAlign: 'center',
-              lineHeight: '38px',
-              boxShadow: '0 2px 8px #9F7AEA33'
-            }}>1</span>
-            <span>
-              <b style={{ color: '#5727A3' }}>Browse Listings:</b> <span style={{ color: '#1B0044' }}>Swipe through verified housing options in your city.</span>
-            </span>
-          </li>
-          {/* Step 2 */}
-          <li style={{
-            background: 'linear-gradient(90deg,#fff 0%,#e0c3fc 100%)',
-            borderRadius: 16,
-            boxShadow: '0 2px 12px #9F7AEA22',
-            padding: '1.2rem 1.7rem',
-            fontSize: '1.07rem',
+            How It Works
+          </h2>
+          <ol style={{
+            listStyle: 'none',
+            padding: 0,
+            margin: 0,
             display: 'flex',
-            alignItems: 'flex-start',
-            gap: '1rem',
-            borderLeft: '6px solid #9F7AEA'
+            flexDirection: 'column',
+            gap: '1.2rem'
           }}>
-            <span style={{
-              display: 'inline-block',
-              minWidth: 38,
-              height: 38,
-              background: 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)',
-              color: '#fff',
-              borderRadius: '50%',
-              fontWeight: 800,
-              fontSize: '1.18rem',
-              textAlign: 'center',
-              lineHeight: '38px',
-              boxShadow: '0 2px 8px #9F7AEA33'
-            }}>2</span>
-            <span>
-              <b style={{ color: '#5727A3' }}>Read Student Reviews:</b> <span style={{ color: '#1B0044' }}>Get the real scoop on each place.</span>
-            </span>
-          </li>
-          {/* Step 3 */}
-          <li style={{
-            background: 'linear-gradient(90deg,#fff 0%,#e0c3fc 100%)',
-            borderRadius: 16,
-            boxShadow: '0 2px 12px #9F7AEA22',
-            padding: '1.2rem 1.7rem',
-            fontSize: '1.07rem',
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '1rem',
-            borderLeft: '6px solid #9F7AEA'
-          }}>
-            <span style={{
-              display: 'inline-block',
-              minWidth: 38,
-              height: 38,
-              background: 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)',
-              color: '#fff',
-              borderRadius: '50%',
-              fontWeight: 800,
-              fontSize: '1.18rem',
-              textAlign: 'center',
-              lineHeight: '38px',
-              boxShadow: '0 2px 8px #9F7AEA33'
-            }}>3</span>
-            <span>
-              <b style={{ color: '#5727A3' }}>Connect Directly:</b> <span style={{ color: '#1B0044' }}>Chat with roommates or hosts to clarify doubts.</span>
-            </span>
-          </li>
-          {/* Step 4 */}
-          <li style={{
-            background: 'linear-gradient(90deg,#fff 0%,#e0c3fc 100%)',
-            borderRadius: 16,
-            boxShadow: '0 2px 12px #9F7AEA22',
-            padding: '1.2rem 1.7rem',
-            fontSize: '1.07rem',
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '1rem',
-            borderLeft: '6px solid #9F7AEA'
-          }}>
-            <span style={{
-              display: 'inline-block',
-              minWidth: 38,
-              height: 38,
-              background: 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)',
-              color: '#fff',
-              borderRadius: '50%',
-              fontWeight: 800,
-              fontSize: '1.18rem',
-              textAlign: 'center',
-              lineHeight: '38px',
-              boxShadow: '0 2px 8px #9F7AEA33'
-            }}>4</span>
-            <span>
-              <b style={{ color: '#5727A3' }}>Book Confidently:</b> <span style={{ color: '#1B0044' }}>Lock in your space and start your journey stress-free.</span>
-            </span>
-          </li>
-        </ol>
+            {/* Step 1 */}
+            <li style={{
+              background: 'linear-gradient(90deg,#fff 0%,#D0E8EC 100%)',
+              borderRadius: 16,
+              boxShadow: '0 2px 12px #4A8A9A22',
+              padding: '1.2rem 1.7rem',
+              fontSize: '1.07rem',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '1rem',
+              borderLeft: '6px solid #4A8A9A'
+            }}>
+              <span style={{
+                display: 'inline-block',
+                minWidth: 38,
+                height: 38,
+                background: 'linear-gradient(135deg,#1A3A4A 0%,#4A8A9A 100%)',
+                color: '#fff',
+                borderRadius: '50%',
+                fontWeight: 800,
+                fontSize: '1.18rem',
+                textAlign: 'center',
+                lineHeight: '38px',
+                boxShadow: '0 2px 8px #4A8A9A33'
+              }}>1</span>
+              <span>
+                <b style={{ color: '#1A3A4A' }}>Browse Listings:</b> <span style={{ color: '#1A3A4A' }}>Swipe through verified housing options in your city.</span>
+              </span>
+            </li>
+            {/* Step 2 */}
+            <li style={{
+              background: 'linear-gradient(90deg,#fff 0%,#D0E8EC 100%)',
+              borderRadius: 16,
+              boxShadow: '0 2px 12px #4A8A9A22',
+              padding: '1.2rem 1.7rem',
+              fontSize: '1.07rem',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '1rem',
+              borderLeft: '6px solid #4A8A9A'
+            }}>
+              <span style={{
+                display: 'inline-block',
+                minWidth: 38,
+                height: 38,
+                background: 'linear-gradient(135deg,#1A3A4A 0%,#4A8A9A 100%)',
+                color: '#fff',
+                borderRadius: '50%',
+                fontWeight: 800,
+                fontSize: '1.18rem',
+                textAlign: 'center',
+                lineHeight: '38px',
+                boxShadow: '0 2px 8px #4A8A9A33'
+              }}>2</span>
+              <span>
+                <b style={{ color: '#1A3A4A' }}>Read Student Reviews:</b> <span style={{ color: '#1A3A4A' }}>Get the real scoop on each place.</span>
+              </span>
+            </li>
+            {/* Step 3 */}
+            <li style={{
+              background: 'linear-gradient(90deg,#fff 0%,#D0E8EC 100%)',
+              borderRadius: 16,
+              boxShadow: '0 2px 12px #4A8A9A22',
+              padding: '1.2rem 1.7rem',
+              fontSize: '1.07rem',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '1rem',
+              borderLeft: '6px solid #4A8A9A'
+            }}>
+              <span style={{
+                display: 'inline-block',
+                minWidth: 38,
+                height: 38,
+                background: 'linear-gradient(135deg,#1A3A4A 0%,#4A8A9A 100%)',
+                color: '#fff',
+                borderRadius: '50%',
+                fontWeight: 800,
+                fontSize: '1.18rem',
+                textAlign: 'center',
+                lineHeight: '38px',
+                boxShadow: '0 2px 8px #4A8A9A33'
+              }}>3</span>
+              <span>
+                <b style={{ color: '#1A3A4A' }}>Connect Directly:</b> <span style={{ color: '#1A3A4A' }}>Chat with roommates or hosts to clarify doubts.</span>
+              </span>
+            </li>
+            {/* Step 4 */}
+            <li style={{
+              background: 'linear-gradient(90deg,#fff 0%,#D0E8EC 100%)',
+              borderRadius: 16,
+              boxShadow: '0 2px 12px #4A8A9A22',
+              padding: '1.2rem 1.7rem',
+              fontSize: '1.07rem',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '1rem',
+              borderLeft: '6px solid #4A8A9A'
+            }}>
+              <span style={{
+                display: 'inline-block',
+                minWidth: 38,
+                height: 38,
+                background: 'linear-gradient(135deg,#1A3A4A 0%,#4A8A9A 100%)',
+                color: '#fff',
+                borderRadius: '50%',
+                fontWeight: 800,
+                fontSize: '1.18rem',
+                textAlign: 'center',
+                lineHeight: '38px',
+                boxShadow: '0 2px 8px #4A8A9A33'
+              }}>4</span>
+              <span>
+                <b style={{ color: '#1A3A4A' }}>Book Confidently:</b> <span style={{ color: '#1A3A4A' }}>Lock in your space and start your journey stress-free.</span>
+              </span>
+            </li>
+          </ol>
+        </div>
       </section>
 
       {/* Factors to Consider Section */}
@@ -623,12 +611,12 @@ export const AccommodationPage: React.FC = () => {
         margin: '2.5rem auto 0 auto',
         padding: '2rem 1.5rem 1.5rem 1.5rem',
         fontSize: '1.07rem',
-        color: '#1B0044'
+        color: '#1A3A4A'
       }}>
         <h2 style={{
           fontSize: '1.25rem',
           fontWeight: 900,
-          color: '#5727A3',
+          color: '#1A3A4A',
           marginBottom: '3rem',
           textAlign: 'center'
         }}>
@@ -647,15 +635,15 @@ export const AccommodationPage: React.FC = () => {
           <div style={{
             flex: 1,
             minWidth: 220,
-            background: 'linear-gradient(120deg, #fff 60%, #e0c3fc 100%)',
+            background: 'linear-gradient(120deg, #fff 60%, #D0E8EC 100%)',
             borderRadius: 18,
-            boxShadow: '0 4px 24px #9F7AEA11',
+            boxShadow: '0 4px 24px #4A8A9A11',
             padding: '2.1rem 1.5rem 1.5rem 1.5rem',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             position: 'relative',
-            borderLeft: '6px solid #9F7AEA'
+            borderLeft: '6px solid #4A8A9A'
           }}>
             <div style={{
               position: 'absolute',
@@ -663,7 +651,7 @@ export const AccommodationPage: React.FC = () => {
               left: 24,
               width: 48,
               height: 48,
-              background: 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)',
+              background: 'linear-gradient(135deg,#1A3A4A 0%,#4A8A9A 100%)',
               color: '#fff',
               borderRadius: '50%',
               display: 'flex',
@@ -671,11 +659,11 @@ export const AccommodationPage: React.FC = () => {
               justifyContent: 'center',
               fontWeight: 800,
               fontSize: '1.3rem',
-              boxShadow: '0 2px 12px #9F7AEA22',
+              boxShadow: '0 2px 12px #4A8A9A22',
               border: '3px solid #fff'
             }}>1</div>
-            <b style={{ fontSize: '1.13rem', color: '#5727A3', marginBottom: 6 }}>Location &amp; Connectivity</b>
-            <div style={{fontSize: '1.07rem', color: '#1B0044', textAlign: 'center'}}>
+            <b style={{ fontSize: '1.13rem', color: '#1A3A4A', marginBottom: 6 }}>Location &amp; Connectivity</b>
+            <div style={{ fontSize: '1.07rem', color: '#1A3A4A', textAlign: 'center' }}>
               Choose accommodation close to your university or with easy access to public transport, shops, and essentials.
             </div>
           </div>
@@ -683,15 +671,15 @@ export const AccommodationPage: React.FC = () => {
           <div style={{
             flex: 1,
             minWidth: 220,
-            background: 'linear-gradient(120deg, #fff 60%, #e0c3fc 100%)',
+            background: 'linear-gradient(120deg, #fff 60%, #D0E8EC 100%)',
             borderRadius: 18,
-            boxShadow: '0 4px 24px #9F7AEA11',
+            boxShadow: '0 4px 24px #4A8A9A11',
             padding: '2.1rem 1.5rem 1.5rem 1.5rem',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             position: 'relative',
-            borderLeft: '6px solid #9F7AEA'
+            borderLeft: '6px solid #4A8A9A'
           }}>
             <div style={{
               position: 'absolute',
@@ -699,7 +687,7 @@ export const AccommodationPage: React.FC = () => {
               left: 24,
               width: 48,
               height: 48,
-              background: 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)',
+              background: 'linear-gradient(135deg,#1A3A4A 0%,#4A8A9A 100%)',
               color: '#fff',
               borderRadius: '50%',
               display: 'flex',
@@ -707,11 +695,11 @@ export const AccommodationPage: React.FC = () => {
               justifyContent: 'center',
               fontWeight: 800,
               fontSize: '1.3rem',
-              boxShadow: '0 2px 12px #9F7AEA22',
+              boxShadow: '0 2px 12px #4A8A9A22',
               border: '3px solid #fff'
             }}>2</div>
-            <b style={{ fontSize: '1.13rem', color: '#5727A3', marginBottom: 6 }}>Safety &amp; Security</b>
-            <div style={{fontSize: '1.07rem', color: '#1B0044', textAlign: 'center'}}>
+            <b style={{ fontSize: '1.13rem', color: '#1A3A4A', marginBottom: 6 }}>Safety &amp; Security</b>
+            <div style={{ fontSize: '1.07rem', color: '#1A3A4A', textAlign: 'center' }}>
               Check for secure entry, CCTV, and emergency support to ensure a safe living environment.
             </div>
           </div>
@@ -719,15 +707,15 @@ export const AccommodationPage: React.FC = () => {
           <div style={{
             flex: 1,
             minWidth: 220,
-            background: 'linear-gradient(120deg, #fff 60%, #e0c3fc 100%)',
+            background: 'linear-gradient(120deg, #fff 60%, #D0E8EC 100%)',
             borderRadius: 18,
-            boxShadow: '0 4px 24px #9F7AEA11',
+            boxShadow: '0 4px 24px #4A8A9A11',
             padding: '2.1rem 1.5rem 1.5rem 1.5rem',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             position: 'relative',
-            borderLeft: '6px solid #9F7AEA'
+            borderLeft: '6px solid #4A8A9A'
           }}>
             <div style={{
               position: 'absolute',
@@ -735,7 +723,7 @@ export const AccommodationPage: React.FC = () => {
               left: 24,
               width: 48,
               height: 48,
-              background: 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)',
+              background: 'linear-gradient(135deg,#1A3A4A 0%,#4A8A9A 100%)',
               color: '#fff',
               borderRadius: '50%',
               display: 'flex',
@@ -743,11 +731,11 @@ export const AccommodationPage: React.FC = () => {
               justifyContent: 'center',
               fontWeight: 800,
               fontSize: '1.3rem',
-              boxShadow: '0 2px 12px #9F7AEA22',
+              boxShadow: '0 2px 12px #4A8A9A22',
               border: '3px solid #fff'
             }}>3</div>
-            <b style={{ fontSize: '1.13rem', color: '#5727A3', marginBottom: 6 }}>Budget &amp; Inclusions</b>
-            <div style={{fontSize: '1.07rem', color: '#1B0044', textAlign: 'center'}}>
+            <b style={{ fontSize: '1.13rem', color: '#1A3A4A', marginBottom: 6 }}>Budget &amp; Inclusions</b>
+            <div style={{ fontSize: '1.07rem', color: '#1A3A4A', textAlign: 'center' }}>
               Compare costs and see what’s included—utilities, internet, furnishings, etc.—to avoid hidden expenses.
             </div>
           </div>
@@ -755,15 +743,15 @@ export const AccommodationPage: React.FC = () => {
           <div style={{
             flex: 1,
             minWidth: 220,
-            background: 'linear-gradient(120deg, #fff 60%, #e0c3fc 100%)',
+            background: 'linear-gradient(120deg, #fff 60%, #D0E8EC 100%)',
             borderRadius: 18,
-            boxShadow: '0 4px 24px #9F7AEA11',
+            boxShadow: '0 4px 24px #4A8A9A11',
             padding: '2.1rem 1.5rem 1.5rem 1.5rem',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             position: 'relative',
-            borderLeft: '6px solid #9F7AEA'
+            borderLeft: '6px solid #4A8A9A'
           }}>
             <div style={{
               position: 'absolute',
@@ -771,7 +759,7 @@ export const AccommodationPage: React.FC = () => {
               left: 24,
               width: 48,
               height: 48,
-              background: 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)',
+              background: 'linear-gradient(135deg,#1A3A4A 0%,#4A8A9A 100%)',
               color: '#fff',
               borderRadius: '50%',
               display: 'flex',
@@ -779,11 +767,11 @@ export const AccommodationPage: React.FC = () => {
               justifyContent: 'center',
               fontWeight: 800,
               fontSize: '1.3rem',
-              boxShadow: '0 2px 12px #9F7AEA22',
+              boxShadow: '0 2px 12px #4A8A9A22',
               border: '3px solid #fff'
             }}>4</div>
-            <b style={{ fontSize: '1.13rem', color: '#5727A3', marginBottom: 6 }}>Amenities &amp; Facilities</b>
-            <div style={{fontSize: '1.07rem', color: '#1B0044', textAlign: 'center'}}>
+            <b style={{ fontSize: '1.13rem', color: '#1A3A4A', marginBottom: 6 }}>Amenities &amp; Facilities</b>
+            <div style={{ fontSize: '1.07rem', color: '#1A3A4A', textAlign: 'center' }}>
               Look for features like laundry, kitchen, study areas, and social spaces that support both study and lifestyle.
             </div>
           </div>
@@ -791,15 +779,15 @@ export const AccommodationPage: React.FC = () => {
           <div style={{
             flex: 1,
             minWidth: 220,
-            background: 'linear-gradient(120deg, #fff 60%, #e0c3fc 100%)',
+            background: 'linear-gradient(120deg, #fff 60%, #D0E8EC 100%)',
             borderRadius: 18,
-            boxShadow: '0 4px 24px #9F7AEA11',
+            boxShadow: '0 4px 24px #4A8A9A11',
             padding: '2.1rem 1.5rem 1.5rem 1.5rem',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             position: 'relative',
-            borderLeft: '6px solid #9F7AEA'
+            borderLeft: '6px solid #4A8A9A'
           }}>
             <div style={{
               position: 'absolute',
@@ -807,7 +795,7 @@ export const AccommodationPage: React.FC = () => {
               left: 24,
               width: 48,
               height: 48,
-              background: 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)',
+              background: 'linear-gradient(135deg,#1A3A4A 0%,#4A8A9A 100%)',
               color: '#fff',
               borderRadius: '50%',
               display: 'flex',
@@ -815,11 +803,11 @@ export const AccommodationPage: React.FC = () => {
               justifyContent: 'center',
               fontWeight: 800,
               fontSize: '1.3rem',
-              boxShadow: '0 2px 12px #9F7AEA22',
+              boxShadow: '0 2px 12px #4A8A9A22',
               border: '3px solid #fff'
             }}>5</div>
-            <b style={{ fontSize: '1.13rem', color: '#5727A3', marginBottom: 6 }}>Contract Flexibility</b>
-            <div style={{fontSize: '1.07rem', color: '#1B0044', textAlign: 'center'}}>
+            <b style={{ fontSize: '1.13rem', color: '#1A3A4A', marginBottom: 6 }}>Contract Flexibility</b>
+            <div style={{ fontSize: '1.07rem', color: '#1A3A4A', textAlign: 'center' }}>
               Review lease terms, cancellation policies, and notice periods in case your plans change.
             </div>
           </div>
@@ -827,11 +815,11 @@ export const AccommodationPage: React.FC = () => {
         <div style={{
           marginTop: '1.5rem',
           background: '#f1f5fd',
-          borderLeft: '4px solid #9F7AEA',
+          borderLeft: '4px solid #4A8A9A',
           borderRadius: 10,
           padding: '1rem 1.3rem',
           fontStyle: 'italic',
-          color: '#5727A3',
+          color: '#1A3A4A',
           fontSize: '1.05rem'
         }}>
           <b>Tip for Students:</b> Start looking early! The best accommodations fill up fast, and having a verified place secured will make your transition smooth and stress-free.
@@ -840,20 +828,18 @@ export const AccommodationPage: React.FC = () => {
 
       {/* Casita Partner Section */}
       <section style={{
-        maxWidth: 900,
-        margin: '2.5rem auto 0 auto',
-        padding: '2rem 1.5rem 1.5rem 1.5rem',
-        background: 'linear-gradient(120deg,#fff 60%,#e0c3fc 100%)',
-        borderRadius: 18,
-        boxShadow: '0 4px 24px #9F7AEA11',
+        width: '100%',
+        margin: '2.5rem 0 0 0',
+        padding: '2.5rem 1.5rem 2rem 1.5rem',
+        background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)',
         fontSize: '1.07rem',
-        color: '#1B0044',
+        color: '#fff',
         textAlign: 'center'
       }}>
         <h2 style={{
           fontSize: '2.18rem',
           fontWeight: 900,
-          color: '#5727A3',
+          color: '#fff',
           marginBottom: '1.1rem'
         }}>
           Our Accommodation Partner
@@ -863,7 +849,7 @@ export const AccommodationPage: React.FC = () => {
           style={{
             background: '#fff',
             borderRadius: 16,
-            boxShadow: '0 2px 12px #2563eb22',
+            boxShadow: '0 2px 12px #4A8A9A22',
             padding: '1.5rem 1.2rem 1.7rem 1.2rem',
             margin: '0 auto 1.2rem auto',
             maxWidth: 500,
@@ -886,22 +872,23 @@ export const AccommodationPage: React.FC = () => {
             alignItems: 'flex-start',
             width: '100%',
             margin: '0 auto 0.5rem auto',
-            fontSize: '1.05rem'
+            fontSize: '1.05rem',
+            color: '#1A3A4A'
           }}>
             <div className="feature-item" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span role="img" aria-label="city" style={{ color: '#2563eb', fontSize: 20 }}></span>
+              <span role="img" aria-label="city" style={{ color: '#4A8A9A', fontSize: 20 }}></span>
               60,000+ Properties across 640 Cities Globally
             </div>
             <div className="feature-item" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span role="img" aria-label="shield" style={{ color: '#2563eb', fontSize: 20 }}></span>
+              <span role="img" aria-label="shield" style={{ color: '#4A8A9A', fontSize: 20 }}></span>
               Safe &amp; Secure Options
             </div>
             <div className="feature-item" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span role="img" aria-label="check" style={{ color: '#2563eb', fontSize: 20 }}></span>
+              <span role="img" aria-label="check" style={{ color: '#4A8A9A', fontSize: 20 }}></span>
               Verified Listings
             </div>
             <div className="feature-item" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span role="img" aria-label="support" style={{ color: '#2563eb', fontSize: 20 }}></span>
+              <span role="img" aria-label="support" style={{ color: '#4A8A9A', fontSize: 20 }}></span>
               24/7 Customer Support
             </div>
           </div>
@@ -912,7 +899,7 @@ export const AccommodationPage: React.FC = () => {
             rel="noopener"
             style={{
               display: 'inline-block',
-              background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
               color: '#fff',
               fontWeight: 700,
               fontSize: '1.07rem',
@@ -920,7 +907,7 @@ export const AccommodationPage: React.FC = () => {
               padding: '0.9rem 2.1rem',
               textDecoration: 'none',
               marginTop: '0.5rem',
-              boxShadow: '0 2px 8px #9F7AEA22',
+              boxShadow: '0 2px 8px #4A8A9A22',
               transition: 'background 0.18s'
             }}
             onClick={e => {
@@ -930,17 +917,17 @@ export const AccommodationPage: React.FC = () => {
               }
             }}
             onMouseOver={e => {
-              (e.currentTarget as HTMLAnchorElement).style.background = 'linear-gradient(90deg,#9F7AEA 0%,#5727A3 100%)';
+              (e.currentTarget as HTMLAnchorElement).style.background = 'linear-gradient(90deg,#4A8A9A 0%,#1A3A4A 100%)';
             }}
             onMouseOut={e => {
-              (e.currentTarget as HTMLAnchorElement).style.background = 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)';
+              (e.currentTarget as HTMLAnchorElement).style.background = 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)';
             }}
           >
             Explore Now →
           </a>
         </div>
         <div style={{ marginTop: '1.1rem', color: '#64748b', fontSize: '.98rem' }}>
-          <b>Note:</b> All accommodation bookings and services are powered by <b style={{ color: '#9F7AEA' }}>Caseta</b>.
+          <b>Note:</b> All accommodation bookings and services are powered by <b style={{ color: '#4A8A9A' }}>Caseta</b>.
         </div>
       </section>
 
@@ -949,27 +936,27 @@ export const AccommodationPage: React.FC = () => {
         maxWidth: 900,
         margin: '2.5rem auto 0 auto',
         padding: '2rem 1.5rem 2.5rem 1.5rem',
-        background: 'linear-gradient(120deg,#e0c3fc 0%,#fff 100%)',
+        background: 'linear-gradient(120deg,#D0E8EC 0%,#fff 100%)',
         borderRadius: 18,
-        boxShadow: '0 4px 24px #9F7AEA11',
+        boxShadow: '0 4px 24px #4A8A9A11',
         textAlign: 'center'
       }}>
         <h2 style={{
           fontSize: '1.18rem',
           fontWeight: 900,
-          color: '#5727A3',
+          color: '#1A3A4A',
           marginBottom: '1.1rem'
         }}>
           Need Help Choosing Accommodation?
         </h2>
-        <p style={{ fontSize: '1.07rem', color: '#1B0044', marginBottom: '1.2rem' }}>
+        <p style={{ fontSize: '1.07rem', color: '#1A3A4A', marginBottom: '1.2rem' }}>
           Book a free accommodation counselling session with our team for personalized guidance.
         </p>
         <button
           onClick={() => setShowCounsellingModal(true)}
           style={{
             display: 'inline-block',
-            background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+            background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
             color: '#fff',
             fontWeight: 700,
             fontSize: '1.07rem',
@@ -978,7 +965,7 @@ export const AccommodationPage: React.FC = () => {
             border: 'none',
             cursor: 'pointer',
             margin: '0.5rem 0 0 0',
-            boxShadow: '0 2px 8px #9F7AEA22',
+            boxShadow: '0 2px 8px #4A8A9A22',
             transition: 'background 0.18s'
           }}
         >
@@ -998,9 +985,9 @@ export const AccommodationPage: React.FC = () => {
           justifyContent: 'center'
         }}>
           <div style={{
-            background: 'linear-gradient(135deg,#fff 60%,#e0c3fc 100%)',
+            background: 'linear-gradient(135deg,#fff 60%,#D0E8EC 100%)',
             borderRadius: 16,
-            boxShadow: '0 8px 32px #9F7AEA33',
+            boxShadow: '0 8px 32px #4A8A9A33',
             maxWidth: 400,
             width: '95vw',
             padding: '2.2rem 1.5rem 1.5rem 1.5rem',
@@ -1023,7 +1010,7 @@ export const AccommodationPage: React.FC = () => {
             <h3 style={{
               fontSize: '1.18rem',
               fontWeight: 900,
-              color: '#5727A3',
+              color: '#1A3A4A',
               marginBottom: '1.1rem',
               textAlign: 'center'
             }}>
@@ -1031,7 +1018,7 @@ export const AccommodationPage: React.FC = () => {
             </h3>
             {submitted ? (
               <div style={{
-                color: '#2563eb',
+                color: '#4A8A9A',
                 fontWeight: 700,
                 textAlign: 'center',
                 minHeight: 120,
@@ -1114,7 +1101,7 @@ export const AccommodationPage: React.FC = () => {
                   type="submit"
                   disabled={submitting}
                   style={{
-                    background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+                    background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
                     color: '#fff',
                     fontWeight: 700,
                     fontSize: '1.07rem',
@@ -1123,7 +1110,7 @@ export const AccommodationPage: React.FC = () => {
                     border: 'none',
                     cursor: 'pointer',
                     marginTop: '0.5rem',
-                    boxShadow: '0 2px 8px #9F7AEA22',
+                    boxShadow: '0 2px 8px #4A8A9A22',
                     transition: 'background 0.18s',
                     opacity: submitting ? 0.7 : 1
                   }}
@@ -1145,38 +1132,38 @@ export const AccommodationPage: React.FC = () => {
         <h2 style={{
           fontSize: '1.18rem',
           fontWeight: 900,
-          color: '#5727A3',
+          color: '#1A3A4A',
           marginBottom: '1.2rem',
           textAlign: 'center'
         }}>
           Our Promise
         </h2>
         <div style={{
-          background: 'linear-gradient(120deg,#fff 60%,#e0c3fc 100%)',
+          background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)',
           borderRadius: 14,
-          boxShadow: '0 2px 12px #9F7AEA11',
+          boxShadow: '0 4px 24px rgba(15, 23, 42, 0.2)',
           padding: '1.3rem 1.7rem',
           marginBottom: '1.5rem',
           textAlign: 'center',
           fontWeight: 500,
-          color: '#1B0044',
+          color: '#fff',
           fontSize: '1.07rem'
         }}>
-          No hidden fees. No pressure. No surprises. Just student-approved housing, straight from those who’ve lived it.
+          No hidden fees. No pressure. No surprises. Just student-approved housing, straight from those who've lived it.
         </div>
         <blockquote style={{
-          background: '#f1f5fd',
-          borderLeft: '4px solid #9F7AEA',
+          background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)',
+          borderLeft: '4px solid #4A8A9A',
           borderRadius: 12,
           padding: '1.2rem 1.7rem',
           fontStyle: 'italic',
-          color: '#5727A3',
+          color: '#CBD5E1',
           margin: 0,
           textAlign: 'center',
           fontSize: '1.08rem'
         }}>
-          “Finding a place was the hardest part—until I found Your Next University. Booking my apartment was literally a 10-minute process, and I felt safe and prepared!”<br />
-          <span style={{fontWeight: 700, color: '#9F7AEA'}}>– Student Ambassador</span>
+          "Finding a place was the hardest part—until I found Your Next University. Booking my apartment was literally a 10-minute process, and I felt safe and prepared!"<br />
+          <span style={{ fontWeight: 700, color: '#4A8A9A' }}>– Student Ambassador</span>
         </blockquote>
       </section>
     </main>

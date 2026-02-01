@@ -23,13 +23,13 @@ const steps = [
 		desc: 'From shortlisting courses to settling into your new home abroad.',
 	},
 	{
-		title: 'Built for Gen Z ',
+		title: "Built for Gen Z's",
 		desc: 'A modern, mobile-first platform with community vibes and tools that make sense.',
 	},
 ];
 
 interface HowItWorksProps {
-  style?: React.CSSProperties;
+	style?: React.CSSProperties;
 }
 
 export const HowItWorks: React.FC<HowItWorksProps> = ({ style }) => {
@@ -39,7 +39,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ style }) => {
 		if (!element) return;
 		const observer = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
-				if(entry.isIntersecting){
+				if (entry.isIntersecting) {
 					entry.target.classList.add('reveal--visible');
 					observer.unobserve(entry.target);
 				}
@@ -58,7 +58,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ style }) => {
 				alignItems: 'center',
 				justifyContent: 'center',
 				minHeight: '100vh',
-				background: 'radial-gradient(circle at 50% 50%, #D6C5F0 0%, #9F7AEA88 40%, #5727A333 70%, #fff 100%)',
+				background: '#fff',
 				overflow: 'hidden',
 				...style,
 			}}
@@ -70,7 +70,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ style }) => {
 					position: 'absolute',
 					inset: 0,
 					zIndex: 0,
-					background: 'linear-gradient(120deg, #5727A322 0%, #9F7AEA22 60%, #fff 100%)',
+					background: 'linear-gradient(120deg, #1A3A4A22 0%, #2D6A7A22 60%, #fff 100%)',
 					backdropFilter: 'blur(2.5px)',
 					WebkitBackdropFilter: 'blur(2.5px)',
 					pointerEvents: 'none',
@@ -113,35 +113,8 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ style }) => {
 					/>
 					<defs>
 						<linearGradient id="howitworks-wave1" x1="0" y1="0" x2="1" y2="1">
-							<stop offset="0%" stopColor="#5727A3" />
-							<stop offset="100%" stopColor="#9F7AEA" />
-						</linearGradient>
-					</defs>
-				</svg>
-				{/* Subtle bottom wave */}
-				<svg
-					width="100%"
-					height="120"
-					viewBox="0 0 1440 120"
-					fill="none"
-					style={{
-						position: 'absolute',
-						bottom: 0,
-						left: 0,
-						width: '100%',
-						height: 120,
-						zIndex: 1,
-						opacity: 0.6,
-					}}
-				>
-					<path
-						d="M0,40 Q480,120 960,40 T1440,40 V120 H0 Z"
-						fill="url(#howitworks-wave2)"
-					/>
-					<defs>
-						<linearGradient id="howitworks-wave2" x1="0" y1="0" x2="1" y2="1">
-							<stop offset="0%" stopColor="#9F7AEA" />
-							<stop offset="100%" stopColor="#5727A3" />
+							<stop offset="0%" stopColor="#1A3A4A" />
+							<stop offset="100%" stopColor="#2D6A7A" />
 						</linearGradient>
 					</defs>
 				</svg>
@@ -155,7 +128,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ style }) => {
 							top: `${10 + Math.random() * 75}%`,
 							width: 2 + Math.random() * 3,
 							height: 2 + Math.random() * 3,
-							background: 'linear-gradient(90deg,#9F7AEA 0%,#5727A3 100%)',
+							background: 'linear-gradient(90deg,#2D6A7A 0%,#1A3A4A 100%)',
 							borderRadius: '50%',
 							opacity: 0.13 + Math.random() * 0.18,
 							filter: 'blur(0.5px)',
@@ -172,7 +145,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ style }) => {
 						width: 110,
 						height: 110,
 						borderRadius: '50%',
-						background: 'radial-gradient(circle at 30% 30%, #5727A3cc 0%, #5727A300 80%)',
+						background: 'radial-gradient(circle at 30% 30%, #1A3A4Acc 0%, #1A3A4A00 80%)',
 						filter: 'blur(8px)',
 						opacity: 0.45,
 						animation: 'orbFloat1 9s ease-in-out infinite alternate'
@@ -186,7 +159,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ style }) => {
 						width: 140,
 						height: 140,
 						borderRadius: '50%',
-						background: 'radial-gradient(circle at 70% 70%, #9F7AEA99 0%, #9F7AEA00 80%)',
+						background: 'radial-gradient(circle at 70% 70%, #2D6A7A99 0%, #2D6A7A00 80%)',
 						filter: 'blur(12px)',
 						opacity: 0.38,
 						animation: 'orbFloat2 11s ease-in-out infinite alternate'
@@ -200,7 +173,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ style }) => {
 						width: 70,
 						height: 70,
 						borderRadius: '50%',
-						background: 'radial-gradient(circle at 50% 50%, #D6C5F0cc 0%, #D6C5F000 80%)',
+						background: 'radial-gradient(circle at 50% 50%, #D0E8ECcc 0%, #D0E8EC00 80%)',
 						filter: 'blur(6px)',
 						opacity: 0.32,
 						animation: 'orbFloat3 13s ease-in-out infinite alternate'
@@ -213,7 +186,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ style }) => {
 							100% { transform: scale(${0.8 + Math.random() * 0.7}) translateY(${Math.random() * 30 - 15}px);}
 						}
 					`).join('\n') +
-`
+						`
 @keyframes orbFloat1 {
 	0% { transform: translateY(0) scale(1);}
 	100% { transform: translateY(-30px) scale(1.08);}
@@ -236,49 +209,76 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ style }) => {
 					maxWidth: 1300,
 					margin: '0 auto',
 					borderRadius: 32,
-					background: 'rgba(214,197,240,0.92)', // #D6C5F0
-					boxShadow: '0 8px 48px #5727A318, 0 1.5px 0 #9F7AEA33',
-					border: '1.5px solid #D6C5F0',
+					background: 'linear-gradient(135deg, #1A3A4A 0%, #2D6A7A 100%)',
+					boxShadow: '0 8px 48px rgba(15, 23, 42, 0.3)',
+					border: 'none',
 					backdropFilter: 'blur(1.5px)',
 					WebkitBackdropFilter: 'blur(1.5px)',
 					overflow: 'hidden',
-					paddingBottom: '2rem', // moved padding here
+					paddingBottom: '2rem',
 				}}
 			>
 				{/* Section Heading */}
 				<div
 					style={{
-						maxWidth: 900,
+						maxWidth: 1100,
 						margin: '0 auto',
-						padding: '2.5rem 1.5rem 0 1.5rem',
+						padding: '3rem 2rem 0 2rem',
 					}}
 				>
+					<div style={{ textAlign: 'center', marginBottom: '0.8rem' }}>
+						<span
+							style={{
+								display: 'inline-block',
+								padding: '0.4rem 1.2rem',
+								background: 'linear-gradient(135deg, rgba(45, 106, 122, 0.3) 0%, rgba(26, 58, 74, 0.3) 100%)',
+								borderRadius: 30,
+								fontSize: '0.85rem',
+								fontWeight: 600,
+								color: '#7dd3e8',
+								letterSpacing: '1.5px',
+								textTransform: 'uppercase',
+								border: '1px solid rgba(125, 211, 232, 0.2)',
+							}}
+						>
+							Why Us
+						</span>
+					</div>
 					<h2
 						style={{
-							fontSize: '2.1rem',
-							fontWeight: 900,
+							fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
+							fontWeight: 800,
 							textAlign: 'center',
-							letterSpacing: '-1px',
-							color: '#5727A3',
-							marginBottom: '1.5rem',
-							lineHeight: 1.1,
-							textShadow: '0 2px 8px #5727A311',
+							letterSpacing: '-1.5px',
+							color: '#fff',
+							marginBottom: '0.6rem',
+							lineHeight: 1.15,
 						}}
 					>
 						Why Students Choose Us
 					</h2>
+					<p
+						style={{
+							fontSize: '1.1rem',
+							color: 'rgba(255, 255, 255, 0.7)',
+							textAlign: 'center',
+							maxWidth: 600,
+							margin: '0 auto 2.5rem auto',
+							lineHeight: 1.6,
+						}}
+					>
+						We're not just another platform — we're your personal guide through every step of your study abroad journey.
+					</p>
 				</div>
-				{/* Cards in a row, no scroll */}
+				{/* Premium glassmorphism cards */}
 				<div
 					style={{
-						maxWidth: 900,
+						maxWidth: 1100,
 						margin: '0 auto',
-						display: 'flex',
-						justifyContent: 'center',
-						alignItems: 'stretch',
-						gap: '1.2rem',
-						flexWrap: 'wrap',
-						padding: '0 1.5rem 2.5rem 1.5rem',
+						display: 'grid',
+						gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+						gap: '1.5rem',
+						padding: '0 2rem 3rem 2rem',
 					}}
 				>
 					{steps.map((step, idx) => (
@@ -286,128 +286,142 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ style }) => {
 							key={step.title}
 							className="howitworks-step-card"
 							style={{
-								flex: '1 1 180px',
-								minWidth: 180,
-								maxWidth: 220,
-								background: '#fff',
-								borderRadius: 14,
-								boxShadow: '0 2px 12px #5727A311',
-								padding: '1.2rem 0.7rem 1rem 0.7rem',
+								position: 'relative',
+								background: 'rgba(255, 255, 255, 0.95)',
+								backdropFilter: 'blur(20px)',
+								WebkitBackdropFilter: 'blur(20px)',
+								borderRadius: 20,
+								padding: '2rem 1.5rem 1.8rem 1.5rem',
 								display: 'flex',
 								flexDirection: 'column',
 								alignItems: 'center',
-								position: 'relative',
-								transition: 'box-shadow .18s, transform .18s',
+								border: '1px solid rgba(255, 255, 255, 0.6)',
+								transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
 								cursor: 'pointer',
-								borderLeft: `5px solid ${idx % 2 === 0 ? '#5727A3' : '#9F7AEA'}`,
-								zIndex: 1,
-								margin: '0',
+								overflow: 'hidden',
+								boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
 							}}
 							onMouseOver={(e) => {
-								(e.currentTarget as HTMLDivElement).style.boxShadow =
-									'0 8px 32px #5727A322';
-								(e.currentTarget as HTMLDivElement).style.transform =
-									'translateY(-4px) scale(1.03)';
+								const card = e.currentTarget as HTMLDivElement;
+								card.style.transform = 'translateY(-8px)';
+								card.style.background = '#ffffff';
+								card.style.borderColor = 'rgba(125, 211, 232, 0.5)';
+								card.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.1), 0 0 20px rgba(125, 211, 232, 0.2)';
 							}}
 							onMouseOut={(e) => {
-								(e.currentTarget as HTMLDivElement).style.boxShadow =
-									'0 2px 12px #5727A311';
-								(e.currentTarget as HTMLDivElement).style.transform = '';
+								const card = e.currentTarget as HTMLDivElement;
+								card.style.transform = '';
+								card.style.background = 'rgba(255, 255, 255, 0.95)';
+								card.style.borderColor = 'rgba(255, 255, 255, 0.6)';
+								card.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.05)';
 							}}
 						>
+							{/* Gradient glow effect behind icon - Adjusted for light theme */}
 							<div
 								style={{
 									position: 'absolute',
-									top: -18,
-									left: 16,
-									width: 32,
-									height: 32,
-									background:
-										idx % 2 === 0
-											? 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)'
-											: 'linear-gradient(135deg,#9F7AEA 0%,#5727A3 100%)',
-									color: '#fff',
+									top: 40,
+									left: '50%',
+									transform: 'translateX(-50%)',
+									width: 100,
+									height: 100,
+									background: idx % 2 === 0
+										? 'radial-gradient(circle, rgba(125, 211, 232, 0.15) 0%, transparent 70%)'
+										: 'radial-gradient(circle, rgba(45, 106, 122, 0.1) 0%, transparent 70%)',
 									borderRadius: '50%',
+									filter: 'blur(20px)',
+									pointerEvents: 'none',
+								}}
+							/>
+							{/* Step number badge - Dark background, Light text */}
+							<div
+								style={{
+									position: 'absolute',
+									top: 16,
+									right: 16,
+									width: 28,
+									height: 28,
+									background: '#1A3A4A',
+									color: '#ffffff',
+									borderRadius: 8,
 									display: 'flex',
 									alignItems: 'center',
 									justifyContent: 'center',
-									fontWeight: 800,
-									fontSize: '1rem',
-									boxShadow: '0 2px 8px #5727A322',
-									border: '2px solid #fff',
-									zIndex: 2,
+									fontWeight: 700,
+									fontSize: '0.85rem',
+									border: '1px solid rgba(26, 58, 74, 0.1)',
+									boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
 								}}
 							>
 								{idx + 1}
 							</div>
+							{/* Icon container - Dark background */}
 							<div
 								style={{
-									width: 44,
-									height: 44,
-									margin: '1rem auto 0.7rem auto',
-									borderRadius: '50%',
-									background:
-										idx % 2 === 0
-											? 'linear-gradient(135deg,#D6C5F0 60%,#9F7AEA 100%)'
-											: 'linear-gradient(135deg,#fff 60%,#D6C5F0 100%)',
+									position: 'relative',
+									width: 70,
+									height: 70,
+									marginBottom: '1.5rem',
+									borderRadius: 18,
+									background: '#1A3A4A',
 									display: 'flex',
 									alignItems: 'center',
 									justifyContent: 'center',
-									boxShadow: '0 2px 8px #5727A318',
+									border: '1px solid rgba(255, 255, 255, 0.1)',
+									boxShadow: '0 8px 20px rgba(26, 58, 74, 0.2)',
 								}}
 							>
-								{/* ...existing icon SVGs... */}
 								{idx === 0 && (
-									<svg width="28" height="28" viewBox="0 0 44 44" fill="none">
-										<circle cx="22" cy="22" r="20" fill="#fff" opacity="0.92"/>
-										<rect x="13" y="15" width="18" height="12" rx="6" stroke="#5727A3" strokeWidth="2.5" fill="none"/>
-										<path d="M19 27L17 31L22 29L27 31L25 27" stroke="#5727A3" strokeWidth="2" strokeLinejoin="round" fill="none"/>
+									<svg width="32" height="32" viewBox="0 0 44 44" fill="none">
+										<path d="M22 8C14.268 8 8 14.268 8 22s6.268 14 14 14 14-6.268 14-14S29.732 8 22 8z" stroke="#fff" strokeWidth="2" fill="none" />
+										<path d="M17 22l3 3 7-7" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
 									</svg>
 								)}
 								{idx === 1 && (
-									<svg width="28" height="28" viewBox="0 0 44 44" fill="none">
-										<circle cx="22" cy="22" r="20" fill="#fff" opacity="0.92"/>
-										<rect x="13" y="17" width="18" height="10" rx="3" stroke="#5727A3" strokeWidth="2.5" fill="none"/>
-										<circle cx="29" cy="22" r="1.5" fill="#5727A3"/>
-										<path d="M13 21h18" stroke="#5727A3" strokeWidth="2"/>
+									<svg width="32" height="32" viewBox="0 0 44 44" fill="none">
+										<rect x="10" y="16" width="24" height="16" rx="3" stroke="#fff" strokeWidth="2" fill="none" />
+										<path d="M18 12h8v4H18z" stroke="#fff" strokeWidth="2" fill="none" />
+										<circle cx="22" cy="24" r="3" stroke="#fff" strokeWidth="2" fill="none" />
 									</svg>
 								)}
 								{idx === 2 && (
-									<svg width="28" height="28" viewBox="0 0 44 44" fill="none">
-										<circle cx="22" cy="22" r="20" fill="#fff" opacity="0.92"/>
-										<circle cx="22" cy="22" r="10" stroke="#5727A3" strokeWidth="2.5"/>
-										<ellipse cx="22" cy="22" rx="10" ry="4" stroke="#5727A3" strokeWidth="2"/>
-										<path d="M22 12v20M12 22h20" stroke="#5727A3" strokeWidth="2"/>
+									<svg width="32" height="32" viewBox="0 0 44 44" fill="none">
+										<circle cx="22" cy="22" r="12" stroke="#fff" strokeWidth="2" fill="none" />
+										<ellipse cx="22" cy="22" rx="12" ry="5" stroke="#fff" strokeWidth="1.5" fill="none" />
+										<path d="M22 10v24M10 22h24" stroke="#fff" strokeWidth="1.5" />
+										<circle cx="22" cy="22" r="2" fill="#fff" />
 									</svg>
 								)}
 								{idx === 3 && (
-									<svg width="28" height="28" viewBox="0 0 44 44" fill="none">
-										<circle cx="22" cy="22" r="20" fill="#fff" opacity="0.92"/>
-										<rect x="16" y="12" width="12" height="20" rx="3" stroke="#5727A3" strokeWidth="2.5" fill="none"/>
-										<rect x="20" y="28" width="4" height="2" rx="1" fill="#5727A3"/>
+									<svg width="32" height="32" viewBox="0 0 44 44" fill="none">
+										<rect x="14" y="8" width="16" height="28" rx="4" stroke="#fff" strokeWidth="2" fill="none" />
+										<path d="M18 12h8" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
+										<circle cx="22" cy="30" r="2" fill="#fff" />
 									</svg>
 								)}
 							</div>
 							<h4
 								style={{
-									fontSize: '.98rem',
-									color: '#5727A3',
-									fontWeight: 800,
-									margin: '0 0 .3rem 0',
+									fontSize: '1.15rem',
+									color: '#1A3A4A',
+									fontWeight: 700,
+									margin: '0 0 0.6rem 0',
 									textAlign: 'center',
-									letterSpacing: '-.5px',
+									letterSpacing: '-0.3px',
+									lineHeight: 1.3,
 								}}
 							>
 								{step.title}
 							</h4>
 							<p
 								style={{
-									fontSize: '.93rem',
-									color: '#3B2562',
+									fontSize: '0.95rem',
+									color: '#2D6A7A',
 									textAlign: 'center',
 									margin: 0,
 									fontWeight: 500,
-									minHeight: 32,
+									lineHeight: 1.6,
+									opacity: 0.9,
 								}}
 							>
 								{step.desc}
@@ -421,20 +435,26 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ style }) => {
 				{`
         @media (max-width: 900px) {
           .howitworks-step-card {
-            min-width: 140px !important;
-            max-width: 180px !important;
-            padding: .7rem .4rem .7rem .4rem !important;
+            padding: 1.5rem 1.2rem 1.4rem 1.2rem !important;
           }
         }
         @media (max-width: 600px) {
           .howitworks-step-card {
-            max-width: 100vw !important;
-            min-width: 140px !important;
-            padding: .7rem .4rem .7rem .4rem !important;
+            padding: 1.5rem 1rem 1.4rem 1rem !important;
           }
+        }
+        .howitworks-step-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(125, 211, 232, 0.3), transparent);
         }
         `}
 			</style>
 		</div>
 	);
 };
+

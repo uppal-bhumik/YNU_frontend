@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Universities V1 - Backend Discovery Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.7;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f8f9fa;
+            color: #1a1a1a;
+        }
+
+        h1 {
+            color: #0d6efd;
+            border-bottom: 3px solid #0d6efd;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #198754;
+            margin-top: 45px;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            color: #495057;
+            margin-top: 25px;
+        }
+
+        h4 {
+            color: #6c757d;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            border: 1px solid #dee2e6;
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: #0d6efd;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tr:hover {
+            background: #e9ecef;
+        }
+
+        code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            color: #d63384;
+        }
+
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .json-key {
+            color: #9cdcfe;
+        }
+
+        .json-string {
+            color: #ce9178;
+        }
+
+        .json-number {
+            color: #b5cea8;
+        }
+
+        .json-comment {
+            color: #6a9955;
+        }
+
+        blockquote {
+            border-left: 4px solid #0d6efd;
+            margin: 20px 0;
+            padding: 15px 20px;
+            background: #e7f1ff;
+            border-radius: 0 8px 8px 0;
+        }
+
+        blockquote.warning {
+            border-left-color: #fd7e14;
+            background: #fff3cd;
+        }
+
+        blockquote.danger {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #dee2e6;
+            margin: 40px 0;
+        }
+
+        ul,
+        ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .meta {
+            color: #6c757d;
+            font-size: 0.95em;
+            margin-bottom: 30px;
+        }
+
+        .yes {
+            color: #198754;
+            font-weight: bold;
+        }
+
+        .no {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .partial {
+            color: #fd7e14;
+            font-weight: bold;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .badge-pk {
+            background: #0d6efd;
+            color: white;
+        }
+
+        .badge-fk {
+            background: #6f42c1;
+            color: white;
+        }
+
+        .badge-jsonb {
+            background: #20c997;
+            color: white;
+        }
+
+        .badge-string {
+            background: #6c757d;
+            color: white;
+        }
+
+        .badge-int {
+            background: #fd7e14;
+            color: white;
+        }
+
+        .diagram {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 25px;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            white-space: pre;
+            overflow-x: auto;
+            line-height: 1.4;
+        }
+
+        .section-num {
+            background: #0d6efd;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🎓 Compare Universities V1 — Backend Discovery Document</h1>
+    <p class="meta">
+        <strong>Date:</strong> January 19, 2026<br>
+        <strong>Phase:</strong> Feature Phase 1 — Discovery Only<br>
+        <strong>Scope:</strong> University-level comparison using aggregated program data<br>
+        <strong>Status:</strong> ⏸️ Awaiting confirmation before implementation
+    </p>
+
+    <hr>
+
+    <h2><span class="section-num">1</span> Database Structure Confirmation</h2>
+
+    <h3>Tables Involved</h3>
+
+    <table>
+        <tr>
+            <th>Table Name</th>
+            <th>Primary Key</th>
+            <th>Type</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td><code>universities</code></td>
+            <td><code>id</code> <span class="badge badge-pk">PK</span></td>
+            <td><span class="badge badge-string">String</span></td>
+            <td>University master data with attributes, relationships</td>
+        </tr>
+        <tr>
+            <td><code>program_details</code></td>
+            <td><code>id</code> <span class="badge badge-pk">PK</span></td>
+            <td><span class="badge badge-string">String</span></td>
+            <td>Primary program table with tuition, duration, requirements</td>
+        </tr>
+        <tr>
+            <td><code>programs</code></td>
+            <td><code>id</code> <span class="badge badge-pk">PK</span></td>
+            <td><span class="badge badge-string">String</span></td>
+            <td>Secondary program catalog (less detailed)</td>
+        </tr>
+        <tr>
+            <td><code>scholarships</code></td>
+            <td><code>id</code> <span class="badge badge-pk">PK</span></td>
+            <td><span class="badge badge-int">Integer</span></td>
+            <td>Scholarship listings with award amounts</td>
+        </tr>
+    </table>
+
+    <h3>Foreign Key Relationships</h3>
+
+    <table>
+        <tr>
+            <th>Relationship</th>
+            <th>From Table</th>
+            <th>From Column</th>
+            <th>To Table</th>
+            <th>Link Type</th>
+        </tr>
+        <tr>
+            <td><code>program_details</code> → <code>universities</code></td>
+            <td><code>program_details</code></td>
+            <td><code>school_id</code> <span class="badge badge-fk">FK</span></td>
+            <td><code>universities</code></td>
+            <td><span class="badge badge-int">Integer</span> (matches university ID as integer)</td>
+        </tr>
+        <tr>
+            <td><code>scholarships</code> → <code>universities</code></td>
+            <td><code>scholarships</code></td>
+            <td><code>schoolGroupId</code> <span class="badge badge-fk">FK</span></td>
+            <td><code>universities</code></td>
+            <td><span class="badge badge-int">Integer</span></td>
+        </tr>
+    </table>
+
+    <h3>Cardinality Confirmation</h3>
+
+    <table>
+        <tr>
+            <th>Relationship</th>
+            <th>Cardinality</th>
+            <th>Confirmed?</th>
+        </tr>
+        <tr>
+            <td>One University → Many Programs</td>
+            <td><strong>1 : N</strong></td>
+            <td><span class="yes">✅ Yes</span> (via <code>school_id</code> in <code>program_details</code>)</td>
+        </tr>
+        <tr>
+            <td>One University → Many Scholarships</td>
+            <td><strong>1 : N</strong></td>
+            <td><span class="yes">✅ Yes</span> (via <code>schoolGroupId</code> in <code>scholarships</code>)</td>
+        </tr>
+        <tr>
+            <td>One Program → One University</td>
+            <td><strong>N : 1</strong></td>
+            <td><span class="yes">✅ Yes</span></td>
+        </tr>
+    </table>
+
+    <h3>Entity Relationship Diagram (Text)</h3>
+
+    <div class="diagram">
+        ┌─────────────────────────────────────────────────────────────────────────────┐
+        │ DATABASE RELATIONSHIPS │
+        └─────────────────────────────────────────────────────────────────────────────┘
+
+        ┌──────────────────┐
+        │ universities │
+        ├──────────────────┤
+        │ id (PK, String) │◄─────────────────────────────────────┐
+        │ type │ │
+        │ attributes (JSON)│ │
+        │ relationships │ │
+        │ included │ │
+        └──────────────────┘ │
+        ▲ │
+        │ │
+        │ school_id (FK) │ schoolGroupId (FK)
+        │ │
+        ┌──────────────────┐ ┌──────────────────┐
+        │ program_details │ │ scholarships │
+        ├──────────────────┤ ├──────────────────┤
+        │ id (PK, String) │ │ id (PK, Integer) │
+        │ school_id (FK) ──┼──────────────────────────────│ schoolGroupId ───┤
+        │ attributes (JSON)│ │ title │
+        │ school (JSON) │ │ awardAmountFrom │
+        │ program (JSON) │ │ awardAmountTo │
+        │ program_reqs │ │ eligibleLevels │
+        │ program_basic │ │ schoolGroupName │
+        └──────────────────┘ └──────────────────┘
+
+        Cardinality:
+        ─────────────
+        universities ◄──── 1:N ────► program_details
+        universities ◄──── 1:N ────► scholarships
+    </div>
+
+    <hr>
+
+    <h2><span class="section-num">2</span> Available Fields for Comparison (Reality Check)</h2>
+
+    <h3>University-Level Fields</h3>
+
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>DB Location</th>
+            <th>Data Type</th>
+            <th>Available?</th>
+        </tr>
+        <tr>
+            <td><strong>University ID</strong></td>
+            <td><code>universities.id</code></td>
+            <td>String</td>
+            <td><span class="yes">✅ Yes</span></td>
+        </tr>
+        <tr>
+            <td><strong>University Name</strong></td>
+            <td><code>universities.attributes["name"]</code><br><em>OR</em> <code>program_details.school["name"]</code>
+            </td>
+            <td>String (JSONB)</td>
+            <td><span class="yes">✅ Yes</span></td>
+        </tr>
+        <tr>
+            <td><strong>Country</strong></td>
+            <td><code>program_details.school["country"]</code></td>
+            <td>String (JSONB)</td>
+            <td><span class="yes">✅ Yes</span></td>
+        </tr>
+        <tr>
+            <td><strong>State/Region</strong></td>
+            <td><code>universities.attributes["state"]</code></td>
+            <td>String (JSONB)</td>
+            <td><span class="yes">✅ Yes</span></td>
+        </tr>
+        <tr>
+            <td><strong>Description</strong></td>
+            <td><code>universities.attributes["description"]</code></td>
+            <td>String (JSONB)</td>
+            <td><span class="partial">⚠️ Partial</span> (may be empty)</td>
+        </tr>
+    </table>
+
+    <h3>Program-Level Fields (for Aggregation)</h3>
+
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>DB Location</th>
+            <th>Data Type</th>
+            <th>Available?</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td><strong>Tuition</strong></td>
+            <td><code>program_details.attributes["tuition"]</code></td>
+            <td>Number (stored in JSONB)</td>
+            <td><span class="yes">✅ Yes</span></td>
+            <td>Per program — needs aggregation for min/max</td>
+        </tr>
+        <tr>
+            <td><strong>Currency</strong></td>
+            <td><code>program_details.attributes["currency"]</code></td>
+            <td>String (JSONB)</td>
+            <td><span class="partial">⚠️ Verify</span></td>
+            <td>May be embedded in tuition field</td>
+        </tr>
+        <tr>
+            <td><strong>Duration</strong></td>
+            <td><code>program_details.attributes["duration"]</code></td>
+            <td>String/Number (JSONB)</td>
+            <td><span class="yes">✅ Yes</span></td>
+            <td>Format varies (e.g., "2 years", "24 months")</td>
+        </tr>
+        <tr>
+            <td><strong>Level</strong></td>
+            <td><code>program_details.attributes["level"]</code></td>
+            <td>String (JSONB)</td>
+            <td><span class="yes">✅ Yes</span></td>
+            <td>Bachelor's, Master's, PhD, Diploma, etc.</td>
+        </tr>
+        <tr>
+            <td><strong>Program Name</strong></td>
+            <td><code>program_details.attributes["name"]</code></td>
+            <td>String (JSONB)</td>
+            <td><span class="yes">✅ Yes</span></td>
+            <td>—</td>
+        </tr>
+        <tr>
+            <td><strong>Intake Dates</strong></td>
+            <td><code>program_details.attributes</code> (nested)</td>
+            <td>Array/Object (JSONB)</td>
+            <td><span class="partial">⚠️ Partial</span></td>
+            <td>Structure may vary — needs parsing</td>
+        </tr>
+    </table>
+
+    <h3>Scholarship-Level Fields</h3>
+
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>DB Location</th>
+            <th>Data Type</th>
+            <th>Available?</th>
+        </tr>
+        <tr>
+            <td><strong>Title</strong></td>
+            <td><code>scholarships.title</code></td>
+            <td>String</td>
+            <td><span class="yes">✅ Yes</span></td>
+        </tr>
+        <tr>
+            <td><strong>Award Amount (From)</strong></td>
+            <td><code>scholarships.awardAmountFrom</code></td>
+            <td>String</td>
+            <td><span class="yes">✅ Yes</span></td>
+        </tr>
+        <tr>
+            <td><strong>Award Amount (To)</strong></td>
+            <td><code>scholarships.awardAmountTo</code></td>
+            <td>String</td>
+            <td><span class="yes">✅ Yes</span></td>
+        </tr>
+        <tr>
+            <td><strong>Currency Code</strong></td>
+            <td><code>scholarships.awardAmountCurrencyCode</code></td>
+            <td>String</td>
+            <td><span class="yes">✅ Yes</span></td>
+        </tr>
+        <tr>
+            <td><strong>University Link</strong></td>
+            <td><code>scholarships.schoolGroupId</code></td>
+            <td>Integer</td>
+            <td><span class="yes">✅ Yes</span></td>
+        </tr>
+        <tr>
+            <td><strong>Count per University</strong></td>
+            <td><em>Aggregate via</em> <code>COUNT(*) GROUP BY schoolGroupId</code></td>
+            <td>Computed</td>
+            <td><span class="yes">✅ Yes</span> (query needed)</td>
+        </tr>
+    </table>
+
+    <h3>❌ Fields That Do NOT Exist</h3>
+
+    <blockquote class="danger">
+        <strong>⚠️ Missing Fields — Cannot be used in V1 without external data sources:</strong>
+    </blockquote>
+
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Status</th>
+            <th>Would Require</th>
+        </tr>
+        <tr>
+            <td><strong>University Ranking</strong></td>
+            <td><span class="no">❌ Not Stored</span></td>
+            <td>External API (QS, Times Higher Ed, etc.) or new data import</td>
+        </tr>
+        <tr>
+            <td><strong>Acceptance Rate</strong></td>
+            <td><span class="no">❌ Not Stored</span></td>
+            <td>New data source or manual entry</td>
+        </tr>
+        <tr>
+            <td><strong>Student/Faculty Ratio</strong></td>
+            <td><span class="no">❌ Not Stored</span></td>
+            <td>New data source</td>
+        </tr>
+        <tr>
+            <td><strong>Campus Size</strong></td>
+            <td><span class="no">❌ Not Stored</span></td>
+            <td>New data source</td>
+        </tr>
+        <tr>
+            <td><strong>Living Cost Index</strong></td>
+            <td><span class="no">❌ Not Stored</span></td>
+            <td>External API or new table</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2><span class="section-num">3</span> Existing APIs We Can Reuse</h2>
+
+    <h3>Available Endpoints</h3>
+
+    <table>
+        <tr>
+            <th>Endpoint</th>
+            <th>Returns</th>
+            <th>Reusable for Compare?</th>
+        </tr>
+        <tr>
+            <td><code>GET /universities/{school_id}</code></td>
+            <td>Single university with attributes, relationships</td>
+            <td><span class="partial">⚠️ Limited</span> — one at a time only</td>
+        </tr>
+        <tr>
+            <td><code>GET /api/programs/{program_id}</code></td>
+            <td>Single program details</td>
+            <td><span class="no">❌ No</span> — too granular</td>
+        </tr>
+        <tr>
+            <td><code>GET /api/program-details</code></td>
+            <td>Paginated programs with embedded school data</td>
+            <td><span class="yes">✅ Best Candidate</span> — has filters + combined data</td>
+        </tr>
+        <tr>
+            <td><code>GET /scholarships/{school_id}</code></td>
+            <td>Scholarships for one university</td>
+            <td><span class="yes">✅ Yes</span> — can call per university</td>
+        </tr>
+    </table>
+
+    <h3>Filters Supported by <code>/api/program-details</code></h3>
+
+    <table>
+        <tr>
+            <th>Filter Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>university_name</code></td>
+            <td>String</td>
+            <td>Partial match on <code>school["name"]</code></td>
+        </tr>
+        <tr>
+            <td><code>program_name</code></td>
+            <td>String</td>
+            <td>Partial match on <code>attributes["name"]</code></td>
+        </tr>
+        <tr>
+            <td><code>country</code></td>
+            <td>String</td>
+            <td>Partial match on <code>school["country"]</code></td>
+        </tr>
+        <tr>
+            <td><code>min_fees</code></td>
+            <td>Integer</td>
+            <td>Minimum tuition filter</td>
+        </tr>
+        <tr>
+            <td><code>max_fees</code></td>
+            <td>Integer</td>
+            <td>Maximum tuition filter</td>
+        </tr>
+        <tr>
+            <td><code>page</code></td>
+            <td>Integer</td>
+            <td>Pagination (default: 1)</td>
+        </tr>
+        <tr>
+            <td><code>page_size</code></td>
+            <td>Integer</td>
+            <td>Results per page (default: 50, max: 200)</td>
+        </tr>
+    </table>
+
+    <h3>Can Current APIs Support Multi-University Selection?</h3>
+
+    <blockquote class="warning">
+        <strong>⚠️ Answer: NO — Not without modification</strong>
+        <br><br>
+        Current limitations:
+        <ul>
+            <li><code>university_name</code> filter only accepts ONE name (partial match)</li>
+            <li>No <code>school_ids</code> parameter to fetch multiple universities at once</li>
+            <li>No aggregation logic (min/max tuition, program count, etc.)</li>
+            <li>Would require N+1 API calls to compare N universities</li>
+        </ul>
+    </blockquote>
+
+    <hr>
+
+    <h2><span class="section-num">4</span> Gaps for Compare Universities (V1)</h2>
+
+    <h3>What is Missing?</h3>
+
+    <table>
+        <tr>
+            <th>Gap</th>
+            <th>Current State</th>
+            <th>Required Action</th>
+        </tr>
+        <tr>
+            <td><strong>Multi-University Selection</strong></td>
+            <td>APIs only support single university filters</td>
+            <td>New endpoint accepting multiple IDs</td>
+        </tr>
+        <tr>
+            <td><strong>Aggregation per University</strong></td>
+            <td>Raw program data only — no summaries</td>
+            <td>Backend logic for tuition range, program count, levels</td>
+        </tr>
+        <tr>
+            <td><strong>Scholarship Count</strong></td>
+            <td>Can query but not aggregated</td>
+            <td>Add <code>COUNT(*)</code> per <code>schoolGroupId</code></td>
+        </tr>
+        <tr>
+            <td><strong>Comparison-Ready Response</strong></td>
+            <td>Current response is program-centric</td>
+            <td>University-centric response structure</td>
+        </tr>
+    </table>
+
+    <h3>Decision: New Endpoint vs Extend Existing?</h3>
+
+    <table>
+        <tr>
+            <th>Option</th>
+            <th>Pros</th>
+            <th>Cons</th>
+            <th>Recommendation</th>
+        </tr>
+        <tr>
+            <td><strong>A) New Endpoint</strong><br><code>GET /api/compare-universities</code></td>
+            <td>
+                • Clean, purpose-built<br>
+                • No risk to existing APIs<br>
+                • Optimized response shape<br>
+                • Easier to maintain
+            </td>
+            <td>
+                • More code to write<br>
+                • New route to document
+            </td>
+            <td><span class="yes">✅ RECOMMENDED</span></td>
+        </tr>
+        <tr>
+            <td><strong>B) Extend Existing</strong><br><code>/api/program-details</code></td>
+            <td>
+                • Reuses existing code<br>
+                • Fewer new routes
+            </td>
+            <td>
+                • Would complicate existing API<br>
+                • Response shape doesn't fit<br>
+                • Breaking change risk
+            </td>
+            <td><span class="no">❌ Not Recommended</span></td>
+        </tr>
+    </table>
+
+    <h3>Minimal Aggregation Logic Required</h3>
+
+    <table>
+        <tr>
+            <th>Aggregation</th>
+            <th>SQL/Python Logic</th>
+            <th>Output</th>
+        </tr>
+        <tr>
+            <td><strong>Tuition Range</strong></td>
+            <td><code>MIN(tuition)</code>, <code>MAX(tuition)</code> per university</td>
+            <td><code>{ "min": 15000, "max": 45000, "currency": "USD" }</code></td>
+        </tr>
+        <tr>
+            <td><strong>Program Count</strong></td>
+            <td><code>COUNT(*)</code> per <code>school_id</code></td>
+            <td><code>{ "total": 87 }</code></td>
+        </tr>
+        <tr>
+            <td><strong>Levels Offered</strong></td>
+            <td><code>DISTINCT(level)</code> per university</td>
+            <td><code>["Bachelor's", "Master's", "PhD"]</code></td>
+        </tr>
+        <tr>
+            <td><strong>Scholarship Count</strong></td>
+            <td><code>COUNT(*)</code> from scholarships per <code>schoolGroupId</code></td>
+            <td><code>{ "count": 12 }</code></td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2><span class="section-num">5</span> Recommended API Response Shape (Proposal)</h2>
+
+    <h3>Proposed Endpoint</h3>
+
+    <pre>GET /api/compare-universities?ids=123,456,789</pre>
+
+    <h3>Query Parameters</h3>
+
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>ids</code></td>
+            <td>String (comma-separated)</td>
+            <td>Yes</td>
+            <td>University IDs to compare (max 4)</td>
+        </tr>
+    </table>
+
+    <h3>Proposed JSON Response Structure</h3>
+
+    <pre>
+{
+  <span class="json-key">"universities"</span>: [
+    {
+      <span class="json-key">"id"</span>: <span class="json-string">"123"</span>,
+      <span class="json-key">"name"</span>: <span class="json-string">"University of Example"</span>,
+      <span class="json-key">"country"</span>: <span class="json-string">"USA"</span>,
+      <span class="json-key">"state"</span>: <span class="json-string">"California"</span>,
+      
+      <span class="json-comment">// Aggregated from program_details</span>
+      <span class="json-key">"tuition"</span>: {
+        <span class="json-key">"min"</span>: <span class="json-number">15000</span>,
+        <span class="json-key">"max"</span>: <span class="json-number">45000</span>,
+        <span class="json-key">"currency"</span>: <span class="json-string">"USD"</span>
+      },
+      
+      <span class="json-key">"programs"</span>: {
+        <span class="json-key">"total_count"</span>: <span class="json-number">87</span>,
+        <span class="json-key">"levels"</span>: [<span class="json-string">"Bachelor's"</span>, <span class="json-string">"Master's"</span>, <span class="json-string">"PhD"</span>]
+      },
+      
+      <span class="json-key">"scholarships"</span>: {
+        <span class="json-key">"count"</span>: <span class="json-number">12</span>,
+        <span class="json-key">"available"</span>: <span class="json-number">true</span>
+      },
+      
+      <span class="json-comment">// Optional: Top program names preview</span>
+      <span class="json-key">"top_programs"</span>: [
+        <span class="json-string">"MBA"</span>,
+        <span class="json-string">"Computer Science"</span>,
+        <span class="json-string">"Mechanical Engineering"</span>
+      ]
+    },
+    {
+      <span class="json-key">"id"</span>: <span class="json-string">"456"</span>,
+      <span class="json-comment">// ... same structure</span>
+    },
+    {
+      <span class="json-key">"id"</span>: <span class="json-string">"789"</span>,
+      <span class="json-comment">// ... same structure</span>
+    }
+  ],
+  
+  <span class="json-key">"meta"</span>: {
+    <span class="json-key">"compared_count"</span>: <span class="json-number">3</span>,
+    <span class="json-key">"generated_at"</span>: <span class="json-string">"2026-01-19T14:00:00Z"</span>
+  }
+}
+</pre>
+
+    <h3>Field Definitions</h3>
+
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Type</th>
+            <th>Source</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>id</code></td>
+            <td>String</td>
+            <td><code>universities.id</code></td>
+            <td>University unique identifier</td>
+        </tr>
+        <tr>
+            <td><code>name</code></td>
+            <td>String</td>
+            <td><code>universities.attributes["name"]</code></td>
+            <td>University display name</td>
+        </tr>
+        <tr>
+            <td><code>country</code></td>
+            <td>String</td>
+            <td><code>program_details.school["country"]</code></td>
+            <td>Country code or name</td>
+        </tr>
+        <tr>
+            <td><code>state</code></td>
+            <td>String | null</td>
+            <td><code>universities.attributes["state"]</code></td>
+            <td>State/region (if available)</td>
+        </tr>
+        <tr>
+            <td><code>tuition.min</code></td>
+            <td>Number</td>
+            <td><code>MIN(program_details.attributes["tuition"])</code></td>
+            <td>Lowest tuition across programs</td>
+        </tr>
+        <tr>
+            <td><code>tuition.max</code></td>
+            <td>Number</td>
+            <td><code>MAX(program_details.attributes["tuition"])</code></td>
+            <td>Highest tuition across programs</td>
+        </tr>
+        <tr>
+            <td><code>tuition.currency</code></td>
+            <td>String</td>
+            <td>JSONB field or default "USD"</td>
+            <td>Currency code</td>
+        </tr>
+        <tr>
+            <td><code>programs.total_count</code></td>
+            <td>Number</td>
+            <td><code>COUNT(*)</code> per school_id</td>
+            <td>Total programs offered</td>
+        </tr>
+        <tr>
+            <td><code>programs.levels</code></td>
+            <td>Array&lt;String&gt;</td>
+            <td><code>DISTINCT(level)</code></td>
+            <td>Available degree levels</td>
+        </tr>
+        <tr>
+            <td><code>scholarships.count</code></td>
+            <td>Number</td>
+            <td><code>COUNT(*)</code> from scholarships</td>
+            <td>Number of scholarships</td>
+        </tr>
+        <tr>
+            <td><code>scholarships.available</code></td>
+            <td>Boolean</td>
+            <td><code>count > 0</code></td>
+            <td>Whether scholarships exist</td>
+        </tr>
+        <tr>
+            <td><code>top_programs</code></td>
+            <td>Array&lt;String&gt;</td>
+            <td>Top 3-5 program names</td>
+            <td>Optional preview of popular programs</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2>📋 Summary Checklist</h2>
+
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>DB relationships confirmed</td>
+            <td><span class="yes">✅ Complete</span></td>
+        </tr>
+        <tr>
+            <td>Usable fields identified</td>
+            <td><span class="yes">✅ Complete</span></td>
+        </tr>
+        <tr>
+            <td>Missing fields documented</td>
+            <td><span class="yes">✅ Complete</span></td>
+        </tr>
+        <tr>
+            <td>Reusable APIs analyzed</td>
+            <td><span class="yes">✅ Complete</span></td>
+        </tr>
+        <tr>
+            <td>Gap analysis completed</td>
+            <td><span class="yes">✅ Complete</span></td>
+        </tr>
+        <tr>
+            <td>Response schema proposed</td>
+            <td><span class="yes">✅ Complete</span></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="background: #d4edda; text-align: center;"><strong>🛑 AWAITING CONFIRMATION BEFORE
+                    IMPLEMENTATION</strong></td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

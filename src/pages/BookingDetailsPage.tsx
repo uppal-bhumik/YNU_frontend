@@ -142,7 +142,7 @@ const BookingDetailsPage: React.FC = () => {
             color: '#111827'
           }}
         >
-            Booking Details
+          Booking Details
         </h1>
         <div style={{ marginTop: '.6rem', fontSize: '.75rem', color: '#6b7280', fontWeight: 600 }}>
           ID: {id || '—'}
@@ -208,7 +208,7 @@ const BookingDetailsPage: React.FC = () => {
                     href={booking.meeting_link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ color: '#2563eb', fontWeight: 600, wordBreak: 'break-all' }}
+                    style={{ color: '#2D6A7A', fontWeight: 600, wordBreak: 'break-all' }}
                   >
                     Join
                   </a>
@@ -238,32 +238,32 @@ const BookingDetailsPage: React.FC = () => {
         )}
 
         {booking && (
-          <div style={{ marginTop:'1.4rem' }}>
+          <div style={{ marginTop: '1.4rem' }}>
             <button
               onClick={() => setShowConfig(s => !s)}
               style={{
-                background:'#111827',
-                color:'#fff',
-                padding:'.55rem .85rem',
-                borderRadius:8,
-                border:'none',
-                fontSize:'.65rem',
-                fontWeight:600,
-                cursor:'pointer'
+                background: '#111827',
+                color: '#fff',
+                padding: '.55rem .85rem',
+                borderRadius: 8,
+                border: 'none',
+                fontSize: '.65rem',
+                fontWeight: 600,
+                cursor: 'pointer'
               }}
             >
               {showConfig ? 'Hide Payment Integration Info' : 'Show Payment Integration Info'}
             </button>
             {showConfig && (
-              <div style={{ marginTop:'.8rem',background:'#f8fafc',border:'1px solid #e2e8f0',borderRadius:10,padding:'0.9rem 1rem' }}>
+              <div style={{ marginTop: '.8rem', background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 10, padding: '0.9rem 1rem' }}>
                 {!apiConfig && !apiConfigError && (
-                  <div style={{ fontSize:'.65rem',fontWeight:600,color:'#374151' }}>Loading integration data...</div>
+                  <div style={{ fontSize: '.65rem', fontWeight: 600, color: '#374151' }}>Loading integration data...</div>
                 )}
                 {apiConfigError && (
-                  <div style={{ fontSize:'.65rem',fontWeight:600,color:'#b91c1c' }}>{apiConfigError}</div>
+                  <div style={{ fontSize: '.65rem', fontWeight: 600, color: '#b91c1c' }}>{apiConfigError}</div>
                 )}
                 {apiConfig && (
-                  <div style={{ display:'grid',gap:'.55rem',fontSize:'.62rem',lineHeight:1.4 }}>
+                  <div style={{ display: 'grid', gap: '.55rem', fontSize: '.62rem', lineHeight: 1.4 }}>
                     <div><strong>API Key Configured:</strong> {apiConfig.dodo_api_key_configured ? 'Yes' : 'No'}</div>
                     <div><strong>API Key Preview:</strong> {apiConfig.dodo_api_key_preview}</div>
                     <div><strong>Frontend URL:</strong> {apiConfig.frontend_url}</div>
@@ -274,7 +274,7 @@ const BookingDetailsPage: React.FC = () => {
                     {apiConfig.setup_status && (
                       <div>
                         <strong>Setup Status:</strong>
-                        <ul style={{ margin:'.3rem 0 0',paddingLeft:'1rem' }}>
+                        <ul style={{ margin: '.3rem 0 0', paddingLeft: '1rem' }}>
                           {apiConfig.setup_status.map(s => <li key={s}>{s}</li>)}
                         </ul>
                       </div>
@@ -282,7 +282,7 @@ const BookingDetailsPage: React.FC = () => {
                     {apiConfig.environment_variables_needed && (
                       <div>
                         <strong>Env Vars Needed:</strong>
-                        <ul style={{ margin:'.3rem 0 0',paddingLeft:'1rem' }}>
+                        <ul style={{ margin: '.3rem 0 0', paddingLeft: '1rem' }}>
                           {apiConfig.environment_variables_needed.map(s => <li key={s}>{s}</li>)}
                         </ul>
                       </div>
@@ -290,7 +290,7 @@ const BookingDetailsPage: React.FC = () => {
                     {apiConfig.api_documentation && (
                       <div>
                         <strong>Docs:</strong>{' '}
-                        <a href={apiConfig.api_documentation} target="_blank" rel="noopener noreferrer" style={{ color:'#2563eb',fontWeight:600 }}>Reference</a>
+                        <a href={apiConfig.api_documentation} target="_blank" rel="noopener noreferrer" style={{ color: '#2D6A7A', fontWeight: 600 }}>Reference</a>
                       </div>
                     )}
                   </div>
@@ -436,3 +436,5 @@ function btnStyle(bg: string, fg: string, outline?: boolean): React.CSSPropertie
 }
 
 export default BookingDetailsPage;
+
+

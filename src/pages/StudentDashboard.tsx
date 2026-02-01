@@ -30,3 +30,4 @@ export const StudentDashboard: React.FC = () => {
     </main>
   );
 };
+

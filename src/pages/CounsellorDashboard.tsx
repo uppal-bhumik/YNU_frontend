@@ -31,3 +31,4 @@ export const CounsellorDashboard: React.FC = () => {
     </main>
   );
 };
+

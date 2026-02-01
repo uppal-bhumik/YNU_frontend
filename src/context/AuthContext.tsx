@@ -1,23 +1,31 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useApi } from '../hooks/useApi';
 
-export interface User { id:string; email:string; full_name?:string|null; role:'student'|'counsellor'; } // changed id to string
+export interface User { id: string; email: string; full_name?: string | null; role: 'student' | 'counsellor'; } // changed id to string
 
 interface AuthContextValue {
 	user: User | null;
 	token: string | null;
 	loading: boolean;
-	login: (email:string, password:string) => Promise<void>;
-	register: (email:string, password:string, role:'student'|'counsellor', full_name?:string) => Promise<void>;
+	login: (email: string, password: string) => Promise<void>;
+	register: (email: string, password: string, role: 'student' | 'counsellor', full_name?: string) => Promise<void>;
 	logout: () => void;
-	verify: (email:string, code:string) => Promise<void>;
+	verify: (email: string, code: string) => Promise<void>;
 	pendingEmail: string | null;
 }
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
-export const AuthProvider: React.FC<{children:React.ReactNode}> = ({ children }) => {
-	const [token, setToken] = useState<string | null>(() => localStorage.getItem('sc_token') || localStorage.getItem('access_token'));
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+	// 🚨 DEV ONLY AUTH BYPASS — MUST BE REMOVED BEFORE PRODUCTION PUSH
+
+
+	const [token, setToken] = useState<string | null>(() => {
+		const storedToken = localStorage.getItem('sc_token') || localStorage.getItem('access_token');
+		// 🚨 DEV BYPASS: Auto-inject dev token if user exists but token doesn't
+
+		return storedToken;
+	});
 	const [user, setUser] = useState<User | null>(() => {
 		const stored = localStorage.getItem('user');
 		return stored ? JSON.parse(stored) : null;
@@ -30,9 +38,11 @@ export const AuthProvider: React.FC<{children:React.ReactNode}> = ({ children })
 	useEffect(() => {
 		let cancelled = false;
 		if (token) {
+
+
 			api.get<User>('/users/me')
-				.then(u => { if(!cancelled) setUser(u); })
-				.catch(() => { if(!cancelled) setUser(null); });
+				.then(u => { if (!cancelled) setUser(u); })
+				.catch(() => { if (!cancelled) setUser(null); });
 		} else {
 			setUser(null);
 		}
@@ -55,16 +65,16 @@ export const AuthProvider: React.FC<{children:React.ReactNode}> = ({ children })
 		}
 	}, []);
 
-	async function login(email:string, password:string) {
+	async function login(email: string, password: string) {
 		setLoading(true);
 		try {
-			const { access_token } = await api.post<{access_token:string}>('/auth/login', { email, password });
+			const { access_token } = await api.post<{ access_token: string }>('/auth/login', { email, password });
 			setToken(access_token); localStorage.setItem('sc_token', access_token);
 			const me = await api.get<User>('/users/me'); setUser(me);
 		} finally { setLoading(false); }
 	}
 
-	async function register(email:string, password:string, role:'student'|'counsellor', full_name?:string) {
+	async function register(email: string, password: string, role: 'student' | 'counsellor', full_name?: string) {
 		setLoading(true);
 		try {
 			await api.post('/auth/register', { email, password, role, full_name });
@@ -72,10 +82,10 @@ export const AuthProvider: React.FC<{children:React.ReactNode}> = ({ children })
 		} finally { setLoading(false); }
 	}
 
-	async function verify(email:string, code:string){
+	async function verify(email: string, code: string) {
 		setLoading(true);
 		try {
-			const { access_token } = await api.post<{access_token:string}>('/auth/verify', { email, code });
+			const { access_token } = await api.post<{ access_token: string }>('/auth/verify', { email, code });
 			setToken(access_token);
 			localStorage.setItem('sc_token', access_token);
 			const me = await api.get<User>('/users/me'); setUser(me);
@@ -107,3 +117,4 @@ export function useAuth() {
 }
 
 // Do NOT use both `export const useAuth = ...` and `export function useAuth` in the same file.
+

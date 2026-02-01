@@ -1,11 +1,41 @@
 import React from 'react';
 
+
+const PinGraphic: React.FC<{ style?: React.CSSProperties }> = ({ style }) => (
+  <div style={{
+    position: 'absolute',
+    top: '-24px',
+    left: '-14px', // Overlapping the corner
+    zIndex: 10,
+    filter: 'drop-shadow(0 6px 8px rgba(0,0,0,0.3))',
+    ...style
+  }}>
+    <svg width="44" height="44" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ transform: 'rotate(-20deg)' }}>
+      {/* Needle */}
+      <path d="M16 16L16 28" stroke="#64748B" strokeWidth="3" strokeLinecap="round" />
+      {/* Pin Body Shadow */}
+      <circle cx="16" cy="11" r="9" fill="#9F1239" />
+      {/* Pin Body Main */}
+      <circle cx="16" cy="10" r="9" fill="url(#pinGradient)" />
+      {/* Highlight */}
+      <ellipse cx="13" cy="7" rx="3" ry="2" fill="white" fillOpacity="0.4" transform="rotate(-45 13 7)" />
+      {/* Gradient Definition */}
+      <defs>
+        <radialGradient id="pinGradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(14 8) rotate(51.3402) scale(18.5742)">
+          <stop stopColor="#FB7185" />
+          <stop offset="1" stopColor="#E11D48" />
+        </radialGradient>
+      </defs>
+    </svg>
+  </div>
+);
+
 const AirportPickupPage: React.FC = () => (
   <main
     style={{
-      paddingTop: '90px',
+      paddingTop: '0',
       minHeight: '100vh',
-      background: 'radial-gradient(ellipse at 70% 0%, #e0c3fc 0%, #f0e6ff 70%, #fff 100%)',
+      background: '#fff',
       position: 'relative',
       overflow: 'hidden'
     }}
@@ -27,7 +57,7 @@ const AirportPickupPage: React.FC = () => (
         width: '100%',
         height: '100%',
         borderRadius: '50%',
-        background: 'radial-gradient(circle at 60% 40%, #D6C5F0 0%, #9F7AEA 80%, transparent 100%)'
+        background: 'radial-gradient(circle at 60% 40%, #D0E8EC 0%, #4A8A9A 80%, transparent 100%)'
       }} />
     </div>
     <div style={{
@@ -46,7 +76,7 @@ const AirportPickupPage: React.FC = () => (
         width: '100%',
         height: '100%',
         borderRadius: '50%',
-        background: 'radial-gradient(circle at 40% 60%, #9F7AEA 0%, #D6C5F0 80%, transparent 100%)'
+        background: 'radial-gradient(circle at 40% 60%, #4A8A9A 0%, #D0E8EC 80%, transparent 100%)'
       }} />
     </div>
     <style>{`
@@ -63,235 +93,202 @@ const AirportPickupPage: React.FC = () => (
     {/* Coming Soon Banner */}
     <div style={{
       width: '100%',
-      background: 'linear-gradient(90deg,#9F7AEA 0%,#D6C5F0 100%)',
-      color: '#fff',
+      background: '#0F172A',
+      color: '#CBD5E1',
       textAlign: 'center',
       padding: '0.7rem 0',
-      fontWeight: 800,
-      fontSize: '1.25rem',
-      letterSpacing: '1px',
-      marginBottom: '2rem',
-      boxShadow: '0 2px 12px #9F7AEA33',
+      fontWeight: 600,
+      fontSize: '0.9rem',
+      letterSpacing: '0.5px',
       position: 'relative',
-      zIndex: 2
+      zIndex: 10,
+      borderBottom: '1px solid #1e293b'
     }}>
-      Airport Pickup Service — <span style={{ color: '#5727A3', background: '#fff', borderRadius: 8, padding: '0.2rem 0.7rem', marginLeft: 8 }}>Coming Soon</span>
+      Airport Pickup Service — <span style={{ color: '#fff', fontWeight: 700 }}>Coming Soon</span>
     </div>
 
     {/* Hero Section */}
     <section style={{
-      width: '100%',
-      maxWidth: 1100,
-      margin: '0 auto 2.5rem auto',
-      background: '#fff',
-      borderRadius: 32,
-      boxShadow: '0 12px 48px #9F7AEA22, 0 2px 8px #D6C5F044',
-      padding: '2.5rem 2.5rem 2rem 2.5rem',
-      border: '2px solid #D6C5F0',
+      background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)',
+      padding: '100px 1.5rem 80px 1.5rem',
       textAlign: 'center',
       position: 'relative',
-      zIndex: 2,
-      overflow: 'hidden'
+      marginBottom: '0'
     }}>
       <div style={{
+        maxWidth: 1100,
+        margin: '0 auto',
+        position: 'relative',
+        zIndex: 2,
         display: 'flex',
         flexWrap: 'wrap',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: '2.5rem'
+        gap: '3rem',
+        textAlign: 'left'
       }}>
-        <div style={{ flex: 1, minWidth: 320, textAlign: 'left' }}>
+        <div style={{ flex: 1, minWidth: 320 }}>
           <h1 style={{
-            fontSize: '2.5rem',
+            fontSize: '3rem',
             fontWeight: 900,
-            color: '#5727A3',
+            color: '#fff',
             marginBottom: '1.2rem',
             letterSpacing: '-1px',
-            background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text'
+            lineHeight: 1.1
           }}>
             Arrive with Confidence
           </h1>
           <p style={{
             fontSize: '1.18rem',
-            color: '#1B0044',
-            fontWeight: 600,
-            marginBottom: '1.5rem'
+            color: '#CBD5E1',
+            fontWeight: 500,
+            marginBottom: '1.5rem',
+            lineHeight: 1.6
           }}>
-            Our airport pickup service ensures a smooth, safe, and welcoming transition from the airport to your new home. No stress, no confusion—just a warm welcome and reliable support.
+            Our airport pickup service ensures a smooth, safe, and welcoming transition from the airport to your new home. No stress, no confusion—just a warm welcome.
           </p>
         </div>
+
         <div style={{ flex: 1, minWidth: 320, textAlign: 'center', position: 'relative' }}>
-          {/* 3D Card with floating effect */}
+          {/* Card */}
           <div style={{
-            display: 'inline-block',
-            perspective: 900,
-            width: 340,
-            height: 260,
-            margin: '0 auto',
-            position: 'relative'
+            width: '100%',
+            maxWidth: 400,
+            aspectRatio: '4/3',
+            borderRadius: 24,
+            overflow: 'hidden',
+            boxShadow: '0 20px 40px -10px rgba(0,0,0,0.3)',
+            border: '4px solid rgba(255,255,255,0.1)',
+            margin: '0 auto'
           }}>
-            <div style={{
-              width: 340,
-              height: 220,
-              borderRadius: 28,
-              background: 'linear-gradient(120deg,#D6C5F0 60%,#fff 100%)',
-              boxShadow: '0 8px 32px #9F7AEA33, 0 2px 8px #D6C5F044',
-              border: '4px solid #fff',
-              transform: 'rotateY(-12deg) rotateX(6deg) scale(1.03)',
-              transition: 'transform 0.7s cubic-bezier(.4,2,.6,1)',
-              overflow: 'hidden',
-              position: 'relative',
-              zIndex: 2,
-              animation: 'floatCard 3.2s infinite alternate cubic-bezier(.4,2,.6,1)'
-            }}>
-              <img
-                src="https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?auto=format&fit=crop&w=800&q=80"
-                alt="Airport Pickup"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  borderRadius: 24,
-                  filter: 'brightness(1.07) saturate(1.1)'
-                }}
-              />
-            </div>
-            {/* Decorative ring */}
-            <div style={{
-              position: 'absolute',
-              top: -30,
-              left: '50%',
-              transform: 'translateX(-50%)',
-              width: 380,
-              height: 80,
-              borderRadius: 40,
-              background: 'radial-gradient(circle at 50% 50%, #D6C5F0 0%, #9F7AEA33 80%, transparent 100%)',
-              opacity: 0.18,
-              zIndex: 1,
-              pointerEvents: 'none'
-            }} />
-            <style>{`
-              @keyframes floatCard {
-                0% { transform: rotateY(-12deg) rotateX(6deg) scale(1.03) translateY(0);}
-                100% { transform: rotateY(-12deg) rotateX(6deg) scale(1.07) translateY(-12px);}
-              }
-            `}</style>
+            <img
+              src="https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?auto=format&fit=crop&w=800&q=80"
+              alt="Airport Pickup"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
           </div>
         </div>
       </div>
     </section>
 
-    {/* What You Get Section */}
-    <section style={{
-      width: '100%',
+    {/* Content Wrapper */}
+    <div style={{
       maxWidth: 1100,
-      margin: '0 auto 2.5rem auto',
-      background: 'linear-gradient(90deg,#f0e6ff 0%,#fff 100%)',
-      borderRadius: 32,
-      boxShadow: '0 4px 16px #9F7AEA11',
-      padding: '2.5rem 2.5rem 1.5rem 2.5rem',
-      border: '2px solid #D6C5F0',
-      textAlign: 'left',
+      margin: '-3rem auto 0 auto',
       position: 'relative',
-      zIndex: 2
+      zIndex: 5,
+      padding: '0 1.5rem 3rem 1.5rem'
     }}>
-      <h2 style={{
-        fontSize: '1.5rem',
-        fontWeight: 800,
-        color: '#5727A3',
-        marginBottom: '1.1rem',
-        letterSpacing: '-.5px'
+      {/* What You Get Section */}
+      <section style={{
+        width: '100%',
+        background: '#fff',
+        borderRadius: 24,
+        boxShadow: '0 4px 24px rgba(15, 23, 42, 0.08)',
+        padding: '2.5rem',
+        border: '3px solid #4A8A9A',
+        textAlign: 'left',
+        position: 'relative',
+        marginBottom: '2rem',
+        overflow: 'visible'
       }}>
-        What Does Our Airport Pickup Include?
-      </h2>
-      <ul style={{
-        fontSize: '1.13rem',
-        color: '#5727A3',
-        marginBottom: '1.5rem',
-        paddingLeft: '1.2rem',
-        lineHeight: 1.7
-      }}>
-        <li><b>Meet & Greet:</b> Friendly representative waiting for you at arrivals.</li>
-        <li><b>Safe Transport:</b> Comfortable, pre-arranged ride to your accommodation.</li>
-        <li><b>Luggage Assistance:</b> Help with bags and settling in.</li>
-        <li><b>24/7 Support:</b> We're here for unexpected delays or issues.</li>
-        <li><b>Peace of Mind:</b> For both students and parents.</li>
-      </ul>
-    </section>
+        <PinGraphic />
+        <h2 style={{
+          fontSize: '1.5rem',
+          fontWeight: 800,
+          color: '#1A3A4A',
+          marginBottom: '1.1rem',
+          letterSpacing: '-.5px'
+        }}>
+          What Does Our Airport Pickup Include?
+        </h2>
+        <ul style={{
+          fontSize: '1.13rem',
+          color: '#1A3A4A',
+          marginBottom: '1.5rem',
+          paddingLeft: '1.2rem',
+          lineHeight: 1.7
+        }}>
+          <li><b>Meet & Greet:</b> Friendly representative waiting for you at arrivals.</li>
+          <li><b>Safe Transport:</b> Comfortable, pre-arranged ride to your accommodation.</li>
+          <li><b>Luggage Assistance:</b> Help with bags and settling in.</li>
+          <li><b>24/7 Support:</b> We're here for unexpected delays or issues.</li>
+          <li><b>Peace of Mind:</b> For both students and parents.</li>
+        </ul>
+      </section>
 
-    {/* Why Book With Us? */}
-    <section style={{
-      width: '100%',
-      maxWidth: 1100,
-      margin: '0 auto 2.5rem auto',
-      background: '#fff',
-      borderRadius: 32,
-      boxShadow: '0 4px 16px #9F7AEA11',
-      padding: '2.5rem 2.5rem 1.5rem 2.5rem',
-      border: '2px solid #D6C5F0',
-      textAlign: 'left',
-      position: 'relative',
-      zIndex: 2
-    }}>
-      <h2 style={{
-        fontSize: '1.5rem',
-        fontWeight: 800,
-        color: '#5727A3',
-        marginBottom: '1.1rem',
-        letterSpacing: '-.5px'
+      {/* Why Book With Us? */}
+      <section style={{
+        width: '100%',
+        background: '#fff',
+        borderRadius: 24,
+        boxShadow: '0 4px 24px rgba(15, 23, 42, 0.08)',
+        padding: '2.5rem',
+        border: '3px solid #4A8A9A',
+        textAlign: 'left',
+        position: 'relative',
+        marginBottom: '2rem',
+        overflow: 'visible'
       }}>
-        Why Book With Us?
-      </h2>
-      <ul style={{
-        fontSize: '1.13rem',
-        color: '#1B0044',
-        marginBottom: '1.5rem',
-        paddingLeft: '1.2rem',
-        lineHeight: 1.7
-      }}>
-        <li>Trusted, verified drivers and representatives.</li>
-        <li>Transparent pricing, no hidden fees.</li>
-        <li>Personalized service for your arrival time and needs.</li>
-        <li>Local knowledge and support for a smooth start.</li>
-      </ul>
-    </section>
+        <PinGraphic />
+        <h2 style={{
+          fontSize: '1.5rem',
+          fontWeight: 800,
+          color: '#1A3A4A',
+          marginBottom: '1.1rem',
+          letterSpacing: '-.5px'
+        }}>
+          Why Book With Us?
+        </h2>
+        <ul style={{
+          fontSize: '1.13rem',
+          color: '#0F2A36',
+          marginBottom: '1.5rem',
+          paddingLeft: '1.2rem',
+          lineHeight: 1.7
+        }}>
+          <li>Trusted, verified drivers and representatives.</li>
+          <li>Transparent pricing, no hidden fees.</li>
+          <li>Personalized service for your arrival time and needs.</li>
+          <li>Local knowledge and support for a smooth start.</li>
+        </ul>
+      </section>
 
-    {/* Coming Soon Highlight Section */}
-    <section style={{
-      width: '100%',
-      maxWidth: 1100,
-      margin: '0 auto 2.5rem auto',
-      background: 'linear-gradient(90deg,#9F7AEA 0%,#D6C5F0 100%)',
-      borderRadius: 32,
-      boxShadow: '0 4px 16px #9F7AEA33',
-      padding: '2.5rem 2.5rem 1.5rem 2.5rem',
-      border: '2px solid #D6C5F0',
-      textAlign: 'center',
-      position: 'relative',
-      zIndex: 2
-    }}>
-      <h2 style={{
-        fontSize: '1.6rem',
-        fontWeight: 900,
-        color: '#fff',
-        marginBottom: '1.1rem',
-        letterSpacing: '-.5px'
+      {/* Coming Soon Highlight Section */}
+      <section style={{
+        width: '100%',
+        background: 'linear-gradient(135deg, #1A3A4A 0%, #0F172A 100%)',
+        borderRadius: 24,
+        boxShadow: '0 10px 30px -5px rgba(15, 23, 42, 0.2)',
+        padding: '3rem 2.5rem',
+        textAlign: 'center',
+        position: 'relative',
+        color: '#fff'
       }}>
-        This Service is Launching Soon
-      </h2>
-      <p style={{
-        fontSize: '1.13rem',
-        color: '#fff',
-        fontWeight: 600,
-        marginBottom: '1.5rem'
-      }}>
-        We are finalizing partnerships and logistics to ensure the best experience for you. Stay tuned for updates and be the first to know when airport pickup is available!
-      </p>
-    </section>
+        <h2 style={{
+          fontSize: '1.6rem',
+          fontWeight: 900,
+          color: '#fff',
+          marginBottom: '1.1rem',
+          letterSpacing: '-.5px'
+        }}>
+          This Service is Launching Soon
+        </h2>
+        <p style={{
+          fontSize: '1.13rem',
+          color: '#CBD5E1',
+          fontWeight: 500,
+          marginBottom: '0',
+          maxWidth: 700,
+          margin: '0 auto'
+        }}>
+          We are finalizing partnerships and logistics to ensure the best experience for you. Stay tuned for updates and be the first to know when airport pickup is available!
+        </p>
+      </section>
+    </div>
   </main>
 );
 
 export default AirportPickupPage;
+
+

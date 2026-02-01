@@ -6,11 +6,52 @@ export const ContactPage: React.FC = () => (
     style={{
       position: 'relative',
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, rgb(255 255 255) 0%, rgb(197 185 234) 100%)', // Updated to hero section theme
+      background: '#fff',
       overflow: 'hidden',
-      paddingTop: '45px', // Add space for fixed header
+      paddingTop: '0', // Full bleed
     }}
   >
+    {/* Dark Hero Section */}
+    <section style={{
+      background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)', // Dark Graphite
+      padding: '120px 1.5rem 80px 1.5rem',
+      textAlign: 'center',
+      position: 'relative',
+      zIndex: 1
+    }}>
+      {/* Decor */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        background: 'radial-gradient(circle at 50% 100%, rgba(45, 106, 122, 0.2), transparent 50%)',
+        pointerEvents: 'none'
+      }} />
+
+      <h1 style={{
+        fontSize: '3.5rem',
+        fontWeight: 900,
+        color: '#fff',
+        marginBottom: '1rem',
+        letterSpacing: '-2px',
+        lineHeight: 1.1,
+        position: 'relative',
+        zIndex: 1
+      }}>Contact Us</h1>
+      <p style={{
+        fontSize: '1.25rem',
+        color: '#CBD5E1',
+        fontWeight: 500,
+        maxWidth: 600,
+        margin: '0 auto',
+        position: 'relative',
+        zIndex: 1
+      }}>
+        Have questions? We're here to help you on your journey.
+      </p>
+    </section>
     {/* 3D/Luxury Background Elements */}
     <div
       aria-hidden
@@ -33,7 +74,7 @@ export const ContactPage: React.FC = () => (
           left: '-120px',
           width: 420,
           height: 420,
-          background: 'radial-gradient(circle at 30% 30%, #A78BFA99 0%, #6D28D933 100%)', // purple theme
+          background: 'radial-gradient(circle at 30% 30%, #4A8A9A99 0%, #1A3A4A33 100%)', // teal theme
           filter: 'blur(70px)',
           borderRadius: '50%',
           opacity: 0.75,
@@ -47,7 +88,7 @@ export const ContactPage: React.FC = () => (
           right: '-120px',
           width: 340,
           height: 340,
-          background: 'radial-gradient(circle at 70% 70%, #C4B5FDbb 0%, #A78BFA55 100%)', // lighter purple
+          background: 'radial-gradient(circle at 70% 70%, #B8D8DEbb 0%, #4A8A9A55 100%)', // lighter teal
           filter: 'blur(70px)',
           borderRadius: '50%',
           opacity: 0.7,
@@ -102,9 +143,9 @@ export const ContactPage: React.FC = () => (
           style={{
             width: '100%',
             height: '100%',
-            background: 'linear-gradient(135deg,#6D28D9 60%,#A78BFA 100%)', // purple gradient
+            background: 'linear-gradient(135deg,#1A3A4A 60%,#2D6A7A 100%)', // teal gradient
             borderRadius: 16,
-            boxShadow: '0 8px 32px #A78BFA33, 0 0 0 2px #FBBF2440',
+            boxShadow: '0 8px 32px #2D6A7A33, 0 0 0 2px #FBBF2440',
             transform: 'rotateY(30deg) rotateX(20deg)'
           }}
         />
@@ -153,8 +194,8 @@ export const ContactPage: React.FC = () => (
       <style>
         {`
           button, .global-btn {
-            background: linear-gradient(90deg,#6D28D9 0%,#A78BFA 100%) !important; /* purple gradient */
-            box-shadow: 0 4px 16px #A78BFA33, 0 1.5px 8px #6D28D922 !important;
+            background: linear-gradient(90deg,#1A3A4A 0%,#2D6A7A 100%) !important; /* teal gradient */
+            box-shadow: 0 4px 16px #2D6A7A33, 0 1.5px 8px #1A3A4A22 !important;
             color: #fff !important;
             border-radius: 14px !important;
             font-weight: 700 !important;
@@ -162,7 +203,7 @@ export const ContactPage: React.FC = () => (
             transition: background 0.2s, transform 0.2s;
           }
           button:hover, .global-btn:hover {
-            background: linear-gradient(90deg,#A78BFA 0%,#6D28D9 100%) !important;
+            background: linear-gradient(90deg,#2D6A7A 0%,#1A3A4A 100%) !important;
             transform: scale(1.04);
           }
         `}
@@ -170,3 +211,5 @@ export const ContactPage: React.FC = () => (
     </div>
   </main>
 );
+
+

@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Universities V1 - Discovery Validation Report</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.7;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f8f9fa;
+            color: #1a1a1a;
+        }
+
+        h1 {
+            color: #0d6efd;
+            border-bottom: 3px solid #0d6efd;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #198754;
+            margin-top: 45px;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            color: #495057;
+            margin-top: 25px;
+        }
+
+        h4 {
+            color: #6c757d;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            border: 1px solid #dee2e6;
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: #0d6efd;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tr:hover {
+            background: #e9ecef;
+        }
+
+        code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            color: #d63384;
+        }
+
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        blockquote {
+            border-left: 4px solid #0d6efd;
+            margin: 20px 0;
+            padding: 15px 20px;
+            background: #e7f1ff;
+            border-radius: 0 8px 8px 0;
+        }
+
+        blockquote.warning {
+            border-left-color: #fd7e14;
+            background: #fff3cd;
+        }
+
+        blockquote.danger {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        blockquote.success {
+            border-left-color: #198754;
+            background: #d1e7dd;
+        }
+
+        blockquote.discovery {
+            border-left-color: #6f42c1;
+            background: #e2d9f3;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #dee2e6;
+            margin: 40px 0;
+        }
+
+        ul,
+        ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .meta {
+            color: #6c757d;
+            font-size: 0.95em;
+            margin-bottom: 30px;
+        }
+
+        .confirmed {
+            color: #198754;
+            font-weight: bold;
+        }
+
+        .risk {
+            color: #fd7e14;
+            font-weight: bold;
+        }
+
+        .blocked {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .recommendation {
+            color: #6f42c1;
+            font-weight: bold;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .badge-confirmed {
+            background: #d1e7dd;
+            color: #0f5132;
+        }
+
+        .badge-risk {
+            background: #fff3cd;
+            color: #664d03;
+        }
+
+        .badge-blocked {
+            background: #f8d7da;
+            color: #842029;
+        }
+
+        .badge-recommend {
+            background: #e2d9f3;
+            color: #59359a;
+        }
+
+        .section-num {
+            background: #0d6efd;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .verdict {
+            font-size: 1.1em;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .verdict-ok {
+            background: #d1e7dd;
+            border: 2px solid #198754;
+        }
+
+        .verdict-warn {
+            background: #fff3cd;
+            border: 2px solid #fd7e14;
+        }
+
+        .verdict-block {
+            background: #f8d7da;
+            border: 2px solid #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🔍 Compare Universities V1 — Discovery Validation Report</h1>
+    <p class="meta">
+        <strong>Date:</strong> January 19, 2026<br>
+        <strong>Phase:</strong> Feature Phase 1 — Validation Only<br>
+        <strong>Status:</strong> ⏸️ Awaiting confirmation before implementation
+    </p>
+
+    <blockquote class="discovery">
+        <strong>🔮 CRITICAL DISCOVERY:</strong> An additional table <code>all_universities</code> exists with
+        <strong>rankings</strong>, <strong>living costs</strong>, and <strong>tuition per year</strong> data
+        (Australia-specific). This was previously marked as missing.
+    </blockquote>
+
+    <hr>
+
+    <h2><span class="section-num">1</span> Database Reality Check</h2>
+
+    <h3>Tables Confirmed</h3>
+
+    <table>
+        <tr>
+            <th>Table</th>
+            <th>Primary Key</th>
+            <th>Key Columns</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td><code>universities</code></td>
+            <td><code>id</code> (String)</td>
+            <td><code>type</code>, <code>attributes</code> (JSONB), <code>relationships</code>, <code>included</code>
+            </td>
+            <td><span class="badge badge-confirmed">✅ CONFIRMED</span></td>
+        </tr>
+        <tr>
+            <td><code>program_details</code></td>
+            <td><code>id</code> (String)</td>
+            <td><code>school_id</code> (Integer FK), <code>attributes</code> (JSONB), <code>school</code> (JSONB)</td>
+            <td><span class="badge badge-confirmed">✅ CONFIRMED</span></td>
+        </tr>
+        <tr>
+            <td><code>scholarships</code></td>
+            <td><code>id</code> (Integer)</td>
+            <td><code>schoolGroupId</code> (Integer FK), <code>title</code>, <code>awardAmountFrom</code>,
+                <code>awardAmountTo</code></td>
+            <td><span class="badge badge-confirmed">✅ CONFIRMED</span></td>
+        </tr>
+        <tr>
+            <td><code>all_universities</code></td>
+            <td><code>id</code> (Serial)</td>
+            <td><code>name</code>, <code>latest_rankings</code> (JSONB), <code>tuition_fees_per_year</code> (JSONB),
+                <code>living_costs_annual_AUD</code></td>
+            <td><span class="badge badge-recommend">🔮 NEW DISCOVERY</span></td>
+        </tr>
+    </table>
+
+    <h3>Foreign Key Relationships</h3>
+
+    <table>
+        <tr>
+            <th>Relationship</th>
+            <th>Link Column</th>
+            <th>Status</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td><code>program_details</code> → <code>universities</code></td>
+            <td><code>school_id</code> (Integer)</td>
+            <td><span class="badge badge-risk">⚠️ MISMATCH</span></td>
+            <td><code>school_id</code> is Integer but <code>universities.id</code> is String. Linkage works via type
+                casting in queries.</td>
+        </tr>
+        <tr>
+            <td><code>scholarships</code> → <code>universities</code></td>
+            <td><code>schoolGroupId</code> (Integer)</td>
+            <td><span class="badge badge-confirmed">✅ CONFIRMED</span></td>
+            <td>Query uses <code>int(school_id)</code> casting — works correctly.</td>
+        </tr>
+    </table>
+
+    <h3>Cardinality</h3>
+
+    <table>
+        <tr>
+            <th>Relationship</th>
+            <th>Cardinality</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>One University → Many Programs</td>
+            <td>1 : N</td>
+            <td><span class="confirmed">✅ CONFIRMED</span></td>
+        </tr>
+        <tr>
+            <td>One University → Many Scholarships</td>
+            <td>1 : N</td>
+            <td><span class="confirmed">✅ CONFIRMED</span></td>
+        </tr>
+    </table>
+
+    <blockquote class="warning">
+        <strong>⚠️ Risk:</strong> <code>program_details.school_id</code> is stored as <code>Integer</code> but
+        <code>universities.id</code> is stored as <code>String</code>. This type mismatch requires explicit casting in
+        queries (already done in existing code). This is not a blocker but should be noted.
+    </blockquote>
+
+    <hr>
+
+    <h2><span class="section-num">2</span> Field Availability Validation</h2>
+
+    <h3>University-Level Fields</h3>
+
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Location</th>
+            <th>Reliability</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td><strong>University Name</strong></td>
+            <td><code>universities.attributes["name"]</code><br><em>OR</em> <code>program_details.school["name"]</code>
+            </td>
+            <td><span class="confirmed">✅ Fully Reliable</span></td>
+            <td>Both sources available; prefer <code>program_details.school["name"]</code> for aggregation queries</td>
+        </tr>
+        <tr>
+            <td><strong>Country</strong></td>
+            <td><code>program_details.school["country"]</code></td>
+            <td><span class="confirmed">✅ Fully Reliable</span></td>
+            <td>Embedded in JSONB, used in existing filter queries</td>
+        </tr>
+        <tr>
+            <td><strong>State/Region</strong></td>
+            <td><code>universities.attributes["state"]</code><br><em>OR</em> <code>all_universities.state</code></td>
+            <td><span class="risk">⚠️ Partial</span></td>
+            <td>May be missing for non-Australian universities</td>
+        </tr>
+        <tr>
+            <td><strong>Description</strong></td>
+            <td><code>universities.attributes["description"]</code></td>
+            <td><span class="risk">⚠️ Often Empty</span></td>
+            <td>Not reliably populated — consider optional for V1</td>
+        </tr>
+    </table>
+
+    <h3>Program-Level Fields (for Aggregation)</h3>
+
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Location</th>
+            <th>Reliability</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td><strong>Tuition</strong></td>
+            <td><code>program_details.attributes["tuition"]</code></td>
+            <td><span class="confirmed">✅ Fully Reliable</span></td>
+            <td>Numeric value stored as string in JSONB. Cast to Float in existing queries.</td>
+        </tr>
+        <tr>
+            <td><strong>Currency</strong></td>
+            <td><em>NOT explicitly stored</em></td>
+            <td><span class="risk">⚠️ Embedded/Assumed</span></td>
+            <td>Currency may be embedded in tuition or assumed per country. Recommend defaulting to "USD" or deriving
+                from country.</td>
+        </tr>
+        <tr>
+            <td><strong>Level</strong></td>
+            <td><code>program_details.attributes["level"]</code></td>
+            <td><span class="confirmed">✅ Fully Reliable</span></td>
+            <td>Values: Bachelor's, Master's, PhD, Diploma, etc.</td>
+        </tr>
+        <tr>
+            <td><strong>Program Name</strong></td>
+            <td><code>program_details.attributes["name"]</code></td>
+            <td><span class="confirmed">✅ Fully Reliable</span></td>
+            <td>Used in existing filter queries</td>
+        </tr>
+        <tr>
+            <td><strong>Duration</strong></td>
+            <td><code>program_details.attributes["duration"]</code></td>
+            <td><span class="risk">⚠️ Format Varies</span></td>
+            <td>May be stored as "2 years", "24 months", or numeric. Parsing needed.</td>
+        </tr>
+        <tr>
+            <td><strong>Intake Dates</strong></td>
+            <td><code>program_details.attributes</code> (nested)</td>
+            <td><span class="risk">⚠️ Structure Varies</span></td>
+            <td>Nested array/object. Recommend deferring to V2.</td>
+        </tr>
+    </table>
+
+    <h3>Scholarship-Level Fields</h3>
+
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Location</th>
+            <th>Reliability</th>
+        </tr>
+        <tr>
+            <td><code>title</code></td>
+            <td><code>scholarships.title</code></td>
+            <td><span class="confirmed">✅ Fully Reliable</span></td>
+        </tr>
+        <tr>
+            <td><code>awardAmountFrom</code></td>
+            <td><code>scholarships.awardAmountFrom</code></td>
+            <td><span class="confirmed">✅ Fully Reliable</span></td>
+        </tr>
+        <tr>
+            <td><code>awardAmountTo</code></td>
+            <td><code>scholarships.awardAmountTo</code></td>
+            <td><span class="confirmed">✅ Fully Reliable</span></td>
+        </tr>
+        <tr>
+            <td><code>awardAmountCurrencyCode</code></td>
+            <td><code>scholarships.awardAmountCurrencyCode</code></td>
+            <td><span class="confirmed">✅ Fully Reliable</span></td>
+        </tr>
+        <tr>
+            <td><code>schoolGroupId</code></td>
+            <td><code>scholarships.schoolGroupId</code></td>
+            <td><span class="confirmed">✅ Fully Reliable</span></td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2><span class="section-num">3</span> Missing Fields Confirmation</h2>
+
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Expected Status</th>
+            <th>Actual Status</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td><strong>University Ranking</strong></td>
+            <td>Missing</td>
+            <td><span class="badge badge-recommend">🔮 FOUND IN HIDDEN TABLE</span></td>
+            <td><code>all_universities.latest_rankings</code> (JSONB) — Australia only</td>
+        </tr>
+        <tr>
+            <td><strong>Living Cost Index</strong></td>
+            <td>Missing</td>
+            <td><span class="badge badge-recommend">🔮 FOUND IN HIDDEN TABLE</span></td>
+            <td><code>all_universities.living_costs_annual_AUD</code> (NUMERIC) — Australia only</td>
+        </tr>
+        <tr>
+            <td><strong>Tuition Per Year (University-Level)</strong></td>
+            <td>Only at program level</td>
+            <td><span class="badge badge-recommend">🔮 ALSO IN HIDDEN TABLE</span></td>
+            <td><code>all_universities.tuition_fees_per_year</code> (JSONB) — Australia only</td>
+        </tr>
+        <tr>
+            <td><strong>Acceptance Rate</strong></td>
+            <td>Missing</td>
+            <td><span class="blocked">❌ CONFIRMED MISSING</span></td>
+            <td>Not stored anywhere. Would need external API.</td>
+        </tr>
+        <tr>
+            <td><strong>Student/Faculty Ratio</strong></td>
+            <td>Missing</td>
+            <td><span class="blocked">❌ CONFIRMED MISSING</span></td>
+            <td>Not stored anywhere.</td>
+        </tr>
+        <tr>
+            <td><strong>Campus Size</strong></td>
+            <td>Missing</td>
+            <td><span class="blocked">❌ CONFIRMED MISSING</span></td>
+            <td>Not stored anywhere.</td>
+        </tr>
+    </table>
+
+    <blockquote class="discovery">
+        <strong>🔮 Important Discovery:</strong><br>
+        The <code>all_universities</code> table contains valuable data for Australian universities:
+        <ul>
+            <li><code>latest_rankings</code> (JSONB) — University rankings</li>
+            <li><code>tuition_fees_per_year</code> (JSONB) — University-level tuition</li>
+            <li><code>living_costs_annual_AUD</code> (NUMERIC) — Living costs</li>
+            <li><code>levels_offered</code> (TEXT[]) — Degree levels</li>
+            <li><code>intakes</code> (TEXT[]) — Intake periods</li>
+        </ul>
+        <strong>Limitation:</strong> This table is Australia-specific (from <code>Australian_Universities.json</code>).
+        For V1 POC, if we focus on Australia, these fields become available. Otherwise, fallback to program-level
+        aggregation.
+    </blockquote>
+
+    <hr>
+
+    <h2><span class="section-num">4</span> API Capability Review</h2>
+
+    <table>
+        <tr>
+            <th>API Behavior</th>
+            <th>Status</th>
+            <th>Evidence</th>
+        </tr>
+        <tr>
+            <td><code>/api/program-details</code> supports filters (university_name, country, min_fees, max_fees)</td>
+            <td><span class="confirmed">✅ CONFIRMED</span></td>
+            <td>Lines 360-397 in <code>main.py</code></td>
+        </tr>
+        <tr>
+            <td><code>university_name</code> filter only supports ONE university at a time</td>
+            <td><span class="confirmed">✅ CONFIRMED</span></td>
+            <td>Uses <code>.ilike(f"%{university_name}%")</code> — single string, not array</td>
+        </tr>
+        <tr>
+            <td>No existing endpoint supports multi-university selection</td>
+            <td><span class="confirmed">✅ CONFIRMED</span></td>
+            <td>No <code>?ids=</code> or array parameter found in any endpoint</td>
+        </tr>
+        <tr>
+            <td>Current responses are program-centric, not university-centric</td>
+            <td><span class="confirmed">✅ CONFIRMED</span></td>
+            <td>Response returns <code>items[]</code> with individual programs</td>
+        </tr>
+        <tr>
+            <td>Using existing APIs would require N+1 calls for comparison</td>
+            <td><span class="confirmed">✅ CONFIRMED</span></td>
+            <td>Would need: 1 call per university to get programs + 1 call per university for scholarships = 2N calls
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2><span class="section-num">5</span> Endpoint Strategy Confirmation</h2>
+
+    <div class="verdict verdict-ok">
+        <strong>✅ AGREED:</strong> A NEW endpoint <code>GET /api/compare-universities?ids=123,456,789</code> is the
+        cleanest and safest approach.
+    </div>
+
+    <h3>Reasons to AGREE</h3>
+    <ul>
+        <li><strong>No Breaking Changes:</strong> Existing <code>/api/program-details</code> remains untouched</li>
+        <li><strong>Clean Response Shape:</strong> University-centric vs program-centric</li>
+        <li><strong>Single Request:</strong> Frontend makes 1 call instead of N+1</li>
+        <li><strong>Aggregation Server-Side:</strong> Tuition min/max, program count, levels — computed in backend</li>
+        <li><strong>Easy to Test:</strong> Isolated endpoint, easy to validate independently</li>
+    </ul>
+
+    <h3>Risks of Extending Existing API (Why NOT to do it)</h3>
+    <ul>
+        <li>Would need to add <code>?ids=</code> parameter to <code>/api/program-details</code></li>
+        <li>Response shape would need conditional logic (program list vs university summary)</li>
+        <li>Pagination becomes complex with aggregation</li>
+        <li>Risk of breaking existing consumers of the API</li>
+    </ul>
+
+    <hr>
+
+    <h2><span class="section-num">6</span> Aggregation Feasibility</h2>
+
+    <table>
+        <tr>
+            <th>Aggregation</th>
+            <th>Feasibility</th>
+            <th>SQL/Python Approach</th>
+            <th>Performance Notes</th>
+        </tr>
+        <tr>
+            <td><strong>Tuition min/max</strong></td>
+            <td><span class="confirmed">✅ Feasible</span></td>
+            <td><code>MIN(CAST(attributes->>'tuition' AS FLOAT))</code>, <code>MAX(...)</code> grouped by
+                <code>school_id</code></td>
+            <td>Single query, JSONB indexed. Fast for 4 universities.</td>
+        </tr>
+        <tr>
+            <td><strong>Program count</strong></td>
+            <td><span class="confirmed">✅ Feasible</span></td>
+            <td><code>COUNT(*)</code> grouped by <code>school_id</code></td>
+            <td>Very fast.</td>
+        </tr>
+        <tr>
+            <td><strong>DISTINCT levels</strong></td>
+            <td><span class="confirmed">✅ Feasible</span></td>
+            <td><code>ARRAY_AGG(DISTINCT attributes->>'level')</code> grouped by <code>school_id</code></td>
+            <td>Efficient with proper indexing.</td>
+        </tr>
+        <tr>
+            <td><strong>Scholarship count</strong></td>
+            <td><span class="confirmed">✅ Feasible</span></td>
+            <td><code>COUNT(*)</code> from <code>scholarships</code> grouped by <code>schoolGroupId</code></td>
+            <td>Separate query or LEFT JOIN. Fast.</td>
+        </tr>
+        <tr>
+            <td><strong>Top 3-5 programs</strong></td>
+            <td><span class="risk">⚠️ Needs Definition</span></td>
+            <td>Order by what? Tuition? Alphabetical? Would need <code>LIMIT 5</code> per university.</td>
+            <td>Feasible but needs clarification on sort order.</td>
+        </tr>
+    </table>
+
+    <h3>Performance Concerns</h3>
+
+    <blockquote class="warning">
+        <strong>⚠️ Potential Risks:</strong>
+        <ul>
+            <li><strong>JSONB Extraction:</strong> Casting <code>attributes->>'tuition'</code> to Float across many
+                rows. Mitigated if filtered to specific <code>school_id</code>s.</li>
+            <li><strong>4-University Limit:</strong> With max 4 universities, query size is bounded. No N+1 issue.</li>
+            <li><strong>No Indexes on JSONB:</strong> If <code>attributes["tuition"]</code> is not indexed, aggregation
+                may be slower. Recommend testing on real data volume.</li>
+        </ul>
+        <strong>Recommendation:</strong> For V1 with 4 universities, performance is not a blocker. Consider adding JSONB
+        index on <code>tuition</code> if scaling needed later.
+    </blockquote>
+
+    <hr>
+
+    <h2><span class="section-num">7</span> Response Shape Validation</h2>
+
+    <h3>Proposed Structure Review</h3>
+
+    <pre>
+{
+  "universities": [
+    {
+      "id": "123",
+      "name": "University of Example",
+      "country": "USA",
+      "state": "California",
+      "tuition": { "min": 15000, "max": 45000, "currency": "USD" },
+      "programs": { "total_count": 87, "levels": ["Bachelor's", "Master's", "PhD"] },
+      "scholarships": { "count": 12, "available": true },
+      "top_programs": ["MBA", "Computer Science", "Engineering"]
+    }
+  ],
+  "meta": { "compared_count": 3, "generated_at": "2026-01-19T14:00:00Z" }
+}
+</pre>
+
+    <div class="verdict verdict-ok">
+        <strong>✅ Structure is REALISTIC and STABLE for V1</strong>
+    </div>
+
+    <h3>Recommended Adjustments</h3>
+
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Recommendation</th>
+            <th>Reason</th>
+        </tr>
+        <tr>
+            <td><code>tuition.currency</code></td>
+            <td>Default to "USD" or derive from country</td>
+            <td>Currency not explicitly stored in program data</td>
+        </tr>
+        <tr>
+            <td><code>top_programs</code></td>
+            <td>Make optional, sort alphabetically or by count</td>
+            <td>No "popularity" metric available</td>
+        </tr>
+        <tr>
+            <td><code>description</code></td>
+            <td>Consider adding but mark as optional</td>
+            <td>May be empty for some universities</td>
+        </tr>
+        <tr>
+            <td><code>ranking</code> (for Australian universities)</td>
+            <td>Add if using <code>all_universities</code> table</td>
+            <td>Only available for Australia</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2><span class="section-num">8</span> Risks & Edge Cases</h2>
+
+    <table>
+        <tr>
+            <th>Risk</th>
+            <th>Severity</th>
+            <th>Mitigation</th>
+        </tr>
+        <tr>
+            <td><strong>Tuition stored inconsistently</strong></td>
+            <td><span class="risk">⚠️ Medium</span></td>
+            <td>Some tuition values may be NULL or non-numeric. Use <code>COALESCE</code> and filter out NULLs in
+                aggregation.</td>
+        </tr>
+        <tr>
+            <td><strong>Currency normalization</strong></td>
+            <td><span class="risk">⚠️ Medium</span></td>
+            <td>Currency not stored; assume USD or derive from country. Document limitation for V1.</td>
+        </tr>
+        <tr>
+            <td><strong>Program data sparsity</strong></td>
+            <td><span class="risk">⚠️ Medium</span></td>
+            <td>Some universities may have few or no programs in <code>program_details</code>. Return zeros gracefully.
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Performance for 4 universities</strong></td>
+            <td><span class="confirmed">✅ Low</span></td>
+            <td>Bounded query size. Not a concern for V1.</td>
+        </tr>
+        <tr>
+            <td><strong>Type mismatch (school_id String vs Integer)</strong></td>
+            <td><span class="risk">⚠️ Low</span></td>
+            <td>Already handled in existing code via casting. Use same pattern.</td>
+        </tr>
+        <tr>
+            <td><strong>Missing scholarships for some universities</strong></td>
+            <td><span class="confirmed">✅ Low</span></td>
+            <td>Return <code>count: 0, available: false</code>. Not a blocker.</td>
+        </tr>
+        <tr>
+            <td><strong>Duration format inconsistency</strong></td>
+            <td><span class="risk">⚠️ Medium</span></td>
+            <td>Defer duration aggregation to V2 or display raw values with parsing on frontend.</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2>📋 Final Summary</h2>
+
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Count</th>
+        </tr>
+        <tr>
+            <td>✅ Confirmed Assumptions</td>
+            <td><span class="confirmed">All core assumptions valid</span></td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>⚠️ Risks / Mismatches</td>
+            <td><span class="risk">Manageable with mitigations</span></td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>❌ Blockers for V1</td>
+            <td><span class="confirmed">None identified</span></td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>🔧 Recommendations</td>
+            <td><span class="recommendation">New endpoint, handle edge cases</span></td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>🔮 New Discoveries</td>
+            <td><span class="recommendation">all_universities table with rankings & living costs</span></td>
+            <td>1</td>
+        </tr>
+    </table>
+
+    <div class="verdict verdict-ok">
+        <strong>✅ V1 IMPLEMENTATION CAN PROCEED</strong><br>
+        All critical assumptions validated. No blockers identified. Recommend proceeding with implementation of
+        <code>GET /api/compare-universities</code> endpoint.
+    </div>
+
+    <h3>Key Recommendations Before Implementation</h3>
+
+    <ol>
+        <li><strong>Confirm scope:</strong> Australia-only V1 (uses <code>all_universities</code> data) OR global
+            (program-level aggregation only)?</li>
+        <li><strong>Define currency handling:</strong> Default to USD, or map by country?</li>
+        <li><strong>Clarify top_programs sort:</strong> Alphabetical or by tuition/count?</li>
+        <li><strong>Test with real data:</strong> Validate tuition values are populated for selected universities</li>
+    </ol>
+
+</body>
+
+</html>

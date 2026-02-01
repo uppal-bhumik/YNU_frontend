@@ -1,11 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useReveal } from '../hooks/useReveal';
-import { useApi } from '../hooks/useApi';
 import { useNavigate } from 'react-router-dom';
-import countriesData from '../pages/countries.json';
-import universitiesData from '../pages/universities.json';
-import programsData from '../pages/programs.json';
-
 
 interface FeaturedUniversitiesProps {
   style?: React.CSSProperties;
@@ -13,87 +8,7 @@ interface FeaturedUniversitiesProps {
 
 export const FeaturedUniversities: React.FC<FeaturedUniversitiesProps> = ({ style }) => {
   const ref = useReveal();
-  const api = useApi();
   const navigate = useNavigate();
-
-  // State for filters
-  const [country, setCountry] = useState('');
-  const [universityName, setUniversityName] = useState('');
-  const [programName, setProgramName] = useState('');
-  const [tuitionRange, setTuitionRange] = useState<[number, number]>([0, 100000]);
-  const [rangeDragging, setRangeDragging] = useState<'min' | 'max' | null>(null);
-
-  // Use JSON files for dropdowns
-  const [allCountries, setAllCountries] = useState<{ label: string; value: string }[]>([]);
-  const [allUniversities, setAllUniversities] = useState<string[]>([]);
-  const [allProgramNames, setAllProgramNames] = useState<string[]>([]);
-
-  useEffect(() => {
-    const countryArr = Object.entries((countriesData as any).countries || {}).map(
-      ([label, value]) => ({ label, value: String(value) })
-    );
-    setAllCountries(countryArr);
-
-    setAllUniversities(((universitiesData as any).universities || []));
-
-    // Extract program names from the array in programs.json
-    setAllProgramNames(Array.isArray((programsData as any).programs)
-      ? (programsData as any).programs.map((p: any) => typeof p === 'string' ? p : p.name)
-      : []);
-  }, []);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!rangeDragging) return;
-      
-      const rangeMin = 0;
-      const rangeMax = 100000;
-      
-      // Find the container element
-      const container = document.querySelector('[style*="position: relative"][style*="height: 30px"]');
-      if (!container) return;
-      
-      const rect = container.getBoundingClientRect();
-      const percent = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
-      const value = Math.round(percent * (rangeMax - rangeMin) + rangeMin);
-      
-      if (rangeDragging === 'min') {
-        setTuitionRange([Math.min(value, tuitionRange[1]), tuitionRange[1]]);
-      } else if (rangeDragging === 'max') {
-        setTuitionRange([tuitionRange[0], Math.max(value, tuitionRange[0])]);
-      }
-    };
-    
-    const handleMouseUp = () => {
-      setRangeDragging(null);
-    };
-    
-    if (rangeDragging) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
-    }
-    
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, [rangeDragging, tuitionRange]);
-
-  const handleExploreClick = () => {
-    // Build query params based on filters
-    const params: Record<string, string | number> = {};
-    if (country) {
-      const countryObj = allCountries.find(c => c.value === country);
-      params.country = countryObj ? countryObj.label : country;
-    }
-    if (universityName) params.university_name = universityName;
-    if (programName) params.program_name = programName;
-    if (tuitionRange[0]) params.min_fees = tuitionRange[0];
-    if (tuitionRange[1]) params.max_fees = tuitionRange[1];
-
-    const queryString = new URLSearchParams(params as any).toString();
-    navigate(`/universities${queryString ? '?' + queryString : ''}`);
-  };
 
   return (
     <section
@@ -102,11 +17,14 @@ export const FeaturedUniversities: React.FC<FeaturedUniversitiesProps> = ({ styl
       ref={ref as any}
       style={{
         position: 'relative',
-        overflow: 'hidden',
         padding: 0,
         minHeight: 420,
-        margin: '2.5rem auto 0 auto',
+        margin: '2.5rem auto',
+        width: '95%',
         maxWidth: 1400,
+        border: '4px solid #1A3A4A',
+        borderRadius: '24px',
+        boxSizing: 'border-box',
         ...style,
       }}
     >
@@ -118,11 +36,12 @@ export const FeaturedUniversities: React.FC<FeaturedUniversitiesProps> = ({ styl
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        gap: '2.5rem',
+        justifyContent: 'space-between',
+        gap: '2rem',
         flexWrap: 'wrap',
-        padding: '3.5rem 2.5rem 2.5rem 2.5rem',
+        padding: '3.5rem',
       }}>
-        {/* Left: Title and search */}
+        {/* Left: Title and buttons */}
         <div style={{
           flex: 1,
           minWidth: 320,
@@ -138,9 +57,9 @@ export const FeaturedUniversities: React.FC<FeaturedUniversitiesProps> = ({ styl
               fontWeight: 900,
               letterSpacing: '-1.5px',
               marginBottom: '0.7rem',
-              textShadow: '0 2px 16px #9F7AEA44, 0 1px 2px #5727A344',
+              textShadow: '0 2px 16px #4A8A9A44, 0 1px 2px #1A3A4A44',
               textTransform: 'uppercase',
-              background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -151,200 +70,95 @@ export const FeaturedUniversities: React.FC<FeaturedUniversitiesProps> = ({ styl
           </h2>
           <div
             style={{
-              fontSize: '1.18rem',
-              color: '#9F7AEA',
+              fontSize: '1.25rem',
+              color: '#4A8A9A',
               fontWeight: 700,
               marginBottom: '1.5rem',
               maxWidth: 520,
-              textShadow: '0 2px 12px #5727A344',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem'
+              textShadow: '0 2px 12px #1A3A4A44',
             }}
           >
-            <span role="img" aria-label="globe">🌍</span> 800+ Universities. 6+ Countries. One Platform.
+            Find your match from 800+ universities.
           </div>
-          {/* Filter Controls Row */}
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '1rem',
-              alignItems: 'center',
-              marginBottom: '1.5rem',
-              width: '100%'
-            }}
-            className="uni-filters-row"
-          >
-            <select
-              value={country}
-              onChange={e => setCountry(e.target.value)}
+
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '1rem', alignItems: 'center' }}>
+            <button
+              onClick={() => navigate('/universities')}
               style={{
-                padding: '.55rem 1.1rem',
-                borderRadius: '10px',
-                border: '1px solid #e5e7eb',
-                fontWeight: 500,
-                minWidth: 140,
-                background: '#f8fafc',
-                flex: '1 1 180px',
-                maxWidth: 260
+                background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
+                color: '#fff',
+                fontWeight: 700,
+                fontSize: '1.07rem',
+                border: 'none',
+                borderRadius: 8,
+                padding: '0.7rem 1.6rem',
+                cursor: 'pointer',
+                boxShadow: '0 4px 12px #4A8A9A33',
+                transition: 'transform 0.18s, box-shadow 0.18s',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 16px #4A8A9A55';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 12px #4A8A9A33';
               }}
             >
-              <option value="">All Countries</option>
-              {allCountries.map(c => (
-                <option key={c.value} value={c.value}>{c.label}</option>
-              ))}
-            </select>
-            <select
-              value={universityName}
-              onChange={e => setUniversityName(e.target.value)}
+              Explore Universities
+            </button>
+            <button
+              onClick={() => navigate('/universities/recommendations')}
               style={{
-                padding: '.55rem 1.1rem',
-                borderRadius: '10px',
-                border: '1px solid #e5e7eb',
-                fontWeight: 500,
-                minWidth: 180,
-                background: '#f8fafc',
-                flex: '1 1 220px',
-                maxWidth: 320
+                background: '#fff',
+                color: '#1A3A4A',
+                fontWeight: 700,
+                fontSize: '1.07rem',
+                border: '2px solid #1A3A4A',
+                borderRadius: 8,
+                padding: '0.7rem 1.6rem',
+                cursor: 'pointer',
+                boxShadow: '0 2px 8px #4A8A9A22',
+                transition: 'all 0.18s',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#1A3A4A';
+                e.currentTarget.style.color = '#fff';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = '#fff';
+                e.currentTarget.style.color = '#1A3A4A';
               }}
             >
-              <option value="">All Universities</option>
-              {allUniversities.map(u => (
-                <option key={u} value={u}>{u}</option>
-              ))}
-            </select>
-            <input
-              type="text"
-              placeholder="Search Program"
-              value={programName}
-              onChange={e => setProgramName(e.target.value)}
+              Get Recommendations
+            </button>
+            <button
+              onClick={() => navigate('/compare-universities')}
               style={{
-                padding: '.55rem 1.1rem',
-                borderRadius: '10px',
-                border: '1px solid #e5e7eb',
-                fontWeight: 500,
-                minWidth: 180,
-                background: '#f8fafc',
-                flex: '1 1 220px',
-                maxWidth: 320
+                background: 'transparent',
+                color: '#1A3A4A',
+                fontWeight: 600,
+                fontSize: '1.07rem',
+                border: '2px solid transparent',
+                borderRadius: 8,
+                padding: '0.7rem 1rem',
+                cursor: 'pointer',
+                transition: 'all 0.18s',
+                textDecoration: 'underline',
+                textUnderlineOffset: '4px'
               }}
-              list="program-names-list"
-              autoComplete="off"
-            />
-            <datalist id="program-names-list">
-              {allProgramNames.map(p => (
-                <option key={p} value={p} />
-              ))}
-            </datalist>
-            {/* Tuition Range Slider */}
-            <div style={{ minWidth: 220, maxWidth: 320, flex: '1 1 220px', marginTop: '1.2rem' }}>
-              <label style={{ fontWeight: 600, color: '#5727A3', marginBottom: '.5rem', display: 'block' }}>
-                Tuition Range (₹)
-              </label>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.5rem' }}>
-                <span>Min: {tuitionRange[0]}</span>
-                <span style={{ flex: 1, textAlign: 'center' }}>Max: {tuitionRange[1]}</span>
-              </div>
-              <div 
-                style={{ position: 'relative', height: '30px', display: 'flex', alignItems: 'center' }}
-                onMouseDown={e => {
-                  const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-                  const pos = (e.clientX - rect.left) / rect.width;
-                  const value = pos * 100000;
-                  const minDist = Math.abs(value - tuitionRange[0]);
-                  const maxDist = Math.abs(value - tuitionRange[1]);
-                  
-                  if (minDist < maxDist) {
-                    setRangeDragging('min');
-                  } else {
-                    setRangeDragging('max');
-                  }
-                }}
-              >
-                <div style={{
-                  position: 'absolute',
-                  width: '100%',
-                  height: '8px',
-                  background: '#e5e7eb',
-                  borderRadius: '4px',
-                  zIndex: 1
-                }} />
-                <div style={{
-                  position: 'absolute',
-                  height: '8px',
-                  background: '#5727A3',
-                  borderRadius: '4px',
-                  left: `${(tuitionRange[0] / 100000) * 100}%`,
-                  width: `${((tuitionRange[1] - tuitionRange[0]) / 100000) * 100}%`,
-                  zIndex: 2
-                }} />
-                <div
-                  style={{
-                    position: 'absolute',
-                    width: '20px',
-                    height: '20px',
-                    borderRadius: '50%',
-                    background: '#5727A3',
-                    left: `${(tuitionRange[0] / 100000) * 100}%`,
-                    transform: 'translate(-50%, -50%)',
-                    top: '50%',
-                    zIndex: 3,
-                    cursor: 'ew-resize',
-                    boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
-                  }}
-                  onMouseDown={e => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setRangeDragging('min');
-                  }}
-                />
-                <div
-                  style={{
-                    position: 'absolute',
-                    width: '20px',
-                    height: '20px',
-                    borderRadius: '50%',
-                    background: '#5727A3',
-                    left: `${(tuitionRange[1] / 100000) * 100}%`,
-                    transform: 'translate(-50%, -50%)',
-                    top: '50%',
-                    zIndex: 3,
-                    cursor: 'ew-resize',
-                    boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
-                  }}
-                  onMouseDown={e => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setRangeDragging('max');
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-          <button
-            onClick={handleExploreClick}
-            style={{
-              background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
-              color: '#fff',
-              fontWeight: 700,
-              fontSize: '1.07rem',
-              border: 'none',
-              borderRadius: 8,
-              padding: '0.7rem 1.6rem',
-              cursor: 'pointer',
-              boxShadow: '0 2px 8px #9F7AEA22',
-              transition: 'background 0.18s',
-              width: 'fit-content',
-              marginBottom: '1rem'
-            }}
-          >
-            Explore
-          </button>
-          <div style={{ fontSize: '.97rem', color: '#5727A3', opacity: 0.8, marginBottom: '0.5rem' }}>
-            Discover top universities, compare programs, and find your dream campus.
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = '#4A8A9A';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = '#1A3A4A';
+              }}
+            >
+              Compare Universities
+            </button>
           </div>
         </div>
+
         {/* Right: Step-wise list */}
         <div style={{
           flex: 1.2,
@@ -372,22 +186,22 @@ export const FeaturedUniversities: React.FC<FeaturedUniversitiesProps> = ({ styl
               borderRadius: 12,
               padding: '1rem 1.2rem',
               fontWeight: 600,
-              color: '#5727A3',
+              color: '#1A3A4A',
               fontSize: '1.08rem',
-              boxShadow: '0 2px 8px #D6C5F011'
+              boxShadow: '0 2px 8px #D0E8EC11'
             }}>
               <span style={{
                 width: 36,
                 height: 36,
                 borderRadius: '50%',
-                background: 'linear-gradient(90deg,#D6C5F0 0%,#9F7AEA 100%)',
-                color: '#5727A3',
+                background: 'linear-gradient(90deg,#D0E8EC 0%,#4A8A9A 100%)',
+                color: '#1A3A4A',
                 fontWeight: 900,
                 fontSize: '1.18rem',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 2px 8px #9F7AEA22',
+                boxShadow: '0 2px 8px #4A8A9A22',
                 flexShrink: 0
               }}>1</span>
               <span>Shortlist your dream destination</span>
@@ -396,14 +210,14 @@ export const FeaturedUniversities: React.FC<FeaturedUniversitiesProps> = ({ styl
               display: 'flex',
               alignItems: 'center',
               gap: '1rem',
-              background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
               borderRadius: 14,
               padding: '1.1rem 1.3rem',
               fontWeight: 700,
               color: '#fff',
               fontSize: '1.13rem',
-              boxShadow: '0 4px 16px #9F7AEA22, 0 2px 8px #5727A344',
-              border: '2px solid #9F7AEA',
+              boxShadow: '0 4px 16px #4A8A9A22, 0 2px 8px #1A3A4A44',
+              border: '2px solid #4A8A9A',
               transform: 'scale(1.04)',
               zIndex: 2
             }}>
@@ -412,15 +226,15 @@ export const FeaturedUniversities: React.FC<FeaturedUniversitiesProps> = ({ styl
                 height: 40,
                 borderRadius: '50%',
                 background: '#fff',
-                color: '#5727A3',
+                color: '#1A3A4A',
                 fontWeight: 900,
                 fontSize: '1.25rem',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 2px 8px #9F7AEA22',
+                boxShadow: '0 2px 8px #4A8A9A22',
                 flexShrink: 0,
-                border: '2px solid #9F7AEA'
+                border: '2px solid #4A8A9A'
               }}>2</span>
               <span>Find the right university &amp; course</span>
             </li>
@@ -432,22 +246,22 @@ export const FeaturedUniversities: React.FC<FeaturedUniversitiesProps> = ({ styl
               borderRadius: 12,
               padding: '1rem 1.2rem',
               fontWeight: 600,
-              color: '#5727A3',
+              color: '#1A3A4A',
               fontSize: '1.08rem',
-              boxShadow: '0 2px 8px #D6C5F011'
+              boxShadow: '0 2px 8px #D0E8EC11'
             }}>
               <span style={{
                 width: 36,
                 height: 36,
                 borderRadius: '50%',
-                background: 'linear-gradient(90deg,#D6C5F0 0%,#9F7AEA 100%)',
-                color: '#5727A3',
+                background: 'linear-gradient(90deg,#D0E8EC 0%,#4A8A9A 100%)',
+                color: '#1A3A4A',
                 fontWeight: 900,
                 fontSize: '1.18rem',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 2px 8px #9F7AEA22',
+                boxShadow: '0 2px 8px #4A8A9A22',
                 flexShrink: 0
               }}>3</span>
               <span>Apply, get guidance, and succeed</span>
@@ -461,78 +275,14 @@ export const FeaturedUniversities: React.FC<FeaturedUniversitiesProps> = ({ styl
             #universities h2 {
               font-size: 1.5rem !important;
             }
-            #universities div[style*="font-size: 1.18rem"] {
-              font-size: 1.01rem !important;
-            }
-            #universities form {
-              flex-direction: column !important;
-              gap: 0.7rem !important;
-              padding: 0.7rem 0.5rem !important;
-            }
             #universities .btn-primary {
               font-size: 0.98rem !important;
               padding: 0.7rem 1.2rem !important;
-            }
-            #universities .container {
-              margin-top: 180px !important;
-            }
-            #universities > div[style*="left: 0"] {
-              width: 100% !important;
-              padding-left: 1.2rem !important;
-              padding-right: 1.2rem !important;
-              align-items: center !important;
-              text-align: center !important;
             }
             #universities > div[style*="flex-direction: row"] {
               flex-direction: column !important;
               gap: 1.5rem !important;
               padding: 2rem 0.7rem 1.5rem 0.7rem !important;
-            }
-            #universities > div[style*="flex-direction: row"] > div:last-child {
-              flex-direction: row !important;
-              gap: 1rem !important;
-              justify-content: flex-start !important;
-              overflow-x: auto !important;
-              padding: 0.5rem 0 !important;
-            }
-          }
-          @media (max-width: 600px) {
-            #universities h2 {
-              font-size: 1.1rem !important;
-            }
-            #universities div[style*="font-size: 1.18rem"] {
-              font-size: 0.89rem !important;
-            }
-            #universities form {
-              flex-direction: column !important;
-              gap: 0.5rem !important;
-              padding: 0.5rem 0.2rem !important;
-            }
-            #universities .btn-primary {
-              font-size: 0.89rem !important;
-              padding: 0.5rem 0.8rem !important;
-            }
-            #universities .container {
-              margin-top: 100px !important;
-            }
-            #universities > div[style*="left: 0"] {
-              width: 100% !important;
-              padding-left: 0.7rem !important;
-              padding-right: 0.7rem !important;
-              align-items: center !important;
-              text-align: center !important;
-            }
-            #universities > div[style*="flex-direction: row"] {
-              flex-direction: column !important;
-              gap: 1rem !important;
-              padding: 1.2rem 0.3rem 1rem 0.3rem !important;
-            }
-            #universities > div[style*="flex-direction: row"] > div:last-child {
-              flex-direction: row !important;
-              gap: 0.7rem !important;
-              justify-content: flex-start !important;
-              overflow-x: auto !important;
-              padding: 0.5rem 0 !important;
             }
           }
         `}
@@ -540,4 +290,3 @@ export const FeaturedUniversities: React.FC<FeaturedUniversitiesProps> = ({ styl
     </section>
   );
 };
-     

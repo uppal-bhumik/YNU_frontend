@@ -9,6 +9,7 @@ import { StudentDashboard } from './pages/StudentDashboard';
 import { CounsellorDashboard } from './pages/CounsellorDashboard';
 import { SiteNav } from './components/SiteNav';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
 import PeerCounsellingPage from './pages/PeerCounsellingPage';
 import AuthRegisterPage from './pages/AuthRegisterPage';
 import AuthVerifyPage from './pages/AuthVerifyPage';
@@ -29,8 +30,10 @@ import PeerCounsellingBillingPage from './pages/PeerCounsellingBillingPage';
 import MockPaymentPage from './pages/MockPaymentPage';
 import PaymentSuccess from './pages/PaymentSuccess';
 import BookingDetailsPage from './pages/BookingDetailsPage';
-import StudentBookings  from './pages/StudentBookings';
+import StudentBookings from './pages/StudentBookings';
 import PeerProfilePage from './pages/PeerProfilePage';
+import CompareUniversitiesPage from './pages/CompareUniversitiesPage';
+import { RecommendationsPage } from './pages/RecommendationsPage';
 
 // RequireAuth component to protect routes
 const RequireAuth: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -52,66 +55,71 @@ function ScrollToTop() {
 
 export const App: React.FC = () => (
   <AuthProvider>
-    <Router>
-      <ScrollToTop />
-      <SiteNav />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/about" element={
+    <CartProvider>
+      <Router>
+        <ScrollToTop />
+        <SiteNav />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/about" element={
             <AboutPage />
-        } />
-        <Route path="/services" element={
+          } />
+          <Route path="/services" element={
             <ServicesPage />
-        } />
-        <Route path="/services/peer-counselling" element={
+          } />
+          <Route path="/services/peer-counselling" element={
             <PeerCounsellingPage />
-        } />
-        <Route path="/universities" element={
+          } />
+          <Route path="/universities" element={
             <UniversitiesPage />
-        } />
-        <Route path="/universities/:id" element={<UniversityDetailPage />} />
-        <Route path="/program-details/:id" element={<ProgramDetailsPage />} />
-        <Route path="/contact" element={
+          } />
+          <Route path="/universities/:id" element={<UniversityDetailPage />} />
+          <Route path="/universities/recommendations" element={<RecommendationsPage />} />
+          <Route path="/program-details/:id" element={<ProgramDetailsPage />} />
+          <Route path="/contact" element={
             <ContactPage />
-        } />
-        <Route path="/student" element={
-          <RequireAuth>
-            <StudentDashboard />
-          </RequireAuth>
-        } />
-        {/* Auth pages are public */}
-        <Route path="/auth/register" element={<AuthRegisterPage />} />
-        <Route path="/auth/verify" element={<AuthVerifyPage />} />
-        <Route path="/auth/login" element={<AuthLoginPage />} />
-        <Route path="/auth/forgot-password" element={<AuthForgotPasswordPage />} />
-        <Route path="/financial-services" element={
+          } />
+          <Route path="/student" element={
+            <RequireAuth>
+              <StudentDashboard />
+            </RequireAuth>
+          } />
+          {/* Auth pages are public */}
+          <Route path="/auth/register" element={<AuthRegisterPage />} />
+          <Route path="/auth/verify" element={<AuthVerifyPage />} />
+          <Route path="/auth/login" element={<AuthLoginPage />} />
+          <Route path="/auth/forgot-password" element={<AuthForgotPasswordPage />} />
+          <Route path="/financial-services" element={
             <FinancialServicesPage />
-        } />
-        <Route path="/services/international-application-process" element={
+          } />
+          <Route path="/services/international-application-process" element={
             <StudyApplication />
-        } />
-        <Route path="/accommodation" element={
+          } />
+          <Route path="/accommodation" element={
             <AccommodationPage />
-        } />
-        <Route path="/services/university-representative-counselling" element={
+          } />
+          <Route path="/services/university-representative-counselling" element={
             <UniversityRepresentativeCounsellingPage />
-        } />
-        <Route path="/services/airport-pickup" element={
+          } />
+          <Route path="/services/airport-pickup" element={
             <AirportPickupPage />
-        } />
-        <Route path="/career" element={<CareerPage />} />
-        <Route path="/services/peer-counselling-billing" element={<PeerCounsellingBillingPage />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-        <Route path="/terms-of-service" element={<TermsOfServicePage />} />
-        <Route path="/mock-payment" element={<MockPaymentPage />} />
-        <Route path="/payment-status" element={<PaymentSuccess />} />
-        <Route path="/booking/:id" element={<BookingDetailsPage />} />
-        <Route path="/student-bookings" element={<StudentBookings />} />
-        <Route path="/peer/:id" element={<PeerProfilePage />} />
-        <Route path="*" element={<div style={{padding:'4rem',textAlign:'center'}}>Page Not Found</div>} />
-      </Routes>
-      <Footer />
-    </Router>
+          } />
+          <Route path="/career" element={<CareerPage />} />
+          <Route path="/services/peer-counselling-billing" element={<PeerCounsellingBillingPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+          <Route path="/mock-payment" element={<MockPaymentPage />} />
+          <Route path="/payment-status" element={<PaymentSuccess />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/booking/:id" element={<BookingDetailsPage />} />
+          <Route path="/student-bookings" element={<StudentBookings />} />
+          <Route path="/peer/:id" element={<PeerProfilePage />} />
+          <Route path="/compare-universities" element={<CompareUniversitiesPage />} />
+          <Route path="*" element={<div style={{ padding: '4rem', textAlign: 'center' }}>Page Not Found</div>} />
+        </Routes>
+        <Footer />
+      </Router>
+    </CartProvider>
   </AuthProvider>
 );
-           
+

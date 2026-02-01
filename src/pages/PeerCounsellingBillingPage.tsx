@@ -35,6 +35,7 @@ const PeerCounsellingBillingPage = () => {
   const queryBookingId = params.get('bookingId');
   const bookingId = stateBookingId || queryBookingId || null;
   const passedAmount = (location.state && (location.state as any).amount) || params.get('amount');
+  const cartItemId = (location.state && (location.state as any).cartItemId) || null;
   // Use counsellor’s charge if provided, else the page price (699)
   const counsellorCharges = Number(passedAmount) || priceINR;
 
@@ -65,7 +66,7 @@ const PeerCounsellingBillingPage = () => {
   };
 
   const PRODUCT_ID = 'pdt_isuaGsszAodjHrUaplbG4';
-  const allowedPaymentMethodTypes = ['credit','debit','upi']; // upi optional, keep credit/debit fallback
+  const allowedPaymentMethodTypes = ['credit', 'debit', 'upi']; // upi optional, keep credit/debit fallback
 
   // Replace previous handleContinue with handlePayment (keep validation & red borders)
   const handlePayment = async () => {
@@ -81,7 +82,7 @@ const PeerCounsellingBillingPage = () => {
     try {
       const userToken = (user as any)?.token || localStorage.getItem('token') || '';
       const safePhone = phone.trim() || undefined;
-      const returnUrl = `${window.location.origin}/payment-success?bookingId=${encodeURIComponent(bookingId)}`;
+      const returnUrl = `${window.location.origin}/payment-success?bookingId=${encodeURIComponent(bookingId)}${cartItemId ? `&cartItemId=${cartItemId}` : ''}`;
       const safeAddress = address.trim() || 'Address Not Provided';
 
       const payload: any = {
@@ -129,7 +130,7 @@ const PeerCounsellingBillingPage = () => {
 
       const raw = await res.text();
       let data: any = {};
-      try { data = raw ? JSON.parse(raw) : {}; } catch {}
+      try { data = raw ? JSON.parse(raw) : {}; } catch { }
       if (!res.ok) throw new Error(data?.detail || raw || `Payment init failed (${res.status})`);
       const url = data.checkout_url;
       if (!url || typeof url !== 'string') throw new Error('Invalid checkout URL returned.');
@@ -170,24 +171,18 @@ const PeerCounsellingBillingPage = () => {
           {/* Header with Pay in USD */}
           <div style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <div
+              <img
+                src="/ynu-logo.png"
+                alt="Your Next University"
                 style={{
-                  width: '40px',
-                  height: '40px',
-                  background: '#e9d5ff',
+                  width: '70px',
+                  height: '70px',
                   borderRadius: '8px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontWeight: '700',
-                  fontSize: '1.1rem',
-                  color: '#7c3aed'
+                  objectFit: 'contain'
                 }}
-              >
-                Y
-              </div>
+              />
               <span style={{ fontWeight: '600', fontSize: '1rem', color: '#1f2937' }}>
-                YourNextUniversity
+                Your Next University
               </span>
             </div>
             <select
@@ -338,7 +333,7 @@ const PeerCounsellingBillingPage = () => {
                   value={email}
                   onChange={e => { setEmail(e.target.value); if (emailError) setEmailError(false); }}
                   placeholder={user?.email ? '' : ''}
-                 
+
                   style={{
                     width: '100%',
                     padding: '0.625rem 0.875rem',
@@ -642,3 +637,5 @@ const PeerCounsellingBillingPage = () => {
 };
 
 export default PeerCounsellingBillingPage;
+
+

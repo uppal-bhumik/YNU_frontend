@@ -15,15 +15,16 @@ export const FinancialServicesPage: React.FC = () => {
         position: 'relative',
         zIndex: 1,
         minHeight: '100vh',
-        paddingTop: '90px', // Add space for fixed header
+        background: '#fff',
+        paddingTop: '0', // Full bleed
       }}
     >
       {/* Funding & Loans Made Easy */}
       <section style={{
-        background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
-        borderRadius: 18,
-        boxShadow: '0 4px 24px #9F7AEA22',
-        padding: '2.2rem 1.5rem 1.5rem 1.5rem',
+        background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)', // Dark Graphite
+        borderRadius: 0,
+        boxShadow: '0 20px 60px -10px rgba(15, 23, 42, 0.15)',
+        padding: '120px 1.5rem 80px 1.5rem',
         marginBottom: '2.5rem',
         marginTop: '1.5rem',
         color: '#fff',
@@ -39,7 +40,7 @@ export const FinancialServicesPage: React.FC = () => {
             fontSize: '2.3rem',
             fontWeight: 800,
             marginBottom: '0.5rem',
-            background: 'linear-gradient(90deg, #fff 0%, #9F7AEA 100%)',
+            background: 'linear-gradient(90deg, #fff 0%, #4A8A9A 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent'
           }}>
@@ -47,7 +48,7 @@ export const FinancialServicesPage: React.FC = () => {
           </h1>
           <p style={{
             fontSize: '1.15rem',
-            color: '#e0e7ff',
+            color: '#CBD5E1',
             marginBottom: '1.2rem',
             fontWeight: 500
           }}>
@@ -58,7 +59,7 @@ export const FinancialServicesPage: React.FC = () => {
             href="#funding-options"
             style={{
               display: 'inline-block',
-              background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
               color: '#fff',
               fontWeight: 700,
               fontSize: '1.13rem',
@@ -66,14 +67,14 @@ export const FinancialServicesPage: React.FC = () => {
               padding: '1rem 2.5rem',
               textDecoration: 'none',
               margin: '0.5rem 0 0 0',
-              boxShadow: '0 2px 8px #9F7AEA33',
+              boxShadow: '0 2px 8px #4A8A9A33',
               transition: 'background 0.18s'
             }}
             onMouseOver={e => {
-              (e.currentTarget as HTMLAnchorElement).style.background = 'linear-gradient(90deg,#9F7AEA 0%,#5727A3 100%)';
+              (e.currentTarget as HTMLAnchorElement).style.background = 'linear-gradient(90deg,#4A8A9A 0%,#1A3A4A 100%)';
             }}
             onMouseOut={e => {
-              (e.currentTarget as HTMLAnchorElement).style.background = 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)';
+              (e.currentTarget as HTMLAnchorElement).style.background = 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)';
             }}
           >
             Explore Funding Options
@@ -87,7 +88,7 @@ export const FinancialServicesPage: React.FC = () => {
               width: '100%',
               maxWidth: 320,
               borderRadius: 18,
-              boxShadow: '0 2px 12px #9F7AEA22',
+              boxShadow: '0 2px 12px #4A8A9A22',
               objectFit: 'cover'
             }}
           />
@@ -99,10 +100,12 @@ export const FinancialServicesPage: React.FC = () => {
         style={{
           margin: '0 auto 2.5rem auto',
           padding: '1.5rem',
-          background: 'linear-gradient(90deg,#fff 60%,#e0c3fc 100%)',
-          borderRadius: 16,
-          boxShadow: '0 2px 12px #9F7AEA11',
-          color: '#1B0044',
+          background: '#fff',
+          maxWidth: 1200,
+          borderRadius: 24,
+          boxShadow: '0 4px 24px rgba(15, 23, 42, 0.08)',
+          border: '1px solid var(--border)',
+          color: '#0F2A36',
           display: 'flex',
           flexWrap: 'wrap',
           gap: '2rem',
@@ -171,13 +174,13 @@ export const FinancialServicesPage: React.FC = () => {
         </div>
         {/* Content */}
         <div style={{ flex: 1.5, minWidth: 260, zIndex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <div style={{ fontWeight: 600, letterSpacing: '-0.04em', color: '#5727A3', fontSize: '1rem', marginBottom: '.5rem' }}>
+          <div style={{ fontWeight: 600, letterSpacing: '-0.04em', color: '#1A3A4A', fontSize: '1rem', marginBottom: '.5rem' }}>
             AWESOME BENEFITS
           </div>
           <h2 style={{
             fontWeight: 800,
             fontSize: '2rem',
-            color: '#5727A3',
+            color: '#1A3A4A',
             margin: 0,
             lineHeight: 1.1,
             letterSpacing: '-0.04em'
@@ -187,7 +190,7 @@ export const FinancialServicesPage: React.FC = () => {
           <h2 style={{
             fontWeight: 800,
             fontSize: '2rem',
-            color: '#9F7AEA',
+            color: '#4A8A9A',
             margin: 0,
             lineHeight: 1.1,
             letterSpacing: '-0.04em',
@@ -198,7 +201,7 @@ export const FinancialServicesPage: React.FC = () => {
           <div style={{
             fontSize: '1.15rem',
             fontWeight: 500,
-            color: '#5727A3',
+            color: '#1A3A4A',
             marginBottom: '1.4rem',
             letterSpacing: '-0.04em',
             lineHeight: '140%'
@@ -208,10 +211,11 @@ export const FinancialServicesPage: React.FC = () => {
           <div className="what-we-offer-cards">
             {/* Fast & Easy */}
             <div className="what-we-offer-card" style={{
-              background: 'linear-gradient(90deg,#e0c3fc 0%,#fff 100%)',
+              background: '#fff',
+              border: '1px solid var(--border)',
               borderRadius: 14,
               padding: '1.2rem 1rem',
-              boxShadow: '0 2px 8px #9F7AEA22',
+              boxShadow: '0 2px 8px #4A8A9A22',
               display: 'flex',
               alignItems: 'flex-start',
               gap: '1.1rem',
@@ -219,19 +223,20 @@ export const FinancialServicesPage: React.FC = () => {
             }}>
               {/* Bolt SVG */}
               <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 38, height: 38 }}>
-                <svg width="32" height="38" viewBox="0 0 32 38" fill="none"><path d="M16 2L4 21H16L12 36L28 13H16L20 2Z" fill="#9F7AEA" fillOpacity="0.87"/><path d="M16 2L4 21H16L12 36L28 13H16L20 2Z" stroke="#9F7AEA" strokeWidth="2" strokeLinejoin="round"/></svg>
+                <svg width="32" height="38" viewBox="0 0 32 38" fill="none"><path d="M16 2L4 21H16L12 36L28 13H16L20 2Z" fill="#4A8A9A" fillOpacity="0.87" /><path d="M16 2L4 21H16L12 36L28 13H16L20 2Z" stroke="#4A8A9A" strokeWidth="2" strokeLinejoin="round" /></svg>
               </span>
               <div>
-                <h3 style={{ fontWeight: 600, fontSize: '1.18rem', margin: 0, color: '#5727A3' }}>Fast &amp; Easy</h3>
-                <p style={{ margin: 0, color: '#1B0044', fontWeight: 500 }}>Get a loan in just 2 minutes with a simple one-click (or swipe) process.</p>
+                <h3 style={{ fontWeight: 600, fontSize: '1.18rem', margin: 0, color: '#1A3A4A' }}>Fast &amp; Easy</h3>
+                <p style={{ margin: 0, color: '#0F2A36', fontWeight: 500 }}>Get a loan in just 2 minutes with a simple one-click (or swipe) process.</p>
               </div>
             </div>
             {/* Flexible Options */}
             <div className="what-we-offer-card" style={{
-              background: 'linear-gradient(90deg,#fff 0%,#e0c3fc 100%)',
+              background: '#fff',
+              border: '1px solid var(--border)',
               borderRadius: 14,
               padding: '1.2rem 1rem',
-              boxShadow: '0 2px 8px #9F7AEA22',
+              boxShadow: '0 2px 8px #4A8A9A22',
               display: 'flex',
               alignItems: 'flex-start',
               gap: '1.1rem',
@@ -239,19 +244,20 @@ export const FinancialServicesPage: React.FC = () => {
             }}>
               {/* Branching Paths SVG */}
               <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 38, height: 38 }}>
-                <svg width="38" height="38" viewBox="0 0 38 38" fill="none"><path d="M19 36V2M19 2L6 15M19 2L32 15" stroke="#9F7AEA" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                <svg width="38" height="38" viewBox="0 0 38 38" fill="none"><path d="M19 36V2M19 2L6 15M19 2L32 15" stroke="#4A8A9A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </span>
               <div>
-                <h3 style={{ fontWeight: 600, fontSize: '1.18rem', margin: 0, color: '#5727A3' }}>Flexible Options</h3>
-                <p style={{ margin: 0, color: '#1B0044', fontWeight: 500 }}>Choose from top Banks and NBFCs aligned with market trends.</p>
+                <h3 style={{ fontWeight: 600, fontSize: '1.18rem', margin: 0, color: '#1A3A4A' }}>Flexible Options</h3>
+                <p style={{ margin: 0, color: '#0F2A36', fontWeight: 500 }}>Choose from top Banks and NBFCs aligned with market trends.</p>
               </div>
             </div>
             {/* Real-Time Tracking & Insights */}
             <div className="what-we-offer-card" style={{
-              background: 'linear-gradient(90deg,#e0c3fc 0%,#fff 100%)',
+              background: '#fff',
+              border: '1px solid var(--border)',
               borderRadius: 14,
               padding: '1.2rem 1rem',
-              boxShadow: '0 2px 8px #9F7AEA22',
+              boxShadow: '0 2px 8px #4A8A9A22',
               display: 'flex',
               alignItems: 'flex-start',
               gap: '1.1rem',
@@ -259,19 +265,20 @@ export const FinancialServicesPage: React.FC = () => {
             }}>
               {/* Routing SVG */}
               <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 38, height: 38 }}>
-                <svg width="38" height="38" viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="17" stroke="#9F7AEA" strokeWidth="2.5"/><path d="M19 8V19L27 27" stroke="#9F7AEA" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                <svg width="38" height="38" viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="17" stroke="#4A8A9A" strokeWidth="2.5" /><path d="M19 8V19L27 27" stroke="#4A8A9A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </span>
               <div>
-                <h3 style={{ fontWeight: 600, fontSize: '1.18rem', margin: 0, color: '#5727A3' }}>Real-Time Tracking &amp; Insights</h3>
-                <p style={{ margin: 0, color: '#1B0044', fontWeight: 500 }}>Monitor loan status with live updates and reporting.</p>
+                <h3 style={{ fontWeight: 600, fontSize: '1.18rem', margin: 0, color: '#1A3A4A' }}>Real-Time Tracking &amp; Insights</h3>
+                <p style={{ margin: 0, color: '#0F2A36', fontWeight: 500 }}>Monitor loan status with live updates and reporting.</p>
               </div>
             </div>
             {/* Peer Guidance */}
             <div className="what-we-offer-card" style={{
-              background: 'linear-gradient(90deg,#fff 0%,#e0c3fc 100%)',
+              background: '#fff',
+              border: '1px solid var(--border)',
               borderRadius: 14,
               padding: '1.2rem 1rem',
-              boxShadow: '0 2px 8px #9F7AEA22',
+              boxShadow: '0 2px 8px #4A8A9A22',
               display: 'flex',
               alignItems: 'flex-start',
               gap: '1.1rem',
@@ -279,30 +286,30 @@ export const FinancialServicesPage: React.FC = () => {
             }}>
               {/* User/Chat SVG */}
               <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 38, height: 38 }}>
-                <svg width="38" height="38" viewBox="0 0 38 38" fill="none"><circle cx="19" cy="13" r="7" stroke="#9F7AEA" strokeWidth="2.5"/><path d="M6 32c0-5.523 5.82-10 13-10s13 4.477 13 10" stroke="#9F7AEA" strokeWidth="2.5" strokeLinecap="round"/></svg>
+                <svg width="38" height="38" viewBox="0 0 38 38" fill="none"><circle cx="19" cy="13" r="7" stroke="#4A8A9A" strokeWidth="2.5" /><path d="M6 32c0-5.523 5.82-10 13-10s13 4.477 13 10" stroke="#4A8A9A" strokeWidth="2.5" strokeLinecap="round" /></svg>
               </span>
               <div>
-                <h3 style={{ fontWeight: 600, fontSize: '1.18rem', margin: 0, color: '#5727A3' }}>Peer Guidance</h3>
-                <p style={{ margin: 0, color: '#1B0044', fontWeight: 500 }}>Learn from students who’ve already navigated the financial side of studying abroad.</p>
+                <h3 style={{ fontWeight: 600, fontSize: '1.18rem', margin: 0, color: '#1A3A4A' }}>Peer Guidance</h3>
+                <p style={{ margin: 0, color: '#0F2A36', fontWeight: 500 }}>Learn from students who’ve already navigated the financial side of studying abroad.</p>
                 <a href="/services/peer-counselling"
                   style={{
                     display: 'inline-block',
                     marginTop: '.5rem',
-                    background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+                    background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
                     color: '#fff',
                     fontWeight: 600,
                     fontSize: '1rem',
                     borderRadius: 8,
                     padding: '.5rem 1.2rem',
                     textDecoration: 'none',
-                    boxShadow: '0 2px 8px #9F7AEA22',
+                    boxShadow: '0 2px 8px #4A8A9A22',
                     transition: 'background 0.18s'
                   }}
                   onMouseOver={e => {
-                    (e.currentTarget as HTMLAnchorElement).style.background = 'linear-gradient(90deg,#9F7AEA 0%,#5727A3 100%)';
+                    (e.currentTarget as HTMLAnchorElement).style.background = 'linear-gradient(90deg,#4A8A9A 0%,#1A3A4A 100%)';
                   }}
                   onMouseOut={e => {
-                    (e.currentTarget as HTMLAnchorElement).style.background = 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)';
+                    (e.currentTarget as HTMLAnchorElement).style.background = 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)';
                   }}
                 >
                   Ask a Peer
@@ -319,22 +326,23 @@ export const FinancialServicesPage: React.FC = () => {
               width: '100%',
               maxWidth: 260,
               borderRadius: 16,
-              boxShadow: '0 2px 12px #9F7AEA11',
+              boxShadow: '0 2px 12px #4A8A9A11',
               objectFit: 'cover'
             }}
           />
         </div>
       </section>
-      
+
       {/* Partner Banks */}
       <section>
         <div
           style={{
-            background: 'linear-gradient(90deg, #e0c3fc 0%, #fff 100%)',
+            background: '#fff',
+            maxWidth: 1200,
+            margin: '0 auto 1.5rem auto',
             borderRadius: 16,
             border: '1px solid #d9d9d9',
             padding: '1.1rem 1rem 1.1rem 1rem',
-            margin: '0 0 1.5rem 0',
             display: 'flex',
             flexDirection: 'column',
             gap: '1rem',
@@ -350,7 +358,7 @@ export const FinancialServicesPage: React.FC = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               textAlign: 'center',
@@ -740,9 +748,9 @@ export const FinancialServicesPage: React.FC = () => {
         style={{
           margin: '0 auto 2.5rem auto',
           padding: '2.2rem 1.5rem',
-          background: 'linear-gradient(90deg,#e0c3fc 0%,#fff 100%)',
+          background: 'linear-gradient(90deg,#D0E8EC 0%,#fff 100%)',
           borderRadius: 20,
-          boxShadow: '0 2px 16px #9F7AEA11',
+          boxShadow: '0 2px 16px #4A8A9A11',
           color: '#1e293b',
           display: 'flex',
           flexWrap: 'wrap',
@@ -756,7 +764,7 @@ export const FinancialServicesPage: React.FC = () => {
               fontWeight: 900,
               fontSize: '1.35rem',
               letterSpacing: '-0.03em',
-              background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               marginBottom: '1.2rem'
@@ -772,9 +780,9 @@ export const FinancialServicesPage: React.FC = () => {
           }}>
             {/* Step 1 */}
             <div style={{
-              background: 'linear-gradient(90deg,#fff 0%,#e0c3fc 100%)',
+              background: 'linear-gradient(90deg,#fff 0%,#D0E8EC 100%)',
               borderRadius: 14,
-              boxShadow: '0 2px 8px #9F7AEA22',
+              boxShadow: '0 2px 8px #4A8A9A22',
               padding: '1.1rem 1.2rem',
               display: 'flex',
               alignItems: 'flex-start',
@@ -783,7 +791,7 @@ export const FinancialServicesPage: React.FC = () => {
               <div style={{
                 width: 38,
                 height: 38,
-                background: 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)',
+                background: 'linear-gradient(135deg,#1A3A4A 0%,#4A8A9A 100%)',
                 color: '#fff',
                 fontWeight: 800,
                 fontSize: '1.18rem',
@@ -791,21 +799,21 @@ export const FinancialServicesPage: React.FC = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 4px 12px -2px #9F7AEA33',
+                boxShadow: '0 4px 12px -2px #4A8A9A33',
                 flexShrink: 0
               }}>1</div>
               <div>
-                <div style={{ fontWeight: 700, fontSize: '1.08rem', color: '#5727A3' }}>Explore Options</div>
-                <div style={{ color: '#1B0044', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
+                <div style={{ fontWeight: 700, fontSize: '1.08rem', color: '#1A3A4A' }}>Explore Options</div>
+                <div style={{ color: '#1A3A4A', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
                   Check out scholarships, grants, and loans tailored for your destination and course.
                 </div>
               </div>
             </div>
             {/* Step 2 */}
             <div style={{
-              background: 'linear-gradient(90deg,#fff 0%,#e0c3fc 100%)',
+              background: 'linear-gradient(90deg,#fff 0%,#D0E8EC 100%)',
               borderRadius: 14,
-              boxShadow: '0 2px 8px #9F7AEA22',
+              boxShadow: '0 2px 8px #4A8A9A22',
               padding: '1.1rem 1.2rem',
               display: 'flex',
               alignItems: 'flex-start',
@@ -814,7 +822,7 @@ export const FinancialServicesPage: React.FC = () => {
               <div style={{
                 width: 38,
                 height: 38,
-                background: 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)',
+                background: 'linear-gradient(135deg,#1A3A4A 0%,#4A8A9A 100%)',
                 color: '#fff',
                 fontWeight: 800,
                 fontSize: '1.18rem',
@@ -822,21 +830,21 @@ export const FinancialServicesPage: React.FC = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 4px 12px -2px #9F7AEA33',
+                boxShadow: '0 4px 12px -2px #4A8A9A33',
                 flexShrink: 0
               }}>2</div>
               <div>
-                <div style={{ fontWeight: 700, fontSize: '1.08rem', color: '#5727A3' }}>Compare &amp; Choose</div>
-                <div style={{ color: '#1B0044', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
+                <div style={{ fontWeight: 700, fontSize: '1.08rem', color: '#1A3A4A' }}>Compare &amp; Choose</div>
+                <div style={{ color: '#1A3A4A', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
                   Evaluate loan terms, interest rates, and repayment options.
                 </div>
               </div>
             </div>
             {/* Step 3 */}
             <div style={{
-              background: 'linear-gradient(90deg,#fff 0%,#e0c3fc 100%)',
+              background: 'linear-gradient(90deg,#fff 0%,#D0E8EC 100%)',
               borderRadius: 14,
-              boxShadow: '0 2px 8px #9F7AEA22',
+              boxShadow: '0 2px 8px #4A8A9A22',
               padding: '1.1rem 1.2rem',
               display: 'flex',
               alignItems: 'flex-start',
@@ -845,7 +853,7 @@ export const FinancialServicesPage: React.FC = () => {
               <div style={{
                 width: 38,
                 height: 38,
-                background: 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)',
+                background: 'linear-gradient(135deg,#1A3A4A 0%,#4A8A9A 100%)',
                 color: '#fff',
                 fontWeight: 800,
                 fontSize: '1.18rem',
@@ -853,21 +861,21 @@ export const FinancialServicesPage: React.FC = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 4px 12px -2px #9F7AEA33',
+                boxShadow: '0 4px 12px -2px #4A8A9A33',
                 flexShrink: 0
               }}>3</div>
               <div>
-                <div style={{ fontWeight: 700, fontSize: '1.08rem', color: '#5727A3' }}>Apply Confidently</div>
-                <div style={{ color: '#1B0044', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
+                <div style={{ fontWeight: 700, fontSize: '1.08rem', color: '#1A3A4A' }}>Apply Confidently</div>
+                <div style={{ color: '#1A3A4A', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
                   Get guided steps to apply through our verified loan partners.
                 </div>
               </div>
             </div>
             {/* Step 4 */}
             <div style={{
-              background: 'linear-gradient(90deg,#fff 0%,#e0c3fc 100%)',
+              background: 'linear-gradient(90deg,#fff 0%,#D0E8EC 100%)',
               borderRadius: 14,
-              boxShadow: '0 2px 8px #9F7AEA22',
+              boxShadow: '0 2px 8px #4A8A9A22',
               padding: '1.1rem 1.2rem',
               display: 'flex',
               alignItems: 'flex-start',
@@ -876,7 +884,7 @@ export const FinancialServicesPage: React.FC = () => {
               <div style={{
                 width: 38,
                 height: 38,
-                background: 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)',
+                background: 'linear-gradient(135deg,#1A3A4A 0%,#4A8A9A 100%)',
                 color: '#fff',
                 fontWeight: 800,
                 fontSize: '1.18rem',
@@ -884,12 +892,12 @@ export const FinancialServicesPage: React.FC = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 4px 12px -2px #9F7AEA33',
+                boxShadow: '0 4px 12px -2px #4A8A9A33',
                 flexShrink: 0
               }}>4</div>
               <div>
-                <div style={{ fontWeight: 700, fontSize: '1.08rem', color: '#5727A3' }}>Manage &amp; Track</div>
-                <div style={{ color: '#1B0044', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
+                <div style={{ fontWeight: 700, fontSize: '1.08rem', color: '#1A3A4A' }}>Manage &amp; Track</div>
+                <div style={{ color: '#1A3A4A', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
                   Keep tabs on your spending and stay on top of your budget.
                 </div>
               </div>
@@ -902,7 +910,7 @@ export const FinancialServicesPage: React.FC = () => {
               fontWeight: 900,
               fontSize: '1.35rem',
               letterSpacing: '-0.03em',
-              background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               marginBottom: '1.2rem'
@@ -918,9 +926,9 @@ export const FinancialServicesPage: React.FC = () => {
           }}>
             {/* Tip 1 */}
             <div style={{
-              background: 'linear-gradient(90deg,#fff 0%,#e0c3fc 100%)',
+              background: 'linear-gradient(90deg,#fff 0%,#D0E8EC 100%)',
               borderRadius: 14,
-              boxShadow: '0 2px 8px #9F7AEA22',
+              boxShadow: '0 2px 8px #4A8A9A22',
               padding: '1.1rem 1.2rem',
               display: 'flex',
               alignItems: 'flex-start',
@@ -929,7 +937,7 @@ export const FinancialServicesPage: React.FC = () => {
               <div style={{
                 width: 38,
                 height: 38,
-                background: 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)',
+                background: 'linear-gradient(135deg,#1A3A4A 0%,#4A8A9A 100%)',
                 color: '#fff',
                 fontWeight: 800,
                 fontSize: '1.18rem',
@@ -937,20 +945,20 @@ export const FinancialServicesPage: React.FC = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 4px 12px -2px #9F7AEA33',
+                boxShadow: '0 4px 12px -2px #4A8A9A33',
                 flexShrink: 0
               }}>1</div>
               <div>
-                <div style={{ color: '#5727A3', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
-                   Apply early for scholarships and loans.
+                <div style={{ color: '#1A3A4A', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
+                  Apply early for scholarships and loans.
                 </div>
               </div>
             </div>
             {/* Tip 2 */}
             <div style={{
-              background: 'linear-gradient(90deg,#fff 0%,#e0c3fc 100%)',
+              background: 'linear-gradient(90deg,#fff 0%,#D0E8EC 100%)',
               borderRadius: 14,
-              boxShadow: '0 2px 8px #9F7AEA22',
+              boxShadow: '0 2px 8px #4A8A9A22',
               padding: '1.1rem 1.2rem',
               display: 'flex',
               alignItems: 'flex-start',
@@ -959,7 +967,7 @@ export const FinancialServicesPage: React.FC = () => {
               <div style={{
                 width: 38,
                 height: 38,
-                background: 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)',
+                background: 'linear-gradient(135deg,#1A3A4A 0%,#4A8A9A 100%)',
                 color: '#fff',
                 fontWeight: 800,
                 fontSize: '1.18rem',
@@ -967,20 +975,20 @@ export const FinancialServicesPage: React.FC = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 4px 12px -2px #9F7AEA33',
+                boxShadow: '0 4px 12px -2px #4A8A9A33',
                 flexShrink: 0
               }}>2</div>
               <div>
-                <div style={{ color: '#5727A3', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
+                <div style={{ color: '#1A3A4A', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
                   Use budgeting tools to track expenses.
                 </div>
               </div>
             </div>
             {/* Tip 3 */}
             <div style={{
-              background: 'linear-gradient(90deg,#fff 0%,#e0c3fc 100%)',
+              background: 'linear-gradient(90deg,#fff 0%,#D0E8EC 100%)',
               borderRadius: 14,
-              boxShadow: '0 2px 8px #9F7AEA22',
+              boxShadow: '0 2px 8px #4A8A9A22',
               padding: '1.1rem 1.2rem',
               display: 'flex',
               alignItems: 'flex-start',
@@ -989,7 +997,7 @@ export const FinancialServicesPage: React.FC = () => {
               <div style={{
                 width: 38,
                 height: 38,
-                background: 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)',
+                background: 'linear-gradient(135deg,#1A3A4A 0%,#4A8A9A 100%)',
                 color: '#fff',
                 fontWeight: 800,
                 fontSize: '1.18rem',
@@ -997,20 +1005,20 @@ export const FinancialServicesPage: React.FC = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 4px 12px -2px #9F7AEA33',
+                boxShadow: '0 4px 12px -2px #4A8A9A33',
                 flexShrink: 0
               }}>3</div>
               <div>
-                <div style={{ color: '#5727A3', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
+                <div style={{ color: '#1A3A4A', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
                   Ask peers for real-world advice.
                 </div>
               </div>
             </div>
             {/* Tip 4 */}
             <div style={{
-              background: 'linear-gradient(90deg,#fff 0%,#e0c3fc 100%)',
+              background: 'linear-gradient(90deg,#fff 0%,#D0E8EC 100%)',
               borderRadius: 14,
-              boxShadow: '0 2px 8px #9F7AEA22',
+              boxShadow: '0 2px 8px #4A8A9A22',
               padding: '1.1rem 1.2rem',
               display: 'flex',
               alignItems: 'flex-start',
@@ -1019,7 +1027,7 @@ export const FinancialServicesPage: React.FC = () => {
               <div style={{
                 width: 38,
                 height: 38,
-                background: 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)',
+                background: 'linear-gradient(135deg,#1A3A4A 0%,#4A8A9A 100%)',
                 color: '#fff',
                 fontWeight: 800,
                 fontSize: '1.18rem',
@@ -1027,11 +1035,11 @@ export const FinancialServicesPage: React.FC = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 4px 12px -2px #9F7AEA33',
+                boxShadow: '0 4px 12px -2px #4A8A9A33',
                 flexShrink: 0
               }}>4</div>
               <div>
-                <div style={{ color: '#5727A3', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
+                <div style={{ color: '#1A3A4A', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
                   Always have an emergency fund.
                 </div>
               </div>
@@ -1039,25 +1047,25 @@ export const FinancialServicesPage: React.FC = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Funding Options Table/Content */}
       <div id="funding-options" style={{
-        margin:'2rem',
-        display:'grid',
-        gap:'2rem',
+        margin: '2rem',
+        display: 'grid',
+        gap: '2rem',
         gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
         position: 'relative',
         zIndex: 2
       }}>
         <div style={{
-          padding:'1.5rem',
-          borderRadius:'1.5rem',
-          background: '#f8fafc',
-          boxShadow: '0 8px 32px 0 #9F7AEA22, 0 1.5px 8px 0 #9F7AEA22',
-          border: '1.5px solid #e0e7ef',
+          padding: '1.5rem',
+          borderRadius: '1.5rem',
+          background: 'linear-gradient(135deg, #1A3A4A 0%, #2D4A5A 100%)',
+          boxShadow: '0 8px 32px 0 rgba(0,0,0,0.25), 0 1.5px 8px 0 #4A8A9A44',
+          border: '1.5px solid #3A5A6A',
         }}>
-          <h3 style={{ color: '#5727A3', fontWeight: 700, fontSize: '1.15rem', marginBottom: '.7rem' }}>ForeignAdmits</h3>
-          <ul style={{ fontSize: '1.02rem', color: '#334155', marginBottom: '.7rem', paddingLeft: '1.1rem' }}>
+          <h3 style={{ color: '#fff', fontWeight: 700, fontSize: '1.15rem', marginBottom: '.7rem' }}>ForeignAdmits</h3>
+          <ul style={{ fontSize: '1.02rem', color: '#CBD5E1', marginBottom: '.7rem', paddingLeft: '1.1rem' }}>
             <li>Compare 15+ banks &amp; NBFCs</li>
             <li>Secured &amp; unsecured loan options</li>
             <li>Fast, digital process</li>
@@ -1069,7 +1077,7 @@ export const FinancialServicesPage: React.FC = () => {
             rel="noopener"
             style={{
               color: '#fff',
-              background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
               borderRadius: 8,
               padding: '.7rem 1.5rem',
               fontWeight: 700,
@@ -1088,14 +1096,14 @@ export const FinancialServicesPage: React.FC = () => {
         </div>
         {/* Example: Multiple Lenders/Providers */}
         <div style={{
-          padding:'1.5rem',
-          borderRadius:'1.5rem',
-          background: '#f8fafc',
-          boxShadow: '0 8px 32px 0 #9F7AEA22, 0 1.5px 8px 0 #9F7AEA22',
-          border: '1.5px solid #e0e7ef',
+          padding: '1.5rem',
+          borderRadius: '1.5rem',
+          background: 'linear-gradient(135deg, #1A3A4A 0%, #2D4A5A 100%)',
+          boxShadow: '0 8px 32px 0 rgba(0,0,0,0.25), 0 1.5px 8px 0 #4A8A9A44',
+          border: '1.5px solid #3A5A6A',
         }}>
-          <h3 style={{ color: '#5727A3', fontWeight: 700, fontSize: '1.15rem', marginBottom: '.7rem' }}>Leap Finance</h3>
-          <ul style={{ fontSize: '1.02rem', color: '#334155', marginBottom: '.7rem', paddingLeft: '1.1rem' }}>
+          <h3 style={{ color: '#fff', fontWeight: 700, fontSize: '1.15rem', marginBottom: '.7rem' }}>Leap Finance</h3>
+          <ul style={{ fontSize: '1.02rem', color: '#CBD5E1', marginBottom: '.7rem', paddingLeft: '1.1rem' }}>
             <li>No-cosigner, collateral-free loans</li>
             <li>Competitive interest rates</li>
             <li>Fast approval process</li>
@@ -1107,7 +1115,7 @@ export const FinancialServicesPage: React.FC = () => {
             rel="noopener"
             style={{
               color: '#fff',
-              background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
               borderRadius: 8,
               padding: '.7rem 1.5rem',
               fontWeight: 700,
@@ -1124,15 +1132,15 @@ export const FinancialServicesPage: React.FC = () => {
             Apply with Leap Finance
           </a>
         </div>
-        
+
         {/* ...existing code for university scholarships... */}
         {data.map((uni, idx) => (
           <div
             key={uni.university + idx}
             className="card"
             style={{
-              padding:'1.5rem',
-              borderRadius:'1.5rem',
+              padding: '1.5rem',
+              borderRadius: '1.5rem',
               background: 'rgba(255,255,255,0.7)',
               boxShadow: '0 8px 32px 0 rgba(37,99,235,0.10), 0 1.5px 8px 0 #fbbf24',
               backdropFilter: 'blur(8px)',
@@ -1142,7 +1150,7 @@ export const FinancialServicesPage: React.FC = () => {
             }}
             onMouseEnter={e => {
               (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.03) rotateY(4deg)';
-              (e.currentTarget as HTMLDivElement).style.boxShadow = '0 12px 40px 0 #fbbf24, 0 2px 12px 0 #60a5fa';
+              (e.currentTarget as HTMLDivElement).style.boxShadow = '0 12px 40px 0 #4A8A9A44, 0 2px 12px 0 #5A9AAA';
             }}
             onMouseLeave={e => {
               (e.currentTarget as HTMLDivElement).style.transform = '';
@@ -1150,17 +1158,17 @@ export const FinancialServicesPage: React.FC = () => {
             }}
           >
             <h2 style={{
-              margin:'0 0 .5rem',
+              margin: '0 0 .5rem',
               fontWeight: 700,
               fontSize: '1.3rem',
               color: '#1e293b'
             }}>{uni.university}</h2>
-            <div style={{fontSize:'.95rem', color:'#64748b', marginBottom:'.5rem'}}>
+            <div style={{ fontSize: '.95rem', color: '#64748b', marginBottom: '.5rem' }}>
               {uni.type} University, {uni.state}
             </div>
             {uni.scholarships && uni.scholarships.length > 0 && (
               <>
-                <h3 style={{margin:'1rem 0 .5rem', fontSize:'1.1rem', color:'#2563eb'}}>University Scholarships</h3>
+                <h3 style={{ margin: '1rem 0 .5rem', fontSize: '1.1rem', color: '#2D6A7A' }}>University Scholarships</h3>
                 <ul>
                   {uni.scholarships.map((s: any, i: number) => (
                     <li
@@ -1175,10 +1183,10 @@ export const FinancialServicesPage: React.FC = () => {
                       onMouseEnter={e => (e.currentTarget.style.color = '#fbbf24')}
                       onMouseLeave={e => (e.currentTarget.style.color = '')}
                     >
-                      <span style={{fontSize:'1.1em'}}>💰</span>
+                      <span style={{ fontSize: '1.1em' }}>💰</span>
                       <span>
                         <strong>{s.scholarship_name}</strong> — {s.value} ({s.level})<br />
-                        <span style={{fontSize:'.85em', color:'#475569'}}>{s.notes}</span>
+                        <span style={{ fontSize: '.85em', color: '#475569' }}>{s.notes}</span>
                       </span>
                     </li>
                   ))}
@@ -1187,7 +1195,7 @@ export const FinancialServicesPage: React.FC = () => {
             )}
             {uni.common_programs && uni.common_programs.length > 0 && (
               <>
-                <h3 style={{margin:'1rem 0 .5rem', fontSize:'1.1rem', color:'#2563eb'}}>Common National/External Scholarships</h3>
+                <h3 style={{ margin: '1rem 0 .5rem', fontSize: '1.1rem', color: '#2D6A7A' }}>Common National/External Scholarships</h3>
                 <ul>
                   {uni.common_programs.map((s: any, i: number) => (
                     <li
@@ -1199,13 +1207,13 @@ export const FinancialServicesPage: React.FC = () => {
                         gap: '.6rem',
                         transition: 'color .18s'
                       }}
-                      onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
+                      onMouseEnter={e => (e.currentTarget.style.color = '#2D6A7A')}
                       onMouseLeave={e => (e.currentTarget.style.color = '')}
                     >
-                      <span style={{fontSize:'1.1em'}}>🏦</span>
+                      <span style={{ fontSize: '1.1em' }}>🏦</span>
                       <span>
                         <strong>{s.scholarship_name}</strong> — {s.value} ({s.level})<br />
-                        <span style={{fontSize:'.85em', color:'#475569'}}>{s.notes}</span>
+                        <span style={{ fontSize: '.85em', color: '#475569' }}>{s.notes}</span>
                       </span>
                     </li>
                   ))}
@@ -1221,9 +1229,9 @@ export const FinancialServicesPage: React.FC = () => {
         style={{
           margin: '0 auto 2.5rem auto',
           padding: '2.2rem 1.5rem',
-          background: 'linear-gradient(90deg,#fff 0%,#e0c3fc 100%)',
+          background: 'linear-gradient(90deg,#fff 0%,#D0E8EC 100%)',
           borderRadius: 20,
-          boxShadow: '0 2px 16px #9F7AEA11',
+          boxShadow: '0 2px 16px #4A8A9A11',
           color: '#1e293b',
           display: 'flex',
           flexWrap: 'wrap',
@@ -1237,7 +1245,7 @@ export const FinancialServicesPage: React.FC = () => {
               fontWeight: 900,
               fontSize: '1.35rem',
               letterSpacing: '-0.03em',
-              background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+              background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               marginBottom: '1.2rem'
@@ -1252,9 +1260,9 @@ export const FinancialServicesPage: React.FC = () => {
             marginTop: '.5rem'
           }}>
             <div style={{
-              background: 'linear-gradient(90deg,#fff 0%,#e0c3fc 100%)',
+              background: 'linear-gradient(90deg,#fff 0%,#D0E8EC 100%)',
               borderRadius: 14,
-              boxShadow: '0 2px 8px #9F7AEA22',
+              boxShadow: '0 2px 8px #4A8A9A22',
               padding: '1.1rem 1.2rem',
               display: 'flex',
               alignItems: 'flex-start',
@@ -1263,7 +1271,7 @@ export const FinancialServicesPage: React.FC = () => {
               <div style={{
                 width: 38,
                 height: 38,
-                background: 'linear-gradient(135deg,#5727A3 0%,#9F7AEA 100%)',
+                background: 'linear-gradient(135deg,#1A3A4A 0%,#4A8A9A 100%)',
                 color: '#fff',
                 fontWeight: 800,
                 fontSize: '1.18rem',
@@ -1271,12 +1279,12 @@ export const FinancialServicesPage: React.FC = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 4px 12px -2px #9F7AEA33',
+                boxShadow: '0 4px 12px -2px #4A8A9A33',
                 flexShrink: 0
               }}>1</div>
               <div>
-                <div style={{ fontWeight: 700, fontSize: '1.08rem', color: '#5727A3' }}>Transparent &amp; Student-Friendly</div>
-                <div style={{ color: '#1B0044', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
+                <div style={{ fontWeight: 700, fontSize: '1.08rem', color: '#1A3A4A' }}>Transparent &amp; Student-Friendly</div>
+                <div style={{ color: '#1A3A4A', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
                   No confusing jargon, no hidden fees.
                 </div>
               </div>
@@ -1305,8 +1313,8 @@ export const FinancialServicesPage: React.FC = () => {
                 flexShrink: 0
               }}>2</div>
               <div>
-                <div style={{ fontWeight: 700, fontSize: '1.08rem', color: '#5727A3' }}>Third-Party Loan Partner</div>
-                <div style={{ color: '#1B0044', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
+                <div style={{ fontWeight: 700, fontSize: '1.08rem', color: '#1A3A4A' }}>Third-Party Loan Partner</div>
+                <div style={{ color: '#1A3A4A', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
                   Secure, reliable, and tailored for international students.
                 </div>
               </div>
@@ -1336,7 +1344,7 @@ export const FinancialServicesPage: React.FC = () => {
               }}>3</div>
               <div>
                 <div style={{ fontWeight: 700, fontSize: '1.08rem', color: '#22c55e' }}>Peer-Powered Insights</div>
-                <div style={{ color: '#1B0044', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
+                <div style={{ color: '#1A3A4A', fontWeight: 500, fontSize: '1rem', marginTop: 4 }}>
                   Real tips from students who’ve been there.
                 </div>
               </div>
@@ -1344,21 +1352,88 @@ export const FinancialServicesPage: React.FC = () => {
           </div>
           <blockquote style={{
             background: '#f1f5fd',
-            borderLeft: '4px solid #9F7AEA',
+            borderLeft: '4px solid #4A8A9A',
             borderRadius: 12,
             padding: '1.2rem 1.7rem',
             fontStyle: 'italic',
-            color: '#5727A3',
+            color: '#1A3A4A',
             margin: '1.2rem 0 0 0',
             textAlign: 'center',
             fontSize: '1.08rem'
           }}>
             “I was stressed about paying for my course abroad, but Your Next University guided me through loans and scholarships. The process was fast and easy thanks to their partnered loan provider!”<br />
-            <span style={{fontWeight: 700, color: '#9F7AEA'}}>– Student Ambassador</span>
+            <span style={{ fontWeight: 700, color: '#4A8A9A' }}>– Student Ambassador</span>
           </blockquote>
         </div>
       </section>
-      
+
+      {/* Dark CTA Section - Visual Rhythm Break */}
+      <section
+        style={{
+          background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)',
+          padding: '4rem 1.5rem',
+          marginTop: '2.5rem',
+          marginBottom: '3rem',
+          textAlign: 'center',
+          position: 'relative',
+          overflow: 'hidden',
+          borderRadius: 20
+        }}
+      >
+        {/* Decorative glow */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: 500,
+          height: 500,
+          background: 'radial-gradient(circle, rgba(45, 106, 122, 0.25) 0%, transparent 70%)',
+          pointerEvents: 'none'
+        }} />
+
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: 700, margin: '0 auto' }}>
+          <h2 style={{
+            fontSize: '2.2rem',
+            fontWeight: 900,
+            color: '#fff',
+            marginBottom: '1rem',
+            letterSpacing: '-1px'
+          }}>
+            Get Started with Your Education Loan Today
+          </h2>
+          <p style={{
+            fontSize: '1.15rem',
+            color: '#CBD5E1',
+            marginBottom: '1.5rem',
+            fontWeight: 500
+          }}>
+            Compare rates from 20+ partner banks and NBFCs. No hidden fees, no surprises.
+          </p>
+          <a
+            href="mailto:hello@yournextuniversity.com?subject=Education%20Loan%20Enquiry"
+            style={{
+              display: 'inline-block',
+              background: 'linear-gradient(90deg, #4A8A9A 0%, #5A9AAA 100%)',
+              color: '#fff',
+              border: 'none',
+              borderRadius: 14,
+              padding: '1rem 2.5rem',
+              fontSize: '1.13rem',
+              fontWeight: 700,
+              textDecoration: 'none',
+              boxShadow: '0 4px 20px rgba(74, 138, 154, 0.4)',
+              transition: 'transform 0.18s, box-shadow 0.18s'
+            }}
+          >
+            Contact Us
+          </a>
+        </div>
+      </section>
+
     </main>
   );
 };
+
+
+

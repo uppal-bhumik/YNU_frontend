@@ -3,7 +3,7 @@ import { useApi } from '../hooks/useApi';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-interface Service { code:string; name:string; category:string; description:string }
+interface Service { code: string; name: string; category: string; description: string }
 
 const allServices = [
   {
@@ -20,7 +20,7 @@ const allServices = [
     path: '/accommodation', // updated path
     img: 'https://pub-e63ee2f49d7e4f94b98011a5350eea0f.r2.dev/school_photos/original/hotel-6862159_1920.jpg'
   },
-  
+
   {
     code: 'financial',
     name: 'Financial Services / Education Loans',
@@ -54,23 +54,23 @@ const allServices = [
 export const ServicesPage: React.FC = () => {
   const { token } = useAuth();
   const api = useApi(token);
-  const [data,setData] = useState<Service[]>([]);
-  const [loading,setLoading] = useState(true);
-  const [error,setError] = useState<string|null>(null);
-  const [category,setCategory] = useState('');
-  const [selected,setSelected] = useState<Service | null>(null);
+  const [data, setData] = useState<Service[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [category, setCategory] = useState('');
+  const [selected, setSelected] = useState<Service | null>(null);
   const nav = useNavigate();
   const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setLoading(true); setError(null);
-    api.get<Service[]>(`/services${category?`?category=${category}`:''}`)
+    api.get<Service[]>(`/services${category ? `?category=${category}` : ''}`)
       .then(setData)
-      .catch(e=>setError(e.message))
-      .finally(()=>setLoading(false));
+      .catch(e => setError(e.message))
+      .finally(() => setLoading(false));
   }, [category]);
 
-  const categories = useMemo(() => Array.from(new Set(data.map(s=>s.category))), [data]);
+  const categories = useMemo(() => Array.from(new Set(data.map(s => s.category))), [data]);
 
   return (
     <main
@@ -79,46 +79,62 @@ export const ServicesPage: React.FC = () => {
         paddingBottom: '3rem',
         position: 'relative',
         zIndex: 1,
-        paddingTop: '90px', // Add space for fixed header
+        paddingTop: '0', // Full bleed
         minHeight: '100vh',
-        background: 'radial-gradient(at 70% 0%, #ede9fe 0%, #fff 100%)'
+        background: '#fff'
       }}
     >
-      {/* Removed 3D/Glassmorphism/Animated Background Elements */}
-      <h1 style={{
-        fontSize: '2.7rem',
-        fontWeight: 900,
-        color: '#5727A3',
-        marginBottom: '1.2rem',
-        letterSpacing: '-2px',
-        lineHeight: 1.1,
+      {/* Dark Hero for Services */}
+      <section style={{
+        background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)',
+        padding: '120px 1.5rem 80px 1.5rem',
         textAlign: 'center',
-        background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        backgroundClip: 'text',
-        textShadow: '0 2px 16px #9F7AEA22'
-      }}>Our Services</h1>
-      <p style={{
-        textAlign: 'center',
-        fontSize: '1.18rem',
-        color: '#1B0044',
-        fontWeight: 500,
-        marginBottom: '2.2rem',
-        letterSpacing: '-.5px'
+        position: 'relative',
+        marginBottom: '2rem'
       }}>
-        Explore our full range of support for your study abroad journey.
-      </p>
+        {/* Decor */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: 'radial-gradient(circle at 50% 100%, rgba(45, 106, 122, 0.2), transparent 50%)',
+          pointerEvents: 'none'
+        }} />
+
+        <h1 style={{
+          fontSize: '3.5rem',
+          fontWeight: 900,
+          color: '#fff',
+          marginBottom: '1rem',
+          letterSpacing: '-2px',
+          lineHeight: 1.1,
+          position: 'relative',
+          zIndex: 1
+        }}>Our Services</h1>
+        <p style={{
+          fontSize: '1.25rem',
+          color: '#CBD5E1',
+          fontWeight: 500,
+          maxWidth: 600,
+          margin: '0 auto',
+          position: 'relative',
+          zIndex: 1
+        }}>
+          Explore our full range of support for your study abroad journey.
+        </p>
+      </section>
       <section style={{
         maxWidth: 1400,
         padding: '2.5rem 1.5rem',
         textAlign: 'center',
         position: 'relative',
         margin: '0 auto',
-        background: 'linear-gradient(120deg, #D6C5F0 0%, #fff 100%)',
+        background: 'linear-gradient(120deg, #D0E8EC 0%, #fff 100%)',
         borderRadius: 40,
-        boxShadow: '0 12px 48px 0 #9F7AEA22, 0 2px 8px 0 #5727A322',
-        border: '2.5px solid #D6C5F0',
+        boxShadow: '0 12px 48px 0 #4A8A9A22, 0 2px 8px 0 #1A3A4A22',
+        border: '2.5px solid #D0E8EC',
         overflow: 'visible'
       }}>
         <div
@@ -135,10 +151,10 @@ export const ServicesPage: React.FC = () => {
               key={s.code + idx}
               className="work-process-area landing-service-card"
               style={{
-                background: 'linear-gradient(135deg, #fff 60%, #D6C5F0 100%)',
+                background: '#fff',
                 borderRadius: 32,
-                boxShadow: '0 12px 36px 0 #9F7AEA22, 0 2px 8px 0 #D6C5F022',
-                border: '2.5px solid #9F7AEA22',
+                boxShadow: '0 12px 36px 0 rgba(15, 23, 42, 0.08)',
+                border: '1px solid var(--border)',
                 overflow: 'visible',
                 cursor: 'pointer',
                 transition: 'box-shadow 0.18s, transform 0.18s, background 0.18s',
@@ -165,9 +181,9 @@ export const ServicesPage: React.FC = () => {
                 width: 110,
                 height: 110,
                 zIndex: 3,
-                background: 'linear-gradient(135deg,#D6C5F0 60%,#9F7AEA 100%)',
+                background: 'linear-gradient(135deg,#D0E8EC 60%,#4A8A9A 100%)',
                 borderRadius: '50%',
-                boxShadow: '0 8px 32px #9F7AEA33, 0 2px 8px #D6C5F044',
+                boxShadow: '0 8px 32px #4A8A9A33, 0 2px 8px #D0E8EC44',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -183,7 +199,7 @@ export const ServicesPage: React.FC = () => {
                     objectFit: 'cover',
                     borderRadius: '50%',
                     display: 'block',
-                    boxShadow: '0 2px 12px #9F7AEA22'
+                    boxShadow: '0 2px 12px #4A8A9A22'
                   }}
                 />
               </div>
@@ -201,18 +217,18 @@ export const ServicesPage: React.FC = () => {
                 <h3 style={{
                   fontWeight: 900,
                   fontSize: '1.25rem',
-                  color: '#5727A3',
+                  color: '#1A3A4A',
                   margin: '0 0 .7rem 0',
                   letterSpacing: '-.5px',
-                  background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+                  background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
-                  textShadow: '0 2px 8px #9F7AEA11'
+                  textShadow: '0 2px 8px #4A8A9A11'
                 }}>{s.name}</h3>
                 <div style={{
                   fontSize: '1.09rem',
-                  color: '#1B0044',
+                  color: '#0F2A36',
                   fontWeight: 500,
                   margin: 0,
                   marginBottom: 0,
@@ -227,8 +243,8 @@ export const ServicesPage: React.FC = () => {
               <div style={{
                 width: '100%',
                 height: 54,
-                background: 'rgba(151, 117, 234, 0.13)',
-                color: '#5727A3',
+                background: 'rgba(45, 106, 122, 0.13)',
+                color: '#1A3A4A',
                 borderBottomLeftRadius: 32,
                 borderBottomRightRadius: 32,
                 display: 'flex',
@@ -241,10 +257,10 @@ export const ServicesPage: React.FC = () => {
                 cursor: 'pointer',
                 transition: 'background 0.18s',
                 position: 'relative',
-                boxShadow: '0 2px 8px #9F7AEA22'
+                boxShadow: '0 2px 8px #4A8A9A22'
               }}>
                 <span style={{
-                  background: 'linear-gradient(90deg,#5727A3 0%,#9F7AEA 100%)',
+                  background: 'linear-gradient(90deg,#1A3A4A 0%,#4A8A9A 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -256,10 +272,10 @@ export const ServicesPage: React.FC = () => {
                   justifyContent: 'center',
                   width: 36,
                   height: 36,
-                  background: 'linear-gradient(135deg,#D6C5F0 60%,#9F7AEA 100%)',
+                  background: 'linear-gradient(135deg,#D0E8EC 60%,#4A8A9A 100%)',
                   borderRadius: '50%',
                   marginLeft: 6,
-                  boxShadow: '0 2px 8px #9F7AEA22'
+                  boxShadow: '0 2px 8px #4A8A9A22'
                 }}>
                   <svg
                     width="22"
@@ -271,7 +287,7 @@ export const ServicesPage: React.FC = () => {
                     aria-hidden="true"
                   >
                     <circle cx="12" cy="12" r="12" fill="#fff2" />
-                    <path d="M7 13H17M17 13L13.5 9.5M17 13L13.5 16.5" stroke="#5727A3" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M7 13H17M17 13L13.5 9.5M17 13L13.5 16.5" stroke="#1A3A4A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </span>
               </div>
@@ -284,7 +300,7 @@ export const ServicesPage: React.FC = () => {
                 width: 140,
                 height: 140,
                 borderRadius: '50%',
-                background: 'radial-gradient(circle at 50% 50%, #D6C5F0 0%, #9F7AEA33 80%, transparent 100%)',
+                background: 'radial-gradient(circle at 50% 50%, #D0E8EC 0%, #4A8A9A33 80%, transparent 100%)',
                 opacity: 0.25,
                 zIndex: 0,
                 pointerEvents: 'none'
@@ -295,21 +311,21 @@ export const ServicesPage: React.FC = () => {
                   100% { opacity: 1; transform: none;}
                 }
                 .landing-service-card:hover, .landing-service-card:focus {
-                  box-shadow: 0 24px 64px 0 #9F7AEA55, 0 4px 16px 0 #D6C5F033 !important;
+                  box-shadow: 0 24px 64px 0 #4A8A9A55, 0 4px 16px 0 #D0E8EC33 !important;
                   transform: scale(1.06) !important;
-                  border-color: #9F7AEA !important;
-                  background: linear-gradient(135deg, #fff 40%, #D6C5F0 100%);
+                  border-color: #4A8A9A !important;
+                  background: linear-gradient(135deg, #fff 40%, #D0E8EC 100%);
                 }
                 .landing-service-card:hover h3, .landing-service-card:focus h3 {
-                  background: linear-gradient(90deg,#9F7AEA 0%,#5727A3 100%);
+                  background: linear-gradient(90deg,#4A8A9A 0%,#1A3A4A 100%);
                   WebkitBackgroundClip: text;
                   WebkitTextFillColor: transparent;
                   background-clip: text;
                   color: transparent;
-                  text-shadow: 0 2px 16px #fff8, 0 1px 2px #9F7AEA44;
+                  text-shadow: 0 2px 16px #fff8, 0 1px 2px #4A8A9A44;
                 }
                 .landing-service-card:hover .bottom-bar, .landing-service_card:focus .bottom-bar {
-                  background: linear-gradient(90deg, #9F7AEA 0%, #5727A3 100%);
+                  background: linear-gradient(90deg, #4A8A9A 0%, #1A3A4A 100%);
                 }
                 @media (max-width: 900px) {
                   .landing-service-card {
@@ -367,25 +383,24 @@ export const ServicesPage: React.FC = () => {
         style={{
           maxWidth: 800,
           margin: '3.5rem auto 2.5rem auto',
-          background: 'linear-gradient(120deg, #ede9fe 0%, #fff 100%)',
+          background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)',
           borderRadius: 32,
-          boxShadow: '0 8px 32px #9F7AEA22',
+          boxShadow: '0 8px 32px #4A8A9A22',
           padding: '2.5rem 2rem',
           position: 'relative',
           zIndex: 2,
         }}
       >
         <h2 style={{
-          color: '#7c3aed',
+          color: '#fff',
           fontWeight: 900,
           fontSize: '2.1rem',
           marginBottom: '1.2rem',
           letterSpacing: '-1px',
           textAlign: 'center',
-          background: 'linear-gradient(90deg, #a21caf 0%, #7c3aed 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text'
+          background: 'none',
+          WebkitTextFillColor: 'initial',
+          backgroundClip: 'border-box'
         }}>
           Experience & Journey
         </h2>
@@ -399,16 +414,16 @@ export const ServicesPage: React.FC = () => {
           {/* Work */}
           <div style={{
             flex: '1 1 320px',
-            background: 'linear-gradient(135deg, #fff 60%, #e0c3fc 100%)',
+            background: 'linear-gradient(135deg, #fff 60%, #D0E8EC 100%)',
             borderRadius: 18,
-            boxShadow: '0 2px 12px #9F7AEA11',
+            boxShadow: '0 2px 12px #4A8A9A11',
             padding: '1.3rem 1.2rem',
             minWidth: 260,
             maxWidth: 370,
             margin: '0 auto'
           }}>
             <h3 style={{
-              color: '#a21caf',
+              color: '#1A3A4A',
               fontWeight: 800,
               fontSize: '1.13rem',
               margin: '0 0 .5rem 0',
@@ -426,16 +441,16 @@ export const ServicesPage: React.FC = () => {
           {/* Peer Support */}
           <div style={{
             flex: '1 1 320px',
-            background: 'linear-gradient(135deg, #fff 60%, #e0c3fc 100%)',
+            background: 'linear-gradient(135deg, #fff 60%, #D0E8EC 100%)',
             borderRadius: 18,
-            boxShadow: '0 2px 12px #9F7AEA11',
+            boxShadow: '0 2px 12px #4A8A9A11',
             padding: '1.3rem 1.2rem',
             minWidth: 260,
             maxWidth: 370,
             margin: '0 auto'
           }}>
             <h3 style={{
-              color: '#a21caf',
+              color: '#1A3A4A',
               fontWeight: 800,
               fontSize: '1.13rem',
               margin: '0 0 .5rem 0',
@@ -453,14 +468,14 @@ export const ServicesPage: React.FC = () => {
         </div>
         {/* Projects */}
         <div style={{
-          background: 'linear-gradient(135deg, #fff 60%, #e0c3fc 100%)',
+          background: 'linear-gradient(135deg, #fff 60%, #D0E8EC 100%)',
           borderRadius: 18,
-          boxShadow: '0 2px 12px #9F7AEA11',
+          boxShadow: '0 2px 12px #4A8A9A11',
           padding: '1.3rem 1.2rem',
           marginBottom: '2.2rem'
         }}>
           <h3 style={{
-            color: '#a21caf',
+            color: '#1A3A4A',
             fontWeight: 800,
             fontSize: '1.13rem',
             margin: '0 0 .5rem 0',
@@ -474,7 +489,7 @@ export const ServicesPage: React.FC = () => {
             paddingLeft: '1.2rem',
             listStyle: 'disc'
           }}>
-            <li style={{marginBottom:'.5rem'}}>
+            <li style={{ marginBottom: '.5rem' }}>
               Completed a climate activism project highlighting environmental awareness by designing a community campaign with public interviews, waste collection drives, and social media engagement.
             </li>
             <li>
@@ -484,13 +499,13 @@ export const ServicesPage: React.FC = () => {
         </div>
         {/* Journey */}
         <div style={{
-          background: 'linear-gradient(135deg, #fff 60%, #e0c3fc 100%)',
+          background: 'linear-gradient(135deg, #fff 60%, #D0E8EC 100%)',
           borderRadius: 18,
-          boxShadow: '0 2px 12px #9F7AEA11',
+          boxShadow: '0 2px 12px #4A8A9A11',
           padding: '1.3rem 1.2rem'
         }}>
           <h3 style={{
-            color: '#a21caf',
+            color: '#1A3A4A',
             fontWeight: 800,
             fontSize: '1.13rem',
             margin: '0 0 .5rem 0',
@@ -502,10 +517,82 @@ export const ServicesPage: React.FC = () => {
             fontWeight: 500,
             margin: 0
           }}>
-            My journey is fueled by resilience, adaptability, and a strong desire to grow. From managing part-time roles in Canada to assisting students in their academic planning, I’ve learned the value of hard work, clear communication, and problem-solving. I strive to bring a positive impact wherever I contribute, with a vision of continuous learning and helping others succeed.
+            My journey is fueled by resilience, adaptability, and a strong desire to grow. From managing part-time roles in Canada to assisting students in their academic planning, I've learned the value of hard work, clear communication, and problem-solving. I strive to bring a positive impact wherever I contribute, with a vision of continuous learning and helping others succeed.
           </p>
+        </div>
+      </section>
+
+      {/* Dark CTA Section - Visual Rhythm Break */}
+      <section
+        style={{
+          background: 'linear-gradient(135deg, #0F172A 0%, #1A3A4A 100%)',
+          padding: '4rem 1.5rem',
+          marginTop: '2.5rem',
+          textAlign: 'center',
+          position: 'relative',
+          overflow: 'hidden'
+        }}
+      >
+        {/* Decorative glow */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: 400,
+          height: 400,
+          background: 'radial-gradient(circle, rgba(45, 106, 122, 0.3) 0%, transparent 70%)',
+          pointerEvents: 'none'
+        }} />
+
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: 700, margin: '0 auto' }}>
+          <h2 style={{
+            fontSize: '2.2rem',
+            fontWeight: 900,
+            color: '#fff',
+            marginBottom: '1rem',
+            letterSpacing: '-1px'
+          }}>
+            Ready to Start Your Journey?
+          </h2>
+          <p style={{
+            fontSize: '1.15rem',
+            color: '#CBD5E1',
+            marginBottom: '1.5rem',
+            fontWeight: 500
+          }}>
+            Get personalized guidance from experts who've been through the process.
+          </p>
+          <button
+            onClick={() => nav('/services/peer-counselling')}
+            style={{
+              background: 'linear-gradient(90deg, #4A8A9A 0%, #5A9AAA 100%)',
+              color: '#fff',
+              border: 'none',
+              borderRadius: 14,
+              padding: '1rem 2.5rem',
+              fontSize: '1.13rem',
+              fontWeight: 700,
+              cursor: 'pointer',
+              boxShadow: '0 4px 20px rgba(74, 138, 154, 0.4)',
+              transition: 'transform 0.18s, box-shadow 0.18s'
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-3px)';
+              (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 8px 30px rgba(74, 138, 154, 0.5)';
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLButtonElement).style.transform = '';
+              (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 4px 20px rgba(74, 138, 154, 0.4)';
+            }}
+          >
+            Book a Session
+          </button>
         </div>
       </section>
     </main>
   );
 };
+
+
+
