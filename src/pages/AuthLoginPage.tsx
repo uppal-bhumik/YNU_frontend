@@ -79,7 +79,8 @@ const AuthLoginPage: React.FC = () => {
         callback: async (response: any) => {
           if (response.credential) {
             // Send the token to backend
-            const res = await fetch('https://studconnect-backend.onrender.com/api/auth/google', {
+            const API_BASE = (import.meta as any).env.VITE_API_BASE_URL || 'https://ynu-backend.onrender.com';
+            const res = await fetch(`${API_BASE}/api/auth/google`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ token: response.credential })
