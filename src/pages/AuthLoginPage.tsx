@@ -87,9 +87,10 @@ const AuthLoginPage: React.FC = () => {
             });
             if (res.ok) {
               const data = await res.json();
-              // Save access token in localStorage
+              // Save access token in localStorage with correct key
               if (data.access_token) {
-                localStorage.setItem('access_token', data.access_token);
+                localStorage.setItem('sc_token', data.access_token);
+                localStorage.setItem('access_token', data.access_token); // Also keep for backwards compat
               }
               // Save user info if present
               if (data.user) {
